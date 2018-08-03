@@ -1,0 +1,113 @@
+基本概念：
+1.骨架
+骨架是骨骼的集合，骨架中至少包含一个骨骼。一个项目中可以包含多付骨架。
+
+
+2.骨骼
+骨骼是骨骼动画的基本组成部分。骨骼可以旋转，缩放，平移。
+骨骼特性：
+
+骨骼的创建必须基于一个父骨骼。
+
+新建项目将默认包含一个叫root骨骼作为根骨骼，根骨骼不能删除，但可以重命名。
+
+其他骨骼均可以删除和重命名。
+
+骨骼被删除时，其下包含的子骨骼、插槽和图片将一同被删除。
+
+子骨骼会继承父骨骼的移动，旋转和缩放。
+
+一个骨骼可以有多个子骨骼，但只有一个父骨骼。
+
+骨骼的名字在同一个项目中是唯一的，不能重复。
+
+骨骼可以复选。
+3.插槽
+插槽是图片的容器，是骨骼和图片的桥梁。主场景中，图片的层次关系由插槽在层级面板的层次关系体现。
+
+4.
+图片
+图片是最基本的设计素材，项目所需的图片都放在资源面板里。图片需要以插槽为中介来和骨骼绑定。
+
+5.继承
+DragonBones Professional中父子组件间存在继承关系。父子可以是骨骼和骨骼，也可以是骨骼和插槽。子组件会继承父组件的移动，缩放和旋转。
+
+移动的继承是指子组件随父组件移动相同的距离和方向。
+
+缩放的继承是指子组件随父组件缩放相同的大小比例。
+
+旋转的继承是指子组件会随父组件以相同个的圆心，旋转相同的角度和方向。
+
+龙骨代码：
+http://developer.egret.com/cn/github/egret-docs/DB/dbLibs/createAnimation/index.html
+创建项目：添加对应库文件，编译
+
+创建骨骼动画：
+使用RES模块加载资源完成后，可以创建基于DragonBones的骨骼动画。
+
+实例化DragonBones所需要的数据。
+var dragonbonesData = RES.getRes( "RobotGame_1_json" );  
+var textureData = RES.getRes( "texture_json" );  
+var texture = RES.getRes( "texture_png" );
+DragonBones动画由工厂类进行管理，可以使用EgretFactory对象来处理所有的动画数据以及贴图。
+步骤如下：
+解析外部数据，并添加至EgretFactory中
+设置动画中绑定的贴图
+let egretFactory: dragonBones.EgretFactory = dragonBones.EgretFactory.factory;
+egretFactory.parseDragonBonesData(dragonbonesData);  
+egretFactory.parseTextureAtlasData(textureData, texture);
+数据准备好后，需要从数据中提取出需要的骨架系统。在DragonBones中，骨架有多个骨骼组成。每个骨架中绑定了当前骨架的动画数据。
+let armatureDisplay: dragonBones.EgretArmatureDisplay = egretFactory.buildArmatureDisplay("robot");
+
+通过buildArmatureDisplay方法，我们提取名称为robot的骨架。要想在舞台中看到该骨架，我们需要将其显性的添加到的舞台当中，可以使用下面语句。
+
+this.addChild(armatureDisplay);
+armatureDisplay.x = 200;
+armatureDisplay.y = 300;
+armatureDisplay.scaleX = 0.5;
+armatureDisplay.scaleY = 0.5;
+armatureDisplay.animation.play("Walk");
+armatureDisplay是名称为robot的骨架对象的显示对象。将其添加到显示列表中，就可以在舞台中看到当前提取的机器人。
+
+多人物动画
+DragonBones 系统中允许创建多个骨骼动画，用户可以创建多个 Factory 来管理不同的骨骼动画，也可使用同一个 Factory 来管理多个骨骼动画。
+
+当使用一个 Factory 时，需要注意避免龙骨数据或骨架数据重名。
+如果没有特殊需求，建议不要使用多个 Factory 实例
+使用多个EgretFactory方法可参考创建骨骼动画一节。
+
+
+控制骨骼运动
+有的时候，对于一个有趣的游戏，仅仅播放预先设置的骨骼动画是不够的，我们需要角色具有动态可控的动作。令人高兴的是DragonBones提供了访问并控制骨骼框架里每根骨头的方法，让你的角色在游戏中随意运动。
+下面示例通过鼠标在场景中的移动来控制骨骼。我们创建了一个跟随鼠标运动的小鸟，小龙人会与小鸟保持一定距离，同时小龙人的头和胳膊会跟随小鸟运动而做出不同姿势，非常有趣。完整的项目代码可以在示例中心下载此示例。。
+
+改变动画速度
+1.第一种：调节动画速度
+let armatureDisplay = factory.buildArmatureDisplay("Dragon");
+armatureDisplay.animation.timeScale = 0.5;
+2.调节动画状态速度
+对动画速度的调节会影响到所有的动画状态，如果你只想调节角色动画中某一个动画状态的速度，则需要对播放动画之后产生的 AnimationState 实例进行操作。
+
+let armatureDisplay = factory.buildArmatureDisplay("Dragon");
+armatureDisplay.play("walk").timeScale = 0.5;
+
+动画遮罩与混合
+1.动画混合
+动画混合是指一个骨架同时可以播放多个动画。例如下面的代码,可以让角色同时播放跑步和开火的动画。
+2.动画遮罩
+动画遮罩就是只将动画的一部分呈现出来，例如下面的代码，将只播放head和body两个骨头的跑步动画，其他骨头将维持原姿势不动。
+
+动画拷贝
+在做大型游戏项目时，我们可能会为不同的角色设计相同的动画。这种情况下，可以利用 DragonBones 的动画复用功能，轻松实现这个需求。
+DragonBones 的动画复用功能够把同名骨骼的动画数据从一个骨架拷贝到另一个骨架中。
+
+骨骼动画事件
+DragonBones 本身并不实现事件派发，动画事件和自定义事件的派发与接收都依赖引擎的事件系统，这样可以使得 DragonBones 的事件融合到所支持的各个引擎的事件系统之中。
+
+在 Egret 中，DragonBones 是依赖 EgretArmatureDisplay 来派发和接收事件的，所以通过对其进行事件监听，就可以收到所有来自骨架的动画事件和自定义事件（更多关于 Egret 的事件知识请参考 Egret 的相关教程和文档）。
+
+dragonBones.EventObject 定义了 DragonBones 中相关的事件类型，同时他也会做为一个事件参数通过 dragonBones.EgretEvent 传递给事件监听器。
+
+骨骼换装
+局部换装
+原有换装方案，可以替换对应slot中的图片实现，但会存在图片位置错位问题。新版本局部换装功能，可通过DragonBones预设置替换内容实现此功能。

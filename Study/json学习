@@ -1,0 +1,27 @@
+json学习
+JSON 语法是 JavaScript 对象表示语法的子集。
+
+数据在名称/值对中
+数据由逗号分隔
+大括号保存对象
+中括号保存数组
+
+{"name":"广州","age":30}
+
+"size":[{"name":"liu"},{"name":"xu"},{"name":"liujiaxu"}]
+
+可以使用点号（.）来访问对象的值：
+也可以使用中括号（[]）来访问对象的值：
+
+
+JSON 通常用于与服务端交换数据。
+在接收服务器数据时一般是字符串。
+我们可以使用 JSON.parse() 方法将数据转换为 JavaScript 对象。
+
+
+JSON.stringify():
+JSON 通常用于与服务端交换数据。
+
+在向服务器发送数据时一般是字符串。
+
+我们可以使用 JSON.stringify() 方法将 JavaScript 对象转换为字符串。

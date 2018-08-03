@@ -1,0 +1,47 @@
+框架流程：
+1.入口。 Main.ts:createGameScene();
+主要有：
+ZJ.AudioManager  
+ZJ.ResManager
+ZJ.UIManager
+ZJ.TableManager
+ZJ.SocketManager 
+
+2.开始. ModuleStarUp.init():默认打开GameView.
+怎么配置其他View?
+(1)UIName加入名字
+(2)UIManager.openView()
+
+3.在GameView中开发，配置皮肤。。。开始。
+
+
+以下说明几个模块：
+1.ZJ.AudioManager  声音模块 
+主要方法：playBgm()   stopBgm()   play() stop() stopall()  getSound() 等
+
+2.ZJ.ResManager   官方RES没有集成AssetAdapter中的功能，仍需要写个这样的管理类。
+                 核心方法loadRes，其余操作请使用RES。
+
+loadDragonBones()   loadMovieClip()  处理资源的方法
+
+3.ZJ.UIManager  UI类。  
+getUIData()    
+openView()
+getView()等
+
+4.TableManager 处理配置表的 load()
+
+5.SocketManger  处理网络的
+
+
+ModuleConfig:模块配置。 一些事件，UI名字定义都在这里。
+
+
+
+
+
+
+接触手SDK:
+没封装MyCDM之前：  接受回掉就OK  因为是异步。
+this.initdate = ChushouDataModel.instance;
+ this.initdate.onData11003 = (data:any) => {};

@@ -1,0 +1,46 @@
+RES模块：
+RES内置支持的文件类型有：
+
+RES.ResourceItem.TYPE_BIN(bin)：解析为原始的二进制文件
+
+RES.ResourceItem.TYPE_IMAGE(image)：解析为egret.Texture对象
+
+RES.ResourceItem.TYPE_TEXT(text)：解析为string变量
+
+RES.ResourceItem.TYPE_JSON(json)：解析为json对象
+
+RES.ResourceItem.TYPE_SHEET(sheet)：解析为egret.SpriteSheet对象
+
+RES.ResourceItem.TYPE_FONT(font)：解析为egret.BitmapFont对象 
+
+RES.ResourceItem.TYPE_SOUND(sound)：解析为egret.Sound对象
+
+RES.ResourceItem.TYPE_XML(xml)：解析为egret.XML对象
+
+RES模块对资源加载配置有两种读取方式，一种是通过配置读取方式，
+另一种是通过路径读取方式。
+配置读取方式，
+loadConfig函数做执行的动作即为初始化RES资源加载模块。该函数包含两个参数，第一个参数是default.res.json文件的完整路径，第二个参数是配置中每个资源项url相对路径的基址。例如配置里的bgImage资源项填的
+url是assets/bg.jpg，加载时将会拼接为相对路径：resource/assets/bg.jpg。
+RES.loadConfig("resource/default.res.json","resource/");
+
+路径读取方式
+路径读取方式就是免去了加载配置文件的过程。直接将资源加载配置内容以参数方式给出。
+
+如果是项目内资源，相对目录为主目录而不是 RES.loadCOnfig 中设置的目录，比如：resource/assets/bg.jpg
+
+如果是外部资源，请使用资源的绝对地址，比如：http://xxx/a.png
+RES.getResByUrl('resource/assets/bg.jpg',this.onComplete,this,RES.ResourceItem.TYPE_IMAGE);
+
+
+加载资源组
+在配置文件加载完成后，我们可以调用RES.loadGroup(name:string,priority:number=0)开始预加载配置中的一组资源。该函数需要两个参数，参数”name”对应配置文件中的资源组名。
+预加载可以在游戏启动时，也可以是某个面板被打开前，调用时机由具体项的目逻辑确定。
+、RES.loadGroup完毕的时候你可以理解为已经占用内存，所以RES.getRes 只是获得一个引用而已
+常用方法：
+1.RES.getRes();
+2.预加载资源组 RES.loadGroup( "preload" );
+3.若资源组无法预先配置在文件中，需要运行时才能动态确定的，
+我们可以通过调用RES.createGroup(groupName:string,keys:Array)方法，动态创建一个资源组，再加载它。
+
+加载配置->加载资源组->getRes();

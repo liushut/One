@@ -1,0 +1,692 @@
+javascript学习：
+廖雪峰的学习笔记：
+https://blog.csdn.net/qq_15262671/article/details/79437045
+
+廖雪峰官方网站：
+https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000
+
+中国官方网站，还可以学前端。
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises
+
+在JavaScript中定义了以下几种数据类型： 
+1. Number: JavaScript不区分整数和浮点数，统一用Number表示 
+2. 字符串: 字符串是以单引号’或双引号”括起来的任意文本 
+3. 布尔值:布尔值只有true、false两种值.与、或、非 分别用 &&,||,!表示 
+4. 数组: 数组是一组按顺序排列的集合，集合的每个值称为元素。JavaScript的数组可以包括任意数据类型。[1, 2, 3.14, 'Hello', null, true];,new Array(1, 2, 3); 
+5. 对象:JavaScript的对象是一组由键-值组成的无序集合。对象的键都是字符串类型，值可以是任意数据类型。每个键又称为对象的属性。获取一个对象的属性，我们用对象变量.属性名的方式，还可以用[属性名]和["属性名"]。[]的好处是属性名可以是变量来表示。
+
+
+变量，作用域和内存问题:
+值类型按值传递，引用类型传递指针的值。
+执行环境以及作用域：
+全局执行环境:window
+每个函数都有自己的执行环境.当执行流进入一个函数时，函数的环境就会被推入一个环境栈中
+而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境.
+作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问
+作用域链的前端，始终都是当前执行的代码所
+在环境的变量对象。如果这个环境是函数，则将其活动对象（ activation object）作为变量对象。活动对象在最开始时只包含一个变量，即 arguments 对象（这个对象在全局环境中是不存在的）。作用域链中
+的下一个变量对象来自包含（外部）环境，而再下一个变量对象则来自下一个包含环境。这样，一直延续到全局执行环境；全局执行环境的变量对象始终都是作用域链中的最后一个对象.
+
+内部环境可以通过作用域链访问所有的外部环境，但
+外部环境不能访问内部环境中的任何变量和函数。这些环境之间的联系是线性、有次序的。每个环境都可以向上搜索作用域链，以查询变量和函数名；但任何环境都不能通过向下搜索作用域链而进入另一个执行环境。
+延长作用域链:with语句和try-catch块。
+
+JS没有块级作用域。
+if (true) {
+var color = "blue";
+}
+alert(color); //"blue"
+JavaScript 中， if 语句中的变量声明会将变量添加到当前的执行环境（在这里是
+全局环境）中。
+
+for (var i=0; i < 10; i++){
+doSomething(i);
+}
+alert(i); //10
+对于有块级作用域的语言来说， for 语句初始化变量的表达式所定义的变量，只会存在于循环的环
+境之中。而对于 JavaScript 来说，由 for 语句创建的变量 i 即使在 for 循环执行结束后，也依旧会存在
+于循环外部的执行环境中
+
+垃圾收集:
+局部变量会自动消除引用，全局变量置为null解除引用。
+解除一个值的引用并不意味着自动回收该值所占用的内存。解除引用的真正作用是让值脱离
+执行环境，以便垃圾收集器下次运行时将其回收。
+JS有自动垃圾收集机制，采用标记清除方法。离开作用域的值将被自动标记为可以回收，因此将在垃圾收集期间被删除，“标记清除”是目前主流的垃圾收集算法，这种算法的思想是给当前不使用的值加上标记，然后再回收其内存。
+当代码中存在循环引用现象时，“引用计数”算法就会导致问题。解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处。为了确保有效地回
+收内存，应该及时解除不再使用的全局对象、全局对象属性以及循环引用变量的引用。
+
+
+使用 var 声明的变量会自动被添加到最接近的环境中
+如果初始化变量时没有使用 var 声明，该变量会自动被添加到全局环境。
+
+
+
+
+
+字符串
+转义字符:'I\'m \"OK\"!';表示I'm "OK"!
+十六进制\x41可以表示ASCII字符"A",个Unicode字符可用\u####表示
+多行字符串：用反引号表示,键盘的ESC下方。类似python中'''...'''
+模板字符串:把多个字符串连接起来，可以用+号连接。ES6用${var}自动替换字符串中的变量,此时字符串引号改为反引号。类似python3中'{}'.fromat(var)
+字符串操作:s.length,s[0]
+
+字符串是不可变的，字符串的某个索引赋值无意义
+JavaScript字符串常用方法，调用方法返回新字符串：s='Hello';s.toUpperCase();s.toLowerCase();s.indexOf('w');s.substring(0,5);s.substring(7);
+
+
+数组
+JavaScript数组常用方法： 
+1. Array的长度:arr.length 
+2. arr.indexOf(var); 
+3. arr.slice(0,3);arr.slice(3);arr.slice(); 
+4. arr.push('A', 'B');arr.pop(); 
+5. arr.unshift('A', 'B');arr.shift(); 
+6. arr.sort(); 
+7. arr.reverse(); 
+8. arr.concat([1, 2, 3]);,类似python的lst.extend 
+9. arr.join('-'); 
+10. splice()方法是修改Array的“万能方法”，它可以从指定的索引开始删除若干元素，然后再
+然后再从该位置添加若干元素。
+
+Array的索引可赋值
+直接给Array的length赋一个新的值会导致Array大小的变化，不建议直接修改Array的大小
+slice()就是对应String的substring()版本
+sort()直接修改当前Array的元素位置
+concat()方法返回新的Array
+如果Array的元素不是字符串，将自动转换为字符串后再join。
+
+for(a in b)
+{
+    //遍历对象的属性
+}
+对象：
+表示方法：
+1.var a = new Object();使用 new 操作符后跟 Object 构造函数
+2.var a = {} 对象字面量表示法  不会调用构造函数。对象字面量也是向函数传递大量可选参
+数的首选方式，typeof检测属性是否存在。
+使用方括号表示法来访问对象的属性：
+从功能上看，这两种访问对象属性的方法没有任何区别。但方括号语法的主要优点是可以通过变量
+来访问属性
+var propertyName = "name";
+alert(person[propertyName]); //"Nicholas"
+
+
+JavaScript的对象是一种无序的集合数据类型，它由若干键值对组成。用{…}表示对象,键值对以xxx: xxx形式申明，用,隔开
+
+JavaScript对象常用方法： 
+1. 新增age属性：xiaoming.age = 18; 
+2. 删除age属性: delete xiaoming.age; 
+3. 判断属性存在：'age' in xiaoming; 
+4. 判断属性是否自身拥有：xiaoming.hasOwnProperty('name');
+对对象属性的存取，有两种方式： 
+1.的方式
+person.name
+2.
+[]的方式
+person["name"]
+
+var xiaohong = {
+//  ["name"]:"small"
+	name:"small",
+	"middle-school":"NO1"//访问属性是通过.操作符完成的，但这要求属性名必须是一个                     //有效的变量名。如果属性名包含特殊字符，就必须用''括起来
+}
+取:
+xiaohong.name
+xiaohong["name"]
+xiaohong["middle-school"]//xiaohong的属性名middle-school不是一个有效的变量，就需要用''括起来。访问这个属性也无法使用.操作符，必须用['xxx']来访问
+也可以用xiaohong['name']来访问xiaohong的name属性，不过xiaohong.name的写法更简洁
+实际上JavaScript对象的所有属性(键)都是字符串，不过属性对应的值可以是任意数据类型。
+
+第一种方式是直接存取属性值，第二种方式会进行表达式运行，理论上第一种的执行效率高于第二种。
+
+属性名包含特殊字符，就必须用”括起来,访问该属性必须用[‘xxx’]来访问
+访问不存在的属性不报错，而是返回undefined
+JavaScript的对象是动态类型，你可以自由地给一个对象添加或删除属性
+如果in判断一个属性存在，这个属性不一定是xiaoming的，它可能是xiaoming继承得到的
+
+
+
+
+条件判断
+JavaScript使用if () { ... } else { ... }来进行条件判断
+
+语句块只包含一条语句，那么可以省略{},建议永远都要写上{}
+JavaScript把null、undefined、0、NaN和空字符串”视为false，其他值一概视为true，因此上述代码条件判断的结果是true。
+
+
+
+
+函数： 函数实际上也是一个对象,Function类型的具体对象。函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。js函数没有重载，会直接覆盖。
+
+JS函数的参数在本质上是一个数组来表示的，arguments对象可以访问到这个数组。
+arguments 对象的长度是由传入的参数个数决定的，不是由定义函数时的命名
+参数的个数决定的。根据实际上的传入个数计算。
+没有传递值的命名参数将自动被赋予 undefined 值。
+在向函数传递基本类型的值时候，这个值被复制到了函数的参数局部变量中。而传递引用类型的值的时候，这个值在内存中的地址被复制给了参数中的局部变量，因此这个局部变量的值的变化会反映在函数的外部。
+sun();//函数声明(比定义出现的早，在定义后面就是函数调用)
+sun(){}//函数定义
+let a = function(){};//函数表达式。
+解析器在向执行环境中加载数据时，对函数声明和函数表达式并非一视同仁。解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问）；至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解释执行。
+
+
+每个函数都有自己的this，但是this指向是可以变的
+this.x = 9; 
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX(); // 返回 81
+
+
+var retrieveX = module.getX;
+retrieveX(); // 返回 9, 在这种情况下，"this"指向全局作用域
+
+// 创建一个新函数，将"this"绑定到module对象
+// 新手可能会被全局的x变量和module里的属性x所迷惑
+var boundGetX = retrieveX.bind(module);
+boundGetX(); // 返回 81
+
+
+function name(x)
+{
+	arguments;
+}
+
+
+JavaScript允许传入任意个参数而不影响调用
+JavaScript关键字arguments，只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array
+利用arguments，即使函数不定义任何参数，还是可以拿到参数的值
+函数也可以表示为一个对象的属性:  因为函数也是一种类型。函数类型。
+a = {}
+a.x = function(){}
+
+函数有默认的方法  apply() call()
+要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数，第一个参数就是需要绑定的this变量，第二个参数是Array，表示函数本身的参数。
+
+class a
+{
+    function getAge() {
+    var y = new Date().getFullYear();
+    return y - this.birth;//this指向谁？
+}
+
+}
+
+var xiaoming = {
+    name: '小明',
+    birth: 1990,
+};
+
+xiaoming.age(); // 25
+getAge.apply(xiaoming, []); // 25, this指向xiaoming, 参数为空
+getAge.call(xiaoming,...)
+
+另一个与apply()类似的方法是call()，唯一区别是：
+
+apply()把参数打包成Array再传入；
+
+call()把参数按顺序传入。
+Math.max.apply(null, [3, 5, 4]); // 5
+Math.max.call(null, 3, 5, 4); // 5
+对普通函数调用，我们通常把this绑定为null。
+
+可以让call()中的对象调用当前对象所拥有的function。你可以使用call()来实现继承：写一个方法，然后让另外一个新的对象来继承它（而不是在新对象中再写一次这个方法）。
+
+
+bind():创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。
+
+变量作用域与解构赋值
+var申明的变量实际上是有作用域的
+函数体内部申明变量的作用域为整个函数体，在函数体外不可引用
+JavaScript的函数可以嵌套，内部函数可以访问外部函数定义的变量，反过来则不行
+内部函数定义了与外部函数重名的变量，则内部函数的变量将“屏蔽”外部函数的变量
+在函数内部定义变量时，请严格遵守“在函数内部首先申明所有变量”这一规则。最常见的做法是用一个var申明函数内部用到的所有变量
+不在任何函数内定义的变量就具有全局作用域（只有一个）。实际上，JavaScript默认有一个全局对象window，全局作用域的变量实际上被绑定到window的一个属性
+全局变量会绑定到window上，为避免造成命名冲突，并且很难被发现。减少冲突的一个方法是把自己的所有变量和函数全部绑定到一个全局变量中
+var myApp = {}
+myApp.name = 'myApp'
+myApp.foo = function(){ return x;}
+
+JavaScript的变量作用域实际上是函数内部，for循环等语句块中定义的循环变量在函数内部均有效。为了解决块级作用域，ES6引入了新的关键字let，用let替代var可以申明一个块级作用域的变量
+var和let申明的是变量
+ES6标准引入了新的关键字const来定义常量，const与let都具有块级作用域
+
+
+解构赋值:
+从ES6开始，JavaScript引入了解构赋值，可以同时对一组变量进行赋值。
+var [x, y, z] = ['hello', 'JavaScript', 'ES6'];
+// x, y, z分别被赋值为数组对应元素:
+console.log('x = ' + x + ', y = ' + y + ', z = ' + z);
+// x = hello, y = JavaScript, z = ES6
+let [x, [y, z]] = ['hello', ['JavaScript', 'ES6']];
+var person = {
+    name: '小明',
+    age: 20,
+    gender: 'male',
+    passport: 'G-12345678',
+    school: 'No.4 middle school'
+};
+var {name, age, passport} = person;
+// name, age, passport分别被赋值为对应属性:
+console.log('name = ' + name + ', age = ' + age + ', passport = ' + passport);
+
+var {name, single=true} = person;
+使用解构赋值可以减少代码量
+对数组元素进行解构赋值时，多个变量要用[…]括起来
+对一个对象进行解构赋值时，同样可以直接对嵌套的对象属性进行赋值，只要保证对应的层次是一致的
+解构赋值如果对应的属性不存在，变量将被赋值为undefined
+解构赋值还可以使用默认值，这样就避免了不存在的属性返回undefined的问题
+交换两个变量[x, y] = [y, x]
+如果一个函数接收一个对象作为参数，那么，可以使用解构直接把对象的属性绑定到变量中。例如，下面的函数可以快速创建一个Date对象
+function buildDate({year, month, day, hour=0, minute=0, second=0}) {
+    return new Date(year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second);
+}
+// 只需要year、month和day这三个属性
+buildDate({ year: 2017, month: 1, day: 1 });
+// Sun Jan 01 2017 00:00:00 GMT+0800 (CST)
+
+方法：绑定到对象上的函数称为方法。
+var xiaoming = {
+    name: '小明',
+    birth: 1990,
+    age: function () {
+        var y = new Date().getFullYear();
+        return y - this.birth;
+    }
+};
+
+高阶函数
+一个函数就可以接收另一个函数作为参数,称之为高阶函数
+
+map/reduce
+map()方法定义在JavaScript的Array中，我们调用Array的map()方法，传入我们自己的函数，就得到了一个新的Array作为结果
+map()传入的参数是pow，即函数对象本身,把运算规则抽象
+由于map()方法定义在JavaScript的Array中，我们调用Array的map()方法，传入我们自己的函数，就得到了一个新的Array作为结果：
+
+'use strict';
+
+function pow(x) {
+    return x * x;
+}
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var results = arr.map(pow); // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+console.log(results);
+
+
+map/reduce
+阅读: 179383
+如果你读过Google的那篇大名鼎鼎的论文“MapReduce: Simplified Data Processing on Large Clusters”，你就能大概明白map/reduce的概念。
+
+map
+举例说明，比如我们有一个函数f(x)=x2，要把这个函数作用在一个数组[1, 2, 3, 4, 5, 6, 7, 8, 9]上，就可以用map实现如下：
+
+map
+由于map()方法定义在JavaScript的Array中，我们调用Array的map()方法，传入我们自己的函数，就得到了一个新的Array作为结果：
+function pow(x) {
+    return x * x;
+}
+
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var results = arr.map(pow); // [1, 4, 9, 16, 25, 36, 49, 64, 81]
+console.log(results);
+注意：map()传入的参数是pow，即函数对象本身。
+
+你可能会想，不需要map()，写一个循环，也可以计算出结果：
+var f = function (x) {
+    return x * x;
+};
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var result = [];
+for (var i=0; i<arr.length; i++) {
+    result.push(f(arr[i]));
+}
+的确可以，但是，从上面的循环代码，我们无法一眼看明白“把f(x)作用在Array的每一个元素并把结果生成一个新的Array”。
+所以，map()作为高阶函数，事实上它把运算规则抽象了，因此，我们不但可以计算简单的f(x)=x2，还可以计算任意复杂的函数，比如，把Array的所有数字转为字符串：
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+arr.map(String); // ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+只需要一行代码。
+
+reduce
+再看reduce的用法。Array的reduce()把一个函数作用在这个Array的[x1, x2, x3...]上，这个函数必须接收两个参数，reduce()把结果继续和序列的下一个元素做累积计算，其效果就是：
+
+[x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+比方说对一个Array求和，就可以用reduce实现：
+var arr = [1, 3, 5, 7, 9];
+arr.reduce(function (x, y) {
+    return x + y;
+}); // 25
+练习：利用reduce()求积：
+var arr = [1, 3, 5, 7, 9];
+arr.reduce(function (x, y) {
+    return x * 10 + y;
+}); // 13579
+
+
+
+filter
+filter也是一个常用的操作，它用于把Array的某些元素过滤掉，然后返回剩下的元素。
+
+和map()类似，Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。
+
+sort
+JavaScript的Array的sort()方法就是用于排序的
+
+闭包： 闭包是指有权访问另一个函数作用域中的变量的函数。  函数作为返回值
+【常见方式】
+         在一个函数内部创建另一个函数
+         function Person(age) {
+            return function(object1,object2) {
+                var a = object1.age;
+                var b = object2.age;
+                if (a > b) {
+                    return object1;
+                }
+                else {
+                    return object2;
+                }
+            };
+        }
+        //此时返回的是一个函数
+        var compare = Person(23);
+        //调用返回的函数
+        var result = compare(24, 34);
+        alert(result);//34
+        //解除对匿名函数的引用，以便释放内存
+        compare = null;
+        var result2 = compare(34, 25);
+        alert(result2);//出错
+
+  作用域链的这种配置机制有一个副作用，即闭包只能取得包含函数中任何变量的最后一个值。
+  记住，闭包所保存的是整个变量对象，而不是某个特殊的变量。
+高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。
+注意到返回的函数在其定义内部引用了局部变量arr，所以，当一个函数返回了一个函数后，其内部的局部变量还被新函数引用，所以，闭包用起来简单，实现起来可不容易。
+返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+如果一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变.
+理论上讲，创建一个匿名函数并立刻执行可以这么写：
+    function example() {
+            var array = new Array();
+            for (var i = 0; i< 10; i++) {
+                array[i] = function () {
+                    return i;
+                };
+            }
+            return array;
+        }
+        var exam = example();
+        for (var i = 0; i < exam.length; i++) {
+            alert(exam[i]());//全部是10
+解决方法：
+    function example() {
+            var array = new Array();
+            for (var i = 0; i < 10; i++) {
+                array[i] = function (num) {
+                    return function () {//在来一个函数。
+                        return num;
+                    };
+                }(i);//立即执行。
+            } 
+            return array;
+        }
+        var exam = example();
+        for (var i = 0; i < exam.length; i++) {
+            alert(exam[i]());//0,1,2,3,4,5,6,7,8,9
+
+
+
+
+function (x) { return x * x } (3);
+但是由于JavaScript语法解析的问题，会报SyntaxError错误，因此需要用括号把整个函数定义括起来：
+
+(function (x) { return x * x }) (3);
+通常，一个立即执行的匿名函数可以把函数体拆开，一般这么写：
+
+(function (x) {
+    return x * x;
+})(3);
+说了这么多，难道闭包就是为了返回一个函数然后延迟执行吗？
+
+当然不是！闭包有非常强大的功能。举个栗子：
+
+在面向对象的程序设计语言里，比如Java和C++，要在对象内部封装一个私有变量，可以用private修饰一个成员变量。
+在没有class机制，只有函数的语言里，借助闭包，同样可以封装一个私有变量。
+换句话说，闭包就是携带状态的函数，并且它的状态可以完全对外隐藏起来。
+
+作用域链的这种配置机制有一个副作用，即闭包只能取得包含函数中任何变量的最后一个值。
+记住，闭包所保存的是整个变量对象，而不是某个特殊的变量。
+箭头函数
+一个参数：x =>x*x 一个语句
+多个参数: (x,y)=>{}  多个语句
+等于function(){}
+如果要返回一个对象，就要注意，如果是单表达式，这么写的话会报错：
+// SyntaxError:
+x => { foo: x }
+因为和函数体的{ ... }有语法冲突，所以要改为：
+// ok:
+x => ({ foo: x })
+this
+箭头函数看上去是匿名函数的一种简写，但实际上，箭头函数和匿名函数有个明显的区别：箭头函数内部的this是词法作用域，由上下文确定。
+
+generator
+generator（生成器）是ES6标准引入的新的数据类型。一个generator看上去像一个函数，但可以返回多次。
+
+标准对象
+在JavaScript中，Date对象用来表示日期和时间。
+RegExp 正则表达式
+Json ：
+在JSON中，一共就这么几种数据类型：
+number：和JavaScript的number完全一致；
+boolean：就是JavaScript的true或false；
+string：就是JavaScript的string；
+null：就是JavaScript的null；
+array：就是JavaScript的Array表示方式——[]；
+object：就是JavaScript的{ ... }表示方式。
+
+序列化:JS:
+ var xiaoming = {
+ 	name:'小明',
+ 	age:14,
+ 	skill:['a','b']
+ }
+ Json: {"name":"小明","age":"14","skill":["a","b"]}
+
+反序列化:拿到一个JSON格式的字符串，我们直接用JSON.parse()把它变成一个JavaScript对象：
+Json.parse('[1,2]')// [1,2]
+JSON.parse('{"name":"小明","age":14}'); // Object {name: '小明', age: 14}
+JSON.parse('true'); // true
+JSON.parse('123.45'); // 123.45
+
+JSON.parse()还可以接收一个函数，用来转换解析出的属性：
+var obj = JSON.parse('{"name":"小明","age":14}', function (key, value) {
+    if (key === 'name') {
+        return value + '同学';
+    }
+    return value;
+});
+console.log(JSON.stringify(obj)); // {name: '小明同学', age: 14}
+
+面向对象编程:
+构造函数
+除了直接用{ ... }创建一个对象外，JavaScript还可以用一种构造函数的方法来创建对象。它的用法是，先定义一个构造函数，JavaScript中，可以用关键字new来调用这个函数，并返回一个对象。
+JavaScript的原型继承(旧方法)实现方式就是：
+定义新的构造函数，并在内部用call()调用希望“继承”的构造函数，并绑定this；
+
+借助中间函数F实现原型链继承，最好通过封装的inherits函数完成；
+
+继续在新的构造函数的原型上定义新方法。
+class 继承:新方法
+class a extends b{
+	constructor(){
+	super();
+	}
+}
+
+模块:
+一个.js文件就称之为一个模块（module）
+编写了一个hello.js文件，这个hello.js文件就是一个模块，模块的名字就是文件名（去掉.js后缀），所以hello.js文件就是名为hello的模块。
+module.exports = greet;或者 var greet = require("./hello")在使用require()引入模块的时候，请注意模块的相对路径。
+一个模块想要对外暴露变量（函数也是变量），可以用module.exports = variable;，一个模块要引用其他模块暴露的变量，用var ref = require('module_name');就拿到了引用模块的变量。
+
+
+箭头函数：
+箭头函数表达式的语法比函数表达式更短，并且没有自己的this，arguments，super或 new.target。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。
+
+引入箭头函数有两个方面的作用：更简短的函数并且不绑定this。
+
+在箭头函数出现之前，每个新定义的函数都有它自己的 this值
+箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。
+由于 箭头函数没有自己的this指针，通过 call() 或 apply() 方法调用一个函数时，只能传递参数（不能绑定this---译者注），他们的第一个参数会被忽略。
+
+
+浏览器
+jQuery
+错误处理
+underscore
+Node.js
+React
+期末总结
+
+
+
+
+
+
+
+
+BOM：浏览器对象模型
+如果要在Web中使用，那么BOM(浏览器对象模型)是最重要的。BOM提供了很多对象用于访问
+浏览器的功能，这些功能和任何网页内容无关。
+1.window对象。表示浏览器的一个实例。
+它既是通过JS访问浏览器窗口的一个接口，又是ECMAScript规定的Global对象。意味着
+在网页中定义的任何一个方法，变量和函数，都已window作为其Global对象。因此所有在全局作用域中声明的变量，函数都会变成window对象的属性和方法。
+
+
+DOM：文档对象模型。是针对HTML和XML文档的一个api。
+
+
+
+事件流：
+1.事件冒泡：推荐
+事件开始时由最具体的元素(最上面的子节点)接收，
+然后逐级传播到较为不具体的节点
+
+2.事件捕获:特殊
+不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。事件捕获的用意在于在事件到达预定目标之前捕获它。
+
+
+内存和性能：
+由于事件处理程序可以为现代 Web应用程序提供交互能力，因此许多开发人员会不分青红皂白地
+向页面中添加大量的处理程序。在创建 GUI 的语言（如 C#）中，为 GUI 中的每个按钮添加一个 onclick
+事件处理程序是司空见惯的事，而且这样做也不会导致什么问题。可是在 JavaScript 中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能。导致这一问题的原因是多方面的。首先，每个函数都是对象，都会占用内存；内存中的对象越多，性能就越差。其次，必须事先指定所有事件处理程序而导致DOM访问次数，会延迟整个页面的交互就绪时间。事实上，从如何利用好事件处理程序的角度出发，还是有一些方法能够提升性能的
+
+1.事件委托，可以用一个父节点的监听函数用switch来分别处理子节点不同的点击事件。由于所有列表项都是这个元素的子节点，而且它们的事件会冒泡，所以单击事件最终会被这个函数处理
+
+2.移除事件处理程序
+每当将事件处理程序指定给元素时，运行中的浏览器代码与支持页面交互的 JavaScript 代码之间就会建立一个连接。这种连接越多，页面执行起来就越慢。如前所述，可以采用事件委托技术，限制建立的连接数量。另外，在不需要的时候移除事件处理程序，也是解决这个问题的一种方案。内存中留有那些过时不用的“空事件处理程序”，也是造成 Web应用程序内存与性能问题的
+主要原因。
+
+
+JS面向对象的程序设计：
+1.创建对象,对象具有1.数据属性。2.访问器属性
+var person = {
+name: "Nicholas",//创建了name的属性,默认为undefined.这个属性有不同的特性。
+age: 29,
+job: "Software Engineer",
+sayName: function(){
+alert(this.name);
+}
+
+2.创建对象的方法。
+1.工厂模式
+2.构造函数  任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数；
+以这种方式调用构造函数实际上会经历以下 4个步骤：
+(1) 创建一个新对象；
+(2) 将构造函数的作用域赋给新对象（因此 this 就指向了这个新对象）；
+(3) 执行构造函数中的代码（为这个新对象添加属性）；
+(4) 返回新对象。
+
+3.原型模式:
+原型对象：
+无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个 prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor（构造函数）属性，这个属性包含一个指向 prototype 属性所在函数的指针。
+
+构造函数.prototype <-> 原型对象 <- 对象1，对象2
+
+我们创建的每个函数都有个prototype（原型）属性，这个属性是一个指针，指向一个对象，这个对象就是构造函数没看见的对象。结合工厂模式new的对象
+而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。如果按照字面意思来理解，那么 prototype就是通过调用构造函数而创建的那个对象实例的原型对象。使用原型对象的好处是可以让所有对象实例共享它所包含的属性和方法。
+3.1 原型与in
+有两种方式使用 in 操作符：单独使用和在 for-in 循环中使用。在单独使用时， in 操作符会在通过对象能够访问给定属性时返回 true，无论该属性存在于实例中还是原型中
+
+3.2原生对象的原型
+原型模式的重要性不仅体现在创建自定义类型方面，就连所有原生的引用类型，都是采用这种模式创建的。所有原生引用类型（ Object、 Array、 String，等等）都在其构造函数的原型上定义了方法。
+例如，在 Array.prototype 中可以找到 sort()方法，而在 String.prototype 中可以找到
+substring()方法
+
+组合使用构造函数模式和原型模式
+ 动态原型模式
+ 寄生构造函数模式
+ 妥构造函数模式
+
+
+ 继承：
+ 1.原型链   很少用。
+ 每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针，让原型对象等于另一个类型的实例。
+当调用构造函数创建一个新实例后，该实例的内部将包含一个指针（内部
+属性），指向构造函数的原型对象。这个指针叫[[Prototype]]。
+ function SuperType(){
+this.property = true;
+}
+SuperType.prototype.getSuperValue = function(){
+return this.property;
+};
+function SubType(){
+this.subproperty = false;
+}
+//继承了 SuperType
+SubType.prototype = new SuperType();//这时候Sub原型对象中的[[Prototype]]指向了
+                        //Super的原型对象。
+SubType.prototype.getSubValue = function (){
+return this.subproperty;
+};
+var instance = new SubType();
+alert(instance.getSuperValue()); //true
+
+像这样就实现了继承。
+所有引用类型默认都继承了Object，而这个继承也是通过原型链实现的。所有函数的默认原型都是 Object 的实例。因此默认原型都会包含一个内部指针，指向 Object.prototype。这也正是所有自定义类型都会继承toString()、valueOf()等默认方法的根本原因。
+
+2.借用构造函数 
+ 函数只不过是在特定环境中执行代码的对象，因此通过使用 apply()和 call()方法也可以在（将来）新创建的对象上执行构造函数
+
+ 3.组合继承
+ 指的是将原型链和借用构造函数的
+技术组合到一块，从而发挥二者之长的一种继承模式
+function SuperType(name){
+this.name = name;
+this.colors = ["red", "blue", "green"];
+}
+SuperType.prototype.sayName = function(){
+alert(this.name);
+function SubType(name, age){
+//继承属性
+SuperType.call(this, name);----------------
+this.age = age;
+}
+//继承方法
+SubType.prototype = new SuperType();
+SubType.prototype.constructor = SubType;
+SubType.prototype.sayAge = function(){
+alert(this.age);
+};
+var instance1 = new SubType("Nicholas", 29);
+instance1.colors.push("black");
+alert(instance1.colors); //"red,blue,green,black"
+instance1.sayName(); //"Nicholas";
+instance1.sayAge(); //29
+var instance2 = new SubType("Greg", 27);
+alert(instance2.colors); //"red,blue,green"
+instance2.sayName(); //"Greg";
+instance2.sayAge(); //27
+
+
+4.原型式继承。
+5.寄生式继承。
+6.寄生组合式继承。

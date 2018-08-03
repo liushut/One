@@ -1,0 +1,223 @@
+typeScript 学习:
+http://www.cnblogs.com/brookshi/p/6390073.html
+
+
+类 不new出来是不会占用内存的。
+class 只是定义一个类，数据与方法的集合。
+静态属性和方法在静态区，所以可以直接类名.静态来这样用，
+单利模式相当于在静态去new了一个类对象得到引用。这个类对象一个类只有一个。
+
+
+1.类型
+number boolean enum  string(支持模板字符串) Symbol  any
+void null undefined never 
+变量值只声明未初始化则默认为undefined
+定义的变量将来用于保存对象最好直接初始化为Null.表示没有任何引用.
+[] tuple
+对象。{}  a = {} a.x = function(t){}    调用a.x(t);
+
+2.高级类型
+联合类型:a | b  既是a又是b类型   可以是class | interface
+交叉类型:a & b
+类型转换:<> 或者 as 
+类型保护: typeof  instanceof
+类型别名:type
+字符串字面量类型:let a = "tt"  a就是"tt"类型
+自动推论：let
+
+3.变量：
+let是块级作用域。 不用var。var声明的是全局
+const
+解构: 把对象或数组里的成员分解出来。
+let [first, second] = [1, '2', false];
+这里就把数组的第一个成员和第二个成员分别用first和second解构出来，就省去了分别声明两个变量，并用下标取数组里的值来赋值了。
+
+4.接口 {}
+接口在TypeScript里可以脱离具体的类，单独作为类似契约的存在，接口里的属性也并非一定需要实现。
+实现接口:implements
+继承: extends 可以多继承
+对象可以直接用{}表示与赋值  哪怕这对象是接口类对象。
+在C#里面，接口如果没有类来实现的话是没有什么意义的，但在TypeScript里不一样，接口可以单独使用
+interface RequestConfig {
+    url: string;
+    body?: any;
+}
+
+let config: RequestConfig = {url: 'www.google.com'};
+这种经常用在函数的参数上面，用来描述具体的参数，把具体的参数放到接口里，方便操作，也方便重构。
+function Request(config: RequestConfig){
+
+}
+接口除了描述属性外，还可以用来描述函数，不过一个接口只能描述一个函数，描述时定义好参数和返回值即可。
+从实现上看有点类似于C#的delegate。
+interface CheckLogin {
+    (name: string, pwd: string): boolean;//委托
+}
+
+let check: CheckLogin = function(name: string, pwd: string): boolean {
+    return false;
+}
+接口还可以用来描述可索引类型，就有点类似C#的Dictionary。
+索引支持两种：number和string。
+
+//定义一个Dict，key是string，value也是string
+interface Dict {
+    [key: string] : string;//键值对
+}
+
+let dict: Dict = { 'key1': 'value1', 'key2': 'value2'};
+console.info(dict['key1']); // value1
+console.info(dict['key']); // undefined
+
+接口继承类：
+
+泛型:
+
+5.类
+参数属性
+getter/setter
+静态属性和方法
+抽象类：
+这点和C#一样，都可以用抽象类来把有共同行为抽象出来，关键字都是abstract。
+不能实例化，可以包含实现，abstract标识的方法，继承类必须实现。
+但没有virtual关键字，不过和Java一样，可以认为是天生虚函数，也不需要override，直接覆盖也能支持多态。
+继承类里要调用父类的函数需要用super关键字。
+兼容性
+泛型
+
+
+6.函数
+函数类型:
+匿名函数有两种写法：
+let checkLogin = (name: string, pwd: string) => {
+    return false;
+}
+
+let checkLogin = function(name: string, pwd: string){
+    return true;
+}
+函数的类型其实就是由参数+返回类型构成,(name: string, pwd: string) => boolean就是checkLogin的返回类型。
+
+函数参数
+剩余参数
+this:
+this在JavaScript里总是指向调用者，这点经常容易导致被坑，在ES6之前经常需要类似var self = this来把this保存下来。
+ES6和TypeScript针对这点做了改进，使用箭头函数可以把创建函数时的this自动保存下来。
+泛型函数
+
+
+7.装饰器  相当于特性    给类或方法添加一些额外的信息或功能
+@name
+装饰器等于引入了天然的装饰模式，给类，方法等添加额外功能。不过装饰器目前还不算太稳定，但是由于确实方便，已经有成熟项目在使用了。
+
+8.https://blog.csdn.net/cut001/article/details/53693900
+//下面的网站比较好
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises
+function test(resolved,rejected)//参数都是函数,内置的函数
+{
+	if(){resolved()}
+	else{rejected()}
+}
+function dosomething(one,two){};
+function a(){}
+function b(){}
+var a = dosomething(a,b) == var a = new Promise(test);
+Promise  构造函数参数是函数
+Promise其实就是一个可以获取异步结果，并封装了一些异步操作的对象。
+有三个状态：
+pending: 进行中
+resolved: 成功
+rejected: 失败
+一个Promise对象代表一个异步操作，可把Promise当作一个容器，里面放着异步函数。* Promise对象一旦创建，就会立即执行*
+状态是由进行中转为已完成或转为已失败，状态一旦改变，则不会再变。
+外界不能改变Promise自身的状态，状态由其异步操作的结果来决定。
+resolve 和 reject 函数被调用时，分别将promise的状态改为fulfilled（完成）或rejected（失败）。executor 内部通常会执行一些异步操作，
+一旦完成，可以调用resolve函数来将promise状态改成fulfilled，或者在发生错误时将它的状态改为rejected。
+
+let myFirstPromise = new Promise(function(resolve, reject){//创建出来promise对象会马上执行
+    //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
+    //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
+    setTimeout(function(){
+        resolve("成功!"); //代码正常执行！
+    }, 250);
+});
+
+myFirstPromise.then(function(successMessage){
+    //successMessage的值是上面调用resolve(...)方法传入的值.
+    //successMessage参数不一定非要是字符串类型，这里只是举个例子
+    console.log("Yay! " + successMessage);
+});
+
+
+9.Generator
+Generator其实是ES6对协程的一种实现，即在函数执行过程中允许保存上下文同时暂停执行当前函数转而去执行其他代码，过段时间后达到条件时继续以上下文执行函数后面内容。
+在Generator中碰到yield时会暂停执行后面代码，碰到有next()时再继续执行下面部分。
+f = Generator(){yield "123";return "finish";}//拿到一个Ganerator引用。
+f.next()//才会往下走  123
+f.next()// finish
+
+Generator可以配合Promise来更直观的完成异步操作。
+
+
+10.async await   
+Promise手动写好处理成功状态还是失败状态。
+若 Promise 处理异常(rejected)，await 表达式会把 Promise 的异常原因抛出。
+成功就是另一套逻辑。
+
+async函数就是将 Generator 函数的星号（*）替换成async，将yield替换成await，仅此而已。
+前篇有说过async await其实是Generator的语法糖。
+除了*换成async， yield换成await之外，最主要是async await内置了执行器，不用像Generator用那样next()一直往下执行。
+function b()
+{
+	return new Promise<void>((resolve, reject)=>{setTimeout(()=>resolve(), 2000)});
+}
+async a()
+{
+	...
+	await b();//跳出函数，2s后输出finish. b函数必须返回promise对象。
+				//如果不是await 表达式会暂停当前 async function 的执行，
+	          // 等待 Promise 处理完成。若 Promise 正常处理(fulfilled)，
+	         // 其回调的resolve函数参数作为 await 表达式的值，继续执行 async function。
+
+
+
+await的对象可以是Promise对象也可以不是，不是的话会自动转为已经resolved的Promise对象。
+另外，如果 await 操作符后的表达式的值不是一个 Promise，那么该值将被转换为一个已正常处理的 Promise。
+	consolo.log("finish")
+}
+async返回Promise状态
+
+
+https://blog.csdn.net/P6P7qsW6ua47A2Sb/article/details/78892433
+async -声明一个异步函数:
+自动将常规函数转换成Promise，返回值也是一个Promise对象
+只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数
+异步函数内部可以使用await
+async函数完全可以看作多个异步操作，包装成的一个Promise 对象,而await命令就是内部then命令的语法糖。
+
+await - 暂停异步的功能执行:
+放置在Promise调用之前，await强制其他代码等待，直到Promise完成并返回结果
+只能与Promise一起使用，不适用与回调.
+只能在async函数内部使用
+
+
+怎么使用:
+async 函数类型
+await 在async函数中。
+使用场景：同时发出三个不互相依赖的请求,不同等待，同步执行
+
+11.Reflect 反射
+Reflect Get/Set
+apply
+define/delete property
+has ownKeys
+
+
+12.Proxy  代理
+
+
+模块：
+export关键字来导出。
+export = 语法定义一个模块的导出对象。
+import导入内容。
+import zip = require("./ZipCodeValidator");

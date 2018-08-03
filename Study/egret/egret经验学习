@@ -1,0 +1,266 @@
+egret经验学习:
+protobuf:https://blog.csdn.net/github_39312083/article/details/78653266
+message Person {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }.
+   - required：一条格式良好的message必须包含恰好一个该字段。 
+- optional：一条格式良好的message必须包含不多于一个该字段。 
+- repeated：该字段可以重复任意多次（包括0次），多个值的顺序也会被记录下来。
+
+
+ECMAScript的异步编程：
+   在JavaScript的世界中，所有代码都是单线程执行的。由于这个“缺陷”，导致JavaScript的所有网络操作，浏览器事件，都必须是异步执行。
+
+跨域：
+跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。
+所谓同源是指，域名，协议，端口均相同，不明白没关系，举个栗子：
+http://www.123.com/index.html 调用 http://www.123.com/server.php （非跨域）
+http://www.123.com/index.html 调用 http://www.456.com/server.php （主域名不同:123/456，跨域）
+http://abc.123.com/index.html 调用 http://def.123.com/server.php （子域名不同:abc/def，跨域）
+http://www.123.com:8080/index.html 调用 http://www.123.com:8081/server.php （端口不同:8080/8081，跨域）
+http://www.123.com/index.html 调用 https://www.123.com/server.php （协议不同:http/https，跨域）
+请注意：localhost和127.0.0.1虽然都指向本机，但也属于跨域。
+浏览器执行javascript脚本时，会检查这个脚本属于哪个页面，如果不是同源页面，就不会被执行。
+
+Scroller。开发者只需要创建一个Scroller的实例，设置位置和尺寸，然后把需要”滚动”的容器，设置到 Scroller 的 viewport 属性上。viewport是支持视区的组件接口。
+
+
+设置锚点就是设置哪个位置当做坐标点计算。
+
+egret的总结：
+https://www.cnblogs.com/wangking/p/6432685.html
+
+显示一张图片时，需要使用Bitmap类。这是egret中的图片类，而纹理来自于我们加载的资源图片
+a.texture = RES.getRes();
+RES.ResourceEvent.GROUP_LOAD_ERROR   RES的事件类型。干什么事情都有进行事件
+
+当动画完成后，如果是在call()方法中得到y,则是最终结果。如果在外面则是最初的。因为这是同一帧。
+to方法会同一时间压栈，call()是运行到那里了在得到对应的值。
+我估计应该是先执行动画以外的，最后在执行动画，
+  egret.Tween.get(a).to({y:500},5000).call(
+  ()=>{egret.Tween.removeTweens(a),
+  console.log("sss"+a.y)// 后输出a.y = 500，最终y。如果想得到此时Y,应该用一个变量
+  来记录
+  });
+动画的实时函数中x,y等值的操作会被后续的to操作覆盖掉。实时变化函数是每帧更新的。
+做逻辑处理时，一定要记得处理动画，比如remove动画。不然动画还会在继续执行，出现BUG。
+     console.log("sss"+a.y)// a.y = 0  先输出sss 0
+     this.addChild(a);
+
+  每个动画都是独立的，不会被影响，但是在一个动画时间内，如果改变了动画或者在实时函数
+  里面更改了逻辑，一定要先移除前面的动画才能确保后面的不执行。
+
+  动画更改完毕，更改了的属性全部会变化为指定值，中断掉的时候会是中断时间的值。
+
+
+
+执行回调函数:   
+call("回调函数",回掉方法的this作用域，回调方法作用域)//this作用域代表在回掉函数中的this指向。
+get方法的变化函数作用域也一样的意思。传递this，指明this的指向。
+
+当文件是SpriteSheet的时候：  参考获取资源的几种方式。
+ var spriteSheet:egret.SpriteSheet = RES.getRes("icons");
+var texture = spriteSheet.getTexture("activity_10");
+//等同于这样取：
+var texture:egret.Texture = RES.getRes("activity_10");
+
+添加节点先添加在删除
+
+
+movieClip:
+1.RES得到json , png 
+2.let a = movieClipDataFactory(json,png)//得到factory
+3.得到动作let b = movieClip(a.generateMovieClipData("动作名称"));
+4.播放:1.帧标签播放:
+                this.addChild(b); 为了避免可能的内存泄漏问题，MovieClip只有被加到显示列表上之后才能被正确的播放!                                 b.gotoAndPlay("帧标签",播放次数)
+
+
+		2.帧数播放:b.gotoAndPlay(第几帧)
+5.事件：1.帧标签事件，比如在第动画的第 6 帧有一个 “fall” 帧事件标签，可以为动画增加监听获取这个消息
+mc1.addEventListener(egret.MovieClipEvent.FRAME_LABEL,（e:egret.MovieClipEvent）=>{
+    console.log(e.type,e.frameLabel, mc1.currentFrame);//frame_label @fall 6
+},this);
+		
+		2.完成事件
+		比如要播放 3 次动画，每当动画循环播放完成一次，会调用一次 egret.Event.LOOP_COMPLETE 事件。3 次动画播放完后，会调用 egret.Event.COMPLETE 事件。
+
+this.mc1.addEventListener(egret.Event.LOOP_COMPLETE, (e:egret.Event)=>{
+    console.log(e.type);//输出3次
+}, this);
+this.mc1.addEventListener(egret.Event.COMPLETE, (e:egret.Event)=>{
+    console.log(e.type);//1次
+}, this);
+
+对应的json格式：
+{
+	"mc":{//MovieClip所拥有的动作
+		"run":{//一个动作名称,可以有多个
+			"frameRate": 24,//播放的帧率
+			"events": [//在某一下触发的事件
+				{
+				"name": "@fall",//帧标签事件名称
+				"frame": 6//在第几帧触发
+				}
+			],
+			"labels": [/标签，标记当前标签所持续的帧的情况。
+				{
+					"end": 8,
+					"name": "start",
+					"frame": 2
+				}
+			],
+			"frames": [//当前动作的所有帧数据。
+				{
+					"res": "192336B52",
+					"x": 6,
+					"y": 13,
+					"duration": 3
+				}
+			]
+		}//这库一个动作结束  ,  可以有多个
+
+	},
+	"file": "abc.png",//图集名称。
+	"res": {//纹理集数据。
+		"1923B52":{
+			"x": 111,
+			"y": 1,
+			"w": 108,
+			"h": 131
+		}
+	}
+}			
+
+  1.RES.loadConfig():返回promise.
+  2.配置加载成功事件后加载RES.loadGroup();
+
+  在函数中，尽量不要用成员变量，而是用一个临时变量接受在去做操作。
+
+
+IAssetAdapter:素材适配器接口。若项目需要自定义Image.source的解析规则，需要实现这个接口然后调用 let assetAdapter = new YourAssetAdapter();
+egret.registerImplementation("eui.IAssetAdapter",assetAdapter)注入自定义实现到框架即可。
+
+资源管理框架:
+什么是资源加载模块:
+日常开发游戏时，我们通常会在游戏中使用很多资源素材，例如图片，音频等。这些资源往往在运行时才被加载到内存中。而对于Egret而言，所有的资源全部存储在服务器端。当用户打开游戏时，Egret会将预先设定好的资源下载到用户本地计算机中，然后转载到内存，以便使用。
+
+RES模块是什么:
+RES模块是Egret为开发者准备的一套功能完善的资源加载机制。当开发者编写游戏时，无需关心资源加载的细节，只需要指定加载的资源，并且在对应的逻辑位置中添加相应的执行加载代码即可。
+所谓“RES”，是指Egret中将资源加载的功能放置于“RES”这个命名空间下，同时“RES”也是一个可选的模块，该模块与Egret核心库完全分离，开发者可自行选择使用该模块，也可使用第三方资源加载管理模块。
+如果游戏所需的资源是我们要购买的若干物品，那么RES模块就好比是采购员。我们把所有资源加载的任务都交给RES模块来管理，包括载入资源加载配置、根据配置载入资源，载入完成后调度相应的事件等等
+
+资源生命周期:
+加载->处理->持有->销毁实例->销毁缓存,在资源生命周期中，处理器参与整个生命周期，并提供必要的函数进行扩展:
+自定义处理器：
+1.创建实例
+var customProcessor:RES.processor.Processor = {
+    onLoadStart(host,resource){
+        return new Promise(( reslove ,reject ) => {
+        })
+    },
+    onRemoveStart(host,resource){
+        return new Promise(( reslove ,reject ) => {
+        })
+    },
+    getData(host, resource, key, subkey) => { //可选函数
+    }
+}
+2.针对类型映射
+RES.processor.map("customType",customProcessor);
+并在 config.resjs中将特定文件的类型设置为 customType
+
+RES内置文件类型解析器:
+http://developer.egret.com/cn/github/egret-docs/extension/RES/typeResolver/index.html
+
+
+扩展资源加载模块文件解析器：
+打开资源配置文件 resource.json ，你可以看到里面的资源文件都有一个 type 类型，
+我们可以根据 type 类型自定义它的解析器。 使用下面这个方法
+RES.registerAnalyzer(type:string, analyzerClass:any)
+比如我们要解析一个自定义的 type 为 demo 类型的文件，解析类是一个你自己写的 DemoAnalyzer 类，那么我们只需要像下面这么写就这可以了。
+RES.registerAnalyzer("demo", DemoAnalyzer);
+当RES加载完文件后，发现它的类型是 demo，就会调用你的 DemoAnalyzer 方法来解析它。
+注意，这种方式会替换掉默认的内置解析器，所以如果没有特殊需求，尽量不要替换默认的类型
+默认的内置解析类型可以在 RES.ResourceItem 中找到。
+
+资源缓存机制：
+resources节点下配置的每个资源加载项，在第一次加载成功时会用name属性作为key缓存下来。以后再请求它时，都直接从缓存里取。如果有两个组都含有一个资源，第二个组再加载这个资源时，也会直接从缓存里得到结果，不会重复发起加载请求。
+
+销毁缓存的资源：
+resource在第一次加载资源后，会缓存下来这个资源。使用RES.destroyRes(name:string):boolean，传入资源文件的name，即可清理对应的缓存。传入资源组名，即可清理整个资源组里所有资源对应的缓存。如果要销毁通过RES.getResByUrl(url)加载的资源，传入url作为name即可。
+
+由于目前JS里没有弱引用字典，无法实现资源的自动回收，所以还需要手动去销毁缓存的资源。
+
+资源获取几种方式:
+1.RES.getRes(name:string):any
+同步获取资源 这种方式只能获取已经缓存过的资源，例如之前调用过loadGroup()被预加载的资源。
+2.RES.getResAsync(name:string,compFunc:Function,thisObject:any):void
+异步获取资源，这种方式可以获取配置中含有的所有资源项。如果缓存中存在，直接调用回调函数返回，若不存在，就启动网络加载文件并解析后回调。
+3.RES.getResByUrl(url:string,compFunc:Function,thisObject:any,type:string=””):void
+通过url获取不在配置中的资源，通常不建议使用这个接口，只有那些不合适填写在配置中，比如获取网络上其他服务器的资源时，才采用这种方式。
+
+
+资源加载配置：RES.loadConfig()通常应写在整个游戏最开始初始化的地方，并且只执行一次
+{  官方可查。
+"resources"://所有资源
+    [
+        {"name":"bgImage","type":"image","url":"assets/bg.jpg"},
+        {"name":"egretIcon","type":"image","url":"assets/egret_icon.png"},
+        {"name":"description","type":"json","url":"config/description.json"}
+    ],
+"groups"://每一个组的资源，。同一个资源可以存在于多个资源组里。
+    [
+        {"name":"preload","keys":"bgImage,egretIcon"}
+    ]
+}
+
+resources
+配置文件中的 “resources” 我们可以视为资源库，当前游戏使用到的资源都可以放到这里。
+
+“resources” 下每一项资源配置信息都包含三个属性：
+
+name：表示这个资源的唯一短名标识符。
+
+type：表示资源类型。
+
+url：表示当前资源文件的路径。
+
+groups
+“groups” 是预加载资源组的配置，每项是一个资源组，每一个资源组须包含两个属性：
+
+name：表示资源组的组名
+
+keys：表示这个资源组包含哪些资源，里面的逗号分隔的每一个字符串，都与“resource”下的资源name对应。同一个资源可以存在于多个资源组里。
+
+加载资源组：RES.loadGroup();
+都在官方查。 资源配置加载完成后才能加载资源组。
+
+RES版本控制：官网有
+
+
+
+
+
+
+
+
+
+事件基类:egret.Event
+常用子类：egret.IOErrorEvent,egret.TimerEvent,egret.TouchEvent,eui.UIEvent,
+RES.ResourceEvent,
+
+派发器基类:EventDispatcher 负责进行事件的发送和侦听，
+常用子类：egret.DisplayObject, egret.Timer, egret.Sound, egret.ImageLoader,
+egret.Tween,
+事件目标是事件如何通过显示列表层次结构这一问题的焦点。当发生鼠标单击、触摸或按键等事件时，框架会将事件对象调度到从显示列表根开始的事件流中。然后该事件对象在显示列表中前进，直到到达事件目标，然后从这一点开始其在显示列表中的回程。
+在概念上，到事件目标的此往返行程被划分为三个阶段：
+捕获阶段：包括从根到事件目标节点之前的最后一个节点的行程
+目标阶段：仅包括事件目标节点
+冒泡阶段：包括回程上遇到的任何后续节点到显示列表的根。
