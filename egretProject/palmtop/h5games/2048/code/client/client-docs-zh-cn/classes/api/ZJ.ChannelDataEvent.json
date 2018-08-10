@@ -1,0 +1,55 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "{eventName:string,event?:any}",
+			"name": "data",
+			"memberof": "ZJ.ChannelDataEvent",
+			"scope": "instance",
+			"description": "eventName: 事件名event: 事件",
+			"default": "null"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ChannelDataEvent",
+			"memberof": "ZJ.ChannelDataEvent",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "type",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "bubbles",
+					"question": true,
+					"type": "boolean",
+					"description": ""
+				},
+				{
+					"name": "cancelable",
+					"question": true,
+					"type": "boolean",
+					"description": ""
+				},
+				{
+					"name": "data",
+					"question": true,
+					"type": "any",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ChannelDataEvent",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\ChannelDataEvent.ts",
+		"augments": []
+	}
+}

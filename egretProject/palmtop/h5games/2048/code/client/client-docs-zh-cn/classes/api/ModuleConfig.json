@@ -1,0 +1,90 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "any",
+			"name": "compile",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"description": "编译条件，全小写。",
+			"default": "{\r\n\t\tneed_loading: true,\r\n\t\tali: true,\r\n\t\tdanji: true,\r\n\t}"
+		},
+		{
+			"kind": "member",
+			"name": "doublePort",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"default": "\"8081\""
+		},
+		{
+			"kind": "member",
+			"name": "ip",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"description": "///////////////// 以下开始自定义变量",
+			"default": "\"192.168.1.134\""
+		},
+		{
+			"kind": "member",
+			"name": "port",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"default": "\"8081\""
+		},
+		{
+			"kind": "member",
+			"name": "protoText",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"description": "// public static protoFiles = [\"p11_proto\"]; // 旧",
+			"default": "\"message cs_10000{required string openId = 1;required string nickname = 2; required string avatarUrl = 3; required string sign = 4; required int32 timestamp = 5; }message sc_10000{required int32 result = 1;required int64 playerId = 2; }message cs_10001{required string matchId = 1; }message sc_10001{required int32 result = 1;required int64 roomId = 2; required string matchId = 3; }message cs_10002{}message sc_10002{required int32 result = 1;}message sc_10003{required int32 readyTime = 1;}message cs_10004{}message cs_10010{required bytes processData = 1;}message sc_10010{required int64 playerId = 1;required bytes processData = 2;}message cs_10011{required bytes resultData = 2;}message sc_10011{required int64 playerId = 1;required bytes resultData = 2; repeated int32 seeds = 3; }message playerInfo{required int64 playerId = 1;required string openId = 2; required string nickname = 3; required string avatarUrl = 4;required int32 isRobot = 5; \trequired int32 gender = 6;\t\t\t\toptional int32 battleTimes = 7; optional int32 robotLevel = 8;}message cs_11002{}message sc_11002{required int32 result = 1;required int64 playerId = 2;required string openId = 3; repeated int32 seeds =4;}message sc_11003{required int32 readyTime = 1; repeated playerInfo playerInfos = 2;}message cs_11004{}message cs_11010{required bytes processData = 1;}message sc_11010{required int64 playerId = 1;required bytes processData = 2;}message cs_11011{required int32 playerScore = 1; required bytes resultData = 2;optional int32 level = 3; optional int32 score2 = 4;}message sc_11011{required int64 playerId = 1;required int32 playerScore = 2; required bytes resultData = 3;repeated int32 seeds = 4; }message cs_11012{required int64 winPlayerId = 1; }message sc_11012{required int32 result = 1;required int64 winPlayerId = 2; }message cs_11013{}\""
+		},
+		{
+			"kind": "member",
+			"name": "singlePort",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"default": "\"8081\""
+		},
+		{
+			"kind": "member",
+			"type": "{[key:string]:ZJ.UIData}",
+			"name": "uiDatas",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"description": "ui配置",
+			"default": "{\r\n\t\t[UIName.Game]: new ZJ.UIData(UIName.Game, UILayer.View, GameView),\r\n\t\t[UIName.Loading]: new ZJ.UIData(UIName.Loading, UILayer.Pop, LoadingView),\r\n\t}"
+		},
+		{
+			"kind": "member",
+			"name": "uiLayers",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"description": "显示层级",
+			"default": "[UILayer.View, UILayer.Pop, UILayer.SDK]"
+		},
+		{
+			"kind": "member",
+			"name": "ws",
+			"memberof": "ModuleConfig",
+			"scope": "static",
+			"default": "\"ws\""
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ModuleConfig",
+			"memberof": "ModuleConfig",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ModuleConfig",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\ModuleConfig.ts"
+	}
+}

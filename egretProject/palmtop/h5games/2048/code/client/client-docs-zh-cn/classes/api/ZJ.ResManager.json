@@ -1,0 +1,225 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "dbFactory",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"default": "dragonBones.EgretFactory.factory"
+		},
+		{
+			"kind": "member",
+			"type": "ZJ.ResManager",
+			"name": "instance",
+			"memberof": "ZJ.ResManager",
+			"scope": "static",
+			"rwType": 1
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ResManager",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "init",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "stage",
+					"type": "egret.Stage",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "loadConfig",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "url",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "resourceRoot",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "dragonBones.EgretArmatureDisplay",
+			"name": "loadDragonBones",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"description": "【注意】返回值仅当资源已存在（已load）时有用，提供便利，若环境复杂请在cb使用。返回的EgretArmatureDisplay可以.animation或者.armature做进一步操作。ps.详见developer.egret.com/cn/github/egret-docs/DB/dbLibs/createAnimation/index.html",
+			"params": [
+				{
+					"name": "fileName",
+					"type": "string",
+					"description": "名字"
+				},
+				{
+					"name": "armatureName",
+					"type": "string",
+					"default": "\"\"",
+					"description": "不传入时与fileName一致"
+				},
+				{
+					"name": "cb",
+					"type": "(db:dragonBones.EgretArmatureDisplay)=>void",
+					"default": "null",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "any",
+			"name": "loadExistRes",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"description": "加载确定存在的资源。属于loadRes的简化版。",
+			"params": [
+				{
+					"name": "source",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "loadGroup",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "groupName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "priorvity",
+					"type": "number",
+					"default": "0",
+					"description": "默认值0"
+				},
+				{
+					"name": "loading",
+					"type": "RES.PromiseTaskReporter",
+					"default": "null",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "loadMovieClip",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "fileName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "donghuaName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callBack",
+					"type": "(movieClip:egret.MovieClip,mcDataFactory:egret.MovieClipDataFactory)=>void",
+					"description": "返回MovieClip和MovieClipDataFactory。若需要显示不同动画可使用new egret.MovieClip(mcDataFactory.generateMovieClipData(\"donghuaName\"))生成。"
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "loadRes",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"description": "加载资源。",
+			"params": [
+				{
+					"name": "source",
+					"type": "string",
+					"description": "res中定义的名称"
+				},
+				{
+					"name": "compFunc",
+					"type": "Function",
+					"description": "(res, source)"
+				},
+				{
+					"name": "thisObject",
+					"type": "any",
+					"description": ""
+				},
+				{
+					"name": "urlResType",
+					"question": true,
+					"type": "string",
+					"description": "RES.ResourceItem。当source是url时，指定加载类型。"
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "replaceDBSlotDisplay",
+			"memberof": "ZJ.ResManager",
+			"scope": "instance",
+			"description": "ps.换了槽会影响该槽的图片，后面每次播放都需要换适当的槽。",
+			"params": [
+				{
+					"name": "fileName",
+					"type": "string",
+					"description": "新db名字"
+				},
+				{
+					"name": "armatureName",
+					"type": "string",
+					"default": "\"\"",
+					"description": "不传入时与fileName一致"
+				},
+				{
+					"name": "slotName",
+					"type": "string",
+					"description": "新图片的槽位"
+				},
+				{
+					"name": "displayName",
+					"type": "string",
+					"description": "新图片名字"
+				},
+				{
+					"name": "slot",
+					"type": "dragonBones.Slot",
+					"description": "目标槽位"
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ResManager",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\ResManager.ts",
+		"description": "官方RES没有集成AssetAdapter中的功能，仍需要写个这样的管理类。核心方法loadRes，其余操作请使用RES。"
+	}
+}

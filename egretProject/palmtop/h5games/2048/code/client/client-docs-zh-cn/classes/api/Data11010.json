@@ -1,0 +1,20 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "any",
+			"name": "processData",
+			"memberof": "Data11010",
+			"scope": "instance"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "interface",
+		"name": "Data11010",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouDataModel.ts"
+	}
+}

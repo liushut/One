@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MatchViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image  source="bg_png" horizontalCenter="0" verticalCenter="0" height="2280" width="1710"/>
+    <e:Label  text="id" verticalCenter="-227" horizontalCenter="-322" size="60"/>
+    <e:Label  horizontalCenter="-322" verticalCenter="4" size="60" text="房间号"/>
+    <e:TextInput id="idInput"  horizontalCenter="0" verticalCenter="-233" width="400" height="200"/>
+    <e:TextInput id="matchInput"  horizontalCenter="0" verticalCenter="0" width="400" height="200"/>
+    <e:Button id="login"  skinName="MyButtonSkin" verticalCenter="200" horizontalCenter="0" width="175" height="68" label="login"/>
+    <e:Button id="match"  skinName="MyButtonSkin" verticalCenter="300" horizontalCenter="0" width="175" height="68" label="match"/>
+    <e:Button id="ready"  skinName="MyButtonSkin" verticalCenter="420" horizontalCenter="0" width="175" height="68" label="ready"/>
+    <e:Button id="a10010"  skinName="MyButtonSkin" verticalCenter="528" horizontalCenter="0" width="175" height="68" label="10010"/>
+    <e:Button id="a10011"  skinName="MyButtonSkin" verticalCenter="632" horizontalCenter="0" width="175" height="68" label="10011"/>
+</e:Skin>

@@ -1,0 +1,37 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "down",
+			"memberof": "Dir",
+			"scope": "static",
+			"default": "2"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "left",
+			"memberof": "Dir",
+			"scope": "static",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "right",
+			"memberof": "Dir",
+			"scope": "static",
+			"default": "1"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "enum",
+		"name": "Dir",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\Tetris.ts"
+	}
+}

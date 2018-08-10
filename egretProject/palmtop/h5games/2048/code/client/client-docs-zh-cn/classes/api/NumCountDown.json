@@ -1,0 +1,90 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "cb",
+			"memberof": "NumCountDown",
+			"scope": "instance",
+			"default": "null"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "NumCountDown",
+			"memberof": "NumCountDown",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "OnDestroy",
+			"memberof": "NumCountDown",
+			"scope": "instance",
+			"description": "销毁前调用"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "childrenCreated",
+			"memberof": "NumCountDown",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "partAdded",
+			"memberof": "NumCountDown",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "partName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "instance",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "pause",
+			"memberof": "NumCountDown",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "start",
+			"memberof": "NumCountDown",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "second",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "stop",
+			"memberof": "NumCountDown",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "NumCountDown",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\NumCountDown.ts",
+		"augments": [],
+		"implements": []
+	}
+}

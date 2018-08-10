@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="YuanJiaoSkin" width="192" height="192" xmlns:e="http://ns.egret.com/eui"  >
+<e:Image source="yuanjiao_png" width="192" height="192" x="192" y="192" anchorOffsetX="192" anchorOffsetY="192"/>
+</e:Skin>

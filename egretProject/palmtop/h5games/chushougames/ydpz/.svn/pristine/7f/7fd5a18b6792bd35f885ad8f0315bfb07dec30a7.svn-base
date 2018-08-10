@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="QiuSSkin" width="134" height="134" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Image id="qiuS" source="xiaoqiu_png"  width="134" height="134" anchorOffsetY="67" anchorOffsetX="67" scale9Grid="2,68,130,65" x="67" y="67"/>
+	<e:Image id="maskImg" width="134" height="134" source="daqiu_png" alpha="0" x="0" y="0" visible="false"/>
+</e:Skin>

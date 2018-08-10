@@ -1,0 +1,547 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var GameView = (function (_super) {
+    __extends(GameView, _super);
+    function GameView() {
+        var _this = _super.call(this) || this;
+        _this.qiuS = new QiuS();
+        _this.qiuB = new QiuB(1); //黄球
+        _this.qiuB1 = new QiuB(2); //黄球1 
+        _this.qsY = 1300; //绿色小球（射击小球）的初始y值
+        _this.guanshu = 1; //关数
+        _this.isOnce = true;
+        _this.resource = ZJ.ResManager.instance.loadDragonBones("hs"); //资源加载
+        _this.qbTime1 = 0; //黄球1运动半个来回的时间
+        _this.countDown = 1; //绿球下落到底端的时间
+        _this.moveDistace = 0;
+        _this.health = 1; //生命值
+        _this.time = 0;
+        _this.table = ZJ.TableManager.instance.tables[xlsx.cfg_c_yd]; ////得到这张表
+        _this.nextDistance = []; //下一关的数据
+        _this.nextTime = 0;
+        _this.nextTimeMin = 0;
+        _this.nextTimeMax = 0;
+        _this.nextDisMax = 0;
+        _this.nextDisMin = 0;
+        _this.nextCountDown = 0;
+        _this.qiusX = 0;
+        _this.qiusY = 0;
+        _this.smallX = 0;
+        _this.smallY = 0;
+        _this.blank = 0;
+        _this.continuePerfect = 0;
+        _this.winId = 1;
+        _this.friendRank = 2;
+        _this.rank = 1;
+        _this.weekScore = 10; //查询本周最高分
+        _this.score = 0; //得分
+        //音频资源
+        _this.sendAudio = new egret.Sound(); //发射
+        _this.collisionAudion = new egret.Sound(); //碰撞
+        _this.deathAudio = new egret.Sound(); //死亡
+        _this.comboAudio = new egret.Sound(); //连击	
+        //点击屏幕后
+        _this.speedQius = 5; //绿球初始速度
+        _this.flag = false;
+        _this.DISTANCE = [];
+        _this.id = 1;
+        _this.count_down = 0;
+        _this.heightTothis = 0;
+        _this.skinName = "GameViewSkin";
+        return _this;
+    }
+    ; //绿球
+    GameView.prototype.loadAudio = function () {
+        this.sendAudio.load("resource/audio/sendAudio.wav");
+        this.collisionAudion.load("resource/audio/collisionAudio.wav");
+        this.deathAudio.load("resource/audio/deathAudio.wav");
+        this.comboAudio.load("resource/audio/comboAudio.wav");
+    };
+    GameView.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    GameView.prototype.runOnChange = function () {
+        this.X = this.qiuB.x; //黄球x  y  在动画变化函数中实时更新
+        this.Y = this.qiuB.y;
+        this.X1 = this.qiuB1.x; //黄球1x  y  在动画变化函数中实时更新
+        this.Y1 = this.qiuB1.y;
+    };
+    GameView.prototype.childrenCreated = function () {
+        _super.prototype.childrenCreated.call(this);
+        ZJ.UIManager.instance.destroyView(UIName.Loading);
+        this.bgAll.touchEnabled = false;
+        this.loadTable(this.guanshu);
+        this.loadAudio();
+        if (ModuleConfig.compile.danji) {
+            this.backUI();
+            this.countToDown();
+            this.nextG();
+            this.showTopAndButtom();
+        }
+        else {
+            this.initCDM();
+        }
+        console.log("children create");
+    };
+    GameView.prototype.initCDM = function () {
+        this.showTopAndButtom();
+        this.callBack();
+    };
+    GameView.prototype.callBack = function () {
+        var _this = this;
+        var model = MyCDM.instance;
+        model.CsAuthRequestCallBack = function () {
+            console.log("CsAuthRequestCallBack");
+        };
+        model.OnData11003 = function (data) {
+            // 游戏开始逻辑
+            _this.backUI();
+            _this.countToDown();
+            _this.nextG();
+            _this.nickName.text = data.playerInfos[0].nickname;
+            console.log("这里得到网络玩家" + _this.nickName.text);
+        };
+        model.SendProcessData11010({
+            processData: this.score,
+        });
+        model.OnData11010 = function (data) {
+            _this.myAny = data.pcocessData;
+        };
+        model.SendScoredData11011({
+            score: this.score,
+            resultData: []
+        });
+        model.OnData11011 = function (data) {
+            _this.score = data.score;
+            _this.myAny = data.resultData;
+        };
+        model.OnData11012 = function (data) {
+            //得到胜利玩家Id
+            _this.winId = data.winPlayerId;
+            _this.friendRank = data.friendRank;
+            _this.rank = data.rank;
+            console.log("胜利玩家" + _this.winId);
+            console.log("返回通知" + data.result);
+        };
+        model.GetHighestScore11008(); //查询玩家最高分
+        model.OnData11008 = function (data) {
+            _this.weekScore = data.weekScore;
+        };
+    };
+    GameView.prototype.nextG = function () {
+        this.addEventListener(egret.Event.ENTER_FRAME, this.runBg, this); //帧事件
+        this.addOther();
+        this.createQiuS();
+        this.createQiuB();
+        this.createQiuB1();
+    };
+    GameView.prototype.showBall = function () {
+        this.qiuB.alpha = 1;
+        this.qiuB.alpha = 1;
+        this.scoreBitLabel.alpha = 1;
+        this.countToDown();
+    };
+    GameView.prototype.showTopAndButtom = function () {
+        var w = this.stage.stageWidth;
+        var h = this.stage.stageHeight;
+        var num = w / 154; //个数
+        for (var i = 0; i < num; i++) {
+            var img = new eui.Image("danjuchi_png");
+            var rect = new egret.Rectangle(22, 116, 136, 7);
+            img.scale9Grid = rect;
+            img.x = i * 154;
+            img.y = 100;
+            img.width = 154;
+            img.height = 450;
+            img.scaleY = -1;
+            this.topFather.addChild(img);
+        }
+        for (var i = 0; i < num; i++) {
+            var img = new eui.Image("danjuchi_png");
+            img.x = i * 154;
+            img.width = 154;
+            img.height = 123;
+            img.y = 0;
+            this.backFather.addChild(img);
+        }
+        if (w / h < 9 / 16) {
+            this.blank = h - 1920;
+            this.topFather.y = this.blank / 2;
+        }
+        else {
+            this.topFather.y = 0;
+        }
+    };
+    GameView.prototype.setFlag = function (choose) {
+        this.flag = choose;
+    };
+    GameView.prototype.setClick = function () {
+        var _this = this;
+        if (!this.flag) {
+            return;
+        }
+        egret.Tween.removeTweens(this.qiuS); //停止下落
+        this.sendChannel = this.sendAudio.play(0, 1);
+        this.sendChannel.volume = 1;
+        egret.Tween.get(this.qiuS, { onChange: this.crash, onChangeObj: this })
+            .to({ y: this.bgAll.y - this.blank / 2 }, this.qiuS.y / this.speedQius, egret.Ease.quadIn)
+            .call(function () {
+            _this.crashAfter(_this.qiuS.x, _this.qiuS.y);
+        }, this);
+        this.setFlag(false);
+    };
+    // private countDownLabel = new eui.Label();
+    GameView.prototype.countToDown = function () {
+        // this.countDownLabel.x = this.stage.stageWidth / 2;
+        // this.countDownLabel.y = this.stage.stageHeight / 2;
+        // this.countDownLabel.size = 180;
+        // this.timer = new egret.Timer(1000, 4);
+        // this.timer.addEventListener(egret.TimerEvent.TIMER, this.changeSource, this);
+        // this.timer.start();
+        // this.removeChild(this.countDownLabel);
+        this.bgAll.touchEnabled = true;
+        this.setFlag(true); //可以点击
+        this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+        console.log("countDown");
+    };
+    GameView.prototype.backUI = function () {
+        this.score = 0;
+        this.health = 1;
+        this.scoreBitLabel.text = this.score.toString();
+        this.healthLabel.text = this.health.toString();
+    };
+    GameView.prototype.changeSource = function () {
+        // this.addChild(this.countDownLabel);
+        // if (GameView.i == 3) {
+        // 	this.countDownLabel.text = "3";
+        // }
+        // else if (GameView.i == 2) {
+        // 	this.countDownLabel.text = "2";
+        // }
+        // else if (GameView.i == 1) {
+        // 	this.countDownLabel.text = "1";
+        // }
+        // else if (GameView.i == 0) {
+        // 	this.removeChild(this.countDownLabel);
+        // 	this.bgAll.touchEnabled = true;
+        // 	this.setFlag(true);//可以点击
+        // 	this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+        // }
+        // GameView.i--;
+    };
+    GameView.prototype.loadTable = function (passid) {
+        if (passid > 20) {
+            passid = 20;
+        }
+        var init = this.table[passid][xlsx.c_yd_distance];
+        this.DISTANCE = JSON.parse(init);
+        var tmpd = ZJ.MathUtil.randomRange(this.DISTANCE[0], this.DISTANCE[1] + 1); //返回min max中 随机数
+        this.time = JSON.parse(this.table[passid][xlsx.c_yd_time]);
+        this.disMax = this.DISTANCE[1]; //距离最大值
+        this.disMin = this.DISTANCE[0]; //最小值
+        this.timeMin = this.time[0];
+        this.timeMax = this.time[1];
+        this.countDown = this.table[passid][xlsx.c_yd_count_down];
+        //下一关的配置
+        var next = this.table[passid + 1][xlsx.c_yd_distance];
+        this.nextDistance = JSON.parse(next);
+        var temp = ZJ.MathUtil.randomRange(this.nextDistance[0], this.nextDistance[1] + 1);
+        this.nextTime = JSON.parse(this.table[passid + 1][xlsx.c_yd_time]);
+        this.nextDisMax = this.nextDistance[1];
+        this.nextDisMin = this.nextDistance[0];
+        this.nextTimeMax = this.nextTime[1];
+        this.nextTimeMin = this.nextTime[0];
+        this.nextCountDown = this.table[passid + 1][xlsx.c_yd_count_down];
+    };
+    GameView.prototype.change = function () {
+        this.smallX = this.qiuS.x;
+        this.smallY = this.qiuS.y;
+    };
+    //创建绿色发射球
+    GameView.prototype.createQiuS = function () {
+        this.setFlag(true); //可以点击
+        this.qiuS.anchorOffsetX = this.qiuS.width / 2;
+        this.qiuS.anchorOffsetY = this.qiuS.height / 2;
+        this.qiuS.x = this.bgAll.width / 2;
+        this.qiuS.y = this.qsY;
+        this.bgAll.addChild(this.qiuS);
+        //这是绿色球碰到锯齿后  
+        if (this.guanshu == 1) {
+            this.isOnce = true;
+            this.qiuS.y = this.qsY;
+        }
+    };
+    //创建黄色球
+    GameView.prototype.createQiuB1 = function () {
+        if (this.guanshu == 1) {
+            this.qiuB1.y = -1000;
+        }
+        this.qiuB1.anchorOffsetX = this.qiuB.width / 2;
+        this.qiuB1.anchorOffsetY = this.qiuB.height / 2;
+        this.bgAll.addChild(this.qiuB1);
+        this.qiuB1.x = this.qiuB1.width;
+        if (this.qiuB1.y < 0) {
+            var nextMinY = this.qsY - this.qiuS.width / 2 - this.nextDisMin; //黄球1初始yMin
+            var nextMinmaxY = this.qsY - this.qiuS.width / 2 - this.nextDisMax; //黄初始1yMax
+            this.qby1 = nextMinY + (this.nextDisMax - this.nextDisMin) * Math.random(); //最终黄球1初始值
+            //要第二关的关卡配置 
+            this.heightTothis = this.bgAll.height - this.qsY;
+            this.speed = Math.random() + 1; //来回的速度    通过这个修改动画
+            this.qbTime1 = (this.nextTimeMin + (this.nextTimeMax - this.nextTimeMin) * Math.random()) / 2; //黄球运动半个来回的时间
+            this.qiuB1.x = this.qiuB1.width;
+            this.qbRunF(this.qiuB1, this.qbTime1, this.speed); //左右
+        }
+        this.qbRunF(this.qiuB1, this.qbTime1, this.speed); //左右
+    };
+    GameView.prototype.createQiuB = function () {
+        this.qiuB.anchorOffsetX = this.qiuB.width / 2;
+        this.qiuB.anchorOffsetY = this.qiuB.height / 2;
+        this.bgAll.addChild(this.qiuB);
+        if (this.qiuB.y < 0) {
+            var minY = this.qsY - this.qiuS.width / 2 - this.nextDisMin; //黄球初始yMin
+            var maxY = this.qsY - this.qiuS.width / 2 - this.nextDisMax; //黄初始yMax
+            this.qbY = minY + (this.nextDisMax - this.nextDisMin) * Math.random(); //最终黄球初始值
+            this.heightTothis = this.bgAll.height - this.qsY;
+            this.speed = Math.random() + 1; //来回的速度    通过这个修改动画
+            this.qbTime = (this.nextTimeMin + (this.nextTimeMax - this.nextTimeMin) * Math.random()) / 2; //黄球运动半个来回的时间
+        }
+        else {
+            var minY = this.qsY - this.qiuS.width / 2 - this.disMin; //黄球初始yMin
+            var maxY = this.qsY - this.qiuS.width / 2 - this.disMax; //黄初始yMax
+            this.qbY = minY + (this.disMax - this.disMin) * Math.random(); //最终黄球初始值
+            this.heightTothis = this.bgAll.height - this.qsY;
+            this.speed = Math.random() + 1; //来回的速度    通过这个修改动画
+            this.qbTime = (this.timeMin + (this.timeMax - this.timeMin) * Math.random()) / 2; //黄球运动半个来回的时间
+        }
+        //两个另起一段的动画会覆盖，要么remove，要么 to  call
+        //以下做往返运动
+        if (this.guanshu == 1) {
+            this.qiuB.x = this.qiuB.width;
+            this.qiuB.y = this.qbY;
+            this.qbRunF(this.qiuB, this.qbTime, this.speed); //右左
+        }
+        else {
+            egret.Tween.removeTweens(this.qiuB);
+            this.qbRunF(this.qiuB, this.qbTime, this.speed); //右左
+        }
+    };
+    //设置黄色球运动速度的曲线
+    GameView.prototype.setPath = function (t) {
+        return egret.Ease.getPowInOut(2); //先固定有减速的。
+    };
+    //黄色球水平运动（left - right）左 - 右
+    GameView.prototype.qbRun = function (qb, time, speed) {
+        egret.Tween.get(qb, { onChange: this.runOnChange, onChangeObj: this })
+            .to({ x: this.qiuB.width }, time, this.setPath(speed))
+            .call(function () {
+            egret.Tween.get(this.qb, { onChange: this.runOnChange, onChangeObj: this }).
+                to({ x: this.bgAll.width - qb.width }, time, this.setPath(speed))
+                .call(function () {
+                this.qb.x = this.bgAll.width - qb.width;
+                this.qbRun(qb, time, this.speed);
+            }, this);
+        }, this);
+    };
+    //黄色球水平运动（right - left）右 - 左
+    GameView.prototype.qbRunF = function (qb, time, speed) {
+        egret.Tween.get(qb, { onChange: this.runOnChange, onChangeObj: this })
+            .to({ x: this.bgAll.width - qb.width }, time, this.setPath(speed))
+            .call(function () {
+            egret.Tween.get(qb, { onChange: this.runOnChange, onChangeObj: this }).
+                to({ x: this.qiuB.width }, time, this.setPath(speed))
+                .call(function () {
+                qb.x = qb.width;
+                this.qbRunF(qb, time, this.speed);
+            }, this);
+        }, this);
+    };
+    //碰撞到上下边后
+    GameView.prototype.crashAfter = function (aX, aY) {
+        egret.Tween.removeAllTweens();
+        this.deathChannel = this.deathAudio.play(0, 1);
+        this.sendChannel.stop();
+        this.collisionChannel.stop();
+        this.guanshu = 1;
+        this.loadTable(this.guanshu);
+        this.health--;
+        var a = ZJ.ResManager.instance.loadDragonBones("ls");
+        a.x = aX;
+        a.y = aY;
+        a.animation.play("", 1);
+        this.bgAll.addChild(a);
+        //同步分数    最高分没有从服务器得到
+        MyCDM.instance.SendScoredData11011({
+            score: this.score,
+            resultData: []
+        });
+        if (this.health == 0) {
+            this.qiuB.alpha = 0;
+            this.qiuS.alpha = 0;
+            this.scoreBitLabel.alpha = 0;
+            MyCDM.instance.SendGameResult11012({
+                winPlayerId: this.winId,
+            });
+            ZJ.UIManager.instance.openView(UIName.Settle).setData({
+                score: this.score,
+                weekScore: this.weekScore,
+            });
+        }
+        this.nextG();
+    };
+    //两球碰撞
+    GameView.prototype.crash = function () {
+        var a = this.qiuB.width / 2 + this.qiuS.width / 2;
+        var b = this.qiuB1.width / 2 + this.qiuS.width / 2;
+        var distance = Math.sqrt(Math.pow(this.qiuS.y - this.Y, 2) + Math.pow(this.qiuS.x - this.X, 2));
+        var distance1 = Math.sqrt(Math.pow(this.qiuS.y - this.Y1, 2) + Math.pow(this.qiuS.x - this.X1, 2));
+        if (distance <= a || distance1 <= b) {
+            var skewing = Math.abs(this.qiuB.x - this.qiuS.x);
+            var ske = Math.abs(this.qiuB1.x - this.qiuS.x);
+            if (this.isOnce) {
+                if (skewing <= this.qiuS.width * 0.025 || ske <= this.qiuS.width * 0.025) {
+                    this.score += 5;
+                    console.log("加5分");
+                    this.comboChannel = this.comboAudio.play(0, 1);
+                    this.sendChannel.stop();
+                    this.startGroup.alpha = 1;
+                    egret.setTimeout(function () {
+                        this.startGroup.alpha = 0;
+                    }, this, 1000);
+                    this.continuePerfect++;
+                    if (this.continuePerfect >= 2) {
+                        var combo = this.continuePerfect - 1;
+                        var comboScore = combo * 1;
+                        this.score += comboScore;
+                        //
+                        this.comboNum.text = comboScore.toString();
+                        this.comboGroups.alpha = 1;
+                        egret.setTimeout(function () {
+                            this.comboNum.alpha = 0;
+                        }, this, 1000);
+                    }
+                }
+                else {
+                    this.continuePerfect = 0;
+                }
+            }
+            else {
+                if (skewing <= this.qiuS.width * 0.025 || ske <= this.qiuS.width * 0.025) {
+                    this.score += 3;
+                    console.log("加3分");
+                    this.hitGroup.alpha = 1;
+                    egret.setTimeout(function () {
+                        this.hitGroup.alpha = 0;
+                    }, this, 1000);
+                    this.continuePerfect++;
+                    this.comboChannel = this.comboAudio.play(0, 1);
+                    this.sendChannel.stop();
+                    if (this.continuePerfect >= 2) {
+                        var combo = this.continuePerfect - 1;
+                        var comboScore = combo * 1;
+                        this.score += comboScore;
+                        //
+                        this.comboNum.text = comboScore.toString();
+                        this.comboGroups.alpha = 1;
+                        this.hitGroup.alpha = 0;
+                        egret.setTimeout(function () {
+                            this.comboGroups.alpha = 0;
+                        }, this, 1000);
+                    }
+                }
+                else {
+                    this.continuePerfect = 0;
+                }
+            }
+            this.collisionChannel = this.collisionAudion.play(0, 1);
+            this.sendChannel.stop();
+            this.score += 1;
+            this.guanshu++;
+            console.log("加1分");
+            this.scoreBitLabel.text = this.score.toString();
+            console.log(this.score);
+            this.loadTable(this.guanshu); //加载
+            //爆炸后转换球
+            this.jugdeBallQB();
+            egret.Tween.removeTweens(this.qiuS); //停止动画
+            MyCDM.instance.SendProcessData11010({
+                processData: this.score,
+            });
+            this.createQiuS(); //创建绿球
+        }
+    };
+    GameView.prototype.jugdeBallQB = function () {
+        var _this = this;
+        if (this.qiuB.y > 0) {
+            this.resource.x = this.X;
+            this.resource.y = this.Y;
+            this.bgAll.addChild(this.resource);
+            this.resource.animation.play("", 1);
+            this.qiuB.y = -1000;
+            egret.Tween.removeTweens(this.qiuB); //动画不停止不行
+            this.createQiuB(); //重新创建动画
+            egret.Tween.get(this.qiuB1).to({ y: this.qby1 }, 800, egret.Ease.quartOut).call(function () {
+                _this.qiuB1.y = _this.qby1;
+                egret.Tween.get(_this.qiuB1).to({ y: _this.qby1 + _this.heightTothis }, _this.countDown);
+                _this.isOnce = false;
+                egret.Tween.get(_this.qiuS, { onChange: _this.change, onChangeObj: _this })
+                    .to({ y: _this.backFather.y - _this.qiuS.width / 2 }, _this.countDown).call(function () {
+                    _this.crashAfter(_this.qiuS.x, _this.backFather.y - _this.qiuS.width / 2); //碰到上下边
+                }, _this);
+            });
+        }
+        else if (this.qiuB.y <= 0) {
+            this.resource.x = this.X1;
+            this.resource.y = this.Y1;
+            this.bgAll.addChild(this.resource);
+            this.resource.animation.play("", 1);
+            this.qiuB1.y = -1000;
+            egret.Tween.removeTweens(this.qiuB1);
+            this.createQiuB1();
+            egret.Tween.get(this.qiuB).to({ y: this.qbY }, 800, egret.Ease.quartOut).call(function () {
+                _this.qiuB.y = _this.qbY;
+                egret.Tween.get(_this.qiuB).to({ y: _this.qbY + _this.heightTothis }, _this.countDown);
+                _this.isOnce = false;
+                egret.Tween.get(_this.qiuS, { onChange: _this.change, onChangeObj: _this })
+                    .to({ y: _this.backFather.y - _this.qiuS.width / 2 }, _this.countDown).call(function () {
+                    _this.crashAfter(_this.qiuS.x, _this.backFather.y - _this.qiuS.width / 2); //碰到上下边
+                }, _this);
+            });
+        }
+        this.setFlag(true);
+    };
+    //背景运动
+    GameView.prototype.runBg = function () {
+        this.bg1.y += 1;
+        this.bg2.y += 1;
+        if (this.bg1.y >= this.stage.stageHeight) {
+            this.bg1.y = this.bg2.y - 2340;
+        }
+        else if (this.bg2.y >= this.stage.stageHeight) {
+            this.bg2.y = this.bg1.y - 2340;
+        }
+    };
+    //下一关
+    GameView.prototype.addOther = function () {
+        this.bgAll.addChild(this.scoreBitLabel);
+        this.bgAll.addChild(this.healthLabel);
+        this.bgAll.addChild(this.nickName);
+        this.bgAll.addChild(this.nickNameID);
+        this.scoreBitLabel.text = this.score.toString();
+        this.healthLabel.text = this.health.toString();
+    };
+    //倒计时显示图片
+    GameView.i = 3;
+    //设置配置表   
+    GameView.passID = 1;
+    return GameView;
+}(ZJ.ViewBase));
+__reflect(GameView.prototype, "GameView");
+//# sourceMappingURL=GameView.js.map

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160d8e29c43" ></w:Config>
+	<e:Group id="gBg" scrollEnabled="false" left="0" right="0" top="0" bottom="0" alpha="1.18"/>
+	<e:Group anchorOffsetY="0" height="1500" width="940" verticalCenter="0" horizontalCenter="0">
+		<e:Image id="dikuan" width="868" height="932" anchorOffsetX="0" anchorOffsetY="0" fillMode="scale" scale9Grid="15,11,19,20" source="dikuang2_png" horizontalCenter="0" verticalCenter="0"/>
+		<e:Image id="icon3" touchEnabled="false" scaleX="1" scaleY="1" source="hypm2_png" anchorOffsetY="0" height="67" y="830" horizontalCenter="-210"/>
+		<e:BitmapLabel id="smallWeekScore" width="760" height="126" text="123456" font="jishu_fnt" anchorOffsetY="0.5" scaleX="0.22" scaleY="0.22" x="675.76" anchorOffsetX=".5" textAlign="left" y="734" alpha="1"/>
+		<e:Image id="smallWeekScoreImg" touchEnabled="false" scaleX="0.5" scaleY="0.5" source="zuijia_png" width="376" height="87" anchorOffsetY="0.5" anchorOffsetX="0.5" x="470" alpha="1" y="738"/>
+		<e:Image id="icon" touchEnabled="false" scaleX="1" scaleY="1" source="jieshu_png" anchorOffsetX="0" width="622" anchorOffsetY="0" height="150" horizontalCenter="0" y="330"/>
+		<e:Image id="icon2" touchEnabled="false" scaleX="1" scaleY="1" source="youxipaiming_png" anchorOffsetY="0" height="67" y="830" horizontalCenter="210"/>
+		<e:Button id="phb" label="" scaleX="1" scaleY="1" anchorOffsetY="0" height="67" anchorOffsetX="0" width="357" y="1099" horizontalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="paihangbang_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+		</e:Button>
+		<e:Button id="restart" label="" scaleX="1" scaleY="1" icon="dengdai_png" y="1264" width="519" height="135" horizontalCenter="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu_png"/>
+				<e:Image source="zaiwanyiju_png" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image id="weekScoreImg" touchEnabled="false" scaleX="1" scaleY="1" source="zuijia_png" width="376" height="87" anchorOffsetY="0.5" anchorOffsetX="0.5" y="550" alpha="0" horizontalCenter="0"/>
+		<e:BitmapLabel id="weekScore" width="458" height="126" y="675" text="123" font="jishu_fnt" anchorOffsetY="0.5" horizontalCenter="3.5" scaleX="0.4" scaleY="0.4" alpha="0" anchorOffsetX=".5" textAlign="center"/>
+		<e:Image id="scoreImg" touchEnabled="false" scaleX="1" scaleY="1" anchorOffsetY="0.5" height="64" source="bencidefen_png" width="289" horizontalCenter="0" anchorOffsetX=".5" alpha="1" y="530"/>
+		<e:BitmapLabel id="scoreBit" width="458" height="126" y="634" text="123" font="jishu_fnt" anchorOffsetY="0.5" horizontalCenter="0.5" scaleX="0.25" scaleY="0.25" anchorOffsetX=".5" textAlign="center" alpha="1"/>
+		<e:BitmapLabel id="rank" width="458" height="126" y="930" text="11" font="jishu_fnt" anchorOffsetY="0.5" horizontalCenter="210" scaleX="0.25" scaleY="0.25" anchorOffsetX=".5" textAlign="center"/>
+		<e:Image id="fengxian" anchorOffsetX="0" anchorOffsetY="0" source="fengexian2_png" fillMode="scale" y="1047" horizontalCenter="0"/>
+		<e:BitmapLabel id="friend" width="458" height="126" y="930" text="11" font="jishu_fnt" anchorOffsetY="0" horizontalCenter="-210" scaleX="0.25" scaleY="0.25" textAlign="center"/>
+	</e:Group>
+	<e:Button id="big" label="" left="0" right="0" top="0" bottom="0" skinName="TransparentBtnSkin" locked="true" visible="false"/>
+</e:Skin>

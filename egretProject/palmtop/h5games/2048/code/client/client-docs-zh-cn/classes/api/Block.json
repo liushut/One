@@ -1,0 +1,76 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "col",
+			"memberof": "Block",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Image",
+			"name": "img",
+			"memberof": "Block",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "row",
+			"memberof": "Block",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "tetrisType",
+			"memberof": "Block",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Block",
+			"memberof": "Block",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "childrenCreated",
+			"memberof": "Block",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "partAdded",
+			"memberof": "Block",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "partName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "instance",
+					"type": "any",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Block",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\Block.ts",
+		"augments": [],
+		"implements": []
+	}
+}

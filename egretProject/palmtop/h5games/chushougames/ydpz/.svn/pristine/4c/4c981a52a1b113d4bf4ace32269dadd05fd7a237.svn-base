@@ -1,0 +1,611 @@
+class GameView extends ZJ.ViewBase {
+	public constructor() {
+		super();
+		this.skinName = "GameViewSkin"
+	}
+	public bgAll: eui.Group;
+	public qiuS: QiuS = new QiuS();;//绿球
+	public qiuB: QiuB = new QiuB(1);//黄球
+	public qiuB1:QiuB = new QiuB(2);//黄球1 
+	private qsY = 1300; //绿色小球（射击小球）的初始y值
+	private qbY: number;  //黄色小球（被射击小球）的初始y值
+	private qby1:number;//黄1 初始y值
+	private X: number;  //黄球运动中的x值
+	private Y: number;   //黄球运动中的y值
+	private X1;
+	private Y1;
+	private guanshu = 1; //关数
+	private speed: number; //黄球运动的速度
+	private bg1: eui.Image;
+	private bg2: eui.Image;
+	private bg3: eui.Image;
+	private game: eui.Group;
+	private isOnce: boolean = true;
+
+
+    private resource  = ZJ.ResManager.instance.loadDragonBones("hs");//资源加载
+
+	private disMax: number;  //两个圆球之间的距离的最大值
+	private disMin: number;  //两个圆球之间的距离的最小值
+	private timeMax: number;  //黄点的移动半个来回的时间最大值
+	private timeMin: number;  //黄点的移动半个来回的时间最小值
+	private qbTime: number;  //黄球运动半个来回的时间
+	private qbTime1:number = 0;//黄球1运动半个来回的时间
+	private countDown: number = 1; //绿球下落到底端的时间
+	private moveDistace: number = 0;
+	private timer: egret.Timer;//计时器
+	private health: number = 1;//生命值
+	private time: number = 0;
+	private table = ZJ.TableManager.instance.tables[xlsx.cfg_c_yd];////得到这张表
+	private nextDistance:number[] = [];//下一关的数据
+	private nextTime:number = 0;
+	private nextTimeMin:number = 0;
+	private nextTimeMax:number = 0;
+	private nextDisMax:number = 0;
+	private nextDisMin:number = 0;
+	private nextCountDown:number = 0;
+	private qiusX: number = 0;
+	private qiusY: number = 0;
+	private smallX: number = 0;
+	private smallY: number = 0;
+
+	//需要显示的
+	public healthLabel: eui.Label;
+	private nickName: eui.Label;//玩家昵称
+	private nickNameID: eui.Label;//
+	private shangjuchi: eui.Image;
+	private xiajuchi: eui.Image;
+	public scoreBitLabel: eui.BitmapLabel;
+	private topFather: eui.Group;
+	private danjuchi: eui.Image;
+	private blank:number = 0;
+	private backFather:eui.Group;
+	private startGroup:eui.Group;
+	private hitGroup:eui.Group;
+	private comboGroups:eui.Group;
+
+	private continuePerfect:number = 0;
+	//需要发送的
+	private myAny: any;
+	private winId: number = 1;
+	private friendRank: number = 2;
+	private rank: number = 1;
+	private weekScore = 10;//查询本周最高分
+	private score: number = 0;//得分
+	protected partAdded(partName: string, instance: any): void {
+		super.partAdded(partName, instance);
+	}
+	private runOnChange() {
+		this.X = this.qiuB.x;//黄球x  y  在动画变化函数中实时更新
+		this.Y = this.qiuB.y;
+		this.X1 = this.qiuB1.x;//黄球1x  y  在动画变化函数中实时更新
+		this.Y1 = this.qiuB1.y;
+	}
+	private runOnchange1()
+	{
+		this.X = this.qiuB1.x;
+		this.Y = this.qiuB1.y;
+	}
+	protected childrenCreated(): void {//这里初始化 
+		super.childrenCreated();
+		ZJ.UIManager.instance.destroyView(UIName.Loading);
+		this.bgAll.touchEnabled = false;
+		this.loadTable(this.guanshu);
+		if (ModuleConfig.compile.danji) {
+		//	this.countToDown();
+			this.nextG();
+			this.showTopAndButtom();
+		}
+		else {
+			this.initCDM()
+		}
+		console.log("children create");
+	}
+
+
+
+	private initCDM() {
+		this.showTopAndButtom();
+		this.countToDown();
+		this.backUI();
+		this.nextG();
+		// this.callBack();
+
+	}
+	private callBack() {
+		let model = MyCDM.instance;
+		model.CsAuthRequestCallBack = () => {
+			console.log("CsAuthRequestCallBack")
+		}
+		model.OnData11003 = (data: any) => {//告知服务器client可以开始了
+			// 游戏开始逻辑
+			this.backUI();
+			this.countToDown();//倒计时显示321图片
+			this.nextG()
+			this.nickName.text = data.playerInfos[0].nickname;
+			console.log("这里得到网络玩家" + this.nickName.text);
+		}
+		model.SendProcessData11010({
+			processData: this.score,
+		});
+		model.OnData11010 = (data: any) => {//同步需要发送
+			this.myAny = data.pcocessData
+		};
+
+		model.SendScoredData11011({
+			score: this.score,
+			resultData: []
+		});
+		model.OnData11011 = (data: any) => {
+			this.score = data.score;
+			this.myAny = data.resultData
+		};
+
+
+		model.OnData11012 = (data: any) => {
+			//得到胜利玩家Id
+			this.winId = data.winPlayerId;
+			this.friendRank = data.friendRank;
+			this.rank = data.rank;
+			console.log("胜利玩家" + this.winId);
+			console.log("返回通知" + data.result);
+		};
+		model.GetHighestScore11008();//查询玩家最高分
+		model.OnData11008 = (data: any) => {
+			this.weekScore = data.weekScore;
+		};
+	}
+	private nextG() {
+		this.addEventListener(egret.Event.ENTER_FRAME, this.runBg, this);//帧事件
+		this.addOther();
+		this.createQiuS();
+		this.createQiuB();
+		this.createQiuB1();
+	}
+	private showBall() {
+		this.qiuB.alpha = 1;
+		this.qiuB.alpha = 1;
+		this.scoreBitLabel.alpha = 1;
+		this.countToDown();
+	}
+
+	private showTopAndButtom() {
+		let w = this.stage.stageWidth
+		let h = this.stage.stageHeight
+		let num = w / 154;//个数
+		for (let i = 0; i < num;i++) {
+			let img: eui.Image = new eui.Image("danjuchi_png");
+			var rect: egret.Rectangle = new egret.Rectangle(22, 116, 136, 7);
+			img.scale9Grid = rect;
+			img.x = i * 154;
+			img.y = 100;
+			img.width = 154;
+			img.height = 450;
+			img.scaleY = -1
+			this.topFather.addChild(img);
+		}
+		for(let i = 0;i < num ;i++)
+		{
+			let img: eui.Image = new eui.Image("danjuchi_png");
+			img.x = i * 154;
+			img.width = 154;
+			img.height = 123;
+			img.y = 0;
+			this.backFather.addChild(img);
+		
+
+		}
+
+		if (w / h < 9 / 16) {
+			this.blank = h - 1920;
+			this.topFather.y = this.blank / 2;
+		}
+		else {
+			this.topFather.y = 0;
+		}
+			
+	
+
+
+	}
+	//点击屏幕后
+	private speedQius = 5;//绿球初始速度
+	private flag = false;
+	private setFlag(choose: boolean) {
+		this.flag = choose;
+	}
+	private setClick() {
+		if (!this.flag) {
+			return
+		}
+		egret.Tween.removeTweens(this.qiuS);
+		egret.Tween.get(this.qiuS, { onChange: this.crash, onChangeObj: this })
+			.to({ y: this.bgAll.y - this.blank / 2 }, this.qiuS.y / this.speedQius, egret.Ease.quadIn)
+			.call(() => {
+				this.crashAfter(this.qiuS.x, this.qiuS.y);
+			}, this)
+		this.setFlag(false);
+	}
+	//倒计时显示图片
+	private static i = 3;
+	// private countDownLabel = new eui.Label();
+	private countToDown() {
+		// this.countDownLabel.x = this.stage.stageWidth / 2;
+		// this.countDownLabel.y = this.stage.stageHeight / 2;
+		// this.countDownLabel.size = 180;
+		// this.timer = new egret.Timer(1000, 4);
+		// this.timer.addEventListener(egret.TimerEvent.TIMER, this.changeSource, this);
+		// this.timer.start();
+
+			// this.removeChild(this.countDownLabel);
+			this.bgAll.touchEnabled = true;
+			this.setFlag(true);//可以点击
+			this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+		console.log("countDown");
+	}
+
+	public backUI() {
+		this.score = 0;
+		this.health = 1;
+		this.scoreBitLabel.text = this.score.toString();
+		this.healthLabel.text = this.health.toString();
+
+
+	}
+	private changeSource() {
+		// this.addChild(this.countDownLabel);
+
+		// if (GameView.i == 3) {
+		// 	this.countDownLabel.text = "3";
+		// }
+		// else if (GameView.i == 2) {
+		// 	this.countDownLabel.text = "2";
+		// }
+		// else if (GameView.i == 1) {
+		// 	this.countDownLabel.text = "1";
+
+		// }
+		// else if (GameView.i == 0) {
+
+		// 	this.removeChild(this.countDownLabel);
+		// 	this.bgAll.touchEnabled = true;
+		// 	this.setFlag(true);//可以点击
+		// 	this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+
+		// }
+		// GameView.i--;
+	}
+	//设置配置表   
+	private static passID = 1;
+	private DISTANCE: number[] = []
+	private id = 1;
+	private count_down = 0;
+	private loadTable(passid: number) {
+		if (passid > 20) {
+			passid = 20;
+		}
+	
+		let init = this.table[passid][xlsx.c_yd_distance]
+		this.DISTANCE = JSON.parse(init);
+		let tmpd = ZJ.MathUtil.randomRange(this.DISTANCE[0], this.DISTANCE[1] + 1);//返回min max中 随机数
+		this.time = JSON.parse(this.table[passid][xlsx.c_yd_time]);
+		this.disMax = this.DISTANCE[1];//距离最大值
+		this.disMin = this.DISTANCE[0];//最小值
+		this.timeMin = this.time[0];
+		this.timeMax = this.time[1];
+		this.countDown = this.table[passid][xlsx.c_yd_count_down];
+
+		//下一关的配置
+		let next = this.table[passid + 1][xlsx.c_yd_distance];
+		this.nextDistance = JSON.parse(next);
+		let temp = ZJ.MathUtil.randomRange(this.nextDistance[0],this.nextDistance[1] + 1);
+		this.nextTime = JSON.parse(this.table[passid + 1][xlsx.c_yd_time]);
+		this.nextDisMax = this.nextDistance[1];
+		this.nextDisMin = this.nextDistance[0];
+		this.nextTimeMax = this.nextTime[1];
+		this.nextTimeMin = this.nextTime[0];
+		this.nextCountDown = this.table[passid + 1][xlsx.c_yd_count_down];
+
+	}
+
+	private change() {
+		this.smallX = this.qiuS.x;
+		this.smallY = this.qiuS.y;
+
+	}
+	//创建绿色发射球
+	private createQiuS() {
+		this.setFlag(true);//可以点击
+		this.qiuS.anchorOffsetX = this.qiuS.width / 2;
+		this.qiuS.anchorOffsetY = this.qiuS.height / 2;
+		this.qiuS.x = this.bgAll.width / 2;
+		this.qiuS.y = this.qsY;
+		
+		this.bgAll.addChild(this.qiuS);
+
+		//这是绿色球碰到锯齿后  
+		if (this.guanshu == 1) {
+			this.isOnce = true;
+			this.qiuS.y = this.qsY;
+		}
+	}
+	private heightTothis: number = 0;
+	//创建黄色球
+	private createQiuB1()
+	{
+		if(this.guanshu == 1)
+		{
+			this.qiuB1.y = -1000;
+		}
+		this.qiuB1.anchorOffsetX = this.qiuB.width / 2;
+		this.qiuB1.anchorOffsetY = this.qiuB.height / 2;
+		this.bgAll.addChild(this.qiuB1);
+		this.qiuB1.x = this.qiuB1.width;
+		if(this.qiuB1.y < 0)
+		{
+		let nextMinY = this.qsY - this.qiuS.width / 2 - this.nextDisMin;//黄球1初始yMin
+		let nextMinmaxY = this.qsY - this.qiuS.width / 2 - this.nextDisMax;//黄初始1yMax
+		this.qby1 = nextMinY + (this.nextDisMax - this.nextDisMin) * Math.random();//最终黄球1初始值
+		//要第二关的关卡配置 
+		this.heightTothis = this.bgAll.height - this.qsY;
+		this.speed = Math.random() + 1;//来回的速度    通过这个修改动画
+		this.qbTime1 = (this.nextTimeMin + (this.nextTimeMax - this.nextTimeMin) * Math.random()) / 2;//黄球运动半个来回的时间
+		this.qiuB1.x = this.qiuB1.width;
+		this.qbRunF(this.qiuB1,this.qbTime1,this.speed,);//左右
+		}
+		this.qbRunF(this.qiuB1,this.qbTime1,this.speed,);//左右
+		
+	}
+	private createQiuB() {
+		this.qiuB.anchorOffsetX = this.qiuB.width / 2;
+		this.qiuB.anchorOffsetY = this.qiuB.height / 2;
+		this.bgAll.addChild(this.qiuB);
+		if(this.qiuB.y < 0)
+		{
+		let minY = this.qsY - this.qiuS.width / 2 - this.nextDisMin;//黄球初始yMin
+		let maxY = this.qsY - this.qiuS.width / 2 - this.nextDisMax;//黄初始yMax
+		this.qbY = minY + (this.nextDisMax - this.nextDisMin) * Math.random();//最终黄球初始值
+		this.heightTothis = this.bgAll.height - this.qsY;
+		this.speed = Math.random() + 1;//来回的速度    通过这个修改动画
+		this.qbTime = (this.nextTimeMin + (this.nextTimeMax - this.nextTimeMin) * Math.random()) / 2;//黄球运动半个来回的时间
+		}
+		else {
+		let minY = this.qsY - this.qiuS.width / 2 - this.disMin;//黄球初始yMin
+		let maxY = this.qsY - this.qiuS.width / 2 - this.disMax;//黄初始yMax
+		this.qbY = minY + (this.disMax - this.disMin) * Math.random();//最终黄球初始值
+		this.heightTothis = this.bgAll.height - this.qsY;
+		this.speed = Math.random() + 1;//来回的速度    通过这个修改动画
+		this.qbTime = (this.timeMin + (this.timeMax - this.timeMin) * Math.random()) / 2;//黄球运动半个来回的时间
+		}
+		//两个另起一段的动画会覆盖，要么remove，要么 to  call
+		//以下做往返运动
+	    if (this.guanshu == 1) {
+			this.qiuB.x = this.qiuB.width;
+			this.qiuB.y = this.qbY;
+			this.qbRunF(this.qiuB,this.qbTime,this.speed);//右左
+		}
+		else 
+		{
+			egret.Tween.removeTweens(this.qiuB);
+			this.qbRunF(this.qiuB,this.qbTime,this.speed);//右左
+		}
+		
+	}
+
+	//设置黄色球运动速度的曲线
+	private setPath(t: number): (t: number) => number {
+		return egret.Ease.getPowInOut(2);//先固定有减速的。
+			
+}
+	//黄色球水平运动（left - right）左 - 右
+	private qbRun(qb:QiuB,time:number,speed: number) {
+		egret.Tween.get(qb, { onChange: this.runOnChange, onChangeObj: this })
+			.to({ x: this.qiuB.width }, time, this.setPath(speed))
+			.call(function () {
+				egret.Tween.get(this.qb, { onChange: this.runOnChange, onChangeObj: this }).
+					to({ x: this.bgAll.width - qb.width }, time, this.setPath(speed))
+					.call(function () {
+						this.qb.x = this.bgAll.width - qb.width ;
+						this.qbRun(qb,time,this.speed);
+					}, this)
+			}, this)
+	}
+	//黄色球水平运动（right - left）右 - 左
+	private qbRunF(qb:QiuB,time:number,speed: number) {
+		egret.Tween.get(qb, { onChange: this.runOnChange, onChangeObj: this })
+			.to({ x: this.bgAll.width - qb.width }, time, this.setPath(speed))
+			.call(function () {
+				egret.Tween.get(qb, { onChange: this.runOnChange, onChangeObj: this }).
+					to({ x: this.qiuB.width }, time, this.setPath(speed))
+					.call(function () {
+						qb.x = qb.width ;
+						this.qbRunF(qb,time,this.speed);
+					}, this)
+			}, this)
+	}
+
+	//碰撞到上下边后
+	private crashAfter(aX: number, aY: number) {
+		egret.Tween.removeAllTweens();
+		this.guanshu = 1;
+		this.loadTable(this.guanshu);
+		this.health--;
+		let a = ZJ.ResManager.instance.loadDragonBones("ls")
+		a.x = aX;
+		a.y = aY;
+		a.animation.play("", 1);
+		this.bgAll.addChild(a);
+		//同步分数    最高分没有从服务器得到
+		MyCDM.instance.SendScoredData11011(
+			{
+				score: this.score,
+				resultData: []
+			});
+		if (this.health == 0) {
+			this.qiuB.alpha = 0;
+			this.qiuS.alpha = 0;
+			this.scoreBitLabel.alpha = 0;
+			MyCDM.instance.SendGameResult11012({
+				winPlayerId: this.winId,
+			});
+			ZJ.UIManager.instance.openView(UIName.Settle).setData({
+				score: this.score,//本次得分
+				weekScore: this.weekScore,//本周最佳得分
+			})
+
+
+		}
+		this.nextG();
+	}
+
+private  comboNum:eui.BitmapLabel;
+	//两球碰撞
+	private crash() {
+		let a = this.qiuB.width / 2 + this.qiuS.width / 2;
+		let b = this.qiuB1.width / 2 + this.qiuS.width / 2;
+		let distance = Math.sqrt(Math.pow(this.qiuS.y - this.Y, 2) + Math.pow(this.qiuS.x - this.X, 2));
+		let distance1 = Math.sqrt(Math.pow(this.qiuS.y - this.Y1, 2) + Math.pow(this.qiuS.x - this.X1, 2));
+		if (distance <= a || distance1 <= b) {
+			let skewing = Math.abs(this.qiuB.x - this.qiuS.x);
+			let ske = Math.abs(this.qiuB1.x - this.qiuS.x);
+			if (this.isOnce) {
+				if (skewing <= this.qiuS.width * 0.025 || ske <= this.qiuS.width * 0.025) {
+					this.score += 5;
+					console.log("加5分");
+					this.startGroup.alpha = 1;
+					egret.setTimeout(function () {
+						this.startGroup.alpha = 0;
+					}, this, 1000);
+				this.continuePerfect ++;
+				if (this.continuePerfect >= 2) {
+					let combo = this.continuePerfect - 1;
+					let comboScore = combo * 1;
+					this.score += comboScore;
+					//
+					this.comboNum.text = comboScore.toString();
+					this.comboGroups.alpha = 1;
+						egret.setTimeout(function () {
+						this.comboNum.alpha = 0;
+					}, this, 1000);
+				}
+				}
+				else 
+				{
+					this.continuePerfect = 0;
+				}
+			}
+			else {
+				if (skewing <= this.qiuS.width * 0.025 || ske <= this.qiuS.width * 0.025) {
+					this.score += 3;
+					console.log("加3分");
+					this.hitGroup.alpha = 1;
+					egret.setTimeout(function () {
+						this.hitGroup.alpha = 0;
+					}, this, 1000);
+					this.continuePerfect++;
+					console.log("ssss"+ this.continuePerfect);
+					if (this.continuePerfect >= 2) {
+						let combo = this.continuePerfect - 1;
+						let comboScore = combo * 1;
+						this.score += comboScore;
+						//
+						this.comboNum.text = comboScore.toString();
+						this.comboGroups.alpha = 1;
+						this.hitGroup.alpha = 0;
+						egret.setTimeout(function () {
+							this.comboGroups.alpha = 0;
+						}, this, 1000);
+				}
+			}
+			else 
+			{
+				this.continuePerfect = 0;
+			}
+
+			}
+			
+			this.score += 1;
+			this.guanshu++;
+			console.log("加1分");
+			this.scoreBitLabel.text = this.score.toString();
+			console.log(this.score);
+			this.loadTable(this.guanshu);//加载
+			//爆炸后转换球
+			this.jugdeBallQB();
+
+			egret.Tween.removeTweens(this.qiuS);//停止动画
+			// egret.Tween.removeTweens(this.qiuB);
+
+			MyCDM.instance.SendProcessData11010({
+				processData: this.score,
+			});
+			this.createQiuS();//创建绿球
+			
+		}
+	}
+	private jugdeBallQB()
+	{
+			if(this.qiuB.y > 0)//知道黄1 在下面    换到上面
+			{
+			this.resource.x = this.X;
+			this.resource.y = this.Y;
+			this.bgAll.addChild(this.resource);
+			this.resource.animation.play("",1);
+			this.qiuB.y = -1000;
+			egret.Tween.removeTweens(this.qiuB);//动画不停止不行
+			this.createQiuB();//重新创建动画
+			egret.Tween.get(this.qiuB1).to({ y: this.qby1 }, 800, egret.Ease.quartOut).call(() => {
+			this.qiuB1.y = this.qby1;
+		    egret.Tween.get(this.qiuB1).to({ y: this.qby1 + this.heightTothis }, this.countDown);
+			this.isOnce = false;
+			egret.Tween.get(this.qiuS, { onChange: this.change, onChangeObj: this })
+				.to({ y:  this.backFather.y - this.qiuS.width / 2 }, this.countDown).call(() => {
+				this.crashAfter(this.qiuS.x, this.backFather.y - this.qiuS.width /2);//碰到上下边
+				}, this);
+				});
+			}
+			else if(this.qiuB.y <= 0)//黄2 在下面    
+			{
+			this.resource.x = this.X1;
+			this.resource.y = this.Y1;
+			this.bgAll.addChild(this.resource);
+			this.resource.animation.play("",1);
+			this.qiuB1.y = -1000;
+			egret.Tween.removeTweens(this.qiuB1);
+			this.createQiuB1();
+	
+			egret.Tween.get(this.qiuB).to({ y: this.qbY }, 800, egret.Ease.quartOut).call(() => {
+			this.qiuB.y = this.qbY;
+		    egret.Tween.get(this.qiuB).to({ y: this.qbY + this.heightTothis }, this.countDown);
+			this.isOnce = false;
+			egret.Tween.get(this.qiuS, { onChange: this.change, onChangeObj: this })
+				.to({ y:  this.backFather.y - this.qiuS.width / 2}, this.countDown).call(() => {
+				this.crashAfter(this.qiuS.x, this.backFather.y - this.qiuS.width / 2);//碰到上下边
+				}, this);
+				});
+
+			}
+			this.setFlag(true);
+	}
+	//背景运动
+	private runBg() {
+		this.bg1.y += 1;
+		this.bg2.y += 1;
+		if (this.bg1.y >= this.stage.stageHeight) {
+			this.bg1.y = this.bg2.y -2340;
+		} else if (this.bg2.y >= this.stage.stageHeight) {
+			this.bg2.y = this.bg1.y -2340;
+		}
+	}
+	//下一关
+	private addOther() {
+		this.bgAll.addChild(this.scoreBitLabel);
+		this.bgAll.addChild(this.healthLabel);
+		this.bgAll.addChild(this.nickName);
+		this.bgAll.addChild(this.nickNameID);
+		this.scoreBitLabel.text = this.score.toString();
+		this.healthLabel.text = this.health.toString();
+	}
+
+
+}

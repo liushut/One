@@ -1,0 +1,34 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "Pop",
+			"memberof": "UILayer",
+			"scope": "static",
+			"default": "1"
+		},
+		{
+			"kind": "member",
+			"name": "SDK",
+			"memberof": "UILayer",
+			"scope": "static",
+			"default": "2"
+		},
+		{
+			"kind": "member",
+			"name": "View",
+			"memberof": "UILayer",
+			"scope": "static",
+			"default": "0"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "UILayer",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\ModuleConfig.ts"
+	}
+}

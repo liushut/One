@@ -1,0 +1,8 @@
+var xlsx;
+(function (xlsx) {
+    //---------------c_yuandian.json----------------
+    xlsx.cfg_c_yuandian = "shared/c_yuandian.json";
+    xlsx.c_yuandian_id = "A";
+    xlsx.c_yuandian_data = "B";
+})(xlsx || (xlsx = {}));
+//# sourceMappingURL=cfgConsts.js.map

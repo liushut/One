@@ -1,0 +1,36 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "getUserInfo",
+			"memberof": "DebugPlatform",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "login",
+			"memberof": "DebugPlatform",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "share",
+			"memberof": "DebugPlatform",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "DebugPlatform",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\Platform.ts",
+		"implements": [
+			{
+				"name": "Platform"
+			}
+		]
+	}
+}

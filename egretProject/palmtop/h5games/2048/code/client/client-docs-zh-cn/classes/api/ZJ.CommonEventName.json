@@ -1,0 +1,49 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "CHANNEL_DATA",
+			"memberof": "ZJ.CommonEventName",
+			"scope": "static",
+			"description": "渠道事件数据",
+			"default": "\"CHANNEL_DATA\""
+		},
+		{
+			"kind": "member",
+			"name": "GESTURE_DIRECT",
+			"memberof": "ZJ.CommonEventName",
+			"scope": "static",
+			"default": "\"GESTURE_DIRECT\""
+		},
+		{
+			"kind": "member",
+			"name": "SOCKET_CONNECTED",
+			"memberof": "ZJ.CommonEventName",
+			"scope": "static",
+			"default": "\"SOCKET_CONNECTED\""
+		},
+		{
+			"kind": "member",
+			"name": "SOCKET_DATA",
+			"memberof": "ZJ.CommonEventName",
+			"scope": "static",
+			"default": "\"SOCKET_DATA\""
+		},
+		{
+			"kind": "member",
+			"name": "TABLE_LOADED",
+			"memberof": "ZJ.CommonEventName",
+			"scope": "static",
+			"default": "\"TABLE_LOADED\""
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "CommonEventName",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\CommonConfig.ts"
+	}
+}

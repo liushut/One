@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160d8e29c43" ></w:Config>
+	<e:Group id="gBg" scrollEnabled="false" left="0" right="0" top="0" bottom="0" alpha="1.18"/>
+	<e:Group y="0" horizontalCenter="0" scaleX="1.44" scaleY="1.44" width="1077" height="1077">
+		<e:Image id="bg" source="shenglidi_png" x="538" y="538" anchorOffsetX="538" anchorOffsetY="538" touchEnabled="false"/>
+		<e:Image id="icon" x="251" y="399" touchEnabled="false" source="shengli_png"/>
+		<e:Image x="380" y="785" source="wode_png" visible="false"/>
+		<e:Image x="600" y="785" source="duifang_png" touchEnabled="false" visible="false"/>
+		<e:Label id="score1" text="0" x="336" y="882" textAlign="center" verticalAlign="middle" width="200" size="60" touchEnabled="false" visible="false"/>
+		<e:Label id="score2" text="0" x="555" y="882" verticalAlign="middle" textAlign="center" width="200" size="60" touchEnabled="false" visible="false"/>
+	</e:Group>
+	<e:Button id="big" label="" left="0" right="0" top="0" bottom="0" skinName="TransparentBtnSkin"/>
+</e:Skin>

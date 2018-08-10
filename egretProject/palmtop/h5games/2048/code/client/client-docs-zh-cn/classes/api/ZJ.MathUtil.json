@@ -1,0 +1,80 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "MathUtil",
+			"memberof": "ZJ.MathUtil",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number[]",
+			"name": "YiYuanErCi",
+			"memberof": "ZJ.MathUtil",
+			"scope": "static",
+			"params": [
+				{
+					"name": "a",
+					"description": ""
+				},
+				{
+					"name": "b",
+					"description": ""
+				},
+				{
+					"name": "c",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "randomRange",
+			"memberof": "ZJ.MathUtil",
+			"scope": "static",
+			"description": "返回[min,max)的整数",
+			"params": [
+				{
+					"name": "min",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "max",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "seed",
+					"question": true,
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "randomSeed",
+			"memberof": "ZJ.MathUtil",
+			"scope": "static",
+			"params": [
+				{
+					"name": "seed",
+					"type": "number",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "MathUtil",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\MathUtil.ts"
+	}
+}

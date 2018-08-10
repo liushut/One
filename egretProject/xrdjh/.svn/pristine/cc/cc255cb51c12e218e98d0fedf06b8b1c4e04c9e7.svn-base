@@ -1,0 +1,24 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var ModuleStartUp = (function () {
+    function ModuleStartUp() {
+    }
+    ModuleStartUp.init = function () {
+        ZJ.SocketManager.instance.setCompany(1);
+        ZJ.AudioManager.Instance.bgm = "theme";
+        // open
+        ZJ.UIManager.instance.openView(UIName.Game);
+        // ZJ.UIManager.instance.destroyView(UIName.Loading);
+        // let a = ZJ.UIManager.instance.openView(UIName.Settle) as SettleView;
+        // a.setData({
+        // 	win: 2, score1: 897, score2: 654,
+        // 	dataP1: { avatarUrl: "http://kascdn.kascend.com/jellyfish-docker/avatar/20180419/1156420015_1524121893323.jpg" , nickname:"你的名字你的名字"},
+        // 	dataP2: { avatarUrl: "http://kascdn.kascend.com/jellyfish-docker/avatar/20180419/1156420015_1524121893323.jpg" , nickname:"你的腿毛你的腿毛"}
+        // });
+        return 0;
+    };
+    return ModuleStartUp;
+}());
+__reflect(ModuleStartUp.prototype, "ModuleStartUp");
+//# sourceMappingURL=ModuleStartUp.js.map

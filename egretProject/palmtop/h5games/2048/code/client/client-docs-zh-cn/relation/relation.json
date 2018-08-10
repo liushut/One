@@ -1,0 +1,480 @@
+{
+	"api": {
+		"": {
+			"class": [
+				{
+					"name": "AssetAdapter",
+					"description": "//////////////////////////////////////////////////////////////////////////////////////"
+				},
+				{
+					"name": "MyButton",
+					"description": ""
+				},
+				{
+					"name": "ThemeAdapter",
+					"description": "//////////////////////////////////////////////////////////////////////////////////////"
+				},
+				{
+					"name": "Main",
+					"description": "//////////////////////////////////////////////////////////////////////////////////////"
+				},
+				{
+					"name": "Block",
+					"description": ""
+				},
+				{
+					"name": "Combo",
+					"description": ""
+				},
+				{
+					"name": "FlyBlock",
+					"description": ""
+				},
+				{
+					"name": "NumCountDown",
+					"description": ""
+				},
+				{
+					"name": "Tetris",
+					"description": ""
+				},
+				{
+					"name": "Pos",
+					"description": ""
+				},
+				{
+					"name": "TetrisInfo",
+					"description": ""
+				},
+				{
+					"name": "UILayer",
+					"description": ""
+				},
+				{
+					"name": "UIName",
+					"description": ""
+				},
+				{
+					"name": "ModuleConfig",
+					"description": ""
+				},
+				{
+					"name": "EventName",
+					"description": ""
+				},
+				{
+					"name": "ModuleStartUp",
+					"description": ""
+				},
+				{
+					"name": "ModuleUtil",
+					"description": ""
+				},
+				{
+					"name": "GameView",
+					"description": ""
+				},
+				{
+					"name": "LoadingView",
+					"description": ""
+				},
+				{
+					"name": "MatchView",
+					"description": ""
+				},
+				{
+					"name": "TestView",
+					"description": ""
+				},
+				{
+					"name": "DebugPlatform",
+					"description": ""
+				},
+				{
+					"name": "AliLoadingView",
+					"description": ""
+				},
+				{
+					"name": "ChushouDataModel",
+					"description": ""
+				},
+				{
+					"name": "ChushouLoadingView",
+					"description": ""
+				},
+				{
+					"name": "ChushouSDK",
+					"description": ""
+				},
+				{
+					"name": "OppoSDK",
+					"description": ""
+				},
+				{
+					"name": "YYLoadingView",
+					"description": ""
+				}
+			],
+			"enum": [
+				{
+					"name": "Dir",
+					"description": ""
+				},
+				{
+					"name": "TetrisCmd",
+					"description": ""
+				}
+			],
+			"interface": [
+				{
+					"name": "Platform",
+					"description": "平台数据接口。由于每款游戏通常需要发布到多个平台上，所以提取出一个统一的接口用于开发者获取平台数据信息推荐开发者通过这种方式封装平台逻辑，以保证整体结构的稳定由于不同平台的接口形式各有不同，白鹭推荐开发者将所有接口封装为基于 Promise 的异步形式"
+				},
+				{
+					"name": "Window",
+					"description": ""
+				},
+				{
+					"name": "Data11010",
+					"description": ""
+				},
+				{
+					"name": "Data11011",
+					"description": ""
+				},
+				{
+					"name": "Data11012",
+					"description": ""
+				},
+				{
+					"name": "Data11014",
+					"description": ""
+				},
+				{
+					"name": "PlayerInfo",
+					"description": ""
+				}
+			]
+		},
+		"ZJ": {
+			"class": [
+				{
+					"name": "AudioManager",
+					"description": ""
+				},
+				{
+					"name": "ChannelDataEvent",
+					"description": ""
+				},
+				{
+					"name": "CommonConfig",
+					"description": ""
+				},
+				{
+					"name": "CommonEventName",
+					"description": ""
+				},
+				{
+					"name": "CountDown",
+					"description": "倒数。目前只支持显示00:00格式。"
+				},
+				{
+					"name": "Gesture",
+					"description": ""
+				},
+				{
+					"name": "ComponentBase",
+					"description": ""
+				},
+				{
+					"name": "EventManager",
+					"description": ""
+				},
+				{
+					"name": "GoPool",
+					"description": ""
+				},
+				{
+					"name": "MathUtil",
+					"description": ""
+				},
+				{
+					"name": "ResManager",
+					"description": "官方RES没有集成AssetAdapter中的功能，仍需要写个这样的管理类。核心方法loadRes，其余操作请使用RES。"
+				},
+				{
+					"name": "ShapeUtil",
+					"description": "用于描绘简单图形，例如背景黑底，若需复杂图形请参考api自行描绘。"
+				},
+				{
+					"name": "SocketDataEvent",
+					"description": ""
+				},
+				{
+					"name": "SocketManager",
+					"description": "支持根据不同后端发送协议。参考setCompany。"
+				},
+				{
+					"name": "TableManager",
+					"description": "使用例子：this.mName.text = ZJ.TableManager.instance.tables[xlsx.cfg_c_role][0][xlsx.c_role_role_name];cfg_c_role: cfg_表名0: key 可以是字符串c_role_role_name: 表名_列名"
+				},
+				{
+					"name": "UIData",
+					"description": ""
+				},
+				{
+					"name": "UIManager",
+					"description": ""
+				},
+				{
+					"name": "Util",
+					"description": ""
+				},
+				{
+					"name": "Vector3",
+					"description": ""
+				},
+				{
+					"name": "ViewBase",
+					"description": ""
+				}
+			]
+		},
+		"window": {
+			"globalMember": [
+				{
+					"name": "BattlePlatform",
+					"description": ""
+				},
+				{
+					"name": "chushouGameConfig",
+					"description": ""
+				},
+				{
+					"name": "generateEUI",
+					"description": ""
+				},
+				{
+					"name": "oppoConfig",
+					"description": ""
+				},
+				{
+					"name": "platform",
+					"description": ""
+				},
+				{
+					"name": "yyGameConfig",
+					"description": ""
+				}
+			],
+			"globalFunction": [
+				{
+					"name": "csAuthRequest",
+					"description": "// 用户API列表"
+				},
+				{
+					"name": "csCheckEntryFee",
+					"description": ""
+				},
+				{
+					"name": "csEnableAudioOutput",
+					"description": ""
+				},
+				{
+					"name": "csEnableMic",
+					"description": "// 连麦API列表"
+				},
+				{
+					"name": "csExitGame",
+					"description": "// 应用/设备 API列表"
+				},
+				{
+					"name": "csFollowUser",
+					"description": ""
+				},
+				{
+					"name": "csGetAPIVersionInfo",
+					"description": ""
+				},
+				{
+					"name": "csGetFriendList",
+					"description": ""
+				},
+				{
+					"name": "csGetUserRelationship",
+					"description": ""
+				},
+				{
+					"name": "csInviteToGame",
+					"description": ""
+				},
+				{
+					"name": "csInvokeRecharge",
+					"description": "// 付费API列表"
+				},
+				{
+					"name": "csJoinRoom",
+					"description": ""
+				},
+				{
+					"name": "csKickOutUser",
+					"description": ""
+				},
+				{
+					"name": "csNotifyLoadProgress",
+					"description": ""
+				},
+				{
+					"name": "csPayEntryFee",
+					"description": ""
+				},
+				{
+					"name": "csPurchaseProps",
+					"description": ""
+				},
+				{
+					"name": "csQuitRoom",
+					"description": ""
+				},
+				{
+					"name": "csRecordReport",
+					"description": "// 闯关模式API列表"
+				},
+				{
+					"name": "csShareRecord",
+					"description": ""
+				},
+				{
+					"name": "csShareRoom",
+					"description": "// 社交API列表"
+				},
+				{
+					"name": "init",
+					"description": ""
+				},
+				{
+					"name": "onBalanceChanged",
+					"description": ""
+				},
+				{
+					"name": "onNetworkStatusChange",
+					"description": ""
+				},
+				{
+					"name": "onPKFinishLoading",
+					"description": ""
+				},
+				{
+					"name": "onPKLoading",
+					"description": ""
+				},
+				{
+					"name": "onPKStart",
+					"description": ""
+				},
+				{
+					"name": "onUserVolumeUpdate",
+					"description": ""
+				},
+				{
+					"name": "sendResult",
+					"description": ""
+				}
+			]
+		},
+		"xlsx": {
+			"globalMember": [
+				{
+					"name": "c_plot_finish",
+					"description": ""
+				},
+				{
+					"name": "c_plot_id",
+					"description": ""
+				},
+				{
+					"name": "c_plot_plot",
+					"description": ""
+				},
+				{
+					"name": "c_plot_react",
+					"description": ""
+				},
+				{
+					"name": "c_plot_trigger",
+					"description": ""
+				},
+				{
+					"name": "c_role_head",
+					"description": ""
+				},
+				{
+					"name": "c_role_id",
+					"description": ""
+				},
+				{
+					"name": "c_role_relation",
+					"description": ""
+				},
+				{
+					"name": "c_role_role_name",
+					"description": ""
+				},
+				{
+					"name": "c_role_sex",
+					"description": ""
+				},
+				{
+					"name": "c_task_id",
+					"description": ""
+				},
+				{
+					"name": "c_task_param1",
+					"description": ""
+				},
+				{
+					"name": "c_task_param2",
+					"description": ""
+				},
+				{
+					"name": "c_task_param3",
+					"description": ""
+				},
+				{
+					"name": "c_task_param4",
+					"description": ""
+				},
+				{
+					"name": "c_task_plot",
+					"description": ""
+				},
+				{
+					"name": "c_task_trigger",
+					"description": ""
+				},
+				{
+					"name": "cfg_c_plot",
+					"description": "//---------------c_plot.json----------------"
+				},
+				{
+					"name": "cfg_c_role",
+					"description": "//---------------c_role.json----------------"
+				},
+				{
+					"name": "cfg_c_task",
+					"description": "//---------------c_task.json----------------"
+				}
+			]
+		}
+	},
+	"other": {
+		"global": {
+			"class": [
+				{
+					"name": "Types",
+					"description": "基础类型介绍"
+				}
+			]
+		}
+	}
+}

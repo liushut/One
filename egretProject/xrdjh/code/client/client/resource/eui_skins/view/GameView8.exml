@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView8Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+		<e:Label id="noise_characters" text="Label" y="200" textColor="0x000000" size="40" horizontalCenter="0" textAlign="left" width="886" touchEnabled="false"/>
+		<e:Label id="char_tf2t" text="Label" y="400" textColor="0x000000" size="40" horizontalCenter="0" textAlign="left" width="886" touchEnabled="false"/>
+		<e:Label id="char_pavlov" text="Label" y="700" textColor="0x000000" size="40" horizontalCenter="0" textAlign="left" width="886" touchEnabled="false"/>
+		<e:Label id="char_random" text="Label" y="900" textColor="0x000000" size="40" horizontalCenter="0" textAlign="left" width="886" touchEnabled="false"/>
+		<e:Label id="noise_characters_end" text="Label" y="1118" textColor="0x000000" size="40" horizontalCenter="0" textAlign="left" width="886" touchEnabled="false"/>
+		<e:Button id="noise_characters_btn" label="" y="1342" horizontalCenter="0" skinName="button_longSkin"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView0Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group left="0" right="0" top="0" bottom="0">
+		<e:Rect left="0" right="0" fillAlpha="1" fillColor="0xffffff" height="2340" verticalCenter="0"/>
+	</e:Group>
+	<e:Group width="1080" height="1920" verticalCenter="0" horizontalCenter="0" touchEnabled="false">
+		<e:Group id="g0" width="1080" height="1920" verticalCenter="0" horizontalCenter="0" touchEnabled="false" x="0" y="0" scaleX="1" scaleY="1">
+			<e:Label id="title" text="信任的进化" size="150" textAlign="center" textColor="0x000000" bold="true" verticalAlign="top" y="710" left="0" right="0"/>
+			<e:Label id="subtitle" text="致敬" size="45" textAlign="left" textColor="0x636363" verticalAlign="top" height="200" touchEnabled="false" backgroundColor="0x000000" background="false" y="930" width="600" horizontalCenter="70"/>
+			<e:Button id="loading_done" label="" y="1070" horizontalCenter="0" skinName="button_normalSkin"/>
+		</e:Group>
+		<e:Group id="g1" width="1080" height="1920" verticalCenter="0" horizontalCenter="0" touchEnabled="false" x="10" y="10" scaleX="1" scaleY="1">
+			<e:Label id="intro" text="介绍" size="40" textAlign="center" textColor="0x000000" verticalAlign="bottom" y="-8" left="20" right="20" height="1300"/>
+			<e:Button id="intro_button" label="" y="1250" horizontalCenter="0" skinName="button_longSkin"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

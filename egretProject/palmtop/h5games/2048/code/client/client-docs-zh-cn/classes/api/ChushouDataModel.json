@@ -1,0 +1,331 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "()=>void",
+			"name": "CsAuthRequestCallBack",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "触手授权返回"
+		},
+		{
+			"kind": "member",
+			"type": "()=>void",
+			"name": "CsJoinRoomCallBack",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "触手进房间后的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData10000",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "客户端登录进入游戏的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData10001",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "客户端匹配进入房间的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData10010",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "获取商品订单信息的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11002",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "准备开始游戏的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11003",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "服务端通知开始游戏倒计时"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11005",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "获取当前开局状态的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11006",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "获取游戏数据的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11007",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "再来一局的返回，若双方均已发送来一局，会推送11003到客户端"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11008",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "查询玩家最高分的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11009",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "后端推送玩家请求再来一局"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11010",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "客户端同步游戏过程包的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11011",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "客户端同步游戏结算点数据包(后端校验包)的返回"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "OnData11012",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "游戏结果通知的返回"
+		},
+		{
+			"kind": "member",
+			"name": "gameStyle",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"description": "0 不联网；1 单机；2 1v1；3 多人对战；5 闯关模式6 回放模式",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"name": "intervalPing",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"type": "PlayerInfo",
+			"name": "myData",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "PlayerInfo",
+			"name": "sbData",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"name": "sbIsFriend",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"default": "false"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ChushouDataModel",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "GetGameState11005",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "GetHighestScore11008",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "GetPlayerData11006",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "PlayAgain11007",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "SendFriendList",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "Data11014",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "SendGameResult11012",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "Data11012",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "SendProcessData11010",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "Data11010",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "SendScoredData11011",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "Data11011",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "doAction",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "func",
+					"type": "(data:any)=>void",
+					"description": ""
+				},
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "extendOnData",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "protoID",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "gamePreStart11002",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "login10000",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "match10001",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "onConnect",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "onData",
+			"memberof": "ChushouDataModel",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "e",
+					"type": "ZJ.SocketDataEvent",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "ping11004",
+			"memberof": "ChushouDataModel",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ChushouDataModel",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouDataModel.ts"
+	}
+}

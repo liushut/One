@@ -1,0 +1,67 @@
+class GameView0 extends GameViewBase {
+    // 常量 
+    public constructor() {
+        super();
+        this.skinName = "GameView0Skin"
+    }
+
+    // ui控件
+    private g0: eui.Group
+    private g1: eui.Group
+    private title: eui.Label
+    private subtitle: eui.Label
+    private intro: eui.Label
+    private loading_done: eui.Button
+    private intro_button: eui.Button
+    protected partAdded(partName: string, instance: any): void {
+        super.partAdded(partName, instance);
+    }
+
+    // 变量
+    protected childrenCreated(): void {
+        super.childrenCreated();
+
+        this.title.textFlow = ZJ.LangUtil.getHtmlText("title")
+        this.subtitle.textFlow = ZJ.LangUtil.getHtmlText("subtitle")
+        this.intro.textFlow = ZJ.LangUtil.getHtmlText("intro")
+
+        this.loading_done.label = ZJ.LangUtil.getText("loading_done")
+        this.loading_done.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onloading_done, this)
+
+        this.intro_button.label = ZJ.LangUtil.getText("intro_button")
+        this.intro_button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onintro_button, this)
+
+        ZJ.UIManager.instance.destroyView(UIName.Loading)
+
+        this.step0();
+    }
+
+    private onloading_done() {
+        this.nextStep(1)
+    }
+
+    private onintro_button() {
+        this.nextStep(2)
+    }
+
+    private step0() {
+        this.g0.visible = true;
+        this.g1.visible = false;
+    }
+
+    private step1() {
+        this.g0.visible = false;
+        this.g1.visible = true;
+        this.fadeIn(this.intro, 200)
+        this.fadeIn(this.intro_button, 700)
+    }
+
+    private step2() {
+        ModuleUtil.openViewWithScratch(UIName.Game0, UIName.Game1)
+    }
+
+    public onDestroy(): number {
+        super.onDestroy()
+        return 0;
+    }
+}

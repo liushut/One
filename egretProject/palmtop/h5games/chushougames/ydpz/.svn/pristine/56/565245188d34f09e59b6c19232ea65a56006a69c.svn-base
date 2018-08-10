@@ -1,0 +1,84 @@
+class TestOneView extends ZJ.ViewBase{
+
+    	public constructor() {
+		super();
+		this.skinName = "SettleViewSkin";//决定皮肤的显示
+	}
+private SHOW_TIME = 3000;
+
+	private gBg: eui.Group;
+	private gWin: eui.Group;
+	private gPing: eui.Group;
+	private gLose: eui.Group;
+	private bg: eui.Image;
+	private icon: eui.Image;
+	private icon0:eui.Image;
+	private icon3:eui.Image;
+	private big: eui.Image;
+	private restart: eui.Button;
+	private score1: eui.BitmapLabel;
+	private score2: eui.BitmapLabel;
+	private zailai: eui.Image;
+	private game: GameView;
+	private score: eui.BitmapLabel;
+	private friend:eui.BitmapLabel;
+	private paiming:eui.BitmapLabel;
+	private bzzj:eui.BitmapLabel;
+	private phb:eui.Button;
+	protected partAdded(partName: string, instance: any): void {
+		super.partAdded(partName, instance);
+	}
+	private tatolscoreLabel:eui.Label = new eui.Label;
+	private tatolsocre:number = 0;
+
+	private toPlatform = "";
+	private timeoutid = 0;
+	protected childrenCreated(): void {
+		super.childrenCreated();
+		
+		this.addChild(this.score);
+		let black = ZJ.ShapeUtil.getRect(0x000000, 0.4, this.stage.stageWidth, this.stage.stageHeight);
+		this.gBg.addChild(black);
+		this.game = ZJ.UIManager.instance.openView(UIName.Game) as GameView;
+		this.tatolsocre = this.game.score;
+		this.tatolscoreLabel.text = "本次总得分：" + this.tatolsocre.toString();
+		this.tatolscoreLabel.size = 200;
+        this.tatolscoreLabel.x =egret.MainContext.instance.stage.stageWidth/2 - 600;
+	
+		this.addChild(this.tatolscoreLabel);
+		// egret.Tween.get(this.bg, { loop: true }).to({ rotation: 360 }, 7000);
+		this.restart.addEventListener("touchTap", () => {
+			let e = new egret.Event(EventName.Test);
+			ZJ.EventManager.instance.dispatchEvent(e);
+			ZJ.UIManager.instance.destroyView(UIName.TestOne)
+			this.game.health = 3;
+			this.game.score = 0;
+			this.game.healthLaber.text = "生命:" + this.game.health.toString();
+			this.game.scoreLabel.text = "得分:" + this.game.score.toString();
+		}, this);
+		this.phb.addEventListener("touchTap",()=>{
+				ChushouSDK.instance.csExitGame()
+		},this)
+
+	}
+
+	public setData(data:any){
+		if(!ModuleConfig.compile.danji){
+			if(data.weekTop<data.score){
+				this.icon0.source="bzzj_png";
+				this.icon3.visible=false;
+				this.score.text=data.score.toString();
+			}else if(data.weekTop>=data.score){
+				this.icon0.source="bcdf_png";
+				this.icon3.visible=true;
+				this.score.text=data.score.toString();
+				this.bzzj.text=data.weekTop.toString();
+			}
+			this.friend.text=data.friend.toString();
+			this.paiming.text=data.paiming.toString();
+		}else if(ModuleConfig.compile.danji){
+			this.score.text=data.score.toString();
+		}
+    }
+}
+	

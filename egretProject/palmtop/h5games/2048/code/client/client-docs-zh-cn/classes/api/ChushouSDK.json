@@ -1,0 +1,487 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "csAuthRequestData",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"description": "\"code\" : \"1\", \"errMsg\" : \"该⽤户已被封禁\",\"openUid\" : \"sl10702\",\"accessToken\" : \"${this.csAuthRequestData.accessToken}\",\"nickname\" : \"POTUS\",\"gender\" : \"male\"\"currencyName\" : \"触⼿⾖\",\"balance\" : \"2345678\",\"avatar\" : \"https://chushou.tv/avatar/10702.jpg\",\"inviteMode\" : \"${chushouGameConfig.inviteMode}\",\"gameRoomId\" : \"${this.gameRoomId}\",\"csGroupId\" : \"624189\",\"csGroupMemberCount\" : \"2\",\"role\" : \"0\",\"hostOpenUid\" : \"sl10702\"",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"name": "description",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"分享描述\""
+		},
+		{
+			"kind": "member",
+			"name": "enableAudioOutput",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"1\""
+		},
+		{
+			"kind": "member",
+			"name": "enableMic",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"1\""
+		},
+		{
+			"kind": "member",
+			"name": "gameRoomId",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"description": "// 火树",
+			"default": "\"\""
+		},
+		{
+			"kind": "member",
+			"name": "h5AppName",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"hsdailyshot\""
+		},
+		{
+			"kind": "member",
+			"name": "image",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"/resource/assets/egret_icon.png\""
+		},
+		{
+			"kind": "member",
+			"type": "ChushouSDK",
+			"name": "instance",
+			"memberof": "ChushouSDK",
+			"scope": "static",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"name": "role",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"\""
+		},
+		{
+			"kind": "member",
+			"name": "title",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"default": "\"分享标题\""
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ChushouSDK",
+			"memberof": "ChushouSDK",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csAuthRequest",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csCheckEntryFee",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csEnableAudioOutput",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csEnableMic",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csExitGame",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csFollowUser",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "targetUid",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csGetAPIVersionInfo",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csGetFriendList",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csGetUserRelationship",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "targetUid",
+					"type": "Array<string>",
+					"description": ""
+				},
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csInviteToGame",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csInvokeRecharge",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "paymentScene",
+					"description": "0-直接拉起充值场景, 1-表示购买道具场景, 2-表示支付对局入场费场景"
+				},
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csJoinRoom",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csKickOutUser",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csNotifyLoadProgress",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "progress",
+					"type": "number",
+					"description": "[0,100]"
+				},
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csPayEntryFee",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cpOrderId",
+					"description": ""
+				},
+				{
+					"name": "cpPropId",
+					"description": ""
+				},
+				{
+					"name": "cpPropName",
+					"description": ""
+				},
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csPurchaseProps",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csQuitRoom",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csRecordReport",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "gameResult",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csShareRecord",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "csShareRoom",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "log",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "str",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onBalanceChanged",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onNetworkStatusChange",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onUserVolumeUpdate",
+			"memberof": "ChushouSDK",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "cb",
+					"question": true,
+					"type": "(data:any)=>void",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ChushouSDK",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouSDK.ts"
+	}
+}

@@ -1,0 +1,164 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Util",
+			"memberof": "ZJ.Util",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "Utf8ArrayToStr",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "utf8码转string",
+			"params": [
+				{
+					"name": "array",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "any",
+			"name": "bytesToObj",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "bytes转ByteArray转json转obj",
+			"params": [
+				{
+					"name": "bytes",
+					"type": "Uint8Array",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "string",
+			"name": "getChar",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "_str按utf8截取_len，后面补...",
+			"params": [
+				{
+					"name": "_str",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "_len",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "getClassName",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "获取类名string",
+			"params": [
+				{
+					"name": "obj",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "egret.ByteArray",
+			"name": "objToByteArray",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "obj转json转ByteArray",
+			"params": [
+				{
+					"name": "obj",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "Uint8Array",
+			"name": "objToBytes",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "objToByteArray的bytes",
+			"params": [
+				{
+					"name": "obj",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "rmArrayObj",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "Array移除元素",
+			"params": [
+				{
+					"name": "array",
+					"type": "Array<T>",
+					"description": ""
+				},
+				{
+					"name": "obj",
+					"type": "T",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "string",
+			"name": "strFormat",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "format(\"{0} is {1}\", \"he\", \"beautiful\")",
+			"params": [
+				{
+					"name": "str",
+					"description": ""
+				},
+				{
+					"name": "...replaceArgs",
+					"type": "string[]",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "timeStamp",
+			"memberof": "ZJ.Util",
+			"scope": "static",
+			"description": "获取当前时间戳",
+			"params": [
+				{
+					"name": "dateStr",
+					"question": true,
+					"type": "string",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Util",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\Util.ts"
+	}
+}

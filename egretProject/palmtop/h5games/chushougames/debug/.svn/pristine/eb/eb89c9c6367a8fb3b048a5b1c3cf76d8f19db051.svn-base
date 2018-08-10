@@ -1,0 +1,63 @@
+// 客户端登录进入游戏
+message cs_10000{
+    required string openId = 1;            // 平台账号
+    required string nickname = 2;           // 平台用户昵称
+    required string avatarUrl = 3;         // 平台用户头像url
+    required string sign = 4;               // 前后端验证
+    required int32 timestamp = 5;           // unix时间戳
+}
+
+message sc_10000{
+    required int32 result = 1;              // 进入游戏返回：0成功，1失败，2校验错误
+    required int64 playerId = 2;           // 游戏玩家id
+}
+
+// 客户端匹配进入房间
+message cs_10001{
+    required string matchId = 1;           // 平台匹配id(平台房间id)
+}
+
+// 进入房间返回
+message sc_10001{
+    required int32 result = 1;              // 进入游戏结果：0成功，1失败，2房间人数已满
+    required int64 roomId = 2;             // 游戏生成的房间id
+    required string matchId = 3;           // 前端透传的匹配id
+}
+
+// 客户端准备开始游戏
+message cs_10002{
+}
+
+message sc_10002{
+    required int32 result = 1;              // 准备游戏结果：0成功，1失败，2游戏已经结束
+}
+
+// 服务端通知开始游戏倒计时
+message sc_10003{
+    required int32 readyTime = 1;          // 开始游戏倒计时（秒）
+}
+
+// 心跳包，30秒一次
+message cs_10004{
+}
+
+// 客户端同步游戏过程包
+message cs_10010{
+    required bytes processData = 1;
+}
+
+message sc_10010{
+    required int64 playerId = 1;          // 玩家id
+    required bytes processData = 2;        // 游戏过程数据包
+}
+
+// 客户端同步游戏结算点数据包(后端校验包)
+message cs_10011{
+    required bytes resultData = 2;
+}
+
+message sc_10011{
+    required int64 playerId = 1;          // 玩家id
+    required bytes resultData = 2;         // 游戏结果数据包
+    repeated int32 seeds = 3;               // 随机种子列表
+}

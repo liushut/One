@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TestViewSkin" width="400" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="btnFather" width="200" height="200" x="87" y="45">
+		<e:Image id="blueBtn" width="76" height="30" x="75" y="70" anchorOffsetX="39" anchorOffsetY="16" source="block_J_png" alpha="1"/>
+	</e:Group>
+</e:Skin>

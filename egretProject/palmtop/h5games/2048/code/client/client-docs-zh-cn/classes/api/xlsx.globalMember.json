@@ -1,0 +1,147 @@
+{
+	"globalMember": [
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_plot_finish",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_plot_id",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_plot_plot",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_plot_react",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_plot_trigger",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_role_head",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_role_id",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_role_relation",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_role_role_name",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_role_sex",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_id",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_param1",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_param2",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_param3",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_param4",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_plot",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "c_task_trigger",
+			"memberof": "xlsx",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "cfg_c_plot",
+			"memberof": "xlsx",
+			"scope": "instance",
+			"description": "//---------------c_plot.json----------------"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "cfg_c_role",
+			"memberof": "xlsx",
+			"scope": "instance",
+			"description": "//---------------c_role.json----------------"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\xlsx\\cfgConsts.ts",
+			"kind": "globalMember",
+			"name": "cfg_c_task",
+			"memberof": "xlsx",
+			"scope": "instance",
+			"description": "//---------------c_task.json----------------"
+		}
+	]
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleView2Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ZJ="ZJ.*" xmlns:ns1="*" >
+	<w:Config id="160d8e29c43" ></w:Config>
+	<e:Group id="gBg" scrollEnabled="false" left="0" right="0" top="0" bottom="0" alpha="1.18"/>
+	<e:Group scaleX="1.44" scaleY="1.44" left="0" right="0" top="0" bottom="0" touchEnabled="false">
+		<e:Image x="30" y="166" fillMode="clip" width="180" touchEnabled="false" scaleX="1.53" scaleY="1.53" source="di1_png" scale9Grid="65,0,3,50" height="52" visible="false"/>
+		<e:Image y="166" fillMode="clip" width="180" touchEnabled="false" scaleX="1.53" scaleY="1.53" scale9Grid="65,0,2,50" right="30" source="di1_png" height="52" visible="false"/>
+		<e:Group id="gCommon" touchEnabled="false" height="1334" width="750" verticalCenter="0" horizontalCenter="0">
+			<e:Group y="360" touchEnabled="false" horizontalCenter="0">
+			<e:Image y="0" scaleX="1" scaleY="1" source="baseboard_png" x="0"/>
+			<e:Image y="323" scaleX="1" scaleY="1" source="fs_png" x="62" visible="false"/>
+			<e:Image y="323" scaleX="1" scaleY="1" source="fs_png" x="352" visible="false"/>
+			<e:Image y="267" scaleX="1" scaleY="1" source="vs_png" x="248"/>
+			<e:Image id="head2" y="277" scaleX="1" scaleY="1" x="381" source="txk_1_png" width="80" height="71"/>
+			<e:Image id="head2mask" y="277" scaleX="1" scaleY="1" x="381" source="txk_2_png" width="80" height="71"/>
+				<e:Image y="277" scaleX="1" scaleY="1" source="txk_1_png" x="381"/>
+			<e:Image id="head1" y="277" scaleX="-1" scaleY="1" x="178" source="txk_1_png" width="80" height="71"/>
+			<e:Image id="head1mask" y="277" scaleX="-1" scaleY="1" x="178" source="txk_2_png" width="80" height="71"/>
+				<e:Image y="277" scaleX="-1" scaleY="1" source="txk_1_png" x="178"/>
+			<e:BitmapLabel id="score1" width="260" height="70" x="20.5" y="369.52" font="scorefnt_fnt" text="123" textAlign="center" verticalAlign="middle" visible="false"/>
+			<e:BitmapLabel id="score2" width="260" height="70" x="279" y="369.52" font="scorefnt_fnt" text="123" textAlign="center" verticalAlign="middle" visible="false"/>
+			<e:Label id="name1" text="名字有七个字" x="40.5" y="370" textColor="0x000000" size="30" textAlign="center" width="200" bold="true"/>
+			<e:Label id="name2" text="名字有七个字" x="330" y="370" textColor="0x000000" size="30" textAlign="center" width="200" bold="true"/>
+			</e:Group>
+		</e:Group>
+		<e:Image id="bg" scaleX="1" scaleY="1" horizontalCenter="0" source="shenglidi_png" y="376" touchEnabled="false" anchorOffsetX="436" anchorOffsetY="436" width="872" height="872" locked="true"/>
+		<e:Group id="gWin" touchEnabled="false" height="1334" width="750" verticalCenter="0" horizontalCenter="0" x="0" y="0" scaleX="1" scaleY="1">
+			<e:Image y="336" scaleX="1" scaleY="1" horizontalCenter="0" source="bt_sl_png"/>
+			<e:Image y="175" scaleX="1" scaleY="1" source="js3_png" x="83"/>
+			<e:Image y="228" scaleX="1" scaleY="1" source="js5_png" x="527"/>
+		</e:Group>
+		<e:Group id="gLose" touchEnabled="false" height="1334" width="750" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0" visible="false">
+			<e:Image y="336" scaleX="1" scaleY="1" horizontalCenter="0" source="bt_sb_png"/>
+			<e:Image y="228" scaleX="1" scaleY="1" x="83" source="js6_png"/>
+			<e:Image y="175" scaleX="1" scaleY="1" x="527" source="js4_png"/>
+		</e:Group>
+		<e:Group id="gPing" touchEnabled="false" height="1334" width="750" scaleX="1" scaleY="1" verticalCenter="0" horizontalCenter="0" visible="false">
+			<e:Image y="336" scaleX="1" scaleY="1" horizontalCenter="0" source="bt_pj_png"/>
+			<e:Image y="175" scaleX="1" scaleY="1" source="js3_png" x="83"/>
+			<e:Image y="247" scaleX="1" scaleY="1" x="527" source="js2_png"/>
+		</e:Group>
+		<e:Button id="restart" label="" skinName="RestartSkin" horizontalCenter="0" y="984"/>
+		<e:Image id="yuezhan" source="dfyz_png" anchorOffsetX="77" anchorOffsetY="38" scaleX="1" scaleY="1" touchEnabled="false" horizontalCenter="-177" verticalCenter="317"/>
+	</e:Group>
+	<e:Button id="big" label="" left="0" right="0" top="0" bottom="0" skinName="TransparentBtnSkin" locked="true" visible="false"/>
+</e:Skin>

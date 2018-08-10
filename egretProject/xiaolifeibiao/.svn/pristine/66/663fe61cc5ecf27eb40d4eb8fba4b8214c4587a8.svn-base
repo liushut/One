@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160d8e29c43" ></w:Config>
+	<e:Group id="gBg" scrollEnabled="false" left="0" right="0" top="0" bottom="0" alpha="1.18"/>
+	<e:Group  width="1080" height="1920" left="0" right="0" top="0" bottom="0" touchEnabled="false" >
+		<e:Image id="bg" source="bgShengli_png" anchorOffsetX="375" anchorOffsetY="355" touchEnabled="false" horizontalCenter="0" verticalCenter="-115" width="845" height="829" scaleX="0.8" scaleY="0.8"/>
+		<e:Image id="icon" touchEnabled="false" source="shengli_png" scaleX="0.7" scaleY="0.7" horizontalCenter="-13" verticalCenter="-382.5"/>
+		<e:Image source="touxiangdi_png"  width="122" height="122" scaleX="0.8" scaleY="0.8" horizontalCenter="-151" verticalCenter="-202.66666666666674"/>
+		<e:Image source="touxiangkuang_png"  width="148" height="144" scaleX="0.8" scaleY="0.8" horizontalCenter="-154" verticalCenter="-206.16666666666674"/>
+		<e:Image source="touxiangdi_png"  width="122" height="122" scaleX="0.8" scaleY="0.8" horizontalCenter="156" verticalCenter="-202.66666666666674"/>
+		<e:Image source="touxiangkuang_png"  width="148" height="144" scaleX="0.8" scaleY="0.8" horizontalCenter="154" verticalCenter="-206.16666666666674"/>
+		<e:Image source="fenshudi2_png"  rotation="359.89" width="309" height="103" scaleX="0.8" scaleY="0.8" horizontalCenter="146.5" verticalCenter="-31.166666666666742"/>
+		<e:Image source="fenshudi_png"  scaleX="0.8" scaleY="0.8" horizontalCenter="-154.5" verticalCenter="-30.666666666666742"/>
+		<e:Image source="guanzhuta_png"  scaleX="0.8" scaleY="0.8" horizontalCenter="156" verticalCenter="62.33333333333326"/>
+		<!--<e:Button id="restart" >
+		    <e:Image source="anniuLiang_png" />
+			<e:Image source="dengdai_png" />
+		</e:Button>-->
+		<e:Button id="restart" label="" top="1041" verticalCenter="417.83333333333326" horizontalCenter="0" scaleX="1" scaleY="1">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image  source="anniuLiang_png" />
+				<e:Image width="521" height="91" left="12" top="12" source="dengdai_png" source.down="dengdai_png" source.disabled="dengdai_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+	<e:Button id="big" label="" left="0" right="0" top="0" bottom="0" skinName="TransparentBtnSkin" locked="true" visible="false"/>
+</e:Skin>

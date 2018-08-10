@@ -1,0 +1,80 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ViewBase",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "onDestroy",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"description": "销毁界面时会被调用，一般重写进行回收操作。返回0表示正常结束。【注意】全局事件必须remove（例如EventManager和ENTER_FRAME），timeout必须clear。"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onProgress",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "current",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "total",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "setData",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "show",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ViewBase",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\ViewBase.ts",
+		"augments": [
+			"ZJ.ComponentBase"
+		],
+		"implements": [],
+		"children": [
+			"GameView",
+			"LoadingView",
+			"MatchView",
+			"TestView",
+			"AliLoadingView",
+			"ChushouLoadingView",
+			"YYLoadingView"
+		]
+	}
+}

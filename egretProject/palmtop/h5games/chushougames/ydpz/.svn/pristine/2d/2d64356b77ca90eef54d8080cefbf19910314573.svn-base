@@ -1,0 +1,7 @@
+配置表使用：
+
+1 配置表路径
+tools/xlsx
+
+* 新增表需更改
+tools/config/clientCfg.js

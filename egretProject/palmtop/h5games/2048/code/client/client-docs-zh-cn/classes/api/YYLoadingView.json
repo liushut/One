@@ -1,0 +1,81 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "YYLoadingView",
+			"memberof": "YYLoadingView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "childrenCreated",
+			"memberof": "YYLoadingView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "onDestroy",
+			"memberof": "YYLoadingView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onProgress",
+			"memberof": "YYLoadingView",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "current",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "total",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "setData",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			],
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "show",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "YYLoadingView",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\yy\\YYLoadingView.ts",
+		"augments": [
+			"ZJ.ViewBase",
+			"ZJ.ComponentBase"
+		]
+	}
+}

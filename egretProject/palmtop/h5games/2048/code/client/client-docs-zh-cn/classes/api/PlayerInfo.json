@@ -1,0 +1,62 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "string",
+			"name": "avatarUrl",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "battleTimes",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "string",
+			"name": "gender",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "isRobot",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "string",
+			"name": "nickname",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "string",
+			"name": "openId",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "playerId",
+			"memberof": "PlayerInfo",
+			"scope": "instance"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "interface",
+		"name": "PlayerInfo",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouDataModel.ts"
+	}
+}

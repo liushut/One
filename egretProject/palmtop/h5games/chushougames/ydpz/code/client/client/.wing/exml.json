@@ -1,0 +1,31 @@
+{
+  "global": {
+    "globalAutoLayerMarkEnable": false,
+    "globalRulerEnable": true,
+    "globalAdsorbEnable": true
+  },
+  "163d9a57831": {
+    "guideLines": [
+      {
+        "type": "h",
+        "pos": -118
+      },
+      {
+        "type": "h",
+        "pos": -177
+      }
+    ]
+  },
+  "160d8e29c43": {
+    "guideLines": [
+      {
+        "type": "v",
+        "pos": 600
+      },
+      {
+        "type": "v",
+        "pos": 136
+      }
+    ]
+  }
+}

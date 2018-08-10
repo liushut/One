@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NumCountDownSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="label" text="3" size="140" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+</e:Skin>

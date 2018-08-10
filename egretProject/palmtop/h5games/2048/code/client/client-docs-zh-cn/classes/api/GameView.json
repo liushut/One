@@ -1,0 +1,132 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "particle.GravityParticleSystem",
+			"name": "flyParticles",
+			"memberof": "GameView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "particle.GravityParticleSystem",
+			"name": "flyParticles2",
+			"memberof": "GameView",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "GameView",
+			"memberof": "GameView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "childrenCreated",
+			"memberof": "GameView",
+			"scope": "instance",
+			"description": "// log: eui.Label;"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "onDestroy",
+			"memberof": "GameView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onProgress",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "current",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "total",
+					"type": "number",
+					"description": ""
+				}
+			],
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "partAdded",
+			"memberof": "GameView",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "partName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "instance",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "playFlyBlock",
+			"memberof": "GameView",
+			"scope": "instance",
+			"description": "生成飞方块特效"
+		},
+		{
+			"kind": "function",
+			"name": "playFlyBlockToSpeedTip",
+			"memberof": "GameView",
+			"scope": "instance",
+			"description": "生成飞方块特效"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "setData",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			],
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "show",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "GameView",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\view\\GameView.ts",
+		"augments": [
+			"ZJ.ViewBase",
+			"ZJ.ComponentBase"
+		]
+	}
+}

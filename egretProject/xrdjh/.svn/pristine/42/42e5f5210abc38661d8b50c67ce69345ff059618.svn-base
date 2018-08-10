@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView2Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+		<e:Label id="score2" text="88" y="135" textColor="0x000000" size="120" textAlign="center" width="207" touchEnabled="false" x="102"/>
+		<e:Label id="iterated_score_start" text="88" y="85" textColor="0x000000" size="50" textAlign="left" width="794" touchEnabled="false" x="141"/>
+		<e:Label id="iterated_score_end" text="88" y="145" textColor="0x000000" size="50" textAlign="left" width="583" touchEnabled="false" x="348"/>
+		<e:Label id="tft" text="88" y="449" textColor="0x000000" size="50" textAlign="left" width="794" touchEnabled="false" x="242.5"/>
+		<e:Label id="all_d" text="88" y="677" textColor="0x000000" size="50" textAlign="left" width="250" touchEnabled="false" x="242.5"/>
+		<e:Label id="all_c" text="88" y="677" textColor="0x000000" size="50" textAlign="left" width="250" touchEnabled="false" x="690"/>
+		<e:Label id="grudge" text="88" y="960" textColor="0x000000" size="50" textAlign="left" width="794" touchEnabled="false" x="242.5"/>
+		<e:Label id="prober" text="88" y="1250" textColor="0x000000" size="50" textAlign="left" width="794" touchEnabled="false" x="242.5"/>
+		<e:Label id="characters_teaser" text="88" y="1609" textColor="0x000000" size="40" textAlign="center" touchEnabled="false" left="0" right="0"/>
+		<e:Button id="characters_button" label="" y="1599" horizontalCenter="0" skinName="button_longSkin"/>
+	</e:Group>
+</e:Skin>

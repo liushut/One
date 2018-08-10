@@ -1,0 +1,34 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ComponentBase",
+			"memberof": "ZJ.ComponentBase",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "onDestroy",
+			"memberof": "ZJ.ComponentBase",
+			"scope": "instance",
+			"description": "正常处理返回0"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ComponentBase",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\ComponentBase.ts",
+		"augments": [],
+		"implements": [],
+		"children": [
+			"ZJ.Gesture",
+			"MyButton",
+			"ZJ.ViewBase"
+		]
+	}
+}

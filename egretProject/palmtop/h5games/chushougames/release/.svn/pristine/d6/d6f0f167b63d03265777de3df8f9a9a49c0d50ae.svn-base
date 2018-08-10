@@ -1,0 +1,54 @@
+[
+    {kernel, []},
+
+    {sasl, [
+        {sasl_error_logger, {file,"./logs/sasl_error.log"}},
+        {errlog_type, error},
+        {error_logger_mf_dir, false}
+    ]},
+
+    {os_mon, [
+        {memsup_system_only, true},
+        {system_memory_high_watermark, 0.95},
+        {memory_check_interval, 5},
+        {disk_almost_full_threshold, 0.95}]
+    },
+
+    {mysql, [
+        {loggers, [
+            {mysql_logger, "../logs/mysql.log"}
+        ]},
+        {game, [
+            {host, "127.0.0.1"},
+            {port, 3306},
+            {user, "root"},
+            {password, "root"},
+            {db, "tyt_game"},
+            {encode, utf8},
+            {connections, 3}
+        ]}]
+    },
+
+    {server, [
+        {logger_head, "./logs/elsfk"},
+        {server_host, "127.0.0.1"},
+        {websocket_port, 12011},                                        %% websocket端口
+        {tcpsocket_port, 12012},                                        %% tcp端口
+        {http_port, 12010},                                             %% http端口
+        {platform_id, 10},                                              %% 平台Id
+        {platform_name, "chushou"},                                     %% 平台缩写
+        {is_test, true},                                                %% 是否测试环境
+        {appKey, "BCTRNGUAZPGGQCNS"},
+        {appSecret, "GXTA*73MLZS3(LXKFKL7ABTN*6"},
+        {http_ip, ["127.0.0.1"]},
+        {node_index, 1},
+        {node_type, 1},
+        {op_game_id, 1001},
+        {is_room, true},
+        {is_rank, true},
+        {room_player_num, 2},
+        {server_id, 1},
+        {timezone, 8},
+        {print_level, 6}]
+    }
+].

@@ -1,0 +1,112 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "instance",
+			"memberof": "ZJ.GoPool",
+			"scope": "static",
+			"rwType": 1
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "GoPool",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "destroy",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance",
+			"description": "销毁对象池里所有物体"
+		},
+		{
+			"kind": "function",
+			"name": "destroyByName",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance",
+			"description": "销毁对象池里某个特定物体",
+			"params": [
+				{
+					"name": "name",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "any",
+			"name": "get",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "name",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "init",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "stage",
+					"type": "egret.Stage",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "push",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "name",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "go",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "setDesign",
+			"memberof": "ZJ.GoPool",
+			"scope": "instance",
+			"description": "对象设计图, 当对象池没有可用对象但仍需get一个时, 将通过设计图创建一个新对象",
+			"params": [
+				{
+					"name": "name",
+					"type": "string",
+					"description": "对象设计图名字"
+				},
+				{
+					"name": "any",
+					"type": "any",
+					"description": "设计方法"
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "GoPool",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\GoPool.ts"
+	}
+}

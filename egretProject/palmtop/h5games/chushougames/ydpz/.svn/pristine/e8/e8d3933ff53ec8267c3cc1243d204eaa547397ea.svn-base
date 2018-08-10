@@ -1,0 +1,10 @@
+var xlsx;
+(function (xlsx) {
+    //---------------c_yd.json----------------
+    xlsx.cfg_c_yd = "shared/c_yd.json";
+    xlsx.c_yd_id = "A";
+    xlsx.c_yd_distance = "B";
+    xlsx.c_yd_time = "C";
+    xlsx.c_yd_count_down = "D";
+})(xlsx || (xlsx = {}));
+//# sourceMappingURL=cfgConsts.js.map

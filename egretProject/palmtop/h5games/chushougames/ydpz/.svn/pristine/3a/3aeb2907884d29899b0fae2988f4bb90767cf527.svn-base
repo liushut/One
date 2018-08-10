@@ -1,0 +1,13 @@
+class QiuB extends eui.Component implements eui.UIComponent  {
+	public constructor(a:number) {
+		super();
+		this.skinName = "QiuBSkin";
+		this.qiuSId = a;
+	}
+	public qiuB:eui.Image;
+	public qiuSId:number = 0;
+	protected childrenCreated(){
+		// this.qiuB.anchorOffsetX=this.qiuB.x+this.qiuB.width/2;
+		// this.qiuB.anchorOffsetY=this.qiuB.y+this.qiuB.height/2;
+	}
+}

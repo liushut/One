@@ -1,0 +1,64 @@
+{"mc":{
+	"peep":{
+		"frameRate":12,
+		"labels":[
+			{"name":"daiji","frame":1,"end":3}
+			,{"name":"yun","frame":4,"end":8}
+			
+			],
+		"events":[
+			
+			],
+		"frames":[
+			
+			{
+			"res":"peep_daiji_0_png",
+			"x":150,
+			"y":258
+			},
+			{
+			"res":"peep_daiji_1_png",
+			"x":148,
+			"y":265
+			},
+			{
+			"res":"peep_daiji_0_png",
+			"x":150,
+			"y":258
+			},
+			{
+			"res":"peep_yun_0_png",
+			"x":115,
+			"y":256
+			},
+			{
+			"res":"peep_yun_1_png",
+			"x":120,
+			"y":259
+			},
+			{
+			"res":"peep_yun_2_png",
+			"x":129,
+			"y":258
+			},
+			{
+			"res":"peep_yun_3_png",
+			"x":131,
+			"y":264
+			},
+			{
+			"res":"peep_yun_4_png",
+			"x":138,
+			"y":261
+			}
+			]
+}},
+	"res":{
+		"peep_yun_0_png":{"x":1,"y":1,"w":103,"h":48},
+		"peep_yun_1_png":{"x":108,"y":98,"w":103,"h":41},
+		"peep_yun_2_png":{"x":108,"y":1,"w":100,"h":44},
+		"peep_yun_4_png":{"x":108,"y":49,"w":97,"h":45},
+		"peep_daiji_1_png":{"x":1,"y":123,"w":83,"h":8},
+		"peep_yun_3_png":{"x":1,"y":53,"w":103,"h":42},
+		"peep_daiji_0_png":{"x":1,"y":99,"w":73,"h":20}
+	}}

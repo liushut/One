@@ -1,0 +1,145 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "ZJ.AudioManager",
+			"name": "Instance",
+			"memberof": "ZJ.AudioManager",
+			"scope": "static",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"type": "string",
+			"name": "bgm",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance",
+			"default": "\"bgm\""
+		},
+		{
+			"kind": "member",
+			"name": "isMute",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "AudioManager",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "getChannel",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "soundName",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "getSound",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "soundName",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "play",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance",
+			"description": "播放声音。ps.若需要循环且不唯一，请参考else部分用ResManager加载并自行管理。",
+			"params": [
+				{
+					"name": "soundResName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "loops",
+					"type": "number",
+					"default": "1",
+					"description": ""
+				},
+				{
+					"name": "volume",
+					"type": "number",
+					"default": "1",
+					"description": ""
+				},
+				{
+					"name": "unique",
+					"type": "boolean",
+					"default": "false",
+					"description": "唯一，播放前先停掉上一个。"
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "playBgm",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "loops",
+					"type": "number",
+					"default": "0",
+					"description": ""
+				},
+				{
+					"name": "volume",
+					"type": "number",
+					"default": "1",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "stop",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "soundName",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "stopAll",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "stopBgm",
+			"memberof": "ZJ.AudioManager",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "AudioManager",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\AudioManager.ts"
+	}
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="160b645fa6f" ></w:Config>
+	<e:Group id="baseUI" horizontalCenter="0" verticalCenter="0" width="1080" height="1920">
+		<e:Image id="bg" horizontalCenter="0" verticalCenter="0" source="bg_png"/>
+		<e:Image  source="bg_ladder_png" bottom="-183" horizontalCenter="0"/>
+		<e:Image id="center_line"  source="center_line_png" horizontalCenter="0" verticalCenter="0"/>
+		<e:Group id="roadGroup" horizontalCenter="0" verticalCenter="0" touchEnabled="false" right="0" left="0" top="0" bottom="0">
+			<e:Group id="road1" x="202" width="150" anchorOffsetX="75" height="1720" verticalCenter="95">
+				<e:Group id="roadTipGroup1" bottom="185" horizontalCenter="0" touchEnabled="false">
+					<e:Image id="roadTip1" bottom="0" horizontalCenter="0" source="wrong_road_png" touchEnabled="false"/>
+				</e:Group>
+			</e:Group>
+			<e:Group id="road2" x="371" width="150" anchorOffsetX="75" height="1720" verticalCenter="95">
+				<e:Group id="roadTipGroup2" bottom="185" horizontalCenter="0" touchEnabled="false">
+					<e:Image id="roadTip2" bottom="0" horizontalCenter="0" source="wrong_road_png" touchEnabled="false"/>
+				</e:Group>
+			</e:Group>
+			<e:Group id="road3" x="540" width="150" anchorOffsetX="75" height="1720" verticalCenter="95">
+				<e:Group id="roadTipGroup3" bottom="185" horizontalCenter="0" touchEnabled="false">
+					<e:Image id="roadTip3" bottom="0" horizontalCenter="0" source="wrong_road_png" touchEnabled="false"/>
+				</e:Group>
+			</e:Group>
+			<e:Group id="road4" x="707" width="150" anchorOffsetX="75" height="1720" verticalCenter="95">
+				<e:Group id="roadTipGroup4" bottom="185" horizontalCenter="0" touchEnabled="false">
+					<e:Image id="roadTip4" bottom="0" horizontalCenter="0" source="wrong_road_png" touchEnabled="false"/>
+				</e:Group>
+			</e:Group>
+			<e:Group id="road5" x="876" width="150" anchorOffsetX="75" height="1720" verticalCenter="95">
+				<e:Group id="roadTipGroup5" bottom="185" horizontalCenter="0" touchEnabled="false">
+					<e:Image id="roadTip5" bottom="0" horizontalCenter="0" source="wrong_road_png" touchEnabled="false"/>
+				</e:Group>
+			</e:Group>
+		</e:Group>
+		<e:Image id="jungleTop_s" horizontalCenter="0" top="-182" source="jungle_s_png" touchEnabled="false" x="0" y="0" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Group id="goatGroup" horizontalCenter="0" verticalCenter="0" height="1920" width="1080" touchEnabled="false">
+		<e:Group id="group5"  horizontalCenter="0" verticalCenter="0" right="0" left="0" top="0" bottom="0" touchEnabled="false" touchChildren="false"/>
+		<e:Group id="group4" horizontalCenter="0" verticalCenter="0"  right="0" left="0" top="0" bottom="0" touchEnabled="false" touchChildren="false"/>
+		<e:Group id="group3" horizontalCenter="0" verticalCenter="0"  right="0" left="0" top="0" bottom="0" touchEnabled="false" touchChildren="false"/>
+		<e:Group id="group2" horizontalCenter="0" verticalCenter="0"  left="0" right="0" top="0" bottom="0" touchEnabled="false" touchChildren="false"/>
+		<e:Group id="group1" horizontalCenter="0" verticalCenter="0"  right="0" top="0" left="0" bottom="0" touchEnabled="false" touchChildren="false"/>
+	</e:Group>
+	<e:Group id="topBase" horizontalCenter="0" touchEnabled="false" verticalCenter="-905.5">
+		<e:Image id="jungleTop" horizontalCenter="0" top="0" source="jungle_png" touchEnabled="false"/>
+	</e:Group>
+	<e:Group id="topGroup" top="0" width="1080" horizontalCenter="0">
+		<e:Group id="head1Group" horizontalCenter="-279" top="129">
+		<e:Image source="head_bg_png" scale9Grid="107,9,18,70"/>
+		<e:Image id="head1" source="tx_1_2_png" top="3" left="5" width="80" height="80"/>
+		<e:BitmapLabel id="score1Label" horizontalCenter="27.5" top="35" width="170" font="scoreFont_fnt" text="63200" anchorOffsetX="0" textAlign="center"/>
+		<e:Image id="sex1" source="boy_png" left="60"/>
+		<e:Image id="voice1" verticalCenter="23" source="vol_close2_png" left="-10" scaleX="1" visible="false"/>
+		</e:Group>
+		<e:Group id="head2Group" horizontalCenter="279" top="129">
+		<e:Image source="head_bg_png" scaleX="-1" x="282" scale9Grid="120,11,19,71"/>
+		<e:Image id="head2" source="tx_1_3_png" top="3" right="5" width="80" height="80"/>
+		<e:BitmapLabel id="score2Label" horizontalCenter="-27.5" top="35" width="170" text="63200" textAlign="center" font="scoreFont_fnt" anchorOffsetX="0"/>
+		<e:Image id="sex2" source="girl_png" right="60"/>
+		<e:Image id="voice2" source="vol_open2_png" right="-10" verticalCenter="23" visible="false"/>
+		</e:Group>
+		<e:Group id="timeGroup" horizontalCenter="0" verticalCenter="51">
+		<e:Image source="time_bg_png" x="0"/>
+		<e:BitmapLabel id="timeText" verticalCenter="11" horizontalCenter="0" font="timefont_fnt" text="120"/>
+		</e:Group>
+		<e:Image id="voice" horizontalCenter="-458" source="voice_open_png" top="18" visible="false"/>
+		<e:Image id="vol" top="134" horizontalCenter="-458" source="vol_open_png" visible="false"/>
+	</e:Group>
+	<e:Group id="uiGroup" horizontalCenter="0" height="1920" touchEnabled="false" width="1080" verticalCenter="0">
+		<e:Group id="player2_nextGroup" right="0" verticalCenter="0">
+			<e:Image id="next"  source="next2_png" right="0" verticalCenter="-699"/>
+			<e:Group height="138" verticalCenter="-597" horizontalCenter="0">
+				<e:Image verticalCenter="0" horizontalCenter="0" source="role_bg3_png"/>
+				<e:Image id="player2_next"  verticalCenter="0" horizontalCenter="0" source="rabbitUI4_png"/>
+				<e:Image id="player2_lv"  source="lv4_png" horizontalCenter="0" verticalCenter="67"/>
+			</e:Group>
+		</e:Group>
+		<e:Group id="bottomGroup" bottom="0" left="0" right="0" touchThrough="false" touchEnabled="false" touchChildren="false">
+			<e:Image id="clock" source="clock_png" horizontalCenter="399" bottom="49" touchEnabled="false"/>
+			<e:ProgressBar id="bar" width="372" horizontalCenter="145" value="100" x="392.00000000000006" scaleX="1" scaleY="1" height="64" bottom="47" touchEnabled="false"/>
+			<e:Group id="player1_nextGroup" left="0" right="0" touchEnabled="false" touchChildren="false">
+				<e:Group id="next4" horizontalCenter="-370" bottom="27" touchEnabled="false" touchChildren="false">
+					<e:Image horizontalCenter="0" verticalCenter="0" source="role_bg2_png"/>
+					<e:Image horizontalCenter="0" verticalCenter="0" x="185" y="60" scaleX="1" scaleY="1" source="rabbitUI2_png"/>
+					<e:Image id="lv_4"  horizontalCenter="0" source="lv3_png" bottom="-14"/>
+				</e:Group>
+				<e:Group id="next3" horizontalCenter="-240" bottom="27" touchEnabled="false" touchChildren="false">
+					<e:Image horizontalCenter="0" verticalCenter="0" source="role_bg2_png"/>
+					<e:Image horizontalCenter="0" verticalCenter="0" source="rabbitUI3_png"/>
+					<e:Image id="lv_3"  horizontalCenter="0" source="lv2_png" bottom="-14"/>
+				</e:Group>
+				<e:Group id="next2" horizontalCenter="-110" bottom="27" touchChildren="false" touchEnabled="false">
+					<e:Image horizontalCenter="0" verticalCenter="0" source="role_bg2_png"/>
+					<e:Image horizontalCenter="0" verticalCenter="0" source="rabbitUI4_png"/>
+					<e:Image id="lv_2"  horizontalCenter="0" source="lv1_png" bottom="-14"/>
+				</e:Group>
+				<e:Group id="next1" horizontalCenter="-44" bottom="23" touchChildren="false" touchEnabled="false">
+					<e:Image horizontalCenter="0" verticalCenter="0" source="role_bg2_png" alpha="0"/>
+					<e:Image horizontalCenter="0" verticalCenter="0" source="rabbitUI5_png"/>
+				</e:Group>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+
+	<e:Button id="start"  width="200" height="100" label="开始" horizontalCenter="0" verticalCenter="0"/>
+	<e:Button id="over"  label="结束" horizontalCenter="0" verticalCenter="0" width="200" height="100"/>
+</e:Skin>

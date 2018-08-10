@@ -1,0 +1,90 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "ADD_OBS_BLOCK",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"AddObsBlock\""
+		},
+		{
+			"kind": "member",
+			"name": "GAME_OVER",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"GameOver\""
+		},
+		{
+			"kind": "member",
+			"name": "MOVE_DOWN",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"MoveDown\""
+		},
+		{
+			"kind": "member",
+			"name": "MOVE_END_EVENT",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"MoveEndEvent\""
+		},
+		{
+			"kind": "member",
+			"name": "MOVE_FAST_DOWN",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"MoveFastDown\""
+		},
+		{
+			"kind": "member",
+			"name": "MOVE_LEFT",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"Moveleft\""
+		},
+		{
+			"kind": "member",
+			"name": "MOVE_RIGHT",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"MoveRight\""
+		},
+		{
+			"kind": "member",
+			"name": "ROTATE",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"Rotate\""
+		},
+		{
+			"kind": "member",
+			"name": "SPECIAL_X",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"Special_X\""
+		},
+		{
+			"kind": "member",
+			"name": "SPEED",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"Speed\""
+		},
+		{
+			"kind": "member",
+			"name": "SPEED_READY",
+			"memberof": "EventName",
+			"scope": "static",
+			"default": "\"SpeedReady\""
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "EventName",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\ModuleConfig.ts"
+	}
+}

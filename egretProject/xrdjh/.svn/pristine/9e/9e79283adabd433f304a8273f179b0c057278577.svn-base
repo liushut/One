@@ -1,0 +1,13 @@
+class MessageView extends GameViewBase{
+    public constructor()
+    {
+        super();
+        this.skinName = "MessageViewSkin";
+    }
+    
+    protected childrenCreated()
+    {
+        super.childrenCreated();
+
+    }
+}

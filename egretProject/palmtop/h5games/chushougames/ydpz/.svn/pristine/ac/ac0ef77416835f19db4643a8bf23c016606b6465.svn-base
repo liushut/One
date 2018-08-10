@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160d8e29c43" ></w:Config>
+	<e:Group id="gBg" scrollEnabled="false" left="0" right="0" top="0" bottom="0" alpha="1.18"/>
+	<e:Group x="68" y="166" anchorOffsetY="0" height="1500" width="940">
+		<e:Image id="dikuan" width="868" height="932" x="36" y="232.09" anchorOffsetX="0" anchorOffsetY="0" fillMode="scale" scale9Grid="15,11,19,20" source="dikuang2_png"/>
+		<e:Image id="icon0" touchEnabled="false" scaleX="1" scaleY="1" source="zuijia_png" width="376" height="87" anchorOffsetY="0" anchorOffsetX="0" x="280" y="480"/>
+		<e:Image id="icon" touchEnabled="false" scaleX="1" scaleY="1" source="jieshu_png" x="160" y="284" anchorOffsetX="0" width="622" anchorOffsetY="0" height="150"/>
+		<e:Image id="icon1" touchEnabled="false" scaleX="1" scaleY="1" source="hypm2_png" anchorOffsetY="0" height="67" x="110.36" y="746"/>
+		<e:Image id="icon2" touchEnabled="false" scaleX="1" scaleY="1" source="youxipaiming_png" anchorOffsetY="0" height="67" x="540.18" y="746"/>
+		<e:Button id="phb" label="" scaleX="1" scaleY="1" anchorOffsetY="0" height="67" anchorOffsetX="0" width="357" y="1035" x="280">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="paihangbang_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+		</e:Button>
+		<e:Button id="restart" label="" scaleX="1" scaleY="1" icon="dengdai_png" x="210" y="1212" width="519" height="135">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="anniu_png"/>
+				<e:Image source="zaiwanyiju_png" horizontalCenter="0" verticalCenter="0"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Label id="topScore" text="10086" x="280" y="580" anchorOffsetX="0" width="376" anchorOffsetY="0" height="87" size="60" fontFamily="Tahoma" textAlign="center" verticalAlign="middle"/>
+		<e:Label id="rank" text="11" x="546" y="820" anchorOffsetX="0" width="276" anchorOffsetY="0" height="67" size="60" fontFamily="Tahoma" textAlign="center" verticalAlign="middle"/>
+		<e:Label id="friend" text="11" x="106" y="820" anchorOffsetX="0" width="280" anchorOffsetY="0" height="67" size="60" fontFamily="Tahoma" textAlign="center" verticalAlign="middle"/>
+		<e:Image id="fengxian" anchorOffsetX="0" anchorOffsetY="0" source="fengexian2_png" fillMode="scale" x="120" y="987"/>
+	</e:Group>
+	<e:Button id="big" label="" left="0" right="0" top="0" bottom="0" skinName="TransparentBtnSkin" locked="true" visible="false"/>
+</e:Skin>

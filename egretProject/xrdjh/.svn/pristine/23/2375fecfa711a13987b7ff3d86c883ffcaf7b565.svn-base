@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView3Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+		<e:Label id="place_your_bets" text="88" y="1000" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" left="60" right="60"/>
+		<e:Label id="forgot_whos_who" text="88" y="1718.69" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="457" x="563"/>
+		<e:Button id="tft" label="" y="1345.97" horizontalCenter="-235" skinName="button_middleSkin" scaleX="1" scaleY="1"/>
+		<e:Button id="all_d" label="" y="1518.69" horizontalCenter="-235" skinName="button_middleSkin" scaleX="1" scaleY="1"/>
+		<e:Button id="prober" label="" y="1667.17" horizontalCenter="-235" skinName="button_middleSkin" scaleX="1" scaleY="1"/>
+		<e:Button id="all_c" label="" y="1345.97" skinName="button_middleSkin" scaleX="1" scaleY="1" horizontalCenter="235"/>
+		<e:Button id="grudge" label="" y="1518.69" skinName="button_middleSkin" scaleX="1" scaleY="1" horizontalCenter="235"/>
+		<e:Button id="first_match" label="" y="1200" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_normalSkin"/>
+		<e:Button id="next_match" label="" y="1519" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="tournament_teaser" label="" y="1665" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Label id="text_extra" text="88" y="1255" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" left="60" right="60"/>
+	</e:Group>
+</e:Skin>

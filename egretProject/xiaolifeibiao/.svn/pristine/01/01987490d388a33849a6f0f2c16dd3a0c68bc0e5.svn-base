@@ -1,0 +1,44 @@
+[
+    {kernel, []},
+
+    {sasl, [
+        {sasl_error_logger, {file,"./logs/sasl_error.log"}},
+        {errlog_type, error},
+        {error_logger_mf_dir, false}
+    ]},
+
+    {os_mon, [
+        {memsup_system_only, true},
+        {system_memory_high_watermark, 0.95},
+        {memory_check_interval, 5},
+        {disk_almost_full_threshold, 0.95}]
+    },
+
+    {mysql, [
+        {loggers, [
+            {mysql_logfile, "../logs/mysql.log"}
+        ]},
+        {mysql_game, [
+            {host, "127.0.0.1"},
+            {port, 3306},
+            {user, "root"},
+            {password, "root"},
+            {db, "goat_game"},
+            {encode, utf8}
+        ]}]
+    },
+
+    {server, [
+        {logger_head, "./logs/elsfk"},
+        {server_host, "127.0.0.1"},
+        {websocket_port, 9101},                                    %% websocket端口
+        {tcpsocket_port, 9102},                                    %% tcp端口
+        {platform_id, 101},
+        {node_index, 1},
+        {op_game_id, 1001},
+        {room_player_num, 2},
+        {server_id, 1},
+        {timezone, 8},
+        {print_level, 6}]
+    }
+].

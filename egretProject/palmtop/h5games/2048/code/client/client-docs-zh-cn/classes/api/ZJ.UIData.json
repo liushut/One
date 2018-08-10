@@ -1,0 +1,62 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "layer",
+			"memberof": "ZJ.UIData",
+			"scope": "instance",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"type": "typeof ViewBase",
+			"name": "viewClass",
+			"memberof": "ZJ.UIData",
+			"scope": "instance",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"type": "string",
+			"name": "viewName",
+			"memberof": "ZJ.UIData",
+			"scope": "instance",
+			"default": "\"\""
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "UIData",
+			"memberof": "ZJ.UIData",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "viewName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "layer",
+					"type": "number",
+					"default": "0",
+					"description": ""
+				},
+				{
+					"name": "viewClass",
+					"default": "null",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "UIData",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\UIData.ts"
+	}
+}

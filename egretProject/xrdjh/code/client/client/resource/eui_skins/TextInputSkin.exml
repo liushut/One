@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="skins.TextInputSkin" minHeight="40" minWidth="300" states="normal,disabled,normalWithPrompt,disabledWithPrompt" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" height="200">
+ 	<e:EditableText id="textDisplay"
+	                textColor="0x000000" textColor.disabled="0xff0000" size="40"  anchorOffsetY="0" verticalAlign="middle" textAlign="left" text="" top="0" bottom="0" right="0" left="0"/>
+	<e:Label id="promptDisplay"
+	                size="30" touchEnabled="false" includeIn="normalWithPrompt,disabledWithPrompt" text="请输入你的留言" textColor="0x020000" textAlign="left" anchorOffsetY="0" right="0" bottom="0" top="0" left="0" verticalAlign="top"/>
+</e:Skin>

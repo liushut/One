@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ArrowSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="51" height="208">
+	<e:Image id="arrow" source="zhongdian_png"  scaleX="1" scaleY="1" width="51" height="208" touchEnabled="false" y="0" x="0"/>
+</e:Skin>

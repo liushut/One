@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PlayerSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="63" height="136">
+	<e:Image source="zhongdian_png"  scaleX="0.4" scaleY="0.4"/>
+</e:Skin>

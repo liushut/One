@@ -1,0 +1,141 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "{code?:number,message?:string,gameId?:string,tableId?:string,tableToken?:string,players?:{uid?:string,name?:string,headIcon?:string,sex?:string,micStatus?:number,speakerStatus?:number,tag?:number}[]}",
+			"name": "gameInfo",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"default": "{}"
+		},
+		{
+			"kind": "member",
+			"name": "gameKey",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"default": "\"xxx\""
+		},
+		{
+			"kind": "member",
+			"type": "()=>void",
+			"name": "infoRsp",
+			"memberof": "OppoSDK",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "OppoSDK",
+			"name": "instance",
+			"memberof": "OppoSDK",
+			"scope": "static",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"name": "msgChannel",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "onMicStatusChanged",
+			"memberof": "OppoSDK",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "{uid?:any,status?:any}",
+			"name": "onMicStatusChangedData",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"default": "{}"
+		},
+		{
+			"kind": "member",
+			"type": "(data:any)=>void",
+			"name": "onSpeakerStatusChanged",
+			"memberof": "OppoSDK",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "{uid?:any,status?:any}",
+			"name": "onSpeakerStatusChangedData",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"default": "{}"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "OppoSDK",
+			"memberof": "OppoSDK",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "forceQuit",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"description": "//强制退出",
+			"params": [
+				{
+					"name": "reason",
+					"description": ""
+				},
+				{
+					"name": "message",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "infoReq",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"description": "//获取对局信息请求"
+		},
+		{
+			"kind": "function",
+			"name": "init",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"description": "//初始化lib库",
+			"params": [
+				{
+					"name": "mode",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "writeBlackboard",
+			"memberof": "OppoSDK",
+			"scope": "instance",
+			"description": "//写数据白板",
+			"params": [
+				{
+					"name": "key",
+					"description": ""
+				},
+				{
+					"name": "value",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "OppoSDK",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\oppo\\OppoSDK.ts"
+	}
+}

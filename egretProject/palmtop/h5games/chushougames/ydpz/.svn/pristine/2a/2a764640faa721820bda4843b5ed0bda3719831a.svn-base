@@ -1,0 +1,33 @@
+{
+  "name": "mo-utils",
+  "version": "0.0.7",
+  "main": "index.js",
+  "dependencies": {
+    "async": "*"
+  },
+  "author": {
+    "name": "SmallAiTT",
+    "email": "536762164@qq.com"
+  },
+  "_id": "mo-utils@0.0.7",
+  "scripts": {},
+  "_shasum": "23881f18e221c384acfb11de1da04721cbb8a2fc",
+  "_from": "mo-utils@latest",
+  "_npmVersion": "1.4.21",
+  "_npmUser": {
+    "name": "smallaitt",
+    "email": "536762164@qq.com"
+  },
+  "maintainers": [
+    {
+      "name": "smallaitt",
+      "email": "536762164@qq.com"
+    }
+  ],
+  "dist": {
+    "shasum": "23881f18e221c384acfb11de1da04721cbb8a2fc",
+    "tarball": "https://registry.npmjs.org/mo-utils/-/mo-utils-0.0.7.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/mo-utils/-/mo-utils-0.0.7.tgz"
+}

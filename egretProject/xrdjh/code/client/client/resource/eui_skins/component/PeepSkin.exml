@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PeepSkin" width="307" height="407" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="gRotate" left="0" right="0" top="0" bottom="0" anchorOffsetX="187" anchorOffsetY="407" touchEnabled="false">
+		<e:Group id="gVertical" touchEnabled="false" width="307" height="407" x="0" y="0">
+			<e:Image id="coin" x="135" y="280" source="iterated_coin_png"/>
+			<e:Image id="p0" source="peep_0_png" left="0" right="0" top="0" bottom="0"/>
+			<e:Image id="hat" source="peep_hat_you_png" left="0" right="0" top="0" bottom="0"/>
+			<e:Image id="guocheng" width="307" height="407" x="-15" source="peep_guocheng_qipian_sheng_png"/>
+			<e:Group id="gEye" left="0" right="0" top="0" bottom="0">
+				<e:Image id="eye" width="307" height="407" y="0" x="0" scaleX="1" scaleY="1" source="peep_daiji_qipian_sheng_png"/>
+				<e:Group id="gMcEye" width="307" height="407" y="4" x="-4" scaleX="1" scaleY="1">
+				</e:Group>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+</e:Skin>

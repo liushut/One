@@ -1,0 +1,99 @@
+class SettleView extends ZJ.ViewBase {
+	public constructor() {
+		super();
+		this.skinName = "SettleViewSkin";//决定皮肤的显示
+	}
+	private SHOW_TIME = 3000;
+
+	private gBg: eui.Group;
+	private gWin: eui.Group;
+	private gPing: eui.Group;
+	private gLose: eui.Group;
+	private bg: eui.Image;
+	private big: eui.Image;
+	private restart: eui.Button;
+	private zailai: eui.Image;
+	private game: GameView;
+	private friend: eui.Label;//朋友圈rank
+	private phb: eui.Button;//排行榜  Button
+	private model = MyCDM.instance;
+	private dikuan:eui.Image;
+	//private score: eui.BitmapLabel;//得分  Label
+	private weekScore: eui.BitmapLabel;//本周得分
+	private topScore: eui.BitmapLabel;//最高分
+	private winId: eui.BitmapLabel;
+	private rank: eui.Label;
+	//friend  
+	protected partAdded(partName: string, instance: any): void {
+		super.partAdded(partName, instance);
+	}
+	protected childrenCreated(): void {
+		super.childrenCreated();
+		this.dikuan.alpha = 0.5;
+		let black = ZJ.ShapeUtil.getRect(0x000000, 0.4, this.stage.stageWidth, this.stage.stageHeight);
+		this.gBg.addChild(black);
+		this.game = ZJ.UIManager.instance.openView(UIName.Game) as GameView;
+		this.restart.addEventListener("touchTap", () => {
+			
+		    this.game.qiuB.alpha = 1;
+			this.game.qiuS.alpha = 1;
+			this.game.scoreLabel.alpha = 1;
+			//ZJ.EventManager.instance.dispatchEventWith("showBall");
+			ZJ.UIManager.instance.destroyView(UIName.Settle)
+			this.game.backUI();
+			if(!ModuleConfig.compile.danji)
+			{
+				this.game.backUI();
+			}
+			else
+			{
+					//发送11007
+			MyCDM.instance.PlayAgain11007();//发起再来一局
+			MyCDM.instance.OnData11007 = (data: any) => {//在来一局
+			//this.nextG();
+		if(data.result == 0)
+		{
+			//this.nextG();//显示匹配成功
+			//ZJ.UIManager.instance.destroyView(UIName.Settle)
+			console.log("成功");
+		}
+		else if(data.result == 1)
+		{
+			//告知玩家匹配失败，显示Log
+			console.log("失败");
+
+		}
+		else if(data.result == 3)
+		{
+			//已经再来一局
+			console.log("已经开始");
+		}
+
+		};
+			}
+		}, this);
+
+		//退出房间
+		this.phb.addEventListener("touchTap", () => {
+			ChushouSDK.instance.csExitGame();
+		}, this)
+
+
+
+	}
+
+
+	public setData(data: any) {
+		this.weekScore.text = data.weekscore.toString();
+		this.rank.text = data.gameRank.toString();
+		this.friend.text = data.friendRank.toString();
+		this.winId.text = data.winId.toString();
+
+	}
+
+	public onDestroy(): number {
+		super.onDestroy();
+		return 0;
+	}
+
+}

@@ -1,0 +1,28 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "any",
+			"name": "tables",
+			"memberof": "ModuleUtil",
+			"scope": "static",
+			"rwType": 1
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "ModuleUtil",
+			"memberof": "ModuleUtil",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "ModuleUtil",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\ModuleUtil.ts"
+	}
+}

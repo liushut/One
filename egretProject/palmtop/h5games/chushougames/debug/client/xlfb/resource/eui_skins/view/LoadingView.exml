@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LoadingViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160b645fa6f" ></w:Config>
+	<e:Group id="black" height="10" y="0" scaleX="1" scaleY="1" left="0" right="0" touchEnabled="false">
+	</e:Group>
+	<e:Group height="10" y="0" scaleX="1" scaleY="1" left="0" right="0" touchEnabled="false">
+	<e:Label id="load1" text="0%" size="80" verticalAlign="middle" textAlign="center" horizontalCenter="0" y="500"/>
+	</e:Group>
+</e:Skin>

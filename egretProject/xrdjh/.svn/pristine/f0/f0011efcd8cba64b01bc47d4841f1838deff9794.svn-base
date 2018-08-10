@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView12Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+ 		<e:Label id="outro_1" text="88" y="300" textColor="0x000000" size="50" textAlign="center" touchEnabled="false" left="60" right="60"/>
+		<e:Button id="outro_1_btn" label="" y="1575" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Label id="outro_2" text="88" y="400" textColor="0x000000" size="50" textAlign="center" touchEnabled="false" left="60" right="60"/>
+		<e:Label id="outro_2_credits" text="88" y="1153" textColor="0x000000" size="50" textAlign="center" touchEnabled="false" left="60" right="60"/>
+		<e:Button id="outro_2_btn" label="" y="1298" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_shortSkin"/>
+		<e:Image id="img" width="500" height="500" x="290" y="500" touchEnabled="false"/>
+	</e:Group>
+</e:Skin>

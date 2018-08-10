@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>俄罗斯方块</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <style>
+        html, body {
+            -ms-touch-action: none;
+            background: #000000;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
+         data-entry-class="Main"
+         data-orientation="auto"
+         data-scale-mode="fixedNarrow"
+         data-frame-rate="30"
+         data-content-width="886"
+         data-content-height="1920"
+         data-show-paint-rect="false"
+         data-multi-fingered="2"
+         data-show-fps="false" data-show-log="false"
+         data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+    </div>
+<script>
+    function GetQueryString(name)
+    {
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+	    if(r != null)
+		    return  r[2]; 
+	    return null;
+    }
+
+    function GetWsUrl()
+    {
+	    return GetUrl();
+    }
+
+    function GetWssUrl()
+    {
+	    return GetUrl();
+    }
+
+    function GetUrl()
+    {
+        var wsscheme = GetQueryString("wsscheme");
+        var wsdomain = GetQueryString("websocketdomain");
+        var port = GetQueryString("port");
+        var sign = GetQueryString("sign");
+        var nonstr = GetQueryString("nonstr");
+        var timestamp = GetQueryString("timestamp");
+        var post_data = GetQueryString("post_data");
+
+        var obj = JSON.parse(decodeURIComponent(post_data));
+        var gameid = obj.gameid;
+        var roomid = obj.roomid;
+
+        var ws_url = wsscheme + "://" + wsdomain + ":" + port + "/" + gameid + "/" + roomid + 
+            "?nonstr=" + nonstr + "&sign=" + sign + 
+            "&timestamp=" + timestamp + "&post_data=" + post_data;
+
+        return ws_url;
+    }
+
+    var getParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return null;
+    }
+
+    try {
+        // postdata
+        var strPostData = decodeURIComponent(getParam('post_data'));
+        var postData = JSON.parse(strPostData);
+        var channelid = postData['channelid'];
+        var gameid = postData['gameid'];
+        var roomid = postData['roomid'];
+        var player = postData['player'];
+        // player
+        var uid = player['uid'];
+        var name = player['name'];
+        var avatarurl = player['avatarurl'];
+        var teamid = player['teamid'];
+        var opt = player['opt'];
+
+        var nonstr = getParam("nonstr");
+        var sign = getParam("sign");
+        var websocketdomain = getParam('websocketdomain');
+        var port = getParam("port");
+        var timestamp = getParam("timestamp");
+        var rawdata = window.location.search;
+        var connectUrl = GetWssUrl();
+    }
+    catch (err) {
+        console.warn(err.message);
+    }
+
+    var yyGameConfig = {
+        "timestamp": (timestamp),
+        "websocketdomain": (websocketdomain),
+        "port": (port),
+        "channelid": (channelid),
+        "gameid": (gameid),
+        "roomid": (roomid),
+        "uid": (uid),
+        "name": (name),
+        "avatarurl": (avatarurl),
+        "teamid": (teamid),
+        "opt": (opt),
+        "nonstr": (nonstr),
+        "sign": (sign),
+        "connectUrl":(connectUrl),
+        "strPostData": strPostData,
+    };
+    var sendResult = function (result) {
+        var isMobile = egret.Capabilities.isMobile;
+        if (isMobile) {
+            exitGame(result)
+        }
+        else {
+            window.parent.postMessage(result, "*");
+        }
+    }
+
+    var exitGame = function (data) {
+        if (data) {
+            if (window.nativeApp && window.nativeApp.onPKFinish) {
+                window.nativeApp.onPKFinish(data);
+            }
+            else {
+                if (window.TZOpen) {
+                    window.TZOpen.getResult(data);
+                }
+            }
+        }
+        else {
+            if (window.nativeApp && window.nativeApp.onPKFinish) {
+                window.nativeApp.onPKFinish("{}");
+            }
+        }
+    }
+    var exitGameException = function (data) {
+        if (data) {
+            if (window.nativeApp && window.nativeApp.onPKExceptionFinish) {
+                window.nativeApp.onPKExceptionFinish(data);
+            }
+            else {
+                if (window.TZOpen) {
+                    window.TZOpen.getResult(data);
+                }
+            }
+        }
+        else {
+            if (window.nativeApp && window.nativeApp.onPKExceptionFinish) {
+                window.nativeApp.onPKExceptionFinish("{}");
+            }
+        }
+    };
+    var onPKLoading = function () {
+        var result = "{}";
+        if (window.nativeApp && window.nativeApp.onPKLoading) {
+            window.nativeApp.onPKLoading(result);
+        }
+        else {
+            window.parent.postMessage(result, "*");
+        }
+    };
+    var onPKFinishLoading = function () {
+        var result = "{}";
+        if (window.nativeApp && window.nativeApp.onPKFinishLoading) {
+            window.nativeApp.onPKFinishLoading("{}");
+        }
+        else {
+            window.parent.postMessage(result, "*");
+        }
+    };
+    var onPKLoadFail = function () {
+        var result = "{}";
+        if (window.nativeApp && window.nativeApp.onPKLoadFail) {
+            window.nativeApp.onPKLoadFail("{}");
+        }
+        else {
+            window.parent.postMessage(result, "*");
+        }
+    };
+    var onPKStart = function () {
+        var result = "{}";
+        if (window.nativeApp && window.nativeApp.onPKStart) {
+            window.nativeApp.onPKStart("{}");
+        }
+        else {
+            window.parent.postMessage(result, "*");
+        }
+    };
+    var onPKFinish = function () {
+        var result = "{}";
+        if (window.nativeApp && window.nativeApp.onPKFinish) {
+            window.nativeApp.onPKFinish("{}");
+        }
+        else {
+            window.parent.postMessage(result, "*");
+        }
+    };
+
+    var loadScript = function (list, callback) {
+        var loaded = 0;
+        var loadNext = function () {
+            loadSingleScript(list[loaded], function () {
+                loaded++;
+                if (loaded >= list.length) {
+                    callback();
+                }
+                else {
+                    loadNext();
+                }
+            })
+        };
+        loadNext();
+    };
+
+    var loadSingleScript = function (src, callback) {
+        var s = document.createElement('script');
+        s.async = false;
+        s.src = src;
+        s.addEventListener('load', function () {
+            s.parentNode.removeChild(s);
+            s.removeEventListener('load', arguments.callee, false);
+            callback();
+        }, false);
+        document.body.appendChild(s);
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', './manifest.json?v=' + Math.random(), true);
+    xhr.addEventListener("load", function () {
+        var manifest = JSON.parse(xhr.response);
+        var list = manifest.initial.concat(manifest.game);
+        loadScript(list, function () {
+            /**
+             * {
+             * "renderMode":, //Engine rendering mode, "canvas" or "webgl"
+             * "audioType": 0 //Use the audio type, 0: default, 2: web audio, 3: audio
+             * "antialias": //Whether the anti-aliasing is enabled in WebGL mode, true: on, false: off, defaults to false
+             * "calculateCanvasScaleFactor": //a function return canvas scale factor
+             * }
+             **/
+            var isMobile = egret.Capabilities.isMobile;
+            egret.runEgret({
+                renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor: function (context) {
+                    if (!isMobile) {
+                        //非移动端默认为2
+                        return 2;
+                    }
+                    var backingStore = context.backingStorePixelRatio ||
+                        context.webkitBackingStorePixelRatio ||
+                        context.mozBackingStorePixelRatio ||
+                        context.msBackingStorePixelRatio ||
+                        context.oBackingStorePixelRatio ||
+                        context.backingStorePixelRatio || 1;
+                    return (window.devicePixelRatio || 1) / backingStore;
+                }
+            });
+        });
+    });
+    xhr.send(null);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PlayerSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing"  width="78" height="273">
+	<w:Config id="160bfd6631d" ></w:Config>
+	<e:Group id="gUp" y="0" x="0" height="273">
+		<e:Image id="img" x="39" y="273" anchorOffsetY="273" scaleY="1" width="78" height="273" anchorOffsetX="39" source=""/>
+		<e:Group id="gMC" width="78" height="273" x="39" y="273" anchorOffsetX="39" anchorOffsetY="273">
+			<e:Image id="dbScaler" width="78" height="273" x="0" y="0" source=""/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

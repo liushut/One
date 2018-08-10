@@ -1,0 +1,499 @@
+{
+	"globalFunction": [
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csAuthRequest",
+			"memberof": "window",
+			"scope": "instance",
+			"description": "// 用户API列表",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csCheckEntryFee",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csEnableAudioOutput",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csEnableMic",
+			"memberof": "window",
+			"scope": "instance",
+			"description": "// 连麦API列表",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csExitGame",
+			"memberof": "window",
+			"scope": "instance",
+			"description": "// 应用/设备 API列表",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csFollowUser",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csGetAPIVersionInfo",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csGetFriendList",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csGetUserRelationship",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csInviteToGame",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csInvokeRecharge",
+			"memberof": "window",
+			"scope": "instance",
+			"description": "// 付费API列表",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csJoinRoom",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csKickOutUser",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csNotifyLoadProgress",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csPayEntryFee",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csPurchaseProps",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csQuitRoom",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csRecordReport",
+			"memberof": "window",
+			"scope": "instance",
+			"description": "// 闯关模式API列表",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csShareRecord",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "csShareRoom",
+			"memberof": "window",
+			"scope": "instance",
+			"description": "// 社交API列表",
+			"params": [
+				{
+					"name": "data",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\oppo\\OppoConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "init",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "mode",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "onBalanceChanged",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "onNetworkStatusChange",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\yy\\YYConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "onPKFinishLoading",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\yy\\YYConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "onPKLoading",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\yy\\YYConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "onPKStart",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "onUserVolumeUpdate",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "callback",
+					"type": "(data:string)=>void",
+					"description": ""
+				}
+			]
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\yy\\YYConfig.d.ts",
+			"kind": "globalFunction",
+			"type": "void",
+			"name": "sendResult",
+			"memberof": "window",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "result",
+					"type": "string",
+					"description": ""
+				}
+			]
+		}
+	]
+}

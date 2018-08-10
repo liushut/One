@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="NumCountDownSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Label id="labelold" text="3" size="140" horizontalCenter="0" verticalCenter="0" touchEnabled="false" visible="false"/>
+	<e:BitmapLabel id="label" width="100" height="140" x="0" y="0" text="0" font="time1fnt_fnt"/>
+</e:Skin>

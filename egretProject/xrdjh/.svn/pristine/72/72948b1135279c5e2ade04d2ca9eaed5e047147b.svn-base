@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView5Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+		<e:Label id="evo_1" text="88" y="700" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="800" horizontalCenter="0"/>
+		<e:Label id="evo_10_followup" text="88" y="785" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="800" horizontalCenter="0"/>
+		<e:Label id="forgot_whos_who" text="88" y="1466" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="266" horizontalCenter="393"/>
+		<e:Button id="all_c" label="" y="1391" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_middleSkin"/>
+		<e:Button id="all_d" label="" y="1548" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_middleSkin"/>
+		<e:Button id="tft" label="" y="1704" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_middleSkin"/>
+		<e:Button id="label_play_tournament" label="" y="1392" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="label_eliminate_bottom_5" label="" y="1550" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="label_reproduce_top_5" label="" y="1702" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="evo_9_btn" label="" y="1702" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="evo_autoplay" label="" y="1702" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="evo_10_btn" label="" y="1551" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="evo_11_btn" label="" y="1702" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,270 @@
+class SettleView extends ZJ.ViewBase {
+	public constructor() {
+		super();
+		this.skinName = "SettleViewSkin";//决定皮肤的显示
+	}
+	private SHOW_TIME = 3000;
+
+	private gBg: eui.Group;
+	private gWin: eui.Group;
+	private gPing: eui.Group;
+	private gLose: eui.Group;
+	private bg: eui.Image;
+	private icon: eui.Image;
+	private icon0:eui.Image;
+	private icon3:eui.Image;
+	private big: eui.Image;
+	private restart: eui.Button;
+	private score1: eui.BitmapLabel;
+	private score2: eui.BitmapLabel;
+	private zailai: eui.Image;
+	private game: GameView;
+	private score: eui.BitmapLabel;//得分  Label
+
+	private friend:eui.Label;//朋友圈rank
+	private paiming:eui.BitmapLabel;//paiming Label
+	private bzzj:eui.BitmapLabel;//本周得分  Label
+	private phb:eui.Button;//排行榜  Button
+
+
+	private model = MyCDM.instance;
+
+
+	//friend  
+	protected partAdded(partName: string, instance: any): void {
+		super.partAdded(partName, instance);
+	}
+	private tatolscoreLabel:eui.Label = new eui.Label;
+	private tatolsocre:number = 0;
+
+	private toPlatform = "";
+	private timeoutid = 0;
+	protected childrenCreated(): void {
+		super.childrenCreated();
+		
+		let black = ZJ.ShapeUtil.getRect(0x000000, 0.4, this.stage.stageWidth, this.stage.stageHeight);
+		this.gBg.addChild(black);
+		this.game = ZJ.UIManager.instance.openView(UIName.Game) as GameView;
+		this.tatolsocre = this.game.score;
+		this.tatolscoreLabel.text = "你的总得分：" + this.tatolsocre.toString();
+		this.tatolscoreLabel.size = 100;
+		this.tatolscoreLabel.x = egret.MainContext.instance.stage.stageWidth/2;
+		this.tatolscoreLabel.y =  egret.MainContext.instance.stage.stageWidth/2;
+		this.addChild(this.tatolscoreLabel);
+		if(ModuleConfig.compile.danji)
+		{
+				this.score.text= this.game.score.toString();
+		}
+		this.addChild(this.score);
+		// egret.Tween.get(this.bg, { loop: true }).to({ rotation: 360 }, 7000);
+		this.restart.addEventListener("touchTap", () => {
+			let e = new egret.Event(EventName.Test);
+			ZJ.EventManager.instance.dispatchEvent(e);
+			ZJ.UIManager.instance.destroyView(UIName.Settle)
+			this.game.health = 3;
+			this.game.score = 0;
+			this.game.healthLaber.text = "生命值:" + this.game.health.toString();
+			this.game.scoreLabel.text = "得分:" + this.game.score.toString();
+			if(!ModuleConfig.compile.danji)
+		{
+			this.model.PlayAgain11007();
+			this.playAgain();
+		}
+			
+		}, this);
+
+		//退出房间
+		this.phb.addEventListener("touchTap",()=>{
+				ChushouSDK.instance.csExitGame();
+		},this)
+
+
+		if(!ModuleConfig.compile.danji)
+		{
+			MyCDM.instance.SendGameResult11012({
+				winPlayerId:1
+			});
+			this.getHightScore();
+		}
+	
+
+	}
+
+	private friendRank()
+	{
+		this.friend = new eui.Label();
+		this.addChild(this.friend);
+		this.model.OnData11012 = (data: any) => {
+			this.friend.text = "好友排名:" + data.friendRank;
+		}
+
+		//最高分
+		MyCDM.instance.GetHighestScore11008();
+		this.model.OnData11008 = (data: any) => {
+			//历史最高分
+			//data.topScore;显示
+			//本周最高分
+			//data.weekScore;显示
+		}
+	}
+
+	private getHightScore()
+	{
+			 var _score:number = this.game.score;
+			 //最后分数
+			MyCDM.instance.SendScoredData11011({
+			score:_score,
+			resultData: {}
+		})
+		//得到玩家id以及分数并显示出来
+		this.model.OnData11011 = (data: any) => {
+			
+			data.playerID; //玩家id
+			data.score;//玩家分数
+			data.resultData;//玩家结果数据包
+		}
+	     	//得到胜利玩家
+			var theWinScore = this.game.score;
+			//结束发送胜利
+			MyCDM.instance.SendGameResult11012({
+			winPlayerId:theWinScore,
+		})
+
+		this.friendRank();
+	}
+
+	private playAgain()
+	{
+		this.model.OnData11007 = (data: any) => {//在来一局
+			//this.nextG();
+		if(data.result == 0)
+		{
+			//this.nextG();//显示匹配成功   会进入11003？
+		}
+		else if(data.result == 1)
+		{
+			//超时触发器
+			var idTimeout:number = egret.setTimeout( function( arg ){
+            console.log( "faileLabel:", arg );
+		     //告知玩家匹配失败，显示Log
+			var faileLabel =  new eui.Label();
+			faileLabel.x = this.stage.stageWidth / 2;
+			faileLabel.y = this.stage.stageHeight / 2;
+			faileLabel.size = 180;
+			this.addChild(faileLabel);
+    }, this, 3000, "失败,移除这个标签");
+		ZJ.UIManager.instance.openView(UIName.Settle);
+		}
+		else if(data.result == 2)
+		{
+			var faileLabel =  new eui.Label();
+			//房间已经关闭
+			var idTimeout:number = egret.setTimeout( function( arg ){
+            console.log( "faileLabel:", arg );
+		     //告知玩家匹配失败，显示Log
+			
+			faileLabel.x = this.stage.stageWidth / 2;
+			faileLabel.y = this.stage.stageHeight / 2;
+			faileLabel.size = 180;
+			this.addChild(faileLabel);
+    }, this, 3000, ()=>{this.removeChild(faileLabel)});
+		ZJ.UIManager.instance.openView(UIName.Settle);
+		}
+		else if(data.result == 3)
+		{
+			//已经再来一局
+				var idTimeout:number = egret.setTimeout( function( arg ){
+            console.log( "faileLabel:", arg );
+		     //告知玩家匹配失败，显示Log
+			var faileLabel =  new eui.Label();
+			faileLabel.x = this.stage.stageWidth / 2;
+			faileLabel.y = this.stage.stageHeight / 2;
+			faileLabel.size = 180;
+			this.addChild(faileLabel);
+    }, this, 3000, "已经再来一局了");
+		ZJ.UIManager.instance.openView("SettleView");
+		}
+
+		}
+	}
+
+
+
+	public setData(data:any){
+		if(!ModuleConfig.compile.danji){
+			if(data.weekTop<data.score){
+				this.icon0.source="bzzj_png";
+				this.icon3.visible=false;
+				this.score.text=data.score.toString();
+			}else if(data.weekTop>=data.score){
+				this.icon0.source="bcdf_png";
+				this.icon3.visible=true;
+				this.score.text=data.score.toString();
+				this.bzzj.text=data.weekTop.toString();
+			}
+			this.friend.text=data.friend.toString();
+			this.paiming.text=data.paiming.toString();
+		}else if(ModuleConfig.compile.danji){
+			this.score.text=data.score.toString();
+		}
+	}
+	// public setData(data:any){
+	// 	this.score.text = data.score.toString();
+	// }
+
+	// private onBigClick(): void {
+
+	// 	ZJ.UIManager.instance.destroyView(UIName.Settle);
+	// 	//this.onTimeout();
+	// }
+
+	// private onTimeout(): void {
+	// 	if (ModuleConfig.compile.danji) {
+	// 		ZJ.EventManager.instance.dispatchEvent(new egret.Event(EventName.GAME_RESTART));
+	// 		ZJ.UIManager.instance.destroyView(UIName.Settle)
+	// 	}
+	// 	else {
+	// test
+	// let e = new egret.Event(EventName.Test);
+	// e.data = { log: this.toPlatform };
+	// ZJ.EventManager.instance.dispatchEvent(e);
+	// ZJ.UIManager.instance.destroyView(UIName.Settle)
+	// 		sendResult(this.toPlatform);
+	// 	}
+	// }
+
+
+	// public setData(data: any): void {
+	// 	this.toPlatform = data.toPlatform;
+	// 	if (data.win == 2) {
+	// 		this.bg.source = "shenglidi_png";
+	// 		this.icon.source = "shengli_png";
+	// 	}
+	// 	else if (data.win == 1) {
+	// 		this.bg.source = "pingdi_png";
+	// 		this.icon.source = "ping_png";
+	// 	}
+	// 	else {
+	// 		this.bg.source = "shibaidi_png";
+	// 		this.icon.source = "shibai_png";
+	// 	}
+	// 	this.score1.text = data.score1.toString();
+	// 	this.score2.text = data.score2.toString();
+	// 	// this.gWin.visible = data.win == 2;
+	// 	// this.gPing.visible = data.win == 1;
+	// 	// this.gLose.visible = data.win == 0;
+
+	// 	this.timeoutid = setTimeout(() => {
+	// 		this.onTimeout();
+	// 	}, this.SHOW_TIME);
+	// }
+
+
+	public onDestroy(): number {
+		super.onDestroy();
+		// clearTimeout(this.timeoutid);
+		// egret.Tween.removeTweens(this.bg);
+		return 0;
+	}
+
+}

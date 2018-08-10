@@ -1,0 +1,112 @@
+message playerInfo{
+    required int64 playerId = 1;            // 玩家Id
+    required string openId = 2;             // 平台账号
+    required string nickname = 3;           // 昵称
+    required string avatarUrl = 4;          // 头像url
+	required string gender = 5;				// 性别
+    optional int32 isRobot = 6;           // 是否机器人：1是机器人，0不是机器人
+    optional int32 battleTimes = 7;       // 战斗次数
+}
+
+// 玩家当局战斗信息，前端用于还原当前状态，gameInfo每个游戏不同
+message gamePlayerInfo{
+    required int64 playerId = 1;
+    required int32 score = 2;
+    required bytes gameInfo = 3;            // 内容为游戏结算点结果数据包字段
+}
+
+// 客户端准备开始游戏
+message cs_11002{
+}
+
+message sc_11002{
+    required int32 result = 1;              // 准备游戏结果：0成功，1失败，2游戏已经结束
+}
+
+// 服务端通知开始游戏倒计时
+message sc_11003{
+    required int32 readyTime = 1;           // 开始游戏倒计时（秒）
+    repeated playerInfo playerInfos = 2;    // 所有玩家信息
+    repeated int32 seeds = 3;               // 随机种子
+}
+
+// 心跳包，30秒一次
+message cs_11004{
+}
+
+// 获取当前开局状态
+message cs_11005{
+}
+
+message sc_11005{
+    required int32 gameState = 1;           // 当前开局状态：0游戏未开始，1游戏已经开始（如跟前端状态不一致，需要发送11006重新获取游戏数据），2游戏已经结束
+}
+
+// 获取游戏数据
+message cs_11006{
+}
+
+message sc_11006{
+    repeated gamePlayerInfo infos = 1;
+}
+
+// 再来一局，若双方均已发送来一局，会推送11003到客户端
+message cs_11007{
+
+}
+message sc_11007{
+    required int32 result = 1;              // 0成功，1失败，2房间已关闭，3已经再来一局
+}
+
+
+// 查询玩家最高分
+message cs_11008{
+}
+message sc_11008{
+    required int32 topScore = 1;           // 历史最高分
+    required int32 weekScore = 2;          // 本周最高分
+}
+
+message sc_11009{
+    required int32 playerId = 1;            // 后端推送玩家请求再来一局
+}
+
+// 客户端同步游戏过程包
+message cs_11010{
+    required bytes processData = 1;
+}
+
+message sc_11010{
+    required int64 playerId = 1;            // 玩家id
+    required bytes processData = 2;         // 游戏过程数据包
+}
+
+// 客户端同步游戏结算点数据包(后端校验包)
+message cs_11011{
+    required int32 score = 1;
+    required bytes resultData = 2;
+}
+
+message sc_11011{
+    required int64 playerId = 1;            // 玩家id
+    required int32 score = 2;               // 分数
+    required bytes resultData = 3;          // 游戏结果数据包
+}
+
+// 游戏结果通知
+message cs_11012{
+    required int64 winPlayerId = 1;         // 胜利的玩家Id，0表示平局
+}
+
+message sc_11012{
+    required int32 result = 1;              // 结果通知返回：0成功，1失败
+    required int64 winPlayerId = 2;         // 胜利玩家Id
+    optional int32 friendRank = 3;          // 好友排行
+    optional int32 rank = 4;                // 总排行
+}
+
+// 更新好友列表
+message cs_11014{
+    repeated string openId = 1;             // 好友列表
+}
+

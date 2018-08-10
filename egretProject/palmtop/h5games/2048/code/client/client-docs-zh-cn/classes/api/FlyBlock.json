@@ -1,0 +1,99 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "eui.Group",
+			"name": "ball",
+			"memberof": "FlyBlock",
+			"scope": "instance",
+			"description": "//控件"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Image",
+			"name": "ball_block",
+			"memberof": "FlyBlock",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"name": "callBack",
+			"memberof": "FlyBlock",
+			"scope": "instance",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Image",
+			"name": "light_point",
+			"memberof": "FlyBlock",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "Array<ZJ.Vector3>",
+			"name": "posArray",
+			"memberof": "FlyBlock",
+			"scope": "instance",
+			"default": "[]"
+		},
+		{
+			"kind": "member",
+			"type": "Array<number>",
+			"name": "rotateArray",
+			"memberof": "FlyBlock",
+			"scope": "instance",
+			"description": "// private rotateArray:Array<number> = [-28, -45, -90, -135, -160];",
+			"default": "[-105, -105]"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Image",
+			"name": "tail",
+			"memberof": "FlyBlock",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "FlyBlock",
+			"memberof": "FlyBlock",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "play",
+			"memberof": "FlyBlock",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "pArray",
+					"type": "Array<ZJ.Vector3>",
+					"description": ""
+				},
+				{
+					"name": "particleSystem",
+					"type": "particle.GravityParticleSystem",
+					"description": ""
+				},
+				{
+					"name": "hasBlock",
+					"type": "boolean",
+					"default": "true",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "FlyBlock",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\FlyBlock.ts",
+		"augments": [],
+		"implements": []
+	}
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView6Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+		<e:Label id="distrust_1" text="88" y="700" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="886" horizontalCenter="0"/>
+		<e:Button id="label_step" label="" y="266" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_shortSkin"/>
+		<e:Button id="label_start" label="" y="142" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_shortSkin"/>
+		<e:Button id="label_reset" label="" y="385" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_shortSkin"/>
+		<e:Label id="roundsLabel" text="88" y="1483" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="886" horizontalCenter="0"/>
+		<e:HSlider id="roundsSlider" width="900" height="100" y="1553" horizontalCenter="0" skinName="SliderLongSkin"/>
+		<e:Label id="distrust_2_end" text="88" y="1695.15" textColor="0x000000" size="50" textAlign="right" touchEnabled="false" width="300" horizontalCenter="-270"/>
+		<e:Button id="label_continue" label="" y="1645.15" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_shortSkin"/>
+		<e:Button id="distrust_3_btn" label="" y="1645.15" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Label id="distrust_4" text="" y="700" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="886" horizontalCenter="0"/>
+		<e:Label id="distrust_4_2" text="" y="1189" textColor="0x000000" size="50" textAlign="left" touchEnabled="false" width="886" horizontalCenter="0"/>
+		<e:Label id="distrust_4_note_2" text="" y="675" textColor="0x000000" size="50" textAlign="right" touchEnabled="false" width="500" horizontalCenter="215"/>
+		<e:Button id="distrust_5_btn" label="" y="1645.15" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+	</e:Group>
+</e:Skin>

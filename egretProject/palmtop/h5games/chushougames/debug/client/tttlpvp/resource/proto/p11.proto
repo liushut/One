@@ -1,0 +1,265 @@
+message playerInfo{
+    required int64 playerId = 1;            // 玩家Id
+    required string openId = 2;             // 平台账号
+    required string nickname = 3;           // 昵称
+    required string avatarUrl = 4;          // 头像url
+	required string gender = 5;				// 性别
+    optional int32 isRobot = 6;           // 是否机器人：1是机器人，0不是机器人
+    optional int32 battleTimes = 7;       // 战斗次数
+}
+
+// 玩家当局战斗信息，前端用于还原当前状态，gameInfo每个游戏不同
+message gamePlayerInfo{
+    required int64 playerId = 1;
+    required int32 score = 2;
+    required bytes gameInfo = 3;            // 内容为游戏结算点结果数据包字段
+}
+
+// 客户端准备开始游戏
+message cs_11002{
+}
+
+message sc_11002{
+    required int32 result = 1;              // 准备游戏结果：0成功，1失败，2游戏已经结束
+}
+
+// 服务端通知开始游戏倒计时
+message sc_11003{
+    required int32 readyTime = 1;           // 开始游戏倒计时（秒）
+    repeated playerInfo playerInfos = 2;    // 所有玩家信息
+    repeated int32 seeds = 3;               // 随机种子
+}
+
+// 心跳包，30秒一次
+message cs_11004{
+}
+
+// 获取当前开局状态
+message cs_11005{
+}
+
+message sc_11005{
+    required int32 gameState = 1;           // 当前开局状态：0游戏未开始，1游戏已经开始（如跟前端状态不一致，需要发送11006重新获取游戏数据），2游戏已经结束
+}
+
+// 获取游戏数据
+message cs_11006{
+}
+
+message sc_11006{
+    repeated gamePlayerInfo infos = 1;
+}
+
+// 再来一局，若双方均已发送来一局，会推送11003到客户端
+message cs_11007{
+
+}
+message sc_11007{
+    required int32 result = 1;              // 0成功，1失败，2房间已关闭，3已经再来一局
+}
+
+
+// 查询玩家最高分
+message cs_11008{
+}
+message sc_11008{
+    required int32 topScore = 1;           // 历史最高分
+    required int32 weekScore = 2;          // 本周最高分
+}
+
+message sc_11009{
+    required int32 playerId = 1;            // 后端推送玩家请求再来一局
+}
+
+// 客户端同步游戏过程包
+message cs_11010{
+    required bytes processData = 1;
+}
+
+message sc_11010{
+    required int64 playerId = 1;            // 玩家id
+    required bytes processData = 2;         // 游戏过程数据包
+}
+
+// 客户端同步游戏结算点数据包(后端校验包)
+message cs_11011{
+    required int32 score = 1;
+    required bytes resultData = 2;
+}
+
+message sc_11011{
+    required int64 playerId = 1;            // 玩家id
+    required int32 score = 2;               // 分数
+    required bytes resultData = 3;          // 游戏结果数据包
+}
+
+// 游戏结果通知
+message cs_11012{
+    required int64 winPlayerId = 1;         // 胜利的玩家Id，0表示平局
+}
+
+message sc_11012{
+    required int32 result = 1;              // 结果通知返回：0成功，1失败
+    required int64 winPlayerId = 2;         // 胜利玩家Id
+    optional int32 friendRank = 3;          // 好友排行
+    optional int32 rank = 4;                // 总排行
+    optional int32 reason = 5;              // 游戏结束原因：0正常，1玩家退出
+}
+
+// 更新好友列表
+message cs_11014{
+    repeated string openId = 1;             // 好友列表
+}
+
+
+// 获取服务器时间
+message cs_11015{
+}
+
+message sc_11015{
+    required int32 time = 1;                // 秒
+    required int64 millisecond = 2;         // 毫秒
+}
+
+
+
+
+// ========================== 天天投篮所用协议
+message shootPlayerInfo{
+    required int64 playerId = 1;            // 玩家Id
+    required int32 score = 2;               // 玩家分数
+}
+
+// 投篮出手信息
+message cs_11101{
+    required int32 round = 1;               // 回合数
+    required bytes shootData = 2;           // 出手数据
+}
+
+message sc_11101{
+    required int32 result = 1;              // 操作结果：0成功，1失败，2回合数错误
+    required int32 round = 2;               // 回合数（如果返回回合数错误，可用这个值校准回合数）
+    optional int64 playerId = 3;            // 出手玩家Id
+    optional bytes shootData = 4;           // 出手数据
+}
+
+// 投篮命中信息
+message cs_11102{
+    required int32 round = 1;               // 回合数
+    required int32 addScore = 2;            // 投篮命中增加的分数
+    optional bytes data = 3;                // 前端透传数据
+}
+
+message sc_11102{
+    required int32 result = 1;              // 操作结果：0成功，1失败，2回合数错误
+    required int32 round = 2;               // 回合数（如果返回回合数错误，可用这个值校准回合数）
+    repeated shootPlayerInfo scoreInfos = 3;// 玩家信息
+    optional bytes data = 4;                // 前端透传数据 
+}
+
+
+
+// ========================== 天天投篮个人比赛模式协议
+// 投篮进入特定关卡玩法
+message cs_11110{
+    required int32 modeId = 1;              // 进入的关卡id
+}
+
+message sc_11110{
+    required int32 result = 1;              // 0成功，1失败，2关卡不存在，3活动未开启
+    optional int32 modeId = 2;              // 成功时返回关卡id（以这个返回的关卡id为准）
+    optional int32 timeLimit = 3;           // 游戏时间（单位秒）：0不限制游戏时间
+    optional int32 scoreLimit = 4;          // 通关所需分数：0不限制
+    optional int32 shootLimit = 5;          // 通关需要进球数：0不限制
+    optional int32 cleanShootLimit = 6;     // 通关需要的3分球数，0不限制
+    optional int32 lifeLimit = 7;           // 生命限制，0不限制
+    optional string modeDesc = 8;           // 关卡描述
+}
+
+// 投篮关卡玩法开始
+message cs_11111{
+}
+
+message sc_11111{
+    required int32 result = 1;              // 0成功，1失败
+    required int64 millisecond = 2;         // 游戏开始时间戳（毫秒）
+    repeated int32 seeds = 3;               // 随机种子
+}
+
+// 投篮出手信息
+message cs_11112{
+    required int64 millisecond = 1;         // 出手时间戳
+    required int32 shootIndex = 2;          // 第几次出手
+    required bytes shootData = 3;           // 出手数据
+    required int32 round = 4;               // 当前回合数
+}
+
+message sc_11112{
+    required int32 result = 1;              // 0成功，1失败，2出手次数错误
+    required int32 shootIndex = 2;          // 第几次出手
+    required bytes shootData = 3;           // 出手数据
+    required int32 round = 4;               // 当前回合数
+}
+
+// 投篮出手结果信息
+message cs_11113{
+    required int32 shootIndex = 1;          // 第几次出手
+    required int32 isHit = 2;               // 是否命中：0不命中，1命中，2命中三分球
+    required int32 addScore = 3;            // 增加的分数
+    required int32 round = 4;               // 当前回合数
+    required int64 millisecond = 5;         // 得分、投失时间戳
+}
+
+message sc_11113{
+    required int32 result = 1;              // 0成功，1失败
+    required int32 shootIndex = 2;          // 第几次出手
+    required int32 score = 3;               // 最新分数
+    required int32 round = 4;               // 当前回合数
+    required int32 addScore = 5;            // 增加的分数
+    required int32 isHit = 6;               // 是否命中：0不命中，1命中，2命中三分球
+    required int64 millisecond = 7;         // 得分、投失时间戳
+}
+
+// 刷新篮筐位置和投球环境信息
+message cs_11114{
+	required int64 millisecond = 1;         // 篮筐移动时间戳（毫秒）
+	required int32 round = 2;               // 篮筐刷新次数，也是回合数，从1开始计数
+	required bytes basketData = 3;          // 篮筐位置及风力、移动等相关情况
+}
+
+message sc_11114{
+	required int32 result = 1;              // 0成功，1失败
+	required int32 round = 2;               // 篮筐刷新次数，也是回合数，从1开始计数
+}
+
+// 游戏通关结果
+message sc_11115{
+    required int32 modeId = 1;              // 关卡Id
+    required int32 result = 2;              // 0通关成功，1通关失败
+}
+
+message shootRecordData{
+    required int32 shootIndex = 1;
+    required int64 millisecond = 2;
+    required bytes shootData = 3;
+    required int32 shootResult = 4;
+}
+
+message roundRecordData{
+    required int32 round = 1;
+    repeated int64 millisecond = 2;
+    required bytes basketData = 3;
+    repeated shootRecordData shootDatas = 4;
+}
+
+// 获取回放记录信息
+message cs_11120{
+    required string gameRecordId = 1;       // 回放记录Id
+}
+
+message sc_11120{
+    required int32 result = 1;
+    required string gameRecordId = 2;
+    repeated roundRecordData roundDatas = 3;
+}
+

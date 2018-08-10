@@ -1,0 +1,426 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "AIMoveFastDownId",
+			"memberof": "Tetris",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "Array<number>",
+			"name": "AIMoveIdArray",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "[]"
+		},
+		{
+			"kind": "member",
+			"type": "Array<number>",
+			"name": "AIRotateIdArray",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "[]"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "battleTimes",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Group",
+			"name": "doubleNextTetrisGroup",
+			"memberof": "Tetris",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"name": "hasTouchDown",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "false"
+		},
+		{
+			"kind": "member",
+			"name": "intervalId",
+			"memberof": "Tetris",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "boolean",
+			"name": "isOver",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "false"
+		},
+		{
+			"kind": "member",
+			"type": "boolean",
+			"name": "isPlay",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "true"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Group",
+			"name": "nextTetrisGroup",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "//控件"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "seed",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "0"
+		},
+		{
+			"kind": "member",
+			"name": "time",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"default": "0"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Tetris",
+			"memberof": "Tetris",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "AIDoSomething",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "AI对当前状况做出相应操作"
+		},
+		{
+			"kind": "function",
+			"name": "addObsBlock",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "增加障碍物方块行",
+			"params": [
+				{
+					"name": "upRow",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "boolean",
+			"name": "checkDataSame",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "检查双方数据是否一致",
+			"params": [
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "childrenCreated",
+			"memberof": "Tetris",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "createRandomTetris",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "随机创建一个俄罗斯方块"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "createTetris",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "创建一个俄罗斯方块",
+			"params": [
+				{
+					"name": "tetrisType",
+					"type": "number",
+					"description": "俄罗斯方块类型 (0,1,2,3..) 为tetrisInfo的下标"
+				},
+				{
+					"name": "state",
+					"type": "number",
+					"description": "第n种旋转状态 (0,1..)"
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "destroy",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "//摧毁"
+		},
+		{
+			"kind": "function",
+			"type": "any",
+			"name": "getCurData",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "得到当前数据"
+		},
+		{
+			"kind": "function",
+			"name": "getRandomNum",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "创建随机的数"
+		},
+		{
+			"kind": "function",
+			"type": "any",
+			"name": "getRandomTetrisInfo",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "随机得到一个俄罗斯方块信息 返回结构 {tetrisType, state}"
+		},
+		{
+			"kind": "function",
+			"type": "Array<Array<number>>",
+			"name": "getTetrisInfo",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "得到一个俄罗斯方块信息",
+			"params": [
+				{
+					"name": "tetrisType",
+					"type": "number",
+					"description": "俄罗斯方块类型 (0,1,2,3..) 为tetrisInfo的下标"
+				},
+				{
+					"name": "state",
+					"type": "number",
+					"description": "第n种旋转状态 (0,1..)"
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "moveDown",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "向下移动一格",
+			"params": [
+				{
+					"name": "playMusic",
+					"type": "boolean",
+					"default": "true",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "moveEndEvent",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "方块不能向下移动后的事件"
+		},
+		{
+			"kind": "function",
+			"name": "moveFastDown",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "快速下落到影子区域"
+		},
+		{
+			"kind": "function",
+			"name": "moveLeft",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "向左移动一格"
+		},
+		{
+			"kind": "function",
+			"name": "moveRight",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "向右移动一格"
+		},
+		{
+			"kind": "function",
+			"type": "boolean",
+			"name": "moveTetris",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "向某一个方向移动",
+			"params": [
+				{
+					"name": "dir",
+					"type": "Dir",
+					"description": ""
+				},
+				{
+					"name": "playMusic",
+					"type": "boolean",
+					"default": "true",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onInterval",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "每帧执行"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "partAdded",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "partName",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "instance",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "pushCmd",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "//向缓冲池添加命令",
+			"params": [
+				{
+					"name": "cmd",
+					"type": "TetrisCmd",
+					"description": ""
+				},
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "rePlay",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "游戏重新开始"
+		},
+		{
+			"kind": "function",
+			"name": "rotateOnce",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "旋转一次方块"
+		},
+		{
+			"kind": "function",
+			"name": "setAI",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "设置是否为电脑AI",
+			"params": [
+				{
+					"name": "isAI",
+					"type": "boolean",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "setAILevel",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "设置AI的等级 [1, 3] 最低1级 最高3级",
+			"params": [
+				{
+					"name": "level",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "setDatas",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "强制刷新当前数据",
+			"params": [
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "setReceiver",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "设置是否为纯信息接收者 (只展现画面)",
+			"params": [
+				{
+					"name": "isReceiver",
+					"type": "boolean",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "setTetrisShadow",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "设置阴影"
+		},
+		{
+			"kind": "function",
+			"name": "startPlay",
+			"memberof": "Tetris",
+			"scope": "instance",
+			"description": "开始游戏"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Tetris",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\Tetris.ts",
+		"augments": [],
+		"implements": []
+	}
+}

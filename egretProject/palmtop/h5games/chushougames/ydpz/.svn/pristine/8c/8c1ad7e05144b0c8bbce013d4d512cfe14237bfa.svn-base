@@ -1,0 +1,372 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var GameView = (function (_super) {
+    __extends(GameView, _super);
+    function GameView() {
+        var _this = _super.call(this) || this;
+        _this.qsY = 1400; //绿色小球（射击小球）的初始y值
+        _this.guanshu = 1; //关数
+        _this.time = 0;
+        _this.countDownLabel = new eui.Label();
+        _this.skinName = "GameViewSkin";
+        return _this;
+    }
+    GameView.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    GameView.prototype.childrenCreated = function () {
+        _super.prototype.childrenCreated.call(this);
+        ZJ.UIManager.instance.destroyView(UIName.Loading);
+        this.setConfigure();
+        this.scoreUI();
+        if (ModuleConfig.compile.danji) {
+            this.nextG();
+            this.countToDown();
+        }
+        else {
+            this.initCDM();
+        }
+    };
+    GameView.prototype.initCDM = function () {
+        var _this = this;
+        var model = MyCDM.instance;
+        model.OnData11003 = function (data) {
+            // 游戏开始逻辑
+            _this.countToDown(); //倒计时显示321图片
+            _this.nextG();
+            _this.nickName.text = data.playerInfos[0].nickname;
+            _this.addChild(_this.nickName);
+        };
+        // model.OnData11007 = (data: any) => {//在来一局
+        // 	//this.nextG();
+        // if(data.result == 0)
+        // {
+        // 	//this.nextG();//显示匹配成功
+        // }
+        // else if(data.result == 1)
+        // {
+        // 	//告知玩家匹配失败，显示Log
+        // }
+        // else if(data.result == 3)
+        // {
+        // 	//已经再来一局
+        // }
+        // }
+        // model.OnData11012 = (data: any) => {//游戏结果通知
+        // 	data.friendRank
+        // }
+        //ZJ.UIManager.instance.openView
+    };
+    GameView.prototype.countToDown = function () {
+        this.countDownLabel.x = this.stage.stageWidth / 2;
+        this.countDownLabel.y = this.stage.stageHeight / 2;
+        this.countDownLabel.size = 180;
+        this.timer = new egret.Timer(1000, 4);
+        this.timer.addEventListener(egret.TimerEvent.TIMER, this.changeSource, this);
+        this.timer.start();
+    };
+    GameView.prototype.changeSource = function () {
+        this.addChild(this.countDownLabel);
+        this.bgAll.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+        if (GameView.i == 3) {
+            this.countDownLabel.text = "3";
+        }
+        else if (GameView.i == 2) {
+            this.countDownLabel.text = "2";
+        }
+        else if (GameView.i == 1) {
+            this.countDownLabel.text = "1";
+        }
+        else if (GameView.i == 0) {
+            this.countDownLabel.text = "开始";
+            this.removeChild(this.countDownLabel);
+            this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+        }
+        GameView.i--;
+    };
+    GameView.prototype.restart = function () {
+        //MyCDM.instance.PlayAgain11007()//重新玩
+        // MyCDM.instance.GetHighestScore11008()
+        // MyCDM.instance.SendScoredData11011({
+        // 	score: 111,
+        // 	resultData: {}
+        // })
+    };
+    //创建绿色发射球
+    GameView.prototype.createQiuS = function () {
+        var _this = this;
+        this.qiuS = new QiuS();
+        this.qiuS.anchorOffsetX = this.qiuS.width / 2;
+        this.qiuS.anchorOffsetY = this.qiuS.height / 2;
+        this.qiuS.x = this.bgAll.width / 2;
+        this.qiuS.y = this.qsY;
+        this.bgAll.addChild(this.qiuS);
+        egret.Tween.get(this.qiuS).to({ y: this.bgAll.height - this.qiuS.height / 2 }, (this.bgAll.height - this.qiuS.height / 2 - this.qiuS.y) * this.countDown).call(function () {
+            egret.Tween.removeAllTweens();
+            _this.bgAll.removeChildren();
+            _this.crashAfter(_this.qiuS.x, _this.qiuS.y);
+        }, this);
+        this.runBg();
+    };
+    GameView.prototype.scoreUI = function () {
+        this.score = 0;
+        this.scoreLabel = new eui.Label();
+        this.scoreLabel.width = 600; //设置宽度
+        this.scoreLabel.height = 300; //设置高度
+        this.scoreLabel.fontFamily = "Tahoma"; //设置字体
+        this.scoreLabel.textColor = 0xFF0000; //设置颜色
+        this.scoreLabel.size = 120; //设置文本字号
+        this.scoreLabel.textAlign = "center"; //设置水平对齐方式
+        this.scoreLabel.verticalAlign = "middle"; //设置垂直对齐方式
+        this.scoreLabel.x = egret.MainContext.instance.stage.stageWidth / 2 - 600;
+        this.addChild(this.scoreLabel);
+        this.healthLaber = new eui.Label();
+        this.health = 3;
+        this.healthLaber.width = 400; //设置宽度
+        this.healthLaber.height = 300; //设置高度
+        this.healthLaber.textColor = 0x00f0ff; //设置颜色
+        this.healthLaber.size = 120; //设置文本字号
+        this.healthLaber.x = egret.MainContext.instance.stage.stageWidth / 2 + 300;
+        this.healthLaber.verticalAlign = "middle"; //设置垂直对齐方式
+        this.healthLaber.text = "生命:" + this.health.toString();
+        this.scoreLabel.text = "得分:" + this.score.toString();
+        this.addChild(this.healthLaber);
+    };
+    //创建黄色球
+    GameView.prototype.createQiuB = function () {
+        var _this = this;
+        this.qiuB = new QiuB();
+        this.qiuB.anchorOffsetX = this.qiuB.width / 2;
+        this.qiuB.anchorOffsetY = this.qiuB.height / 2;
+        this.bgAll.addChild(this.qiuB);
+        var sj;
+        if (Math.ceil(Math.random() * 100) < 50) {
+            sj = Math.ceil(Math.random() * 250) + 150;
+        }
+        else {
+            sj = this.bgAll.width - (Math.ceil(Math.random() * 250) + 150);
+        }
+        this.qbY = (Math.random() * (this.disMax - this.disMin));
+        this.qbY = this.qbY + this.qsY - this.disMax;
+        this.speed = Math.random() + 1;
+        this.qbTime = (Math.random() * (this.timeMax - this.timeMin));
+        this.qbTime = this.qbTime + this.timeMin;
+        if (this.guanshu > 1) {
+            this.qiuB.x = sj;
+            this.qiuB.y = -this.qiuB.height;
+            var b = Math.sqrt(Math.pow(sj - this.qiuB.width / 2, 2) + Math.pow(this.qbY + this.qiuB.height, 2));
+            if (sj >= this.bgAll.width / 2) {
+                this.qbRun(this.speed);
+            }
+            else {
+                this.qbRunF(this.speed);
+            }
+            //this. qbRunYuan();
+            egret.Tween.get(this.qiuB).to({ y: this.qbY }, this.dlS, egret.Ease.quartOut).call(function () {
+                egret.Tween.get(_this.qiuB).to({ y: _this.bgAll.height - _this.qiuB.height / 2 }, (_this.bgAll.height - _this.qiuB.height / 2 - _this.qiuB.y) * _this.countDown).call(function () {
+                    _this.crashAfter(_this.qiuB.x, _this.qiuB.y);
+                }, _this);
+            }, this);
+        }
+        else if (this.guanshu == 1) {
+            this.qiuB.x = this.qiuB.width / 2;
+            this.qiuB.y = this.qbY;
+            this.qbRunF(this.speed);
+            //this.qbRunYuan();
+            egret.Tween.get(this.qiuB).to({ y: this.bgAll.height - this.qiuB.height / 2 }, (this.bgAll.height - this.qiuB.height / 2 - this.qiuB.y) * this.countDown).call(function () {
+                _this.crashAfter(_this.qiuB.x, _this.qiuB.y);
+            }, this);
+        }
+    };
+    GameView.prototype.runOnChange = function () {
+        this.X = this.qiuB.x;
+        this.Y = this.qiuB.y;
+    };
+    //设置黄色球运动速度的曲线
+    GameView.prototype.setPath = function (t) {
+        return egret.Ease.getPowInOut(t);
+    };
+    //黄色球水平运动（左-右）
+    GameView.prototype.qbRun = function (speed) {
+        egret.Tween.get(this.qiuB, { onChange: this.runOnChange, onChangeObj: this }).to({ x: this.qiuB.width / 2 }, (this.qiuB.x - this.qiuB.width / 2) / (this.bgAll.width - this.qiuB.width) * this.qbTime, this.setPath(speed)).call(function () {
+            egret.Tween.get(this.qiuB, { onChange: this.runOnChange, onChangeObj: this }).to({ x: this.bgAll.width - this.qiuB.width / 2 }, this.qbTime, this.setPath(speed)).call(function () {
+                this.qiuB.x = this.bgAll.width - this.qiuB.width / 2;
+                this.qbRun(this.speed);
+            }, this);
+        }, this);
+    };
+    //黄色球水平运动（右-左）
+    GameView.prototype.qbRunF = function (speed) {
+        egret.Tween.get(this.qiuB, { onChange: this.runOnChange, onChangeObj: this }).to({ x: this.bgAll.width - this.qiuB.width / 2 }, (this.bgAll.width - this.qiuB.width / 2 - this.qiuB.x) / (this.bgAll.width - this.qiuB.width) * this.qbTime, this.setPath(speed)).call(function () {
+            egret.Tween.get(this.qiuB, { onChange: this.runOnChange, onChangeObj: this }).to({ x: this.qiuB.width / 2 }, this.qbTime, this.setPath(speed)).call(function () {
+                this.qiuB.x = this.qiuB.width / 2;
+                this.qbRunF(this.speed);
+            }, this);
+        }, this);
+    };
+    GameView.prototype.yuanOnChange = function () {
+        var radian = Math.abs(this.qiuB.rotation * Math.PI / 180);
+        var cos = Math.abs((Math.cos(radian) * this.R));
+        var sin = Math.abs(Math.sin(radian) * this.R);
+        if (this.qiuB.rotation <= 90 && this.qiuB.rotation > 0) {
+            this.X = this.bgAll.width / 2 - cos;
+            this.Y = this.qiuB.y - sin;
+        }
+        else if (this.qiuB.rotation > 90 && this.qiuB.rotation <= 180) {
+            this.X = this.bgAll.width / 2 + cos;
+            this.Y = this.qiuB.y - sin;
+        }
+        else if (this.qiuB.rotation > -180 && this.qiuB.rotation <= -90) {
+            this.X = this.bgAll.width / 2 + cos;
+            this.Y = this.qiuB.y + sin;
+        }
+        else if (this.qiuB.rotation > -90 && this.qiuB.rotation <= 0) {
+            this.X = this.bgAll.width / 2 - cos;
+            this.Y = this.qiuB.y + sin;
+        }
+    };
+    //黄球圆周运动
+    GameView.prototype.qbRunYuan = function () {
+        this.R = this.bgAll.width / 2 - this.qiuB.x;
+        if (this.qiuB.x <= this.bgAll.width / 2) {
+            this.qiuB.anchorOffsetX = (this.bgAll.width / 2 - this.qiuB.x) + this.qiuB.width / 2;
+            this.qiuB.x = this.qiuB.x + (this.bgAll.width / 2 - this.qiuB.x) + this.qiuB.width / 2;
+        }
+        else {
+            this.qiuB.anchorOffsetX = (this.bgAll.width / 2 - this.qiuB.x) - this.qiuB.width / 2;
+            this.qiuB.x = this.qiuB.x + (this.bgAll.width / 2 - this.qiuB.x) - this.qiuB.width / 2;
+        }
+        egret.Tween.get(this.qiuB, { loop: true, onChange: this.yuanOnChange, onChangeObj: this }).to({ rotation: this.rotation + 360 }, 2000);
+    };
+    //点击屏幕后
+    GameView.prototype.setClick = function () {
+        var _this = this;
+        this.bgAll.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this); //等到碰到球或者边在加这事件，避免多次点击。
+        egret.Tween.removeTweens(this.qiuS);
+        egret.Tween.get(this.qiuS, { onChange: this.crash, onChangeObj: this }).to({ y: -this.qiuS.width }, (this.qiuS.y - this.qiuS.width / 2) / 2.5, egret.Ease.quadOut).call(function () {
+            _this.crashAfter(_this.qiuS.x, _this.qiuS.y);
+        }, this);
+    };
+    //碰撞到上下边后
+    GameView.prototype.crashAfter = function (aX, aY) {
+        this.bgAll.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+        egret.Tween.removeAllTweens();
+        this.bgAll.removeChildren();
+        this.guanshu = 1;
+        this.setConfigure();
+        var a = ZJ.ResManager.instance.loadDragonBones("ls");
+        a.x = aX;
+        a.y = aY;
+        this.bgAll.addChild(a);
+        a.animation.play("", 1);
+        this.health--;
+        this.healthLaber.text = "生命:" + this.health.toString();
+        //同步生命值
+        MyCDM.instance.SendScoredData11011({ score: this.health,
+            resultData: {} });
+        if (this.health == 0) {
+            MyCDM.instance.SendGameResult11012({
+                winPlayerId: 1
+            });
+            ZJ.UIManager.instance.openView(UIName.Settle);
+        }
+        this.nextG();
+    };
+    //两球碰撞
+    GameView.prototype.crash = function () {
+        var _this = this;
+        var a = this.qiuB.width / 2 + this.qiuS.width / 2;
+        var distance = Math.sqrt(Math.pow(this.qiuS.y - this.Y, 2) + Math.pow(this.qiuS.x - this.X, 2));
+        if (distance <= a) {
+            egret.Tween.removeAllTweens();
+            this.bgAll.removeChild(this.qiuB);
+            this.guanshu++;
+            this.score++;
+            this.scoreLabel.text = "得分:" + this.score.toString();
+            console.log(this.score);
+            //同步数据
+            MyCDM.instance.SendProcessData11010({ processData: this.score });
+            this.setConfigure();
+            var hs = ZJ.ResManager.instance.loadDragonBones("hs");
+            hs.x = this.X;
+            hs.y = this.Y;
+            this.bgAll.addChild(hs);
+            hs.animation.play("", 1);
+            egret.Tween.removeTweens(this.bg1);
+            egret.Tween.removeTweens(this.bg2);
+            egret.Tween.removeTweens(this.bg3);
+            if (this.bg3.y >= this.bg3.height) {
+                this.bg3.y = this.bg2.y;
+                this.bg2.y = this.bg3.y - this.bg3.height;
+                this.bg1.y = this.bg3.y - this.bg3.height - this.bg3.height;
+            }
+            this.dlS = (this.qsY - this.qiuS.y) / 1.8;
+            egret.Tween.get(this.bg1).to({ y: this.bg1.y + this.dlS }, this.dlS, egret.Ease.quartOut).call(function () {
+                _this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, _this.setClick, _this);
+                _this.runBg();
+            });
+            egret.Tween.get(this.bg2).to({ y: this.bg2.y + this.dlS }, this.dlS, egret.Ease.quartOut);
+            egret.Tween.get(this.bg3).to({ y: this.bg3.y + this.dlS }, this.dlS, egret.Ease.quartOut);
+            egret.Tween.get(hs).to({ y: hs.y + this.dlS }, this.dlS, egret.Ease.quartOut);
+            egret.Tween.get(this.qiuS).to({ y: this.qsY }, this.dlS, egret.Ease.quartOut).call(function () {
+                egret.Tween.get(_this.qiuS).to({ y: _this.bgAll.height - _this.qiuS.height / 2 }, (_this.bgAll.height - _this.qiuS.height / 2 - _this.qiuS.y) * _this.countDown).call(function () {
+                    egret.Tween.removeAllTweens();
+                    _this.bgAll.removeChildren();
+                    _this.nextG(); //进入下一关
+                });
+            }, this);
+            this.createQiuB();
+        }
+    };
+    //背景运动
+    GameView.prototype.runBg = function () {
+        egret.Tween.removeTweens(this.bg1);
+        egret.Tween.removeTweens(this.bg2);
+        egret.Tween.removeTweens(this.bg3);
+        egret.Tween.get(this.bg1).to({ y: this.bg1.y + this.bg1.height }, this.bg1.height * this.countDown);
+        egret.Tween.get(this.bg2).to({ y: this.bg2.y + this.bg2.height }, this.bg2.height * this.countDown);
+        egret.Tween.get(this.bg3).to({ y: this.bg3.y + this.bg3.height }, this.bg3.height * this.countDown);
+    };
+    //下一关
+    GameView.prototype.nextG = function () {
+        this.dlS = this.qbY * 0.7;
+        this.createQiuS();
+        this.createQiuB();
+        this.bgAll.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.setClick, this);
+    };
+    //设置配置表   作用？
+    GameView.prototype.setConfigure = function () {
+        var pat = /\d+/g;
+        var id = ZJ.TableManager.instance.tables[xlsx.cfg_c_yuandian]["id"][xlsx.c_yuandian_data].match(pat);
+        var distance = ZJ.TableManager.instance.tables[xlsx.cfg_c_yuandian]["distance"][xlsx.c_yuandian_data].match(pat);
+        var time = ZJ.TableManager.instance.tables[xlsx.cfg_c_yuandian]["time"][xlsx.c_yuandian_data].match(pat);
+        var count_down = ZJ.TableManager.instance.tables[xlsx.cfg_c_yuandian]["count_down"][xlsx.c_yuandian_data].match(pat);
+        for (var i = 0; i < id.length; i++) {
+            if (this.guanshu >= id[i]) {
+                if (this.guanshu >= id[i + 1]) {
+                    continue;
+                }
+                else {
+                    this.disMax = parseInt(distance[i * 2 + 1]);
+                    this.disMin = parseInt(distance[i * 2]);
+                    this.timeMax = parseInt(time[i * 2 + 1]);
+                    this.timeMin = parseInt(time[i * 2]);
+                    this.countDown = parseInt(count_down[i]);
+                }
+            }
+        }
+    };
+    //倒计时显示图片
+    GameView.i = 3;
+    return GameView;
+}(ZJ.ViewBase));
+__reflect(GameView.prototype, "GameView");
+//# sourceMappingURL=GameView.js.map

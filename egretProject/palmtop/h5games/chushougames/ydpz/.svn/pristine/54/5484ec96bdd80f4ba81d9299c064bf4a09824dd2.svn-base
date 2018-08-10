@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameViewSkin" height="1920"  width="1080" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<!--<w:Config id="160b645fa6f" ></w:Config>-->
+	<!--<e:Group horizontalCenter="0" verticalCenter="0">-->
+	<e:Image id="bg1" source="bg2_png" height="1920"  width="1150" y="960" scaleX="1" x="0" anchorOffsetX="0" anchorOffsetY="0"/>
+	<e:Image id="bg2" source="bg2_png" height="1920"  width="1150" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0" y="-960" x="0"/>
+	<e:Group id="bgAll" height="1680" width="1080"  anchorOffsetY="0" anchorOffsetX="0" scaleX="1" y="90" x="0">
+		<e:Label id="nickNameID" text="用户名称：" x="582" y="103.67" anchorOffsetX="-25" width="326" anchorOffsetY="-8.33" height="114" size="50" verticalAlign="middle"/>
+		<e:Label id="nickName" text="小燕子" x="806" y="120" anchorOffsetX="0" width="254" anchorOffsetY="0" height="106" size="50" verticalAlign="middle" textAlign="center"/>
+		<e:Label id="healthLabel" text="3" x="0" y="120" anchorOffsetX="0" width="250" anchorOffsetY="0" height="106" size="70" verticalAlign="middle" fontFamily="Georgia" textColor="0xb21c49"/>
+		<e:Label id="scoreLabel" text="0" x="366" y="358" anchorOffsetX="0" width="314" anchorOffsetY="0" height="118" size="100" verticalAlign="middle" textAlign="center" fontFamily="Lucida Family"/>
+		<e:Image id="shangjuchi" width="1078" height="110" x="1080" y="0" anchorOffsetX="0" anchorOffsetY="0" source="jichi_png" rotation="180"/>
+		<e:Image id="xiajuchi" width="1078" height="110" x="0" y="1740" anchorOffsetX="0" anchorOffsetY="0" source="jichi_png"/>
+	</e:Group>
+	<!--</e:Group>-->
+</e:Skin>

@@ -1,0 +1,20 @@
+{
+    [
+        './src/proto/*'
+    ],
+    [
+		{i, "./deps/gpb/include"},
+		{i, "./include/proto"},
+        {outdir, "./ebin"}
+    ]
+}.
+{
+    [
+        './src/*',
+        './src/*/*'
+    ],
+    [
+		{i, "./include"},
+        {outdir, "./ebin"}
+    ]
+}.

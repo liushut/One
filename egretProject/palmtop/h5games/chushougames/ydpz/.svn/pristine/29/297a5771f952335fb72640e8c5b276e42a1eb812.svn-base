@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1080" height="1920" xmlns:e="http://ns.egret.com/eui">
+	<e:Panel anchorOffsetX="0" anchorOffsetY="0" skinName="TestViewSkin" height="1891.97" x="0" y="28.03">
+		<e:Image width="1080" height="1920" x="0" y="-28.03" anchorOffsetX="0" anchorOffsetY="0" source="bg2_png"/>
+	</e:Panel>
+</e:Skin>

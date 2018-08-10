@@ -1,0 +1,55 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "DOWN",
+			"memberof": "ZJ.CommonConfig",
+			"scope": "static",
+			"default": "1"
+		},
+		{
+			"kind": "member",
+			"name": "FRAME",
+			"memberof": "ZJ.CommonConfig",
+			"scope": "static",
+			"default": "30"
+		},
+		{
+			"kind": "member",
+			"name": "LEFT",
+			"memberof": "ZJ.CommonConfig",
+			"scope": "static",
+			"default": "2"
+		},
+		{
+			"kind": "member",
+			"name": "RIGHT",
+			"memberof": "ZJ.CommonConfig",
+			"scope": "static",
+			"default": "3"
+		},
+		{
+			"kind": "member",
+			"name": "UP",
+			"memberof": "ZJ.CommonConfig",
+			"scope": "static",
+			"default": "0"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "CommonConfig",
+			"memberof": "ZJ.CommonConfig",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "CommonConfig",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\CommonConfig.ts"
+	}
+}

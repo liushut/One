@@ -1,0 +1,11 @@
+class QiuS extends eui.Component implements eui.UIComponent {
+	public constructor() {
+		super();
+		this.skinName = "QiuSSkin";
+	}
+	public qiuS:eui.Image;
+	protected childrenCreated(){
+		// this.qiuS.anchorOffsetX=this.qiuS.width/2;
+		// this.qiuS.anchorOffsetY=this.qiuS.height/2;
+	}
+}

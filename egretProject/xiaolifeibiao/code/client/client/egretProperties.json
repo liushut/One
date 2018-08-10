@@ -1,0 +1,51 @@
+{
+	"engineVersion": "5.1.7",
+	"compilerVersion": "5.1.7",
+	"target": {
+		"current": "web"
+	},
+	"template": {},
+	"eui": {
+		"exmlRoot": [
+			"resource/eui_skins"
+		],
+		"themes": [
+			"resource/default.thm.json"
+		],
+		"exmlPublishPolicy": "commonjs"
+	},
+	"modules": [
+		{
+			"name": "egret"
+		},
+		{
+			"name": "eui"
+		},
+		{
+			"name": "assetsmanager"
+		},
+		{
+			"name": "tween"
+		},
+		{
+			"name": "game"
+		},
+		{
+			"name": "socket"
+		},
+		{
+			"name": "promise"
+		},
+		{
+			"name": "dragonBones"
+		},
+		{
+			"name": "jszip",
+			"path": "./libs/jszip"
+		},
+		{
+			"name": "protobuf",
+			"path": "./libs/protobuf"
+		}
+	]
+}

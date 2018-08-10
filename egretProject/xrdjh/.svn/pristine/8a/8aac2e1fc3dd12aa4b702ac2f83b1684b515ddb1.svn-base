@@ -1,0 +1,152 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var SettleView = (function (_super) {
+    __extends(SettleView, _super);
+    function SettleView() {
+        var _this = _super.call(this) || this;
+        _this.SHOW_TIME = 3000;
+        _this.RESTART_NONE = 0;
+        _this.RESTART_SEND = 1;
+        _this.RESTART_RECEIVE = 2;
+        _this.RESTART_EXIT = 3;
+        _this.RESTART_SUCCESS = 4;
+        _this.toPlatform = "";
+        _this.timeoutid = 0;
+        _this.restartState = _this.RESTART_NONE;
+        _this.skinName = "SettleView2Skin";
+        return _this;
+    }
+    SettleView.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    SettleView.prototype.childrenCreated = function () {
+        _super.prototype.childrenCreated.call(this);
+        this.yuezhan.visible = false;
+        var black = ZJ.ShapeUtil.getRect(0x000000, 0.8, this.stage.stageWidth, this.stage.stageHeight);
+        this.gBg.addChild(black);
+        egret.Tween.get(this.bg, { loop: true }).to({ rotation: 360 }, 7000);
+        // this.big.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBigClick, this);
+        this.restart.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBigClick, this);
+        this.restart.icon = "dbz1_png";
+    };
+    SettleView.prototype.onBigClick = function () {
+        if (ModuleConfig.compile.chushou) {
+            clearTimeout(this.timeoutid);
+            ZJ.SocketManager.instance.send(11007);
+            this.updateRestart(this.RESTART_SEND);
+        }
+        else {
+            this.onTimeout();
+        }
+    };
+    SettleView.prototype.onTimeout = function () {
+        if (ModuleConfig.compile.danji) {
+            ZJ.EventManager.instance.dispatchEvent(new egret.Event(EventName.GAME_RESTART));
+            ZJ.UIManager.instance.destroyView(UIName.Settle);
+        }
+        else {
+            // test
+            // let e = new egret.Event(EventName.Test);
+            // e.data = { log: this.toPlatform };
+            // ZJ.EventManager.instance.dispatchEvent(e);
+            // ZJ.UIManager.instance.destroyView(UIName.Settle)
+            if (ModuleConfig.compile.yy) {
+                sendResult(this.toPlatform);
+            }
+            else if (ModuleConfig.compile.chushou) {
+                // ZJ.EventManager.instance.dispatchEvent(new egret.Event(EventName.GAME_EXIT));
+            }
+        }
+    };
+    /**
+     * @param data {win,score1,score2,dataP1,dataP2}
+     */
+    SettleView.prototype.setData = function (data) {
+        var _this = this;
+        this.toPlatform = data.toPlatform;
+        if (this.bg) {
+            if (data.win == 2) {
+                this.bg.source = "shenglidi_png";
+                // this.icon.source = "shengli_png";
+            }
+            else if (data.win == 1) {
+                this.bg.source = "pingdi_png";
+                // this.icon.source = "ping_png";
+            }
+            else {
+                this.bg.source = "shibaidi_png";
+                // this.icon.source = "shibai_png";
+            }
+        }
+        this.score1.text = data.score1.toString();
+        this.score2.text = data.score2.toString();
+        this.gWin.visible = data.win == 2;
+        this.gPing.visible = data.win == 1;
+        this.gLose.visible = data.win == 0;
+        if (ModuleConfig.compile.chushou) {
+            if (ModuleConfig.compile.danji) {
+            }
+            else {
+                this.head1.source = data.dataP1.avatarUrl;
+                this.head1.mask = this.head1mask;
+                this.name1.text = data.dataP1.nickname;
+                this.head2.source = data.dataP2.avatarUrl;
+                this.head2.mask = this.head2mask;
+                this.name2.text = data.dataP2.nickname;
+            }
+        }
+        this.timeoutid = setTimeout(function () {
+            _this.onTimeout();
+        }, this.SHOW_TIME);
+    };
+    SettleView.prototype.receiveRestart = function () {
+        this.updateRestart(this.RESTART_RECEIVE);
+    };
+    SettleView.prototype.receiveExit = function () {
+        this.updateRestart(this.RESTART_EXIT);
+    };
+    SettleView.prototype.updateRestart = function (state) {
+        if ((this.restartState == this.RESTART_SEND && state == this.RESTART_RECEIVE)
+            || (this.restartState == this.RESTART_RECEIVE && state == this.RESTART_SEND)) {
+            state = this.RESTART_SUCCESS;
+        }
+        this.restartState = state;
+        switch (this.restartState) {
+            case this.RESTART_NONE:
+                this.restart.icon = "dbz1_png";
+                break;
+            case this.RESTART_SEND:
+                this.restart.icon = "dbz4_png";
+                break;
+            case this.RESTART_RECEIVE:
+                this.restart.icon = "dbz2_png";
+                this.yuezhan.visible = true;
+                egret.Tween.get(this.yuezhan, { loop: true }).to({ scaleX: 0.8, scaleY: 0.8 }, 500).to({ scaleX: 1, scaleY: 1 }, 500);
+                break;
+            case this.RESTART_EXIT:
+                this.restart.icon = "dbz3_png";
+                this.restart.enabled = false;
+                break;
+            case this.RESTART_SUCCESS:
+                break;
+        }
+    };
+    SettleView.prototype.onDestroy = function () {
+        _super.prototype.onDestroy.call(this);
+        clearTimeout(this.timeoutid);
+        egret.Tween.removeTweens(this.yuezhan);
+        egret.Tween.removeTweens(this.bg);
+        return 0;
+    };
+    return SettleView;
+}(ZJ.ViewBase));
+__reflect(SettleView.prototype, "SettleView");
+//# sourceMappingURL=SettleView.js.map

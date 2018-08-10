@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160d8e29c43" ></w:Config>
+	<e:Group id="gBg" scrollEnabled="false" left="0" right="0" top="0" bottom="0" alpha="1.18"/>
+	<e:Group scaleX="1.44" scaleY="1.44" left="0" right="0" top="0" bottom="0" touchEnabled="false">
+		<e:Image x="30" y="166" fillMode="clip" width="180" touchEnabled="false" scaleX="1.53" scaleY="1.53" source="di1_png" scale9Grid="65,0,3,50" height="52" visible="false"/>
+		<e:Image y="166" fillMode="clip" width="180" touchEnabled="false" scaleX="1.53" scaleY="1.53" scale9Grid="65,0,2,50" right="30" source="di1_png" height="52" visible="false"/>
+		<e:Group id="gCommon" touchEnabled="false" height="1334" width="750" verticalCenter="0" horizontalCenter="0">
+			<e:Group y="360" touchEnabled="false" horizontalCenter="0">
+			<e:Image y="0" scaleX="1" scaleY="1" source="baseboard_png" x="0"/>
+			<e:Image y="323" scaleX="1" scaleY="1" source="fs_png" x="62"/>
+			<e:Image y="323" scaleX="1" scaleY="1" source="fs_png" x="352"/>
+			<e:Image y="287.5" scaleX="1" scaleY="1" source="vs_png" x="241.5"/>
+			<e:Image id="head2" y="200" scaleX="1" scaleY="1" x="448" source="txk_1_png"/>
+			<e:Image id="head2mask" y="200" scaleX="1" scaleY="1" x="448" source="txk_2_png"/>
+				<e:Image y="200" scaleX="1" scaleY="1" source="txk_1_png" x="448"/>
+			<e:Image id="head1" y="200" scaleX="-1" scaleY="1" x="111" source="txk_1_png"/>
+			<e:Image id="head1mask" y="200" scaleX="-1" scaleY="1" x="111" source="txk_2_png"/>
+				<e:Image y="200" scaleX="-1" scaleY="1" source="txk_1_png" x="111"/>
+			<e:BitmapLabel id="score1" width="260" height="70" x="20.5" y="369.52" font="scorefnt_fnt" text="123" textAlign="center" verticalAlign="middle"/>
+			<e:BitmapLabel id="score2" width="260" height="70" x="279" y="369.52" font="scorefnt_fnt" text="123" textAlign="center" verticalAlign="middle"/>
+			<e:Label id="name1" text="名字有七个字" x="113" y="226" textColor="0x000000" size="24" textAlign="left" width="180"/>
+			<e:Label id="name2" text="名字有七个字" x="266" y="226" textColor="0x000000" size="24" textAlign="right" width="180"/>
+			</e:Group>
+		</e:Group>
+		<e:Image id="bg" scaleX="1" scaleY="1" horizontalCenter="1" source="shenglidi_png" y="376" touchEnabled="false" anchorOffsetX="436" anchorOffsetY="436" width="872" height="872" locked="true"/>
+		<e:Group id="gWin" touchEnabled="false" height="1334" width="750" verticalCenter="0" horizontalCenter="0" x="0" y="0" scaleX="1" scaleY="1">
+			<e:Image y="336" scaleX="1" scaleY="1" horizontalCenter="0" source="bt_sl_png"/>
+			<e:Image y="175" scaleX="1" scaleY="1" source="js3_png" x="83"/>
+			<e:Image y="228" scaleX="1" scaleY="1" source="js5_png" x="527"/>
+		</e:Group>
+		<e:Group id="gLose" height="10" y="0" touchEnabled="false" left="0" right="0" visible="false">
+			<e:Image y="666" scaleX="1" scaleY="1" width="345" height="531" source="win_2_2_png" horizontalCenter="180"/>
+			<e:Image y="726" scaleX="1" scaleY="1" width="298" height="471" source="win_2_1_png" horizontalCenter="-180"/>
+		</e:Group>
+		<e:Group id="gPing" height="10" y="0" touchEnabled="false" left="0" right="0" visible="false">
+			<e:Image y="666" scaleX="1" scaleY="1" horizontalCenter="180" source="win_3_2_png"/>
+			<e:Image y="651" scaleX="1" scaleY="1" horizontalCenter="-180" source="win_3_1_png"/>
+		</e:Group>
+		<e:Button id="restart" label="" y="984" horizontalCenter="0">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_db_png" source.down="btn_db_png" source.disabled="btn_db_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+	<e:Button id="big" label="" left="0" right="0" top="0" bottom="0" skinName="TransparentBtnSkin" locked="true" visible="false"/>
+</e:Skin>

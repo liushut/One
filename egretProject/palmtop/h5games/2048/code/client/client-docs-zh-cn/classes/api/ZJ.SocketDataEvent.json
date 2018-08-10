@@ -1,0 +1,55 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "{protoID:number,data:any,result?:boolean,error?:string,data99999?:any}",
+			"name": "data",
+			"memberof": "ZJ.SocketDataEvent",
+			"scope": "instance",
+			"description": "result: yy 服务器是否正确处理 error: yy 服务器没正确处理时的错误文本data99999: yy 返回的大协议中的数据",
+			"default": "null"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "SocketDataEvent",
+			"memberof": "ZJ.SocketDataEvent",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "type",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "bubbles",
+					"question": true,
+					"type": "boolean",
+					"description": ""
+				},
+				{
+					"name": "cancelable",
+					"question": true,
+					"type": "boolean",
+					"description": ""
+				},
+				{
+					"name": "data",
+					"question": true,
+					"type": "any",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "SocketDataEvent",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\SocketDataEvent.ts",
+		"augments": []
+	}
+}

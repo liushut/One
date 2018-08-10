@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image id="bg"  source="common_black_png" left="0" top="0" bottom="0" right="0" alpha="0.6"/>
+	<e:Image id="light" verticalCenter="-402.5" horizontalCenter="0" scaleX="2" scaleY="2" source="settle_light_png" rotation="0"/>
+    <e:Group horizontalCenter="0" verticalCenter="0">
+		<e:Image id="panel"  horizontalCenter="0" verticalCenter="0" source="settle_winBg_png"/>
+        <e:Image id="star"  horizontalCenter="0" verticalCenter="-423" source="settle_win_png"/>
+        <e:Group horizontalCenter="-193" verticalCenter="-60">
+            <e:Image id="head1Bg"  horizontalCenter="0" verticalCenter="0" source="settle_head_png"/>
+            <e:Image id="head1"  horizontalCenter="0" verticalCenter="0" width="99" height="99" source=""/>
+            <e:Label id="name1"  horizontalCenter="0" verticalCenter="116.5" width="204" fontFamily="SimHei" text="" textColor="0x000000" textAlign="center" size="35" verticalAlign="top" height="76"/>
+		</e:Group>
+        <e:Group horizontalCenter="193" verticalCenter="-60">
+            <e:Image id="head2Bg"  horizontalCenter="0" verticalCenter="0" source="settle_head_png"/>
+            <e:Image id="head2"  horizontalCenter="0" verticalCenter="0" width="99" height="99"/>
+            <e:Label id="name2"  horizontalCenter="0" width="204" fontFamily="SimHei" text="" textColor="0x000000" textAlign="center" size="35" verticalCenter="116.5" wordWrap="true" verticalAlign="top" anchorOffsetY="0" height="76"/>
+			<e:Image id="head2_leave"  horizontalCenter="0" verticalCenter="0" source="settle_hasLeaveTip_png" visible="false"/>
+		</e:Group>
+        <e:Image id="vs"  horizontalCenter="0" verticalCenter="-27" source="settle_vs_png"/>
+        <e:Group id="guanzhu" horizontalCenter="193" verticalCenter="130">
+            <e:Image id="guanzhuBg"  source="settle_guanzhuBg_png" horizontalCenter="0" verticalCenter="0"/>
+            <e:Image id="guanzhuTip"  source="settle_guanzhutaTip_png" horizontalCenter="0" verticalCenter="0"/>
+        </e:Group>
+        
+        <e:Image id="fight"  horizontalCenter="254" verticalCenter="256" source="settle_fightTip_png" visible="false"/>
+        <e:Group id="btn1" horizontalCenter="0" verticalCenter="393">
+            <e:Image id="btn1bg"  source="settle_btnbg_png"/>
+            <e:Image id="btn1tip"  horizontalCenter="0" verticalCenter="-5" source="settle_playTip_png"/>
+        </e:Group>
+
+        <e:Group id="guideTipGroup" horizontalCenter="0" verticalCenter="611" touchChildren="false" touchEnabled="false">
+            <e:Image  source="settleTip_png" horizontalCenter="144" verticalCenter="-30" touchEnabled="false"/>
+            <e:Image  source="settleTipGuy_png" horizontalCenter="-203" verticalCenter="120" touchEnabled="false"/>
+        </e:Group>
+    </e:Group>
+</e:Skin>

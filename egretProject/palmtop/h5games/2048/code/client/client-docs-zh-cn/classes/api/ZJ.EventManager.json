@@ -1,0 +1,36 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "ZJ.EventManager",
+			"name": "instance",
+			"memberof": "ZJ.EventManager",
+			"scope": "static",
+			"rwType": 1
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "EventManager",
+			"memberof": "ZJ.EventManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "init",
+			"memberof": "ZJ.EventManager",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "EventManager",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\EventManager.ts",
+		"augments": []
+	}
+}

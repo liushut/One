@@ -1,0 +1,13 @@
+{
+    [
+        './src/gpb_codegen.erl',
+        './src/*'
+    ],
+    [
+		{d,'NO_HAVE_RAND',true},
+		{d,'NO_HAVE_ERL20_STR_FUNCTIONS'},
+		{i, "./ebin"},
+		{i, "./include"},
+        {outdir, "./ebin"}
+    ]
+}.

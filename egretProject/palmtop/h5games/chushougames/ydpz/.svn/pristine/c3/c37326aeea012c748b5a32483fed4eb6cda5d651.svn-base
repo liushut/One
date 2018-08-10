@@ -1,0 +1,85 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var UILayer = (function () {
+    function UILayer() {
+    }
+    UILayer.View = 0;
+    UILayer.Pop = 1;
+    UILayer.SDK = 2;
+    return UILayer;
+}());
+__reflect(UILayer.prototype, "UILayer");
+var UIName = (function () {
+    function UIName() {
+    }
+    UIName.Test = "Test";
+    UIName.Game = "Game";
+    UIName.Settle = "Settle";
+    UIName.Loading = "Loading";
+    UIName.TestOne = "TestOne";
+    return UIName;
+}());
+__reflect(UIName.prototype, "UIName");
+var ModuleConfig = (function () {
+    function ModuleConfig() {
+    }
+    /**
+     * 胜利的碟子，从1开始。
+     */
+    ModuleConfig.WIN_INDEX = 31;
+    /**
+     * 显示层级
+     */
+    ModuleConfig.uiLayers = [UILayer.View, UILayer.Pop, UILayer.SDK];
+    /**
+     * ui配置
+     */
+    ModuleConfig.uiDatas = (_a = {},
+        _a[UIName.Game] = new ZJ.UIData(UIName.Game, UILayer.View, GameView),
+        _a[UIName.Settle] = new ZJ.UIData(UIName.Settle, UILayer.View, SettleView),
+        _a[UIName.Loading] = new ZJ.UIData(UIName.Loading, UILayer.View, LoadingView),
+        _a);
+    /**
+     * 编译条件，全小写。
+     */
+    ModuleConfig.compile = {
+        need_loading: true,
+        danji: true,
+        single_player: true,
+        isCompetition: true,
+        runtime: false,
+        channel_id: 10,
+    };
+    ModuleConfig.ip = "dev-game.u17games.com";
+    ModuleConfig.singlePort = "12061";
+    ModuleConfig.doublePort = "12062";
+    ModuleConfig.ws = "ws";
+    // public static ip = "hsdailyshot.kascendgame.com";
+    ModuleConfig.port = "20301";
+    // public static ws = "wss";
+    ModuleConfig.protoFiles = ["p10_proto", "p11_proto"];
+    return ModuleConfig;
+}());
+__reflect(ModuleConfig.prototype, "ModuleConfig");
+var EventName = (function () {
+    function EventName() {
+    }
+    EventName.Test = "Test";
+    EventName.GAME_RESTART = "GAME_RESTART";
+    EventName.PLAYER_DIE = "PLAYER_DIE";
+    EventName.PLAYER_FUHUO = "PLAYER_FUHUO";
+    EventName.PLAYER_WIN = "PLAYER_WIN";
+    EventName.PLAYER_JUMP_END = "PLAYER_JUMP_END";
+    return EventName;
+}());
+__reflect(EventName.prototype, "EventName");
+var GoConfig = (function () {
+    function GoConfig() {
+    }
+    GoConfig.Test = "Test";
+    return GoConfig;
+}());
+__reflect(GoConfig.prototype, "GoConfig");
+var _a;
+//# sourceMappingURL=ModuleConfig.js.map

@@ -1,0 +1,93 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "cb",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Label",
+			"name": "label",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "CountDown",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "OnDestroy",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance",
+			"description": "销毁前调用"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "pause",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "resume",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "setSecond",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "second",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "start",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "second",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "stop",
+			"memberof": "ZJ.CountDown",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "CountDown",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\component\\CountDown.ts",
+		"description": "倒数。目前只支持显示00:00格式。",
+		"augments": [],
+		"implements": []
+	}
+}

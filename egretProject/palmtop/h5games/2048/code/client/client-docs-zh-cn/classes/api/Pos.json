@@ -1,0 +1,46 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "i",
+			"memberof": "Pos",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "j",
+			"memberof": "Pos",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Pos",
+			"memberof": "Pos",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "i",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "j",
+					"type": "number",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Pos",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\model\\Pos.ts"
+	}
+}

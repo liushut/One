@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView7Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+		<e:Label id="oneoff_0_top" text="Label" y="411" textColor="0x000000" size="40" horizontalCenter="0" textAlign="center" width="886" touchEnabled="false"/>
+		<e:Label id="oneoff_0_btm" text="Label" y="1087" textColor="0x000000" size="40" horizontalCenter="0" textAlign="center" width="886" touchEnabled="false"/>
+		<e:Button id="one_btn" label="" y="1342" skinName="button_normalSkin" horizontalCenter="0"/>
+		<e:Button id="noise_5_btn" label="" y="1587" horizontalCenter="0" skinName="button_longSkin"/>
+	</e:Group>
+</e:Skin>

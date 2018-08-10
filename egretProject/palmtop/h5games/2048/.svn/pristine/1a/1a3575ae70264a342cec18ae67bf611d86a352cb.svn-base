@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PlateSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="168">
+	<e:Image id="img" verticalCenter="0" source="w3_png" scaleX="1" height="63" left="0" right="0"/>
+</e:Skin>

@@ -1,0 +1,103 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "ZJ.UIManager",
+			"name": "instance",
+			"memberof": "ZJ.UIManager",
+			"scope": "static",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"type": "{[key:string]:ZJ.UIData}",
+			"name": "uiDatas",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance",
+			"default": "{}"
+		},
+		{
+			"kind": "member",
+			"type": "number[]",
+			"name": "uiLayers",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance",
+			"rwType": 2
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "UIManager",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "destroyView",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance",
+			"description": "销毁view",
+			"params": [
+				{
+					"name": "viewName",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "ZJ.ViewBase",
+			"name": "getView",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance",
+			"description": "获得view",
+			"params": [
+				{
+					"name": "viewName",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "init",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "uiroot",
+					"type": "eui.UILayer",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "ZJ.ViewBase",
+			"name": "openView",
+			"memberof": "ZJ.UIManager",
+			"scope": "instance",
+			"description": "打开view",
+			"params": [
+				{
+					"name": "viewName",
+					"type": "string",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "UIManager",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\UIManager.ts"
+	}
+}

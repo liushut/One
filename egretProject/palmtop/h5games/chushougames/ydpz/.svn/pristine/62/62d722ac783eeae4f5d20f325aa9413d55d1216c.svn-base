@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="QiuSSkin" width="121" height="121" xmlns:e="http://ns.egret.com/eui">
+<e:Image id="qiuS" source="xiaoqiu_png"  width="121" height="121"/>
+</e:Skin>

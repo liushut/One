@@ -1,0 +1,18 @@
+{
+    "resources":
+        [
+            {"name":"shareImg","type":"image","url":"assets/shareImg.png"},
+            {"name":"signalBtn","type":"image","url":"assets/signalBtn.png"},
+            {"name":"moreBtn","type":"image","url":"assets/moreBtn.png"},
+            {"name":"fontBg","type":"image","url":"assets/fontBg.png"},
+            {"name":"state","type":"image","url":"assets/state.png"},
+            {"name":"follow","type":"image","url":"assets/follow.png"},
+            {"name":"wxxcandroid","type":"image","url":"assets/wxxcandroid.png"},
+            {"name":"restartBtn","type":"image","url":"assets/restartBtn.png"}
+        ],
+
+    "groups":
+        [
+            {"name":"preload","keys":"shareImg,signalBtn,moreBtn,fontBg,state,follow,wxxcandroid,restartBtn"}
+        ]
+}

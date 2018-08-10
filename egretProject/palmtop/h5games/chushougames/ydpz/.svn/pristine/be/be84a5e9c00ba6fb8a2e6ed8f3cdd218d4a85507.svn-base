@@ -1,0 +1,227 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var SettleView = (function (_super) {
+    __extends(SettleView, _super);
+    function SettleView() {
+        var _this = _super.call(this) || this;
+        _this.SHOW_TIME = 3000;
+        _this.model = MyCDM.instance;
+        _this.tatolscoreLabel = new eui.Label;
+        _this.tatolsocre = 0;
+        _this.toPlatform = "";
+        _this.timeoutid = 0;
+        _this.skinName = "SettleViewSkin"; //决定皮肤的显示
+        return _this;
+    }
+    //friend  
+    SettleView.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    SettleView.prototype.childrenCreated = function () {
+        var _this = this;
+        _super.prototype.childrenCreated.call(this);
+        var black = ZJ.ShapeUtil.getRect(0x000000, 0.4, this.stage.stageWidth, this.stage.stageHeight);
+        this.gBg.addChild(black);
+        this.game = ZJ.UIManager.instance.openView(UIName.Game);
+        this.tatolsocre = this.game.score;
+        this.tatolscoreLabel.text = "你的总得分：" + this.tatolsocre.toString();
+        this.tatolscoreLabel.size = 100;
+        this.tatolscoreLabel.x = egret.MainContext.instance.stage.stageWidth / 2;
+        this.tatolscoreLabel.y = egret.MainContext.instance.stage.stageWidth / 2;
+        this.addChild(this.tatolscoreLabel);
+        if (ModuleConfig.compile.danji) {
+            this.score.text = this.game.score.toString();
+        }
+        this.addChild(this.score);
+        // egret.Tween.get(this.bg, { loop: true }).to({ rotation: 360 }, 7000);
+        this.restart.addEventListener("touchTap", function () {
+            var e = new egret.Event(EventName.Test);
+            ZJ.EventManager.instance.dispatchEvent(e);
+            ZJ.UIManager.instance.destroyView(UIName.Settle);
+            _this.game.health = 3;
+            _this.game.score = 0;
+            _this.game.healthLaber.text = "生命值:" + _this.game.health.toString();
+            _this.game.scoreLabel.text = "得分:" + _this.game.score.toString();
+            if (!ModuleConfig.compile.danji) {
+                _this.model.PlayAgain11007();
+                _this.playAgain();
+            }
+        }, this);
+        //退出房间
+        this.phb.addEventListener("touchTap", function () {
+            ChushouSDK.instance.csExitGame();
+        }, this);
+        if (!ModuleConfig.compile.danji) {
+            MyCDM.instance.SendGameResult11012({
+                winPlayerId: 1
+            });
+            this.getHightScore();
+        }
+    };
+    SettleView.prototype.friendRank = function () {
+        var _this = this;
+        this.friend = new eui.Label();
+        this.addChild(this.friend);
+        this.model.OnData11012 = function (data) {
+            _this.friend.text = "好友排名:" + data.friendRank;
+        };
+        //最高分
+        MyCDM.instance.GetHighestScore11008();
+        this.model.OnData11008 = function (data) {
+            //历史最高分
+            //data.topScore;显示
+            //本周最高分
+            //data.weekScore;显示
+        };
+    };
+    SettleView.prototype.getHightScore = function () {
+        var _score = this.game.score;
+        //最后分数
+        MyCDM.instance.SendScoredData11011({
+            score: _score,
+            resultData: {}
+        });
+        //得到玩家id以及分数并显示出来
+        this.model.OnData11011 = function (data) {
+            data.playerID; //玩家id
+            data.score; //玩家分数
+            data.resultData; //玩家结果数据包
+        };
+        //得到胜利玩家
+        var theWinScore = this.game.score;
+        //结束发送胜利
+        MyCDM.instance.SendGameResult11012({
+            winPlayerId: theWinScore,
+        });
+        this.friendRank();
+    };
+    SettleView.prototype.playAgain = function () {
+        var _this = this;
+        this.model.OnData11007 = function (data) {
+            //this.nextG();
+            if (data.result == 0) {
+                //this.nextG();//显示匹配成功   会进入11003？
+            }
+            else if (data.result == 1) {
+                //超时触发器
+                var idTimeout = egret.setTimeout(function (arg) {
+                    console.log("faileLabel:", arg);
+                    //告知玩家匹配失败，显示Log
+                    var faileLabel = new eui.Label();
+                    faileLabel.x = this.stage.stageWidth / 2;
+                    faileLabel.y = this.stage.stageHeight / 2;
+                    faileLabel.size = 180;
+                    this.addChild(faileLabel);
+                }, _this, 3000, "失败,移除这个标签");
+                ZJ.UIManager.instance.openView(UIName.Settle);
+            }
+            else if (data.result == 2) {
+                var faileLabel = new eui.Label();
+                //房间已经关闭
+                var idTimeout = egret.setTimeout(function (arg) {
+                    console.log("faileLabel:", arg);
+                    //告知玩家匹配失败，显示Log
+                    faileLabel.x = this.stage.stageWidth / 2;
+                    faileLabel.y = this.stage.stageHeight / 2;
+                    faileLabel.size = 180;
+                    this.addChild(faileLabel);
+                }, _this, 3000, function () { _this.removeChild(faileLabel); });
+                ZJ.UIManager.instance.openView(UIName.Settle);
+            }
+            else if (data.result == 3) {
+                //已经再来一局
+                var idTimeout = egret.setTimeout(function (arg) {
+                    console.log("faileLabel:", arg);
+                    //告知玩家匹配失败，显示Log
+                    var faileLabel = new eui.Label();
+                    faileLabel.x = this.stage.stageWidth / 2;
+                    faileLabel.y = this.stage.stageHeight / 2;
+                    faileLabel.size = 180;
+                    this.addChild(faileLabel);
+                }, _this, 3000, "已经再来一局了");
+                ZJ.UIManager.instance.openView("SettleView");
+            }
+        };
+    };
+    SettleView.prototype.setData = function (data) {
+        if (!ModuleConfig.compile.danji) {
+            if (data.weekTop < data.score) {
+                this.icon0.source = "bzzj_png";
+                this.icon3.visible = false;
+                this.score.text = data.score.toString();
+            }
+            else if (data.weekTop >= data.score) {
+                this.icon0.source = "bcdf_png";
+                this.icon3.visible = true;
+                this.score.text = data.score.toString();
+                this.bzzj.text = data.weekTop.toString();
+            }
+            this.friend.text = data.friend.toString();
+            this.paiming.text = data.paiming.toString();
+        }
+        else if (ModuleConfig.compile.danji) {
+            this.score.text = data.score.toString();
+        }
+    };
+    // public setData(data:any){
+    // 	this.score.text = data.score.toString();
+    // }
+    // private onBigClick(): void {
+    // 	ZJ.UIManager.instance.destroyView(UIName.Settle);
+    // 	//this.onTimeout();
+    // }
+    // private onTimeout(): void {
+    // 	if (ModuleConfig.compile.danji) {
+    // 		ZJ.EventManager.instance.dispatchEvent(new egret.Event(EventName.GAME_RESTART));
+    // 		ZJ.UIManager.instance.destroyView(UIName.Settle)
+    // 	}
+    // 	else {
+    // test
+    // let e = new egret.Event(EventName.Test);
+    // e.data = { log: this.toPlatform };
+    // ZJ.EventManager.instance.dispatchEvent(e);
+    // ZJ.UIManager.instance.destroyView(UIName.Settle)
+    // 		sendResult(this.toPlatform);
+    // 	}
+    // }
+    // public setData(data: any): void {
+    // 	this.toPlatform = data.toPlatform;
+    // 	if (data.win == 2) {
+    // 		this.bg.source = "shenglidi_png";
+    // 		this.icon.source = "shengli_png";
+    // 	}
+    // 	else if (data.win == 1) {
+    // 		this.bg.source = "pingdi_png";
+    // 		this.icon.source = "ping_png";
+    // 	}
+    // 	else {
+    // 		this.bg.source = "shibaidi_png";
+    // 		this.icon.source = "shibai_png";
+    // 	}
+    // 	this.score1.text = data.score1.toString();
+    // 	this.score2.text = data.score2.toString();
+    // 	// this.gWin.visible = data.win == 2;
+    // 	// this.gPing.visible = data.win == 1;
+    // 	// this.gLose.visible = data.win == 0;
+    // 	this.timeoutid = setTimeout(() => {
+    // 		this.onTimeout();
+    // 	}, this.SHOW_TIME);
+    // }
+    SettleView.prototype.onDestroy = function () {
+        _super.prototype.onDestroy.call(this);
+        // clearTimeout(this.timeoutid);
+        // egret.Tween.removeTweens(this.bg);
+        return 0;
+    };
+    return SettleView;
+}(ZJ.ViewBase));
+__reflect(SettleView.prototype, "SettleView");
+//# sourceMappingURL=SettleView.js.map

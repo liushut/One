@@ -1,0 +1,11 @@
+{"file":"competitionStage.png","frames":{
+"1":{"x":38,"y":168,"w":27,"h":54,"offX":5,"offY":2,"sourceW":44,"sourceH":60},
+"2":{"x":77,"y":113,"w":35,"h":54,"offX":4,"offY":2,"sourceW":44,"sourceH":60},
+"3":{"x":42,"y":1,"w":38,"h":54,"offX":3,"offY":2,"sourceW":44,"sourceH":60},
+"4":{"x":1,"y":57,"w":37,"h":54,"offX":3,"offY":2,"sourceW":44,"sourceH":60},
+"5":{"x":40,"y":112,"w":35,"h":54,"offX":4,"offY":2,"sourceW":44,"sourceH":60},
+"6":{"x":79,"y":57,"w":36,"h":54,"offX":3,"offY":2,"sourceW":44,"sourceH":60},
+"7":{"x":40,"y":57,"w":37,"h":53,"offX":2,"offY":3,"sourceW":44,"sourceH":60},
+"8":{"x":82,"y":1,"w":37,"h":54,"offX":3,"offY":2,"sourceW":44,"sourceH":60},
+"9":{"x":1,"y":113,"w":35,"h":54,"offX":4,"offY":2,"sourceW":44,"sourceH":60},
+"0":{"x":1,"y":1,"w":39,"h":54,"offX":2,"offY":2,"sourceW":44,"sourceH":60}}}

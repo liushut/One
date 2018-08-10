@@ -1,0 +1,924 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var GameView = (function (_super) {
+    __extends(GameView, _super);
+    function GameView() {
+        var _this = _super.call(this) || this;
+        // 常量 
+        _this.GAME_TIME = 180; // 游戏时长（秒）
+        _this.GAME_END_TIME = 180; // 游戏结算容忍时长（秒）
+        _this.NUM_COUNT_DOWN = 3; // 开始前倒数（秒）
+        _this.GAP_X = [150, 400]; //碟子间隔x
+        _this.GAP_X_MAX_NUM = 20; //多少个碟子可达到最大间隔x
+        _this.GAP_Y = [-350, 250]; //碟子间隔y
+        _this.PLATE_NUM = 20; // 一次生成碟子数
+        _this.PLATE_Y = [880, 1360]; // 碟子生成区间 
+        _this.PLATE_WIDTH = [168, 336]; //碟子宽度
+        _this.BG_WIDTH = 2160; // 背景图宽度
+        _this.INTERVAL = 50; // 帧间隔（毫秒）
+        _this.INTERVAL_PING = 30000; // ping间隔（毫秒）
+        _this.PLAYER_BORN = [200, 1200];
+        _this.PIXEL_PER_SCORE = 1; // 每1分代表的像素
+        _this.WIN_SCORE_ENLARGE = 10; // 放大胜利分数
+        _this.JINDU_RANGE = [50, 810]; // 进度条x范围
+        _this.JINDU_PER_INDEX = (_this.JINDU_RANGE[1] - _this.JINDU_RANGE[0]) / (ModuleConfig.WIN_INDEX - 1);
+        _this.JUMP_SCALE_RATE = 10000; // jumpscale精度
+        _this.WIN_PLATE_Y = 1200; // 胜利碟子y
+        _this.ZHONGDIAN_TEXT_OFFSET = [15, -450]; // gZhongdian相对旗子的偏移
+        _this.YANHUA_OFFSET = [0, -150]; // yanhua相对旗子的偏移
+        _this.score1 = 0;
+        _this.score2 = 0;
+        _this.plates = [];
+        _this.countDown = null;
+        _this.readyGo = null;
+        _this.gameState = "0";
+        _this.STATE_PRESTART = "0";
+        _this.STATE_PLAYING = "1";
+        // private STATE_P1_WAIT = "2";
+        // private STATE_P2_WAIT = "3";
+        _this.STATE_GAMEOVER = "4";
+        // private music: egret.Sound = null;
+        // private soundJump: egret.Sound = null;
+        _this.p2WillWin = false;
+        _this.yanhua = null;
+        _this.chushouSDK = ChushouSDK.instance;
+        _this.seed = 1;
+        _this.intervalPing = 0;
+        _this.jumpPool = [];
+        // yy
+        _this.data1000 = null;
+        _this.data1399 = null;
+        // chushou
+        _this.data10000 = null;
+        _this.data11012 = null;
+        _this.dataP1 = null;
+        _this.dataP2 = null;
+        _this.isDanji = false;
+        _this.intervalID = 0;
+        _this.intervalGameEnd = 0;
+        _this.plateWidth = 0;
+        _this.plateHeight = 0;
+        _this.isBegin = false;
+        _this.settleData1 = null;
+        _this.settleData2 = null;
+        _this.cameraPlayer = null;
+        _this.isAI = false;
+        _this.skinName = "GameViewSkin"; // “创建eui组件”时在.wing/exml.json中有配置，可以不需要这行。一般加上方便移植。
+        return _this;
+    }
+    GameView.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    GameView.prototype.childrenCreated = function () {
+        var _this = this;
+        _super.prototype.childrenCreated.call(this);
+        this.player2 = this.createPlayer();
+        // this.player2.img.source = "p2_png";
+        this.player2.initDB(2);
+        this.player1 = this.createPlayer();
+        this.player1.initDB(1);
+        this.player1.isPlayer1 = true;
+        this.player1.playBreath();
+        this.player2.playBreath();
+        this.createPlates();
+        this.readyGo = new ReadyGo();
+        this.readyGo.cb = function () { _this.onNumCountDownEnd(); };
+        this.gTop.addChild(this.readyGo);
+        this.readyGo.horizontalCenter = 0;
+        this.readyGo.y = 850;
+        this.readyGo.scaleX = 1.44;
+        this.readyGo.scaleY = 1.44;
+        this.countDown = new MyCountDown();
+        this.countDown.cb = function () { _this.onCountDownEnd(); };
+        this.gTop.addChild(this.countDown);
+        // this.countDown.label.size = 80;
+        this.countDown.horizontalCenter = 0;
+        this.countDown.y = 360;
+        this.compare0.text = "";
+        this.compare1.text = "";
+        this.compare2.text = "";
+        this.big.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onBigBegin, this);
+        this.big.addEventListener(egret.TouchEvent.TOUCH_CANCEL, this.onBigEnd, this);
+        this.big.addEventListener(egret.TouchEvent.TOUCH_END, this.onBigEnd, this);
+        this.restart.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onRestart, this);
+        this.danji.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onDanji, this);
+        ZJ.EventManager.instance.addEventListener(EventName.GAME_RESTART, this.onRestart, this);
+        ZJ.EventManager.instance.addEventListener(EventName.GAME_EXIT, this.onGameExit, this);
+        ZJ.EventManager.instance.addEventListener(EventName.Test, this.onTest, this);
+        // this.player1.addEventListener(EventName.PLAYER_DIE, this.onPlayerDie, this);
+        this.player1.addEventListener(EventName.PLAYER_FUHUO, this.onPlayerFuhuo, this);
+        this.player1.addEventListener(EventName.PLAYER_WIN, this.onPlayerWin, this);
+        this.player1.addEventListener(EventName.PLAYER_JUMP_END, this.onPlayerJumpEnd, this);
+        // this.player2.addEventListener(EventName.PLAYER_DIE, this.onPlayer2Die, this);
+        this.player2.addEventListener(EventName.PLAYER_WIN, this.onPlayer2Win, this);
+        this.player2.addEventListener(EventName.PLAYER_JUMP_END, this.onPlayer2JumpEnd, this);
+        this.player2.addEventListener(EventName.PLAYER_FUHUO, this.onPlayer2Fuhuo, this);
+        ZJ.SocketManager.instance.addEventListener(ZJ.CommonEventName.SOCKET_CONNECTED, this.onSocketConnected, this);
+        ZJ.SocketManager.instance.addEventListener(ZJ.CommonEventName.SOCKET_DATA, this.onSocketData, this);
+        this.intervalID = setInterval(function () {
+            _this.onInterval();
+        }, this.INTERVAL);
+        if (ModuleConfig.compile.danji) {
+            ZJ.UIManager.instance.destroyView(UIName.Loading);
+            this.onDanji();
+        }
+        else {
+            this.connect();
+        }
+        ZJ.AudioManager.Instance.playBgm();
+        // test
+        // let aji1 = ZJ.ResManager.instance.loadDragonBones("bao1")
+        // let aji2 = ZJ.ResManager.instance.loadDragonBones("bao1")
+        // let aji3 = ZJ.ResManager.instance.loadDragonBones("bao1")
+        // this.addChild(aji1)
+        // this.addChild(aji2)
+        // this.addChild(aji3)
+        // this.aji1 = aji1;
+        // aji1.x = 300
+        // aji1.y = 300
+        // aji2.x = 500
+        // aji2.y = 500
+        // aji3.x = 700
+        // aji3.y = 700
+        // aji1.addEventListener(dragonBones.EventObject.START, this.onstart, this);
+        // aji1.addEventListener(dragonBones.EventObject.LOOP_COMPLETE, this.loopcomplete, this);
+        // aji1.addEventListener(dragonBones.EventObject.COMPLETE, this.complete, this);
+        // aji1.addEventListener(dragonBones.EventObject.FADE_IN, this.fadein, this);
+        // aji1.addEventListener(dragonBones.EventObject.FADE_IN_COMPLETE, this.fadeincomplete, this);
+    };
+    GameView.prototype.onstart = function () {
+        console.log("onstart");
+    };
+    GameView.prototype.loopcomplete = function () {
+        console.log("loopcomplete");
+    };
+    GameView.prototype.complete = function () {
+    };
+    GameView.prototype.fadein = function () {
+        console.log("onstart");
+    };
+    GameView.prototype.fadeincomplete = function () {
+        console.log("onstart");
+    };
+    GameView.prototype.createPlatformData = function () {
+        // 0
+        var platformData = {
+            nonstr: yyGameConfig.nonstr,
+            sign: yyGameConfig.sign,
+            timestamp: yyGameConfig.timestamp,
+            post_data: yyGameConfig.strPostData
+        };
+        return JSON.stringify(platformData);
+    };
+    GameView.prototype.sendPing = function () {
+        if (!ModuleConfig.compile.danji) {
+            if (ModuleConfig.compile.yy) {
+                this.intervalPing = setInterval(function () {
+                    ZJ.SocketManager.instance.send(1001);
+                }, this.INTERVAL_PING);
+            }
+            else {
+                this.intervalPing = setInterval(function () {
+                    ZJ.SocketManager.instance.send(11004);
+                }, this.INTERVAL_PING);
+            }
+        }
+    };
+    GameView.prototype.sendLogin = function () {
+        // 【注意】前三个字段是数据汇定义的，post_data里的才是yy的定义，不要混淆
+        if (!ModuleConfig.compile.danji) {
+            if (ModuleConfig.compile.yy) {
+                ZJ.SocketManager.instance.send(1000, {
+                    channelId: "huoshu", gameId: "Jumper", platformId: "Yy",
+                    platformData: this.createPlatformData(),
+                    standAlone: false
+                });
+            }
+            else {
+                ZJ.SocketManager.instance.send(10000, {
+                    openId: this.chushouSDK.csAuthRequestData.openUid, sign: "sign", timestamp: ZJ.Util.timeStamp(), appId: 1234,
+                    params: [this.chushouSDK.csAuthRequestData.nickname, this.chushouSDK.csAuthRequestData.gender, this.chushouSDK.csAuthRequestData.avatar]
+                });
+            }
+        }
+        // this.mylog("this.sendLogin:")
+        // this.mylog(yyGameConfig.channelid)        
+        // this.mylog(yyGameConfig.gameid)          
+        // this.mylog(this.createPlatformData())
+    };
+    GameView.prototype.sendMatch = function (matchId) {
+        ZJ.SocketManager.instance.send(10001, { gameMode: 1, matchType: 1, matchId: matchId });
+    };
+    GameView.prototype.sendReady = function () {
+        ZJ.SocketManager.instance.send(11002);
+    };
+    // private clientIndex = 0;
+    // private webSocket: egret.WebSocket;
+    GameView.prototype.connect = function () {
+        if (!ModuleConfig.compile.danji) {
+            //ZJ.SocketManager.instance.connect(ModuleConfig.ip, ModuleConfig.port);
+            if (ModuleConfig.compile.yy && yyGameConfig.connectUrl != null) {
+                // console.log("connect url :" + yyGameConfig.connectUrl);
+                ZJ.SocketManager.instance.connectByUrl(yyGameConfig.connectUrl);
+            }
+            else {
+                // console.log("connect url error");
+                ZJ.SocketManager.instance.connectByUrl("ws://" + ModuleConfig.ip + ":" + ModuleConfig.port);
+            }
+            // this.mylog('send connect');
+        }
+    };
+    GameView.prototype.onSocketConnected = function () {
+        var _this = this;
+        // this.mylog("连接成功");
+        // console.log("socket connect success");
+        if (ModuleConfig.compile.chushou) {
+            ZJ.UIManager.instance.destroyView(UIName.Loading);
+            this.chushouSDK.csAuthRequest(function () {
+                _this.sendPing();
+                _this.sendLogin();
+            });
+        }
+    };
+    GameView.prototype.onSocketData = function (e) {
+        var aji = e.data;
+        this.mylog("收到协议：" + aji.protoID);
+        if (!ModuleConfig.compile.yy || aji.result == true) {
+            var shit = aji.data;
+            switch (aji.protoID) {
+                case 10000:
+                    this.data10000 = shit;
+                    this.nameLabel1.text = this.data10000.nickname;
+                    this.sendMatch(this.chushouSDK.csAuthRequestData.csGroupId.toString());
+                    break;
+                case 10001:
+                    this.sendReady();
+                    this.chushouSDK.gameRoomId = shit.roomId.toString();
+                    this.chushouSDK.csJoinRoom();
+                    break;
+                case 11002:
+                    if (shit.result == 0) {
+                    }
+                    else {
+                        // throw
+                        this.chushouSDK.csExitGame();
+                    }
+                    break;
+                case 11003:
+                    if (shit.seeds) {
+                        this.seed = shit.seeds[0] || this.seed;
+                    }
+                    ZJ.UIManager.instance.destroyView(UIName.Settle);
+                    this.onRestart();
+                    for (var i = 0, len = shit.playerInfos.length; i < len; ++i) {
+                        if (shit.playerInfos[i].playerId == this.data10000.playerId) {
+                            this.dataP1 = shit.playerInfos[i];
+                        }
+                        else {
+                            this.dataP2 = shit.playerInfos[i];
+                            this.nameLabel2.text = this.dataP2.nickname;
+                        }
+                    }
+                    this.prestart();
+                    break;
+                case 11007:
+                    if (shit.result != 0) {
+                        var settle2 = ZJ.UIManager.instance.openView(UIName.Settle);
+                        settle2.receiveExit();
+                    }
+                    break;
+                case 11009:
+                    var settle = ZJ.UIManager.instance.openView(UIName.Settle);
+                    settle.receiveRestart();
+                    break;
+                case 11011:
+                    if (shit.playerId != this.dataP1.playerId) {
+                        var answer_1 = ZJ.Util.bytesToObj(shit.resultData);
+                        if (answer_1.jumpScale == 0) {
+                            this.p2WillWin = true;
+                        }
+                        this.jumpPool.push(answer_1);
+                        this.p2Jump();
+                    }
+                    break;
+                case 11012:
+                    this.data11012 = shit;
+                    this.showSettleByServer();
+                    break;
+                case 1000:
+                    this.data1000 = shit;
+                    this.nameLabel1.text = this.data1000.player.nickname;
+                    break;
+                case 1300:
+                    break;
+                case 1303:
+                    break;
+                case 1399:
+                    var player = shit.player[0];
+                    var answer = shit.answer[0];
+                    var gameResult = shit.result[0];
+                    if (typeof player != "undefined"
+                        && player.playerId != this.data1000.player.playerId) {
+                        this.nameLabel2.text = player.nickname;
+                        // this.mylog("收到player");
+                        this.prestart();
+                    }
+                    if (typeof answer != "undefined"
+                        && answer.playerId != this.data1000.player.playerId) {
+                        if (answer.jumpScale == 0) {
+                            this.p2WillWin = true;
+                        }
+                        this.jumpPool.push(answer);
+                        this.p2Jump();
+                        // this.mylog("///////////////收到跳");
+                    }
+                    if (typeof gameResult != "undefined") {
+                        this.data1399 = shit;
+                        this.showSettleByServer();
+                        // this.mylog("收到gameResult");
+                    }
+                    break;
+            }
+        }
+        else {
+            this.mylog(aji.error);
+            // this.mylog("receive error: " + sss);
+        }
+    };
+    GameView.prototype.p2Jump = function () {
+        var _this = this;
+        if (!this.player2.isPlaying
+            && !this.player2.isPlayingAnim
+            && this.gameState != this.STATE_GAMEOVER) {
+            var answer = this.jumpPool.shift();
+            if (typeof answer != "undefined") {
+                var scaleObj_1 = JSON.parse(answer.attach);
+                if (answer.jumpScale != 0) {
+                    // this.mylog("准备跳 ")
+                    var jumpScale_1 = answer.jumpScale / this.JUMP_SCALE_RATE;
+                    this.player2.playAnim();
+                    setTimeout(function () {
+                        // this.mylog("开始跳 ")
+                        _this.player2.stopAnim();
+                        _this.jump(_this.player2, jumpScale_1, scaleObj_1.x, scaleObj_1.y);
+                    }, (1 - jumpScale_1) / (1 - this.player2.PLAYER_SCALE_MIN) * this.player2.PLAYER_TIME_MIN);
+                }
+                else {
+                    this.player2.x = scaleObj_1.x;
+                    this.settle(false);
+                }
+            }
+        }
+    };
+    GameView.prototype.prestart = function () {
+        this.gameState = this.STATE_PRESTART;
+        this.cameraPlayer = this.player1;
+        this.countDown.stop();
+        this.countDown.setSecond(this.GAME_TIME);
+        this.readyGo.start();
+        ZJ.UIManager.instance.destroyView(UIName.Loading);
+    };
+    GameView.prototype.onNumCountDownEnd = function () {
+        this.start();
+    };
+    GameView.prototype.start = function () {
+        this.countDown.start(this.GAME_TIME);
+        this.gameState = this.STATE_PLAYING;
+        // this.player2.playAnim();
+    };
+    GameView.prototype.resetBg = function () {
+        egret.Tween.removeTweens(this.bg);
+        egret.Tween.removeTweens(this.bg33);
+        egret.Tween.removeTweens(this.bg55);
+        egret.Tween.removeTweens(this.bg77);
+        this.bg1.x = 0;
+        this.bg2.x = this.BG_WIDTH;
+        this.bg3.x = 0;
+        this.bg4.x = this.BG_WIDTH;
+        this.bg5.x = 0;
+        this.bg6.x = this.BG_WIDTH;
+        this.bg7.x = 0;
+        this.bg8.x = this.BG_WIDTH;
+        this.bg.x = 0;
+        this.bg77.x = 0;
+        this.bg33.x = 0;
+        this.bg55.x = 0;
+    };
+    GameView.prototype.onRestart = function () {
+        // if (this.player1.isPlaying) {
+        //     return;
+        // }
+        this.jumpPool = [];
+        this.player1.restart();
+        this.player2.restart();
+        if (this.yanhua) {
+            this.yanhua.stop();
+            this.yanhua.visible = false;
+        }
+        this.resetBg();
+        this.player1.x = this.PLAYER_BORN[0];
+        this.player1.y = this.PLAYER_BORN[1];
+        this.player2.x = this.PLAYER_BORN[0];
+        this.player2.y = this.PLAYER_BORN[1];
+        this.updateScore(0, 0);
+        this.updateJindu();
+        this.settleData1 = null;
+        this.settleData2 = null;
+        this.p2WillWin = false;
+        this.removePlates();
+        this.createPlates();
+        if (this.isDanji) {
+            this.prestart();
+        }
+        else {
+            // this.connect();
+        }
+    };
+    GameView.prototype.onDanji = function () {
+        this.isDanji = true;
+        this.setAI();
+        this.prestart();
+    };
+    GameView.prototype.onPlayerDie = function (e) {
+        // this.sendJump(0, this.player1.x);
+    };
+    GameView.prototype.onPlayerFuhuo = function (e) {
+        var bgX = -this.player1.x + this.PLAYER_BORN[0];
+        this.playBg(this.bg, this.bg1, this.bg2, bgX, true, 500);
+        this.playBg(this.bg77, this.bg7, this.bg8, bgX * 0.5, true, 500);
+        this.playBg(this.bg33, this.bg3, this.bg4, bgX * 1.2, true, 500);
+        this.playBg(this.bg55, this.bg5, this.bg6, bgX * 1.5, true, 500);
+    };
+    GameView.prototype.onPlayerWin = function (e) {
+        this.loadYanhua();
+        this.settle(true);
+    };
+    GameView.prototype.onPlayer2Win = function (e) {
+        this.loadYanhua();
+    };
+    GameView.prototype.loadYanhua = function () {
+        var _this = this;
+        if (!this.yanhua) {
+            ZJ.ResManager.instance.loadMovieClip("yanhua", "yanhua", function (mc) {
+                mc.scaleX = 4;
+                mc.scaleY = 4;
+                _this.gPlate.addChild(mc);
+                _this.yanhua = mc;
+                _this.playYanhua();
+            });
+        }
+        else {
+            this.playYanhua();
+        }
+    };
+    GameView.prototype.playYanhua = function () {
+        this.yanhua.x = this.zhongdian.x + this.YANHUA_OFFSET[0];
+        this.yanhua.y = this.zhongdian.y + this.YANHUA_OFFSET[1];
+        this.yanhua.play(-1);
+        this.yanhua.visible = true;
+    };
+    GameView.prototype.onPlayer2Die = function (e) {
+        // if (this.player2.isGameOver && this.score1 > this.score2) {
+        //     this.player1.isGameOver = true;
+        //     this.gameOver();
+        // }
+    };
+    GameView.prototype.onPlayerJumpEnd = function (e) {
+        // if (this.player2.isGameOver && this.score1 > this.score2) {
+        //     this.player1.isGameOver = true;
+        //     this.gameOver();
+        // }
+    };
+    GameView.prototype.onPlayer2JumpEnd = function (e) {
+        if (!this.player2.isGameOver) {
+            if (!this.player2.isWin) {
+                // this.player2.playAnim();
+            }
+            else {
+                if (ModuleConfig.compile.danji) {
+                    this.settle(false);
+                }
+            }
+        }
+    };
+    GameView.prototype.onPlayer2Fuhuo = function (e) {
+        // this.player2.playAnim()
+    };
+    GameView.prototype.onTest = function (e) {
+        this.mylog(e.data.log);
+    };
+    GameView.prototype.onInterval = function () {
+        if (this.gameState != this.STATE_GAMEOVER && this.gameState != this.STATE_PRESTART) {
+            // this.updateScore(Math.floor(this.player1.x - this.PLAYER_BORN[0])
+            //     , Math.floor(this.player2.x - this.PLAYER_BORN[0]));
+            this.updateScore(this.player1.curPlateIndex, this.player2.curPlateIndex);
+            // bg
+            // let maxX = this.cameraPlayer.x;
+            var maxX = Math.max(this.player1.x, this.player2.x);
+            var len = this.plates.length;
+            if (len != 0 && maxX > this.plates[len - 1].x - this.BG_WIDTH) {
+                this.createPlates();
+            }
+            this.p2Jump();
+        }
+    };
+    GameView.prototype.updateScore = function (score1, score2) {
+        this.score1 = Math.floor(score1 / this.PIXEL_PER_SCORE);
+        this.score2 = Math.floor(score2 / this.PIXEL_PER_SCORE);
+        // this.scoreLabel1.text = this.score1.toString()
+        // this.scoreLabel2.text = this.score2.toString()
+        var compare = 0;
+        // 对差值（绝对值）向上取整显示领先/落后步数，小坑是如果日后需要显示分数，不能自圆其说。
+        if (score1 > score2) {
+            compare = Math.ceil((score1 - score2) / this.PIXEL_PER_SCORE);
+        }
+        else {
+            compare = Math.floor((score1 - score2) / this.PIXEL_PER_SCORE);
+        }
+        if (compare < 0) {
+            this.compare0.text = ZJ.Util.strFormat("ab{0}c", (-compare).toString());
+            this.compare1.text = "";
+            this.compare2.text = "";
+            this.player1.updateDB(0);
+            this.player2.updateDB(2);
+        }
+        else if (compare == 0) {
+            this.compare0.text = "";
+            this.compare1.text = "abcd";
+            this.compare2.text = "";
+            this.player1.updateDB(1);
+            this.player2.updateDB(1);
+        }
+        else {
+            this.compare0.text = "";
+            this.compare1.text = "";
+            this.compare2.text = ZJ.Util.strFormat("ab{0}c", compare.toString());
+            this.player1.updateDB(2);
+            this.player2.updateDB(0);
+        }
+    };
+    GameView.prototype.updateJindu = function () {
+        // jindu
+        egret.Tween.removeTweens(this.jindu1);
+        egret.Tween.removeTweens(this.jindu2);
+        egret.Tween.get(this.jindu1, { onChange: this.updateJinduTou, onChangeObj: this }).to({ x: this.JINDU_RANGE[0] + this.player1.curPlateIndex * this.JINDU_PER_INDEX }, 300);
+        egret.Tween.get(this.jindu2).to({ x: this.JINDU_RANGE[0] + this.player2.curPlateIndex * this.JINDU_PER_INDEX }, 300);
+    };
+    GameView.prototype.updateJinduTou = function () {
+        var tou1 = "1";
+        var tou2 = "1";
+        if (this.jindu1.x > this.jindu2.x) {
+            tou1 = "2";
+            tou2 = "0";
+        }
+        else if (this.jindu1.x == this.jindu2.x) {
+            tou1 = "1";
+            tou2 = "1";
+        }
+        else {
+            tou1 = "0";
+            tou2 = "2";
+        }
+        this.jinduTou1.source = "jindu1" + tou1 + "_png";
+        this.jinduTou2.source = "jindu1" + tou2 + "_png";
+    };
+    GameView.prototype.onCountDownEnd = function () {
+        this.player1.isGameOver = true;
+        this.player2.isGameOver = true;
+        this.gameOver();
+    };
+    GameView.prototype.gameOver = function () {
+        this.settle(false);
+    };
+    /**
+     * 结算。
+     * 自身死亡/时间到，发送结算。
+     * 当已拥有p2数据时，真正执行结算。
+     * 新：
+     * 时间到/有人到终点，结算。
+     */
+    GameView.prototype.settle = function (isWin) {
+        var _this = this;
+        // p1
+        this.gameState = this.STATE_GAMEOVER;
+        this.settleData1 = new SettleData();
+        this.settleData1.score = this.score1;
+        var score = this.player1.scoreX;
+        if (isWin) {
+            score = score * this.WIN_SCORE_ENLARGE;
+        }
+        // this.sendJump(0, score);
+        setTimeout(function () {
+            _this.sendSettle();
+        }, 500);
+        if (ModuleConfig.compile.danji) {
+            this.settleData2 = new SettleData();
+            this.settleData2.score = this.score2;
+            if (this.settleData1 != null && this.settleData2 != null) {
+                this.showSettle();
+            }
+        }
+    };
+    GameView.prototype.showSettleByServer = function () {
+        this.countDown.stop();
+        var settleView = ZJ.UIManager.instance.openView(UIName.Settle);
+        // this.mylog("winid: " + this.data1399.result[0].winnerPlayerId)
+        // this.mylog("escapeid: " + this.data1399.result[0].escapePlayerId)
+        // this.mylog("myid: " + this.data1000.player.playerId)
+        var win = 0;
+        var toPlatform = "";
+        if (ModuleConfig.compile.yy) {
+            if (this.data1399.result[0].winnerPlayerId == this.data1000.player.playerId) {
+                // 胜
+                win = 2;
+            }
+            else if (this.data1399.result[0].winnerPlayerId == 0) {
+                // 平
+                win = 1;
+            }
+            else {
+                // 负
+                win = 0;
+            }
+            toPlatform = this.data1399.result[0].toPlatform;
+        }
+        else {
+            if (this.data11012.winPlayerId == this.dataP1.playerId) {
+                win = 2;
+            }
+            else if (this.data11012.winPlayerId == 0) {
+                win = 1;
+            }
+            else {
+                win = 0;
+            }
+        }
+        var settleData = { win: win, score1: this.score1, score2: this.score2, toPlatform: toPlatform };
+        if (ModuleConfig.compile.chushou) {
+            settleData.dataP1 = this.dataP1;
+            settleData.dataP2 = this.dataP2;
+        }
+        settleView.setData(settleData);
+        this.gameState = this.STATE_GAMEOVER;
+        // sendResult(this.data1399.result[0].toPlatform); // 放在settleview里了 因为一发就结束游戏
+        if (ModuleConfig.compile.yy) {
+            ZJ.SocketManager.instance.close();
+        }
+    };
+    /**
+     * 单机版showsettle
+     */
+    GameView.prototype.showSettle = function () {
+        var _this = this;
+        this.countDown.stop();
+        this.gameState = this.STATE_GAMEOVER;
+        var win = 0;
+        if (this.settleData1.score > this.settleData2.score) {
+            win = 2;
+        }
+        else if (this.settleData1.score == this.settleData2.score) {
+            win = 1;
+        }
+        else {
+            win = 0;
+        }
+        setTimeout(function () {
+            var settleView = ZJ.UIManager.instance.openView(UIName.Settle);
+            settleView.setData({ win: win, score1: _this.score1, score2: _this.score2 });
+        }, 2500);
+    };
+    GameView.prototype.sendJump = function (jumpScale, score, attach) {
+        if (!ModuleConfig.compile.danji) {
+            if (ModuleConfig.compile.yy) {
+                ZJ.SocketManager.instance.send(1300, { jumpScale: jumpScale * this.JUMP_SCALE_RATE, score: score, attach: JSON.stringify(attach) });
+            }
+            else {
+                ZJ.SocketManager.instance.send(11011, { score: score, resultData: ZJ.Util.objToByteArray({ jumpScale: jumpScale * this.JUMP_SCALE_RATE, score: score, attach: JSON.stringify(attach) }).bytes });
+            }
+        }
+        // this.mylog("this.sendJump33 " + scale);
+    };
+    GameView.prototype.sendSettle = function () {
+        if (!ModuleConfig.compile.danji) {
+            if (ModuleConfig.compile.yy) {
+                ZJ.SocketManager.instance.send(1303, { jumpScale: 0, score: this.score1 });
+            }
+            else {
+                ZJ.SocketManager.instance.send(11012, { winPlayerId: this.dataP1.playerId });
+            }
+        }
+        // this.mylog("this.sendSettle")
+    };
+    GameView.prototype.onBigBegin = function () {
+        if ((this.gameState != this.STATE_PLAYING)
+            || this.player1.isPlaying
+            || this.player1.isGameOver) {
+            return;
+        }
+        this.player1.playAnim();
+        this.isBegin = true;
+    };
+    GameView.prototype.onBigEnd = function () {
+        var _this = this;
+        if (this.player1.isPlaying || !this.isBegin) {
+            return;
+        }
+        var scale = this.player1.stopAnim();
+        var jumpData = this.jump(this.player1, scale);
+        this.sendJump(scale, this.player1.curPlateIndex, { x: jumpData.endX, y: jumpData.endY });
+        this.isBegin = false;
+        // 预胜逻辑
+        if (!this.p2WillWin && this.player1.curPlateIndex == ModuleConfig.WIN_INDEX - 1) {
+            setTimeout(function () {
+                _this.sendJump(0, _this.player1.curPlateIndex * _this.WIN_SCORE_ENLARGE, { x: jumpData.endX, y: jumpData.endY });
+            }, 100);
+        }
+    };
+    GameView.prototype.jump = function (player, imgScale, setX, setY) {
+        if (setX === void 0) { setX = -1; }
+        if (setY === void 0) { setY = -1; }
+        var jumpData = player.jump(imgScale, setX, setY);
+        if (player == this.cameraPlayer) {
+            ZJ.AudioManager.Instance.play("jump");
+            var bgX = -jumpData.endX + this.PLAYER_BORN[0];
+            if (bgX == this.PLAYER_BORN[0]) {
+                bgX = this.bg.x - jumpData.bgTime * jumpData.V0_X; // 之前这句有误差是因为V0_X用了this.V0_X导致。现在理论上只用这句就可以了，不过还是沿用以前的处理比较稳。
+            }
+            var self_1 = this;
+            var direct = bgX > this.bg.x; // true向左
+            this.playBg(this.bg, this.bg1, this.bg2, bgX, direct, jumpData.bgTime * 1000);
+            this.playBg(this.bg77, this.bg7, this.bg8, bgX * 0.5, direct, jumpData.bgTime * 1000);
+            this.playBg(this.bg33, this.bg3, this.bg4, bgX * 1.2, direct, jumpData.bgTime * 1000);
+            this.playBg(this.bg55, this.bg5, this.bg6, bgX * 1.5, direct, jumpData.bgTime * 1000);
+        }
+        this.updateJindu();
+        return jumpData;
+    };
+    /**
+     * @param direct true向左
+     */
+    GameView.prototype.playBg = function (groupBg, bg1, bg2, targetX, direct, time) {
+        var _this = this;
+        egret.Tween.removeTweens(groupBg);
+        egret.Tween.get(groupBg, {
+            onChange: function () {
+                // bg
+                var camX = -groupBg.x;
+                if (direct) {
+                    if (camX < bg1.x + _this.BG_WIDTH * 0.4 && camX < bg2.x) {
+                        bg2.x = bg1.x - _this.BG_WIDTH;
+                    }
+                    else if (camX < bg2.x + _this.BG_WIDTH * 0.4 && camX < bg1.x) {
+                        bg1.x = bg2.x - _this.BG_WIDTH;
+                    }
+                }
+                else {
+                    if (camX > bg1.x + _this.BG_WIDTH * 1.1) {
+                        bg1.x = bg2.x + _this.BG_WIDTH;
+                    }
+                    else if (camX > bg2.x + _this.BG_WIDTH * 1.1) {
+                        bg2.x = bg1.x + _this.BG_WIDTH;
+                    }
+                }
+            }
+        }).to({ "x": targetX }, time, egret.Ease.sineInOut);
+    };
+    GameView.prototype.createPlayer = function () {
+        var p1 = new Player();
+        p1.x = this.PLAYER_BORN[0];
+        p1.y = this.PLAYER_BORN[1];
+        this.gPlayer.addChild(p1);
+        return p1;
+    };
+    GameView.prototype.createPlates = function () {
+        var num = this.plates.length;
+        var seed = Math.random() * 1000;
+        if (ModuleConfig.compile.yy && yyGameConfig.timestamp) {
+            seed = yyGameConfig.timestamp + num;
+        }
+        else if (ModuleConfig.compile.chushou) {
+            seed = this.seed + num;
+        }
+        for (var i = 0; i < this.PLATE_NUM && num + i < ModuleConfig.WIN_INDEX; ++i) {
+            var p = new Plate();
+            var plateIndex = num + i - 1;
+            var last = this.plates[plateIndex];
+            if (typeof (last) == "undefined") {
+                // 第一块板
+                p.x = this.player1.x - 0;
+                p.y = this.player1.y + this.player1.height + 2;
+                this.plateWidth = p.width;
+                this.plateHeight = p.height;
+                p.img.source = "w3_png";
+            }
+            else {
+                var rate = Math.min(plateIndex / this.GAP_X_MAX_NUM, 1); // 开放比例
+                p.width = this.PLATE_WIDTH[1] - (this.PLATE_WIDTH[1] - this.PLATE_WIDTH[0]) * Math.min(rate, 1);
+                p.x = last.x + last.width + ZJ.MathUtil.randomRange(this.GAP_X[0], this.GAP_X[0] + (this.GAP_X[1] - this.GAP_X[0]) * rate, seed + i);
+                // p.x = last.x + this.GAP_X[0], this.GAP_X[1];
+                var yMin = Math.max(this.GAP_Y[0] * rate, this.PLATE_Y[0] - last.y);
+                var yMax = Math.min(this.GAP_Y[1], this.PLATE_Y[1] - last.y);
+                // // this.mylog("yMin " + yMin);
+                // // this.mylog("yMax " + yMax);
+                // // this.mylog("ran "+ZJ.Util.randomRange(yMin, yMax, seed + i));
+                // // this.mylog("last.y1 " + last.y);
+                var ran = ZJ.MathUtil.randomRange(yMin, yMax, seed + i);
+                if (i % 2 == 0) {
+                    // 偶数索引时强行换符号
+                    var hit = last.y - ran;
+                    if (hit < this.PLATE_Y[1] && hit > this.PLATE_Y[0]) {
+                        ran = -ran;
+                    }
+                }
+                p.y = last.y + ran;
+                p.img.source = ZJ.Util.strFormat("w{0}_png", Math.floor(Math.random() * 2 + 4).toString()); // 又不用随机了(old log)
+                // 又又用随机了 老余还不认 这次写上日期2018.3.8 p.img.source = "w3_png";
+                // // this.mylog("last.y2 " + p.y);
+            }
+            this.gPlate.addChild(p);
+            this.plates.push(p);
+            // 最后一块板
+            if (num + i == ModuleConfig.WIN_INDEX - 1) {
+                p.img.source = "w3_png";
+                p.y = this.WIN_PLATE_Y;
+                this.zhongdian.x = p.x + 50;
+                this.zhongdian.y = p.y;
+                this.zhongdian.visible = true;
+                egret.Tween.removeTweens(this.gZhongdian);
+                this.gZhongdian.x = this.zhongdian.x + this.ZHONGDIAN_TEXT_OFFSET[0];
+                this.gZhongdian.y = this.zhongdian.y + this.ZHONGDIAN_TEXT_OFFSET[1];
+                egret.Tween.get(this.gZhongdian, { loop: true }).to({ y: this.gZhongdian.y - 100 }, 500, egret.Ease.quadInOut).to({ y: this.gZhongdian.y }, 500, egret.Ease.quadInOut);
+            }
+        }
+        var pData = new PlayerData();
+        pData.plates = this.plates;
+        this.player1.setData(pData);
+        this.player2.setData(pData);
+    };
+    GameView.prototype.removePlates = function () {
+        var len = this.plates.length;
+        while (len > 0) {
+            var plate = this.plates.shift();
+            plate.parent.removeChild(plate);
+            --len;
+        }
+    };
+    GameView.prototype.setAI = function () {
+        var _this = this;
+        this.isAI = true;
+        var self = this;
+        setInterval(function () {
+            if ((self.gameState == self.STATE_PLAYING)
+                && !self.player2.isGameOver
+                && !self.player2.isPlaying
+                && !self.player2.isPlayingAnim) {
+                _this.player2.playAnim();
+                setTimeout(function () {
+                    _this.player2.stopAnim();
+                    if (self.player2.curPlateIndex < self.plates.length - 1) {
+                        var dis = self.plates[self.player2.curPlateIndex + 1].x - self.player2.x;
+                        dis = self.player2.PLAYER_SCALE_MIN - 0.05 + self.GAP_X[0] * 1 / dis * (1 - self.player2.PLAYER_SCALE_MIN) * Math.random();
+                        dis = Math.max(_this.player2.PLAYER_SCALE_MIN, Math.min(dis, 1));
+                        self.jump(self.player2, dis);
+                    }
+                }, 600);
+            }
+        }, 3000);
+    };
+    GameView.prototype.onGameExit = function (e) {
+        this.chushouSDK.csExitGame();
+    };
+    GameView.prototype.mylog = function (log) {
+        this.log.text = log + "\n" + this.log.text;
+        console.log(log);
+    };
+    GameView.prototype.onDestroy = function () {
+        clearInterval(this.intervalID);
+        clearInterval(this.intervalPing);
+        ZJ.EventManager.instance.removeEventListener(EventName.GAME_RESTART, this.onRestart, this);
+        ZJ.EventManager.instance.removeEventListener(EventName.GAME_EXIT, this.onGameExit, this);
+        ZJ.EventManager.instance.removeEventListener(EventName.Test, this.onTest, this);
+        // this.player1.removeEventListener(EventName.PLAYER_DIE, this.onPlayerDie, this);
+        this.player1.removeEventListener(EventName.PLAYER_JUMP_END, this.onPlayerJumpEnd, this);
+        this.player1.removeEventListener(EventName.PLAYER_FUHUO, this.onPlayerFuhuo, this);
+        this.player1.removeEventListener(EventName.PLAYER_WIN, this.onPlayerWin, this);
+        // this.player2.removeEventListener(EventName.PLAYER_DIE, this.onPlayer2Die, this);
+        this.player2.removeEventListener(EventName.PLAYER_WIN, this.onPlayer2Win, this);
+        this.player2.removeEventListener(EventName.PLAYER_JUMP_END, this.onPlayer2JumpEnd, this);
+        this.player2.removeEventListener(EventName.PLAYER_FUHUO, this.onPlayer2Fuhuo, this);
+        ZJ.SocketManager.instance.removeEventListener(ZJ.CommonEventName.SOCKET_CONNECTED, this.onSocketConnected, this);
+        ZJ.SocketManager.instance.removeEventListener(ZJ.CommonEventName.SOCKET_DATA, this.onSocketData, this);
+        return 0;
+    };
+    return GameView;
+}(ZJ.ViewBase));
+__reflect(GameView.prototype, "GameView");
+//# sourceMappingURL=GameView.js.map

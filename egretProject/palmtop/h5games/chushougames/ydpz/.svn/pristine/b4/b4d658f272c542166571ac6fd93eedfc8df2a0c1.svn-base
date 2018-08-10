@@ -1,0 +1,75 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var TestOneView = (function (_super) {
+    __extends(TestOneView, _super);
+    function TestOneView() {
+        var _this = _super.call(this) || this;
+        _this.SHOW_TIME = 3000;
+        _this.tatolscoreLabel = new eui.Label;
+        _this.tatolsocre = 0;
+        _this.toPlatform = "";
+        _this.timeoutid = 0;
+        _this.skinName = "SettleViewSkin"; //决定皮肤的显示
+        return _this;
+    }
+    TestOneView.prototype.partAdded = function (partName, instance) {
+        _super.prototype.partAdded.call(this, partName, instance);
+    };
+    TestOneView.prototype.childrenCreated = function () {
+        var _this = this;
+        _super.prototype.childrenCreated.call(this);
+        this.addChild(this.score);
+        var black = ZJ.ShapeUtil.getRect(0x000000, 0.4, this.stage.stageWidth, this.stage.stageHeight);
+        this.gBg.addChild(black);
+        this.game = ZJ.UIManager.instance.openView(UIName.Game);
+        this.tatolsocre = this.game.score;
+        this.tatolscoreLabel.text = "本次总得分：" + this.tatolsocre.toString();
+        this.tatolscoreLabel.size = 200;
+        this.tatolscoreLabel.x = egret.MainContext.instance.stage.stageWidth / 2 - 600;
+        this.addChild(this.tatolscoreLabel);
+        // egret.Tween.get(this.bg, { loop: true }).to({ rotation: 360 }, 7000);
+        this.restart.addEventListener("touchTap", function () {
+            var e = new egret.Event(EventName.Test);
+            ZJ.EventManager.instance.dispatchEvent(e);
+            ZJ.UIManager.instance.destroyView(UIName.TestOne);
+            _this.game.health = 3;
+            _this.game.score = 0;
+            _this.game.healthLaber.text = "生命:" + _this.game.health.toString();
+            _this.game.scoreLabel.text = "得分:" + _this.game.score.toString();
+        }, this);
+        this.phb.addEventListener("touchTap", function () {
+            ChushouSDK.instance.csExitGame();
+        }, this);
+    };
+    TestOneView.prototype.setData = function (data) {
+        if (!ModuleConfig.compile.danji) {
+            if (data.weekTop < data.score) {
+                this.icon0.source = "bzzj_png";
+                this.icon3.visible = false;
+                this.score.text = data.score.toString();
+            }
+            else if (data.weekTop >= data.score) {
+                this.icon0.source = "bcdf_png";
+                this.icon3.visible = true;
+                this.score.text = data.score.toString();
+                this.bzzj.text = data.weekTop.toString();
+            }
+            this.friend.text = data.friend.toString();
+            this.paiming.text = data.paiming.toString();
+        }
+        else if (ModuleConfig.compile.danji) {
+            this.score.text = data.score.toString();
+        }
+    };
+    return TestOneView;
+}(ZJ.ViewBase));
+__reflect(TestOneView.prototype, "TestOneView");
+//# sourceMappingURL=TestOneView.js.map

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" class="CommentsViewSkin">
+	<e:Group width="1080" height="1920" verticalCenter="0" horizontalCenter="0">
+		<e:Rect fillColor="0xfffcfc" right="0" bottom="0" top="0" left="0" locked="true"/>
+		<e:Group width="1080" height="1920" x="0" y="0">
+			<e:Group id="messageGroup" width="1080" height="200" y="0" x="0">
+				<e:Button id="back_button" label="" x="50" y="95" width="37" height="60" anchorOffsetY="30" enabled="true">
+					<e:skinName>
+					<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="BtnBack_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					</e:Skin>
+					</e:skinName>
+				</e:Button>
+				<e:Image id="message_image" width="382" height="131" y="95" source="MessageBorde_png" horizontalCenter="0" anchorOffsetY="65"/>
+			</e:Group>
+			<e:Group id="HeadGroup" width="980" height="150" y="215" x="50">
+				<e:Button id="head_button" label="Button" y="0" width="107" height="104" enabled="true" x="0">
+					<e:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+						</e:Skin>
+					</e:skinName>
+				</e:Button>
+				<e:Label id="name_label" text="楼主的名字" x="117" y="0" textColor="0x050505" height="60" verticalAlign="middle" anchorOffsetX="0" width="235"/>
+				<e:Button id="share_button" label="分享留言" y="0" enabled="true" x="804"/>
+			</e:Group>
+			<e:Scroller width="980" height="1300" y="330" anchorOffsetX="0" x="50" anchorOffsetY="0">
+				<e:Group width="980" height="1300" anchorOffsetY="0" x="0" y="-48.48">
+					<e:Group id="commentGroup" width="980" height="638" x="217" y="190.91" anchorOffsetY="0">
+						<e:Image id="comments_img" source="BtnBorder_png" scale9Grid="16,27,96,18" anchorOffsetY="0" height="530.31" width="980" x="0" y="0"/>
+						<e:Label id="comments_label" text="这是内容这是内容这是内容这是内容这是这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容" textColor="0x070707" width="930" y="31" size="40" verticalAlign="top" x="25" anchorOffsetY="0" height="465.45"/>
+						<e:Button id="good_button" label="" x="50" y="553" width="59" enabled="true">
+							<e:skinName>
+							<e:Skin states="up,down,disabled">
+								<e:Image width="100%" height="100%" source="good_png"/>
+								<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+							</e:skinName>
+						</e:Button>
+						<e:Label id="goodNum_label" text="999" x="123" y="553" textColor="0x070707" width="80.61" height="60.06" textAlign="left" verticalAlign="middle" anchorOffsetX="0" anchorOffsetY="0"/>
+						<e:Label id="replyNum_label" text="1999" x="345" y="553" textColor="0x070707" width="120" height="54" textAlign="left" verticalAlign="middle"/>
+						<e:Button id="reply_button" label="" x="280" y="553" width="66" enabled="true">
+							<e:skinName>
+							<e:Skin states="up,down,disabled">
+								<e:Image width="100%" height="100%" source="reply_png"/>
+								<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+							</e:skinName>
+						</e:Button>
+						<e:Image id="fenggexian_image" width="980" height="23" x="0" source="divider_png" bottom="0"/>
+					</e:Group>
+					<e:Group id="replyGroup" width="980" height="481.82" x="153" y="728" anchorOffsetY="0">
+						<e:Button id="replyhead_button" label="Button" y="0" width="107" height="104" enabled="true" x="10" scaleX="1" scaleY="1">
+							<e:skinName>
+							<e:Skin states="up,down,disabled">
+								<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+								<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+							</e:skinName>
+						</e:Button>
+						<e:Label id="reply_label" text="这里是回复" x="20" y="114" width="950" textColor="0x070000" size="40" anchorOffsetY="0" height="107.58"/>
+						<e:Label id="replyname_label" text="回复者的名字" x="138" y="16" textColor="0x050505" height="55" verticalAlign="middle" anchorOffsetX="0" width="236" scaleX="1" scaleY="1"/>
+					</e:Group>
+					<e:layout>
+						<e:VerticalLayout/>
+					</e:layout>
+				</e:Group>
+			</e:Scroller>
+			<e:Group id="sendGroup" width="980" height="172.73" y="1720" anchorOffsetX="0" x="50" anchorOffsetY="0">
+				<e:Image right="0" bottom="0" left="0" top="0" source="BtnChoose_png" scale9Grid="15,24,96,13"/>
+				<e:TextInput id="input_textinput" width="657" height="122" y="24" x="7" enabled="true"/>
+				<e:Button id="send_button" label="点击发送" x="744" width="208" y="55" enabled="true"/>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+</e:Skin>

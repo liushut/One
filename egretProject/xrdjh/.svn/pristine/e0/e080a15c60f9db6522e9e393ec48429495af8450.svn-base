@@ -1,0 +1,277 @@
+
+<e:Skin width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" class="MessageViewSkin">
+	<w:Config id="165135e4f28"/>
+	<e:Group right="0" bottom="0" top="0" left="0">
+		<e:Rect width="1080" height="2340" x="0" y="-210" fillColor="0xfcf9f9" strokeColor="0x141313" scaleX="1" scaleY="1" locked="true"/>
+		<e:Group width="1080" height="1920" horizontalCenter="0" verticalCenter="0">
+			<e:Image id="MessageBorde" width="383" height="131" y="161" source="MessageBorde_png" x="345" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="131" locked="true"/>
+			<e:Group id="ButtonGroup" width="200" height="200" x="25" y="161" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="200">
+				<e:Button id="share_button0" label="" x="0" width="122" height="86" y="114">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="di_png" source.down="dixuanzhong_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					<e:Image id="share" width="48" height="59" x="61" y="45" source="share_png" anchorOffsetX="24" anchorOffsetY="29"/>
+					</e:Skin>
+				</e:skinName>
+				</e:Button>
+				<e:Button id="sound_button0" label="" x="244" width="122" height="86" scaleX="-1" scaleY="1" y="114">
+				<e:skinName>
+					<e:Skin states="up,down,disabled">
+					<e:Image width="100%" height="100%" source="di_png" source.down="dixuanzhong_png"/>
+					<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+					<e:Image id="sound" width="54" height="52" x="61" y="43" source="sound_png" anchorOffsetX="27" anchorOffsetY="26" scaleX="-1"/>
+					</e:Skin>
+				</e:skinName>
+				</e:Button>
+			</e:Group>
+			<e:Group width="996" height="81" y="210" horizontalCenter="0">
+				<e:Button id="back_button" label="" width="37" height="60" x="0" y="11">
+					<e:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="BtnBack_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+						</e:Skin>
+					</e:skinName>
+				</e:Button>
+				<e:Button id="recent_button" label="最新" x="264" y="0" enabled="true">
+					<e:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="BtnBorder_png" source.down="BtnChoose_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x070000"/>
+						</e:Skin>
+					</e:skinName>
+				</e:Button>
+				<e:Button id="hot_button" label="最热" x="127" y="0" enabled="true">
+					<e:skinName>
+					<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="BtnBorder_png" source.down="BtnChoose_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x070000"/>
+					</e:Skin>
+					</e:skinName>
+				</e:Button>
+				<e:Button id="mybox_button" label="查看我的留言板" x="639" width="262" height="81" anchorOffsetX="0" y="0" enabled="true">
+					<e:skinName>
+						<e:Skin states="up,down,disabled">
+						<e:Image width="100%" height="100%" source="BtnBorder_png" source.down="BtnChoose_png"/>
+						<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+						</e:Skin>
+					</e:skinName>
+				</e:Button>
+			</e:Group>
+			<e:Scroller id="messageScoller" width="1080" height="1280" x="0" y="320" anchorOffsetY="0" enabled="true">
+				<e:Group id="ScollerGroup" anchorOffsetX="0" width="1080" anchorOffsetY="0" height="2340">
+					<e:Group id="MessageGroup" width="1080" height="800" x="36" y="49" anchorOffsetY="0">
+						<e:Button id="head_button" label="头像" x="25" y="53" enabled="true">
+							<e:skinName>
+								<e:Skin states="up,down,disabled">
+								<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+								<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+								</e:Skin>
+							</e:skinName>
+						</e:Button>
+						<e:Label id="name_label" text="名字" x="158" y="68" width="197" anchorOffsetY="0" height="64.61" textColor="0x020000" textAlign="left" verticalAlign="middle" size="40"/>
+						<e:Label id="time_label" text="时间" x="849" y="68" width="197" height="64.61" anchorOffsetY="0" textColor="0x020000" textAlign="center" verticalAlign="middle" size="40"/>
+						<e:Image id="message_img" width="996" height="339.4" y="175" source="MessageBox_png" horizontalCenter="0" scale9Grid="44,26,890,71" anchorOffsetY="0"/>
+						<e:Label id="message_label" text="巴拉巴拉巴拉" y="196.21" anchorOffsetY="0" height="290.91" anchorOffsetX="0" width="962.67" size="40" textColor="0x070000" horizontalCenter="0.5"/>
+						<e:Button id="good_button" label="0" y="592" width="59" x="92.5" anchorOffsetX="0" anchorOffsetY="55">
+							<e:skinName>
+								<e:Skin states="up,down,disabled">
+								<e:Image width="100%" height="100%" source="good_png"/>
+								<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+								</e:Skin>
+							</e:skinName>
+						</e:Button>
+						<e:Button id="reply_button" label="0" y="592" x="269.5" width="66" anchorOffsetY="58">
+							<e:skinName>
+								<e:Skin states="up,down,disabled">
+								<e:Image width="100%" height="100%" source="reply_png"/>
+								<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+								</e:Skin>
+							</e:skinName>
+						</e:Button>
+						<e:Label id="goodnumber_label" text="998" x="157" y="592" textColor="0x070000" height="39" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" width="97" anchorOffsetY="39"/>
+						<e:Label id="replynumber_label" text="998" x="341" y="592" textColor="0x070000" height="39" width="97" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" anchorOffsetY="39"/>
+						<e:Label id="comPlayer_label" text="李四：" x="52" y="670" textColor="0x070000" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" width="101.51" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label" text="李四" x="60" y="720" textColor="0x070000" width="83.33" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" anchorOffsetY="40"/>
+						<e:Label id="huifu_label" text="回复" x="115" y="720" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label1" text="张三:" x="194" y="720" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="comment_label" text="这里是评论的地方" x="143.33" y="670" width="513" textColor="0x020000" verticalAlign="middle" textAlign="left" height="40" anchorOffsetY="40"/>
+						<e:Label id="comreply_label" text="这里是回复这里是回复" x="280" y="720" width="722" height="40" textColor="0x020000" anchorOffsetY="40" verticalAlign="middle"/>
+						<e:Button id="showAllContent_button" label="显示全部内容" x="752" y="532.5" width="273.94" height="80" anchorOffsetX="0" enabled="true"/>
+						<e:Image width="973" height="23" source="divider_png" x="54" bottom="0"/>
+						<e:Button id="showAllReply_button" label="显示全部评论" x="748.32" y="664" width="267.89" height="80" anchorOffsetX="0" enabled="true"/>
+					</e:Group>
+					<e:Group id="MessageGroup0" width="1080" height="800" x="46" y="59" anchorOffsetY="0">
+						<e:Button id="head_button0" label="头像" x="25" y="53">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="name_label0" text="名字" x="158" y="68" width="197" anchorOffsetY="0" height="64.61" textColor="0x020000" textAlign="left" verticalAlign="middle" size="40"/>
+						<e:Label id="time_label0" text="时间" x="849" y="68" width="197" height="64.61" anchorOffsetY="0" textColor="0x020000" textAlign="center" verticalAlign="middle" size="40"/>
+						<e:Image width="996" height="339.4" y="175" source="MessageBox_png" horizontalCenter="0" scale9Grid="44,26,890,71" anchorOffsetY="0"/>
+						<e:Label text="巴拉巴拉巴拉" y="196.21" anchorOffsetY="0" height="290.91" anchorOffsetX="0" width="962.67" size="40" textColor="0x070000" horizontalCenter="0.5"/>
+						<e:Button id="good_button0" label="0" y="592" width="59" x="92.5" anchorOffsetX="0" anchorOffsetY="55">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="good_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Button id="reply_button0" label="0" y="592" x="269.5" width="66" anchorOffsetY="58">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="reply_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="good_label0" text="998" x="157" y="592" textColor="0x070000" height="39" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" width="97" anchorOffsetY="39"/>
+						<e:Label id="reply_label0" text="998" x="341" y="592" textColor="0x070000" height="39" width="97" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" anchorOffsetY="39"/>
+						<e:Label id="comPlaer_label0" text="李四：" x="60" y="670" textColor="0x070000" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" width="101.51" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label0" text="李四" x="60" y="720" textColor="0x070000" width="83.33" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" anchorOffsetY="40"/>
+						<e:Label text="回复" x="115" y="720" id="comPlaer_label2" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label2" text="张三:" x="194" y="720" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="comment_label0" text="这里是评论的地方" x="143.33" y="670" width="513" textColor="0x020000" verticalAlign="middle" textAlign="left" height="40" anchorOffsetY="40"/>
+						<e:Label id="comreply_label0" text="这里是回复这里是回复" x="280" y="720" width="722" height="40" textColor="0x020000" anchorOffsetY="40" verticalAlign="middle"/>
+						<e:Button id="showAll_button0" label="显示全部" x="850" y="510" width="180" height="80"/>
+						<e:Image width="973" height="23" source="divider_png" x="54" bottom="0"/>
+					</e:Group>
+					<e:Group id="MessageGroup1" width="1080" height="800" x="56" y="69" anchorOffsetY="0">
+						<e:Button id="head_button1" label="头像" x="25" y="53">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="name_label1" text="名字" x="158" y="68" width="197" anchorOffsetY="0" height="64.61" textColor="0x020000" textAlign="left" verticalAlign="middle" size="40"/>
+						<e:Label id="time_label1" text="时间" x="849" y="68" width="197" height="64.61" anchorOffsetY="0" textColor="0x020000" textAlign="center" verticalAlign="middle" size="40"/>
+						<e:Image width="996" height="339.4" y="175" source="MessageBox_png" horizontalCenter="0" scale9Grid="44,26,890,71" anchorOffsetY="0"/>
+						<e:Label text="巴拉巴拉巴拉" y="196.21" anchorOffsetY="0" height="290.91" anchorOffsetX="0" width="962.67" size="40" textColor="0x070000" horizontalCenter="0.5"/>
+						<e:Button id="good_button1" label="0" y="592" width="59" x="92.5" anchorOffsetX="0" anchorOffsetY="55">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="good_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Button id="reply_button1" label="0" y="592" x="269.5" width="66" anchorOffsetY="58">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="reply_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="good_label1" text="998" x="157" y="592" textColor="0x070000" height="39" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" width="97" anchorOffsetY="39"/>
+						<e:Label id="reply_label1" text="998" x="341" y="592" textColor="0x070000" height="39" width="97" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" anchorOffsetY="39"/>
+						<e:Label id="comPlaer_label3" text="李四：" x="60" y="670" textColor="0x070000" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" width="101.51" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label3" text="李四" x="60" y="720" textColor="0x070000" width="83.33" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" anchorOffsetY="40"/>
+						<e:Label text="回复" x="115" y="720" id="comPlaer_label4" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label4" text="张三:" x="194" y="720" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="comment_label1" text="这里是评论的地方" x="143.33" y="670" width="513" textColor="0x020000" verticalAlign="middle" textAlign="left" height="40" anchorOffsetY="40"/>
+						<e:Label id="comreply_label1" text="这里是回复这里是回复" x="280" y="720" width="722" height="40" textColor="0x020000" anchorOffsetY="40" verticalAlign="middle"/>
+						<e:Button id="showAll_button1" label="显示全部" x="850" y="510" width="180" height="80"/>
+						<e:Image width="973" height="23" source="divider_png" x="54" bottom="0"/>
+					</e:Group>
+					<e:Group id="MessageGroup2" width="1080" height="800" x="66" y="79" anchorOffsetY="0">
+						<e:Button id="head_button2" label="头像" x="25" y="53">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="name_label2" text="名字" x="158" y="68" width="197" anchorOffsetY="0" height="64.61" textColor="0x020000" textAlign="left" verticalAlign="middle" size="40"/>
+						<e:Label id="time_label2" text="时间" x="849" y="68" width="197" height="64.61" anchorOffsetY="0" textColor="0x020000" textAlign="center" verticalAlign="middle" size="40"/>
+						<e:Image width="996" height="339.4" y="175" source="MessageBox_png" horizontalCenter="0" scale9Grid="44,26,890,71" anchorOffsetY="0"/>
+						<e:Label text="巴拉巴拉巴拉" y="196.21" anchorOffsetY="0" height="290.91" anchorOffsetX="0" width="962.67" size="40" textColor="0x070000" horizontalCenter="0.5"/>
+						<e:Button id="good_button2" label="0" y="592" width="59" x="92.5" anchorOffsetX="0" anchorOffsetY="55">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="good_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Button id="reply_button2" label="0" y="592" x="269.5" width="66" anchorOffsetY="58">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="reply_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="good_label2" text="998" x="157" y="592" textColor="0x070000" height="39" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" width="97" anchorOffsetY="39"/>
+						<e:Label id="reply_label2" text="998" x="341" y="592" textColor="0x070000" height="39" width="97" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" anchorOffsetY="39"/>
+						<e:Label id="comPlaer_label5" text="李四：" x="60" y="670" textColor="0x070000" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" width="101.51" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label5" text="李四" x="60" y="720" textColor="0x070000" width="83.33" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" anchorOffsetY="40"/>
+						<e:Label text="回复" x="115" y="720" id="comPlaer_label6" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label6" text="张三:" x="194" y="720" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="comment_label2" text="这里是评论的地方" x="143.33" y="670" width="513" textColor="0x020000" verticalAlign="middle" textAlign="left" height="40" anchorOffsetY="40"/>
+						<e:Label id="comreply_label2" text="这里是回复这里是回复" x="280" y="720" width="722" height="40" textColor="0x020000" anchorOffsetY="40" verticalAlign="middle"/>
+						<e:Button id="showAll_button2" label="显示全部" x="850" y="510" width="180" height="80"/>
+						<e:Image width="973" height="23" source="divider_png" x="54" bottom="0"/>
+					</e:Group>
+					<e:Group id="MessageGroup3" width="1080" height="800" x="76" y="89" anchorOffsetY="0">
+						<e:Button id="head_button3" label="头像" x="25" y="53">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="HeadBox_png" source.down="HeadEnd_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0" textColor="0x0a0000"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="name_label3" text="名字" x="158" y="68" width="197" anchorOffsetY="0" height="64.61" textColor="0x020000" textAlign="left" verticalAlign="middle" size="40"/>
+						<e:Label id="time_label3" text="时间" x="849" y="68" width="197" height="64.61" anchorOffsetY="0" textColor="0x020000" textAlign="center" verticalAlign="middle" size="40"/>
+						<e:Image width="996" height="339.4" y="175" source="MessageBox_png" horizontalCenter="0" scale9Grid="44,26,890,71" anchorOffsetY="0"/>
+						<e:Label text="巴拉巴拉巴拉" y="196.21" anchorOffsetY="0" height="290.91" anchorOffsetX="0" width="962.67" size="40" textColor="0x070000" horizontalCenter="0.5"/>
+						<e:Button id="good_button3" label="0" y="592" width="59" x="92.5" anchorOffsetX="0" anchorOffsetY="55">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="good_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Button id="reply_button3" label="0" y="592" x="269.5" width="66" anchorOffsetY="58">
+						<e:skinName>
+							<e:Skin states="up,down,disabled">
+							<e:Image width="100%" height="100%" source="reply_png"/>
+							<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+							</e:Skin>
+						</e:skinName>
+						</e:Button>
+						<e:Label id="good_label3" text="998" x="157" y="592" textColor="0x070000" height="39" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" width="97" anchorOffsetY="39"/>
+						<e:Label id="reply_label3" text="998" x="341" y="592" textColor="0x070000" height="39" width="97" verticalAlign="bottom" textAlign="left" anchorOffsetX="0" anchorOffsetY="39"/>
+						<e:Label id="comPlaer_label7" text="李四：" x="60" y="670" textColor="0x070000" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" width="101.51" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label7" text="李四" x="60" y="720" textColor="0x070000" width="83.33" height="40" verticalAlign="middle" textAlign="left" anchorOffsetX="0" anchorOffsetY="40"/>
+						<e:Label text="回复" x="115" y="720" id="comPlaer_label8" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="replyPlayer_label8" text="张三:" x="194" y="720" textColor="0x070000" width="100" height="40" verticalAlign="middle" textAlign="center" anchorOffsetY="40"/>
+						<e:Label id="comment_label3" text="这里是评论的地方" x="143.33" y="670" width="513" textColor="0x020000" verticalAlign="middle" textAlign="left" height="40" anchorOffsetY="40"/>
+						<e:Label id="comreply_label3" text="这里是回复这里是回复" x="280" y="720" width="722" height="40" textColor="0x020000" anchorOffsetY="40" verticalAlign="middle"/>
+						<e:Button id="showAll_button3" label="显示全部" x="850" y="510" width="180" height="80"/>
+						<e:Image width="973" height="23" source="divider_png" x="54" bottom="0"/>
+					</e:Group>
+					<e:layout>
+						<e:VerticalLayout horizontalAlign="left"/>
+					</e:layout>
+				</e:Group>
+			</e:Scroller>
+			<e:Group id="leaveMessageGroup" width="1080" height="310" scaleX="1" scaleY="1" anchorOffsetY="0" y="1610" x="0">
+				<e:Image id="input_image" width="1050" y="35" source="input_png" scale9Grid="120,33,725,18" anchorOffsetY="0" anchorOffsetX="0" height="240" x="15"/>
+				<e:TextInput id="textInput" width="760" height="190" y="60.61" anchorOffsetX="0" anchorOffsetY="0" enabled="true" x="55"/>
+				<e:Button id="send_button" label="点击发送" x="842" y="105" width="200" height="100" enabled="true"/>
+			</e:Group>
+		</e:Group>
+	</e:Group>
+</e:Skin>

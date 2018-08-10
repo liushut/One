@@ -1,0 +1,57 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "ZJ.TableManager",
+			"name": "instance",
+			"memberof": "ZJ.TableManager",
+			"scope": "static",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"type": "Object",
+			"name": "tables",
+			"memberof": "ZJ.TableManager",
+			"scope": "instance",
+			"rwType": 1
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "TableManager",
+			"memberof": "ZJ.TableManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "init",
+			"memberof": "ZJ.TableManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "load",
+			"memberof": "ZJ.TableManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "url",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "TableManager",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\TableManager.ts",
+		"description": "使用例子：this.mName.text = ZJ.TableManager.instance.tables[xlsx.cfg_c_role][0][xlsx.c_role_role_name];cfg_c_role: cfg_表名0: key 可以是字符串c_role_role_name: 表名_列名"
+	}
+}

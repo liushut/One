@@ -1,0 +1,69 @@
+message playerInfo{
+    required int64 playerId = 1;            // 玩家Id
+    required string openId = 2;             // openId
+    required string nickname = 3;           // 昵称
+    required string avatarUrl = 4;          // 头像url
+    required int32 isRobot = 5;             // 是否机器人：1是机器人，0不是机器人
+	required int32 gender = 6;				// 头像性别
+    optional int32 battleTimes = 7;         // 战斗次数
+    optional int32 robotLevel = 8;          // 机器人等级：0随机，1低，2中，3高
+}
+
+// 客户端准备开始游戏
+message cs_11002{
+}
+
+message sc_11002{
+    required int32 result = 1;              // 准备游戏结果：0成功，1失败，2游戏已经结束
+    required int64 playerId = 2;            // 玩家Id
+    required string openId = 3;             // openId
+    repeated int32 seeds =4;                // 玩家随机种子列表
+}
+
+// 服务端通知开始游戏倒计时
+message sc_11003{
+    required int32 readyTime = 1;           // 开始游戏倒计时（秒）
+    repeated playerInfo playerInfos = 2;    // 所有玩家信息
+}
+
+// 心跳包，30秒一次
+message cs_11004{
+}
+
+// 客户端同步游戏过程包
+message cs_11010{
+    required bytes processData = 1;
+}
+
+message sc_11010{
+    required int64 playerId = 1;          // 玩家id
+    required bytes processData = 2;        // 游戏过程数据包
+}
+
+// 客户端同步游戏结算点数据包(后端校验包)
+message cs_11011{
+    required int32 playerScore = 1;         // 玩家分数
+    required bytes resultData = 2;          // 游戏结果数据包
+}
+
+message sc_11011{
+    required int64 playerId = 1;            // 玩家id
+    required int32 playerScore = 2;         // 玩家分数
+    required bytes resultData = 3;          // 游戏结果数据包
+    repeated int32 seeds = 4;               // 随机种子列表
+}
+
+// 游戏结果通知
+message cs_11012{
+    required int64 winPlayerId = 1;         // 胜利的玩家Id，0表示平局
+}
+
+message sc_11012{
+    required int32 result = 1;              // 结果通知返回：0成功，1失败
+    required int64 winPlayerId = 2;         // 胜利玩家Id
+}
+
+// 获取游戏双方最后同步数据，返回两条11011
+message cs_11013{
+}
+

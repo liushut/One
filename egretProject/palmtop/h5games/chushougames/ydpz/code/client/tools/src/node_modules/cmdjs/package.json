@@ -1,0 +1,32 @@
+{
+  "name": "cmdjs",
+  "version": "0.0.14",
+  "dependencies": {},
+  "author": {
+    "name": "SmallAiTT",
+    "email": "536762164@qq.com"
+  },
+  "gitHead": "48b72f5328d1898f6b37a58eeb6f8c84140dc339",
+  "description": "A cmd tool.",
+  "_id": "cmdjs@0.0.14",
+  "scripts": {},
+  "_shasum": "2c84f5b25ae3a19ba855c83e605a3bb5842b9896",
+  "_from": "cmdjs@latest",
+  "_npmVersion": "1.4.28",
+  "_npmUser": {
+    "name": "smallaitt",
+    "email": "536762164@qq.com"
+  },
+  "maintainers": [
+    {
+      "name": "smallaitt",
+      "email": "536762164@qq.com"
+    }
+  ],
+  "dist": {
+    "shasum": "2c84f5b25ae3a19ba855c83e605a3bb5842b9896",
+    "tarball": "https://registry.npmjs.org/cmdjs/-/cmdjs-0.0.14.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/cmdjs/-/cmdjs-0.0.14.tgz"
+}

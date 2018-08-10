@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="PayoffSkin" width="400" height="407" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="gMachine" left="0" right="0" top="0" bottom="0" anchorOffsetX="0" anchorOffsetY="0" touchEnabled="false">
+		<e:Image id="machine" source="iterated_machine_png" horizontalCenter="4" width="1040" height="371" verticalCenter="0"/>
+	</e:Group>
+	<e:Group id="gMachine0" left="0" right="0" top="0" bottom="0" anchorOffsetX="0" anchorOffsetY="0" touchEnabled="false">
+		<e:Image id="payoff" source="gz_png" width="400" horizontalCenter="0" height="400" verticalCenter="0"/>
+	</e:Group>
+</e:Skin>

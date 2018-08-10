@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image id="bg"  source="common_black_png" left="0" top="0" bottom="0" right="0" alpha="0.6"/>
+    <e:Image id="light" source="settle_light_png" scaleX="2" scaleY="2" horizontalCenter="0" verticalCenter="-326.5"/>
+    <e:Group horizontalCenter="0" verticalCenter="356">
+		<e:Image id="panel"  horizontalCenter="0" verticalCenter="-311" source="settle_winBg_png"/>
+		<e:Image id="star" source="star_png" horizontalCenter="0" verticalCenter="-708"/>
+        <e:Image id="gameoverTip"  source="overGameTip_png" verticalCenter="-580.5" horizontalCenter="0"/>
+        <e:Image id="curscoreTip"  source="curScoreTip_png" horizontalCenter="0" verticalCenter="-484"/>
+        <e:BitmapLabel id="curscore"  font="settleFont1_fnt" text="4567" horizontalCenter="0" verticalCenter="-404"/>
+        <e:Image id="weekrankTip"  source="weekScoreTip_png" horizontalCenter="54" verticalCenter="-328" scaleX="0.8" scaleY="0.8"/>
+        <e:BitmapLabel id="weekscore"  font="settleFont2_fnt" text="8888" horizontalCenter="216" verticalCenter="-327"/>
+        <e:Image id="friendrankTip"  source="friendRankTip_png" horizontalCenter="-167" verticalCenter="-268"/>
+        <e:BitmapLabel id="friendrank"  font="settleFont1_fnt" text="123" horizontalCenter="-167" verticalCenter="-211" scaleX="0.55" scaleY="0.55"/>
+        <e:Image id="rankTip"  source="gameRankTip_png" horizontalCenter="167" verticalCenter="-268"/>
+        <e:BitmapLabel id="rank"  font="settleFont1_fnt" text="389" horizontalCenter="167" verticalCenter="-211" scaleX="0.55" scaleY="0.55"/>
+        <e:Image id="rankbg"  source="rank_png" horizontalCenter="0" verticalCenter="-124"/>
+        <e:Group id="replay" horizontalCenter="0" verticalCenter="87">
+            <e:Image  source="settle_btnbg_png" horizontalCenter="0" verticalCenter="0"/>
+            <e:Image  source="againTip_png" horizontalCenter="0" verticalCenter="0"/>
+        </e:Group>
+        
+    </e:Group>
+</e:Skin>

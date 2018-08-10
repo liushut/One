@@ -1,0 +1,135 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "eui.Button",
+			"name": "a10010",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Button",
+			"name": "a10011",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.TextInput",
+			"name": "idInput",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Button",
+			"name": "login",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Button",
+			"name": "match",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.TextInput",
+			"name": "matchInput",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "member",
+			"type": "eui.Button",
+			"name": "ready",
+			"memberof": "MatchView",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "MatchView",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "childrenCreated",
+			"memberof": "MatchView",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "onDestroy",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"description": "销毁界面时会被调用，一般重写进行回收操作。返回0表示正常结束。【注意】全局事件必须remove（例如EventManager和ENTER_FRAME），timeout必须clear。",
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "onProgress",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "current",
+					"type": "number",
+					"description": ""
+				},
+				{
+					"name": "total",
+					"type": "number",
+					"description": ""
+				}
+			],
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "setData",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "any",
+					"description": ""
+				}
+			],
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "show",
+			"memberof": "ZJ.ViewBase",
+			"scope": "instance",
+			"inherited": true,
+			"inherits": "ZJ.ViewBase"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "MatchView",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\view\\MatchView.ts",
+		"augments": [
+			"ZJ.ViewBase",
+			"ZJ.ComponentBase"
+		]
+	}
+}

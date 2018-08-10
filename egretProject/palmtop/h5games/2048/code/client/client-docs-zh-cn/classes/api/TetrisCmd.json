@@ -1,0 +1,85 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "addObsBlockMySelf",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "6"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "addObsBlockToEnemy",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "5"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "checkData",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "8"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "gameover",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "7"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "movedown",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "3"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "movefastdown",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "4"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "moveleft",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "1"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "moveright",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "2"
+		},
+		{
+			"kind": "member",
+			"type": "number",
+			"name": "rotate",
+			"memberof": "TetrisCmd",
+			"scope": "static",
+			"default": "0"
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "enum",
+		"name": "TetrisCmd",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\Tetris.ts"
+	}
+}

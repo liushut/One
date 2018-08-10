@@ -1,0 +1,52 @@
+{
+	"globalMember": [
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\oppo\\OppoConfig.d.ts",
+			"kind": "globalMember",
+			"type": "{version :any,msgChannel :any,jsonToObj :any,objToJson :any,}",
+			"name": "BattlePlatform",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\chushou\\ChushouConfig.d.ts",
+			"kind": "globalMember",
+			"type": "{launchMode:any,inviteMode:any,gameRoomId:any,factor:any,level:any,gameRecordId:any}",
+			"name": "chushouGameConfig",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\ThemeAdapter.ts",
+			"kind": "globalMember",
+			"type": "{paths:string[],skins:any}",
+			"name": "generateEUI",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\oppo\\OppoConfig.d.ts",
+			"kind": "globalMember",
+			"type": "{timestamp:any,websocketdomain:any,port:any,connectUrl:any,channelid:any,gameid:any,roomid:any,uid:any,name:any,avatarurl:any,teamid:any,opt:any,nonstr:any,sign:any,strPostData:any,rawdata:any}",
+			"name": "oppoConfig",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\Platform.ts",
+			"kind": "globalMember",
+			"type": "Platform",
+			"name": "platform",
+			"memberof": "window",
+			"scope": "instance"
+		},
+		{
+			"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\sdk\\yy\\YYConfig.d.ts",
+			"kind": "globalMember",
+			"type": "{timestamp:any,websocketdomain:any,port:any,connectUrl:any,channelid:any,gameid:any,roomid:any,uid:any,name:any,avatarurl:any,teamid:any,opt:any,nonstr:any,sign:any,strPostData:any,rawdata:any}",
+			"name": "yyGameConfig",
+			"memberof": "window",
+			"scope": "instance"
+		}
+	]
+}

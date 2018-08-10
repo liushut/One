@@ -1,0 +1,27 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "Game",
+			"memberof": "UIName",
+			"scope": "static",
+			"default": "\"Game\""
+		},
+		{
+			"kind": "member",
+			"name": "Loading",
+			"memberof": "UIName",
+			"scope": "static",
+			"default": "\"Loading\""
+		}
+	],
+	"function": [],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "UIName",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\ModuleConfig.ts"
+	}
+}

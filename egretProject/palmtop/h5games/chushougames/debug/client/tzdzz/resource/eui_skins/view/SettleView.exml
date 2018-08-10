@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SettleViewSkin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image id="bg"  source="common_black_png" left="0" right="0" top="0" bottom="0" alpha="0.5"/>
+	<e:Image id="light" source="record_light_png" verticalCenter="-240" horizontalCenter="0"/>
+    <e:Group id="group" horizontalCenter="0" verticalCenter="0">
+        <e:Image id="panel"  source="winPanel_png" horizontalCenter="0" verticalCenter="0"/>
+        <e:Image id="stateTip"  source="youwin_png" horizontalCenter="0" verticalCenter="-152"/>
+        <e:Group id="head1Group" horizontalCenter="-152" verticalCenter="68.5" anchorOffsetY="0" height="235.45">
+            <e:Image id="head1Bg"  source="record_headBg_png" horizontalCenter="0" verticalCenter="-31"/>
+            <e:Image id="head1"  horizontalCenter="1" verticalCenter="-32" source="record_head2_png" width="150" height="150"/>
+            <e:Label id="name1"  horizontalCenter="0" verticalCenter="87" text="急疯了劲草" fontFamily="SimHei" textColor="0x364552" width="205" textAlign="center" height="30"/>
+            <e:Image id="scoreBg"  horizontalCenter="4" verticalCenter="165" source="record_bg01_png"/>
+            <e:Label id="scoreTip"  text="分数:" horizontalCenter="-40" verticalCenter="165" textColor="0x5f86a7"/>
+            <e:Label id="score1"  text="9864" horizontalCenter="45" verticalCenter="165" textAlign="left" width="82" textColor="0xe1531e"/>
+        </e:Group>
+        <e:Group id="head2Group" horizontalCenter="152" verticalCenter="68.5" anchorOffsetY="0" height="235.45">
+            <e:Image id="head2Bg"  source="record_headBg_png" horizontalCenter="0" verticalCenter="-31"/>
+            <e:Image id="head2"  source="record_head1_png" horizontalCenter="1" verticalCenter="-32" width="150" height="150"/>
+            <e:Label id="name2"  horizontalCenter="0" verticalCenter="87" text="老爷家的太太" fontFamily="SimHei" textColor="0x364552" textAlign="center" width="205" height="30"/>
+            <e:Image id="scoreBg2"  horizontalCenter="4" verticalCenter="165" source="record_bg01_png"/>
+            <e:Label id="scoreTip2"  text="分数:" horizontalCenter="-40" verticalCenter="165" textColor="0x5f86a7"/>
+            <e:Label id="score2"  text="9864" horizontalCenter="45" verticalCenter="165" textAlign="left" width="82" textColor="0xe1531e"/>
+        </e:Group>
+        <e:Image id="vs" source="record_vs_png" horizontalCenter="0" verticalCenter="43"/>
+        <e:Image id="guanzhu"  horizontalCenter="152" verticalCenter="325" source="record_guanzhuta_png"/>
+        <e:Group id="fight" horizontalCenter="0" verticalCenter="193" touchEnabled="false">
+            <e:Image id=""  source="record_bg02_png" horizontalCenter="0" verticalCenter="265"/>
+            <e:Label id=""  text="对方约战" horizontalCenter="0" verticalCenter="259" size="25"/>
+        </e:Group>
+        <e:Image id="play"  horizontalCenter="0" verticalCenter="554" source="record_play_png"/>
+    </e:Group>
+</e:Skin>

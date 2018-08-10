@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="ERLANG_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="erlang" name="Erlang">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/ebin" />
+    <output-test url="file://$MODULE_DIR$/ebin/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include" type="erlang-include" />
+      <sourceFolder url="file://$MODULE_DIR$/include/proto" type="erlang-include" />
+      <sourceFolder url="file://$MODULE_DIR$/src/ali_game" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/libs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/misc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/mod" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/pb_handler" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/proto" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/pt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/socket" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/deps/gpb/include" type="erlang-include" />
+      <sourceFolder url="file://$MODULE_DIR$/deps/util/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/deps/util/include" type="erlang-include" />
+    </content>
+    <orderEntry type="jdk" jdkName="Erlang 19" jdkType="Erlang SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

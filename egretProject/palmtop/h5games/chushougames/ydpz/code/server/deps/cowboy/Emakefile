@@ -1,0 +1,17 @@
+{
+    [
+        './behaviour/*'
+    ],
+    [
+        {outdir, "./ebin"}
+    ]
+}.
+{
+    [
+        './src/*'
+    ],
+    [
+		{i, "./ebin"},
+        {outdir, "./ebin"}
+    ]
+}.

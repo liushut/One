@@ -1,0 +1,7 @@
+module xlsx {
+//---------------c_yuandian.json----------------
+export var cfg_c_yuandian = "shared/c_yuandian.json";
+export var c_yuandian_id = "A";
+export var c_yuandian_data = "B";
+
+}

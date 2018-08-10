@@ -1,0 +1,79 @@
+{
+	"api": {
+		"class": [
+			"AliLoadingView",
+			"AssetAdapter",
+			"Block",
+			"ChushouDataModel",
+			"ChushouLoadingView",
+			"ChushouSDK",
+			"Combo",
+			"DebugPlatform",
+			"EventName",
+			"FlyBlock",
+			"GameView",
+			"LoadingView",
+			"Main",
+			"MatchView",
+			"ModuleConfig",
+			"ModuleStartUp",
+			"ModuleUtil",
+			"MyButton",
+			"NumCountDown",
+			"OppoSDK",
+			"Pos",
+			"TestView",
+			"Tetris",
+			"TetrisInfo",
+			"ThemeAdapter",
+			"UILayer",
+			"UIName",
+			"YYLoadingView",
+			"ZJ.AudioManager",
+			"ZJ.ChannelDataEvent",
+			"ZJ.CommonConfig",
+			"ZJ.CommonEventName",
+			"ZJ.ComponentBase",
+			"ZJ.CountDown",
+			"ZJ.EventManager",
+			"ZJ.Gesture",
+			"ZJ.GoPool",
+			"ZJ.MathUtil",
+			"ZJ.ResManager",
+			"ZJ.ShapeUtil",
+			"ZJ.SocketDataEvent",
+			"ZJ.SocketManager",
+			"ZJ.TableManager",
+			"ZJ.UIData",
+			"ZJ.UIManager",
+			"ZJ.Util",
+			"ZJ.Vector3",
+			"ZJ.ViewBase"
+		],
+		"enum": [
+			"Dir",
+			"TetrisCmd"
+		],
+		"interface": [
+			"Data11010",
+			"Data11011",
+			"Data11012",
+			"Data11014",
+			"Platform",
+			"PlayerInfo",
+			"Window"
+		],
+		"globalFunction": [
+			"window.globalFunction"
+		],
+		"globalMember": [
+			"window.globalMember",
+			"xlsx.globalMember"
+		]
+	},
+	"other": {
+		"class": [
+			"global.Types"
+		]
+	}
+}

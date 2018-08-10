@@ -1,0 +1,39 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Gesture",
+			"memberof": "ZJ.Gesture",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "OnDestroy",
+			"memberof": "ZJ.Gesture",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "onDestroy",
+			"memberof": "ZJ.ComponentBase",
+			"scope": "instance",
+			"description": "正常处理返回0",
+			"inherited": true,
+			"inherits": "ZJ.ComponentBase"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Gesture",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\component\\Gesture.ts",
+		"augments": [
+			"ZJ.ComponentBase"
+		]
+	}
+}

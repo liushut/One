@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BarBlackSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="barblack" source="barblack_png"  width="529" height="39" anchorOffsetX="0" x="0"/>
+</e:Skin>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameView13Skin" width="1080" height="1920" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group width="1080" height="1920" touchEnabled="false" verticalCenter="0" horizontalCenter="0">
+		<e:Rect scaleX="1" scaleY="1" fillColor="0xffffff" width="1440" height="2340" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	</e:Group>
+	<e:Group width="1080" horizontalCenter="0" height="1920" verticalCenter="0" touchEnabled="false">
+ 		<e:Label id="credits" text="88" textColor="0x000000" size="50" textAlign="center" touchEnabled="false" width="1080" verticalCenter="-100" horizontalCenter="0"/>
+		<e:Button id="game_mode" label="" y="1004" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+		<e:Button id="sandbox_mode" label="" y="1156" horizontalCenter="0" scaleX="1" scaleY="1" skinName="button_longSkin"/>
+	</e:Group>
+</e:Skin>

@@ -1,0 +1,159 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"name": "ProtoBufRoot",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"default": "new protobuf.Root()"
+		},
+		{
+			"kind": "member",
+			"type": "boolean",
+			"name": "connected",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"type": "(protoID:number,isCS:boolean)=>protobuf.Type",
+			"name": "getProtoByID",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"type": "ZJ.SocketManager",
+			"name": "instance",
+			"memberof": "ZJ.SocketManager",
+			"scope": "static",
+			"rwType": 1
+		},
+		{
+			"kind": "member",
+			"type": "(e:egret.Event)=>void",
+			"name": "onSocketData",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"default": "null"
+		},
+		{
+			"kind": "member",
+			"type": "(protoID:number,data?:any)=>void",
+			"name": "send",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"default": "null"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "SocketManager",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "close",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "connect",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "host",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "port",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "connectByUrl",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "url",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "connectByUrlAli",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "data",
+					"type": "{ip:string,port:string}",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "number",
+			"name": "init",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "parseProtoByText",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "text",
+					"type": "string",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"type": "void",
+			"name": "setCompany",
+			"memberof": "ZJ.SocketManager",
+			"scope": "instance",
+			"description": "socket版本1:火树（默认） 2:游爱 3:阿里",
+			"params": [
+				{
+					"name": "company",
+					"type": "number",
+					"description": ""
+				}
+			]
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "SocketManager",
+		"memberof": "ZJ",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\common\\SocketManager.ts",
+		"description": "支持根据不同后端发送协议。参考setCompany。",
+		"augments": []
+	}
+}

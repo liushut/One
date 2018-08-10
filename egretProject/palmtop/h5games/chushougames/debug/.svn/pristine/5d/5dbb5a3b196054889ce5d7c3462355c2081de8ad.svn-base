@@ -1,0 +1,760 @@
+{
+	"groups": [
+		{
+			"keys": "bg_djw_png,ball_png,basket_png,board_png,net_png,bg_jpg,robot1_png,robot2_png,robot3_png,again_png,wind_png,windbg_png,score_fnt,score_png,score1_fnt,score1_png,cleanshot_png,combo_png,plus_png,cleanshot_mp3,cleanshotcheer_mp3,hitbasket_mp3,hitgroundbig_mp3,hitgroundsmall_mp3,touchnet_mp3,shou_ske_json,shou_tex_json,shou_tex_png,count_tex_json,count_tex_png,count_ske_json,windboard_png,windff_png,windff_fnt,robotarm_png,backcount_fnt,backcount_png,btn_png,settlefont_fnt,settlefont_png,btnlight_png,exit_png,tipsbg_png,stage_bg_png,c_backcount_bg_png,condition_bg_png",
+			"name": "preload"
+		},
+		{
+			"keys": "p10_proto,p11_proto",
+			"name": "realpreload"
+		},
+		{
+			"keys": "settlebg_png,power1_png,power2_png,power3_png,dianchi_ske_json,dianchi_tex_json,dianchi_tex_png,extrapower_png,top2_png,top1_png,bg1_png,settlescore_fnt,settlescore_png,sz_ske_json,sz_tex_json,sz_tex_png,getpower_mp3,sortlight_png",
+			"name": "single"
+		},
+		{
+			"keys": "femaleflag_png,linshi1_png,linshi2_png,maleflag_png,pvpscore_fnt,pvpscore_png,playerbg_png,soundoff_png,soundon_png,pvp_leave_png,pvp_linshi1_png,pvp_linshi2_png,pvp_mf_png,pvp_sbstart_png,pvp_settlebg_png,pvp_waitaccept_png,pvp_win_png,pvp_winball_png,pvp_accept_png,pvp_draw_png,pvp_fail_png,pvp_failball_png,pvp_hmf_png,JS_1_tex_json,JS_1_tex_png,JS_1_ske_json,wait1_png,wait3_png,djs_ske_json,djs_tex_json,djs_tex_png,sbarm_png,sbball_png,sb1_png,sb2_png,sb3_png,backcount_bg_png",
+			"name": "double"
+		},
+		{
+			"keys": "pause_light_png,add_light_png,add_grey_png,reduce_light_png,reduce_grey_png,play_png,replay_bg_light_png,replay_bg_grey_png,replay_btn_light_png,replay_speed_bg_png,process_bar_bg_png,progress_bar_light_png,replay_bg_png,ok_text_png,cancel_text_png,exit_btn_png,exit_btn_light_png",
+			"name": "replay"
+		},
+		{
+			"keys": "competitionStage_fnt,competitionStage_png",
+			"name": "competition"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/CheckBox/checkbox_select_disabled.png?v=9042",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_down.png?v=9042",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_up.png?v=9042",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_unselect.png?v=9042",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/ItemRenderer/selected.png?v=9042",
+			"type": "image",
+			"name": "selected_png"
+		},
+		{
+			"url": "assets/Panel/border.png?v=9042",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "assets/Panel/header.png?v=9042",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_disabled.png?v=9042",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_down.png?v=9042",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_up.png?v=9042",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_unselect.png?v=9042",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png?v=9042",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/Slider/thumb.png?v=9042",
+			"type": "image",
+			"name": "thumb_png"
+		},
+		{
+			"url": "assets/Slider/track.png?v=9042",
+			"type": "image",
+			"name": "track_png"
+		},
+		{
+			"url": "assets/Slider/tracklight.png?v=9042",
+			"type": "image",
+			"name": "tracklight_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/handle.png?v=9042",
+			"type": "image",
+			"name": "handle_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/off.png?v=9042",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/on.png?v=9042",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "assets/Button/button_down.png?v=9042",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png?v=9042",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ProgressBar/thumb_pb.png?v=9042",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "assets/ProgressBar/track_pb.png?v=9042",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png?v=9042",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "assets/egret_icon.png?v=9042",
+			"type": "image",
+			"name": "egret_icon_png"
+		},
+		{
+			"url": "shared/bg_djw.png?v=9042",
+			"type": "bin",
+			"name": "bg_djw_png"
+		},
+		{
+			"url": "assets/Basketball/basketball/ball.png?v=9042",
+			"type": "image",
+			"name": "ball_png"
+		},
+		{
+			"url": "assets/Basketball/basketball/basket.png?v=9042",
+			"type": "image",
+			"name": "basket_png"
+		},
+		{
+			"url": "assets/Basketball/basketball/board.png?v=9042",
+			"type": "image",
+			"name": "board_png"
+		},
+		{
+			"url": "assets/Basketball/basketball/net.png?v=9042",
+			"type": "image",
+			"name": "net_png"
+		},
+		{
+			"url": "assets/Basketball/scene/bg.jpg?v=9042",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"url": "assets/Basketball/scene/robot1.png?v=9042",
+			"type": "image",
+			"name": "robot1_png"
+		},
+		{
+			"url": "assets/Basketball/scene/robot2.png?v=9042",
+			"type": "image",
+			"name": "robot2_png"
+		},
+		{
+			"url": "assets/Basketball/scene/robot3.png?v=9042",
+			"type": "image",
+			"name": "robot3_png"
+		},
+		{
+			"url": "assets/Basketball/settle/again.png?v=9042",
+			"type": "image",
+			"name": "again_png"
+		},
+		{
+			"url": "assets/Basketball/settle/settlebg.png?v=9042",
+			"type": "image",
+			"name": "settlebg_png"
+		},
+		{
+			"url": "assets/Basketball/scene/power1.png?v=9042",
+			"type": "image",
+			"name": "power1_png"
+		},
+		{
+			"url": "assets/Basketball/scene/power2.png?v=9042",
+			"type": "image",
+			"name": "power2_png"
+		},
+		{
+			"url": "assets/Basketball/scene/power3.png?v=9042",
+			"type": "image",
+			"name": "power3_png"
+		},
+		{
+			"url": "assets/Basketball/scene/wind.png?v=9042",
+			"type": "image",
+			"name": "wind_png"
+		},
+		{
+			"url": "assets/Basketball/scene/windbg.png?v=9042",
+			"type": "image",
+			"name": "windbg_png"
+		},
+		{
+			"url": "assets/Basketball/font/score.fnt?v=9042",
+			"type": "font",
+			"name": "score_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/score.png?v=9042",
+			"type": "image",
+			"name": "score_png"
+		},
+		{
+			"url": "assets/Basketball/font/score1.fnt?v=9042",
+			"type": "font",
+			"name": "score1_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/score1.png?v=9042",
+			"type": "image",
+			"name": "score1_png"
+		},
+		{
+			"url": "assets/Basketball/scene/cleanshot.png?v=9042",
+			"type": "image",
+			"name": "cleanshot_png"
+		},
+		{
+			"url": "assets/Basketball/scene/combo.png?v=9042",
+			"type": "image",
+			"name": "combo_png"
+		},
+		{
+			"url": "assets/Basketball/scene/plus.png?v=9042",
+			"type": "image",
+			"name": "plus_png"
+		},
+		{
+			"url": "assets/Basketball/db/dianchi_ske.json?v=9042",
+			"type": "json",
+			"name": "dianchi_ske_json"
+		},
+		{
+			"url": "assets/Basketball/db/dianchi_tex.json?v=9042",
+			"type": "json",
+			"name": "dianchi_tex_json"
+		},
+		{
+			"url": "assets/Basketball/db/dianchi_tex.png?v=9042",
+			"type": "image",
+			"name": "dianchi_tex_png"
+		},
+		{
+			"url": "assets/Basketball/scene/extrapower.png?v=9042",
+			"type": "image",
+			"name": "extrapower_png"
+		},
+		{
+			"url": "assets/Basketball/scene/top1.png?v=9042",
+			"type": "image",
+			"name": "top1_png"
+		},
+		{
+			"url": "assets/Basketball/scene/top2.png?v=9042",
+			"type": "image",
+			"name": "top2_png"
+		},
+		{
+			"url": "proto/p10.proto?v=9042",
+			"type": "text",
+			"name": "p10_proto"
+		},
+		{
+			"url": "proto/p11.proto?v=9042",
+			"type": "text",
+			"name": "p11_proto"
+		},
+		{
+			"url": "audio/cleanshot.mp3?v=9042",
+			"type": "sound",
+			"name": "cleanshot_mp3"
+		},
+		{
+			"url": "audio/cleanshotcheer.mp3?v=9042",
+			"type": "sound",
+			"name": "cleanshotcheer_mp3"
+		},
+		{
+			"url": "audio/getpower.mp3?v=9042",
+			"type": "sound",
+			"name": "getpower_mp3"
+		},
+		{
+			"url": "audio/hitbasket.mp3?v=9042",
+			"type": "sound",
+			"name": "hitbasket_mp3"
+		},
+		{
+			"url": "audio/hitgroundbig.mp3?v=9042",
+			"type": "sound",
+			"name": "hitgroundbig_mp3"
+		},
+		{
+			"url": "audio/hitgroundsmall.mp3?v=9042",
+			"type": "sound",
+			"name": "hitgroundsmall_mp3"
+		},
+		{
+			"url": "audio/touchnet.mp3?v=9042",
+			"type": "sound",
+			"name": "touchnet_mp3"
+		},
+		{
+			"url": "assets/Basketball/db/shou_ske.json?v=9042",
+			"type": "json",
+			"name": "shou_ske_json"
+		},
+		{
+			"url": "assets/Basketball/db/shou_tex.json?v=9042",
+			"type": "json",
+			"name": "shou_tex_json"
+		},
+		{
+			"url": "assets/Basketball/db/shou_tex.png?v=9042",
+			"type": "image",
+			"name": "shou_tex_png"
+		},
+		{
+			"url": "assets/Basketball/db/count_tex.json?v=9042",
+			"type": "json",
+			"name": "count_tex_json"
+		},
+		{
+			"url": "assets/Basketball/db/count_tex.png?v=9042",
+			"type": "image",
+			"name": "count_tex_png"
+		},
+		{
+			"url": "assets/Basketball/db/count_ske.json?v=9042",
+			"type": "json",
+			"name": "count_ske_json"
+		},
+		{
+			"url": "assets/Basketball/scene/windboard.png?v=9042",
+			"type": "image",
+			"name": "windboard_png"
+		},
+		{
+			"url": "assets/Basketball/font/windff.png?v=9042",
+			"type": "image",
+			"name": "windff_png"
+		},
+		{
+			"url": "assets/Basketball/font/windff.fnt?v=9042",
+			"type": "font",
+			"name": "windff_fnt"
+		},
+		{
+			"url": "assets/Basketball/settle/bg1.png?v=9042",
+			"type": "image",
+			"name": "bg1_png"
+		},
+		{
+			"url": "assets/Basketball/settle/sortlight.png?v=9042",
+			"type": "image",
+			"name": "sortlight_png"
+		},
+		{
+			"url": "assets/Basketball/font/settlescore.fnt?v=9042",
+			"type": "font",
+			"name": "settlescore_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/settlescore.png?v=9042",
+			"type": "image",
+			"name": "settlescore_png"
+		},
+		{
+			"url": "assets/Basketball/db/sz_ske.json?v=9042",
+			"type": "json",
+			"name": "sz_ske_json"
+		},
+		{
+			"url": "assets/Basketball/db/sz_tex.json?v=9042",
+			"type": "json",
+			"name": "sz_tex_json"
+		},
+		{
+			"url": "assets/Basketball/db/sz_tex.png?v=9042",
+			"type": "image",
+			"name": "sz_tex_png"
+		},
+		{
+			"url": "assets/Basketball/font/pvpscore.fnt?v=9042",
+			"type": "font",
+			"name": "pvpscore_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/pvpscore.png?v=9042",
+			"type": "image",
+			"name": "pvpscore_png"
+		},
+		{
+			"url": "assets/Basketball/scene/femaleflag.png?v=9042",
+			"type": "image",
+			"name": "femaleflag_png"
+		},
+		{
+			"url": "assets/Basketball/scene/linshi1.png?v=9042",
+			"type": "image",
+			"name": "linshi1_png"
+		},
+		{
+			"url": "assets/Basketball/scene/linshi2.png?v=9042",
+			"type": "image",
+			"name": "linshi2_png"
+		},
+		{
+			"url": "assets/Basketball/scene/maleflag.png?v=9042",
+			"type": "image",
+			"name": "maleflag_png"
+		},
+		{
+			"url": "assets/Basketball/scene/playerbg.png?v=9042",
+			"type": "image",
+			"name": "playerbg_png"
+		},
+		{
+			"url": "assets/Basketball/scene/soundoff.png?v=9042",
+			"type": "image",
+			"name": "soundoff_png"
+		},
+		{
+			"url": "assets/Basketball/scene/soundon.png?v=9042",
+			"type": "image",
+			"name": "soundon_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_leave.png?v=9042",
+			"type": "image",
+			"name": "pvp_leave_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_linshi1.png?v=9042",
+			"type": "image",
+			"name": "pvp_linshi1_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_linshi2.png?v=9042",
+			"type": "image",
+			"name": "pvp_linshi2_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_mf.png?v=9042",
+			"type": "image",
+			"name": "pvp_mf_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_sbstart.png?v=9042",
+			"type": "image",
+			"name": "pvp_sbstart_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_settlebg.png?v=9042",
+			"type": "image",
+			"name": "pvp_settlebg_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_waitaccept.png?v=9042",
+			"type": "image",
+			"name": "pvp_waitaccept_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_win.png?v=9042",
+			"type": "image",
+			"name": "pvp_win_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_winball.png?v=9042",
+			"type": "image",
+			"name": "pvp_winball_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_accept.png?v=9042",
+			"type": "image",
+			"name": "pvp_accept_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_draw.png?v=9042",
+			"type": "image",
+			"name": "pvp_draw_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_fail.png?v=9042",
+			"type": "image",
+			"name": "pvp_fail_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_failball.png?v=9042",
+			"type": "image",
+			"name": "pvp_failball_png"
+		},
+		{
+			"url": "assets/Basketball/settle/pvp_hmf.png?v=9042",
+			"type": "image",
+			"name": "pvp_hmf_png"
+		},
+		{
+			"url": "assets/Basketball/basketball/sbball.png?v=9042",
+			"type": "image",
+			"name": "sbball_png"
+		},
+		{
+			"url": "assets/Basketball/scene/sb1.png?v=9042",
+			"type": "image",
+			"name": "sb1_png"
+		},
+		{
+			"url": "assets/Basketball/scene/sb2.png?v=9042",
+			"type": "image",
+			"name": "sb2_png"
+		},
+		{
+			"url": "assets/Basketball/scene/sb3.png?v=9042",
+			"type": "image",
+			"name": "sb3_png"
+		},
+		{
+			"url": "assets/Basketball/scene/robotarm.png?v=9042",
+			"type": "image",
+			"name": "robotarm_png"
+		},
+		{
+			"url": "assets/Basketball/scene/backcount_bg.png?v=9042",
+			"type": "image",
+			"name": "backcount_bg_png"
+		},
+		{
+			"url": "assets/Basketball/font/backcount.fnt?v=9042",
+			"type": "font",
+			"name": "backcount_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/backcount.png?v=9042",
+			"type": "image",
+			"name": "backcount_png"
+		},
+		{
+			"url": "assets/Basketball/scene/sbarm.png?v=9042",
+			"type": "image",
+			"name": "sbarm_png"
+		},
+		{
+			"url": "assets/Basketball/settle/btn.png?v=9042",
+			"type": "image",
+			"name": "btn_png"
+		},
+		{
+			"url": "assets/Basketball/font/settlefont.fnt?v=9042",
+			"type": "font",
+			"name": "settlefont_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/settlefont.png?v=9042",
+			"type": "image",
+			"name": "settlefont_png"
+		},
+		{
+			"url": "assets/Basketball/settle/btnlight.png?v=9042",
+			"type": "image",
+			"name": "btnlight_png"
+		},
+		{
+			"url": "assets/Basketball/db/djs_ske.json?v=9042",
+			"type": "json",
+			"name": "djs_ske_json"
+		},
+		{
+			"url": "assets/Basketball/db/djs_tex.json?v=9042",
+			"type": "json",
+			"name": "djs_tex_json"
+		},
+		{
+			"url": "assets/Basketball/db/djs_tex.png?v=9042",
+			"type": "image",
+			"name": "djs_tex_png"
+		},
+		{
+			"url": "assets/Basketball/db/JS_1_tex.json?v=9042",
+			"type": "json",
+			"name": "JS_1_tex_json"
+		},
+		{
+			"url": "assets/Basketball/db/JS_1_tex.png?v=9042",
+			"type": "image",
+			"name": "JS_1_tex_png"
+		},
+		{
+			"url": "assets/Basketball/db/JS_1_ske.json?v=9042",
+			"type": "json",
+			"name": "JS_1_ske_json"
+		},
+		{
+			"url": "assets/Basketball/wait/wait1.png?v=9042",
+			"type": "image",
+			"name": "wait1_png"
+		},
+		{
+			"url": "assets/Basketball/wait/wait3.png?v=9042",
+			"type": "image",
+			"name": "wait3_png"
+		},
+		{
+			"url": "assets/Basketball/scene/exit.png?v=9042",
+			"type": "image",
+			"name": "exit_png"
+		},
+		{
+			"url": "assets/Basketball/scene/tipsbg.png?v=9042",
+			"type": "image",
+			"name": "tipsbg_png"
+		},
+		{
+			"url": "assets/Basketball/replay/pause_light.png?v=9042",
+			"type": "image",
+			"name": "pause_light_png"
+		},
+		{
+			"url": "assets/Basketball/replay/add_light.png?v=9042",
+			"type": "image",
+			"name": "add_light_png"
+		},
+		{
+			"url": "assets/Basketball/replay/add_grey.png?v=9042",
+			"type": "image",
+			"name": "add_grey_png"
+		},
+		{
+			"url": "assets/Basketball/replay/reduce_light.png?v=9042",
+			"type": "image",
+			"name": "reduce_light_png"
+		},
+		{
+			"url": "assets/Basketball/replay/reduce_grey.png?v=9042",
+			"type": "image",
+			"name": "reduce_grey_png"
+		},
+		{
+			"url": "assets/Basketball/replay/play.png?v=9042",
+			"type": "image",
+			"name": "play_png"
+		},
+		{
+			"url": "assets/Basketball/replay/replay_bg_light.png?v=9042",
+			"type": "image",
+			"name": "replay_bg_light_png"
+		},
+		{
+			"url": "assets/Basketball/replay/replay_bg_grey.png?v=9042",
+			"type": "image",
+			"name": "replay_bg_grey_png"
+		},
+		{
+			"url": "assets/Basketball/replay/replay_btn_light.png?v=9042",
+			"type": "image",
+			"name": "replay_btn_light_png"
+		},
+		{
+			"url": "assets/Basketball/replay/replay_speed_bg.png?v=9042",
+			"type": "image",
+			"name": "replay_speed_bg_png"
+		},
+		{
+			"url": "assets/Basketball/replay/process_bar_bg.png?v=9042",
+			"type": "image",
+			"name": "process_bar_bg_png"
+		},
+		{
+			"url": "assets/Basketball/replay/progress_bar_light.png?v=9042",
+			"type": "image",
+			"name": "progress_bar_light_png"
+		},
+		{
+			"url": "assets/Basketball/replay/replay_bg.png?v=9042",
+			"type": "image",
+			"name": "replay_bg_png"
+		},
+		{
+			"url": "assets/Basketball/replay/ok_text.png?v=9042",
+			"type": "image",
+			"name": "ok_text_png"
+		},
+		{
+			"url": "assets/Basketball/replay/cancel_text.png?v=9042",
+			"type": "image",
+			"name": "cancel_text_png"
+		},
+		{
+			"url": "assets/Basketball/replay/exit_btn.png?v=9042",
+			"type": "image",
+			"name": "exit_btn_png"
+		},
+		{
+			"url": "assets/Basketball/replay/exit_btn_light.png?v=9042",
+			"type": "image",
+			"name": "exit_btn_light_png"
+		},
+		{
+			"url": "assets/Basketball/font/competitionStage.fnt?v=9042",
+			"type": "font",
+			"name": "competitionStage_fnt"
+		},
+		{
+			"url": "assets/Basketball/font/competitionStage.png?v=9042",
+			"type": "image",
+			"name": "competitionStage_png"
+		},
+		{
+			"name": "stage_bg_png",
+			"type": "image",
+			"url": "assets/Basketball/competition/stage_bg.png?v=9042"
+		},
+		{
+			"name": "c_backcount_bg_png",
+			"type": "image",
+			"url": "assets/Basketball/competition/c_backcount_bg.png?v=9042"
+		},
+		{
+			"name": "condition_bg_png",
+			"type": "image",
+			"url": "assets/Basketball/competition/condition_bg.png?v=9042"
+		}
+	]
+}

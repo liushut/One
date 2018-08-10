@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SliderLongSkin" minWidth="20" minHeight="8" xmlns:e="http://ns.egret.com/eui">
+    <e:Image id="track" scale9Grid="1,1,4,4" width="100%"
+             height="80" verticalCenter="0" source="slider_bg_png"/>
+    <e:Image id="thumb" verticalCenter="0" source="slider_knob_png"/>
+</e:Skin>

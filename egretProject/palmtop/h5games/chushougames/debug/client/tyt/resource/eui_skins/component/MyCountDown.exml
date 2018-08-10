@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MyCountDownSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="160c50f6e49" ></w:Config>
+	<e:BitmapLabel id="label" width="350" height="50" y="50" font="time2fnt_fnt" text="00:00" horizontalCenter="0" scaleX="1.44" scaleY="1.44" textAlign="center"/>
+</e:Skin>

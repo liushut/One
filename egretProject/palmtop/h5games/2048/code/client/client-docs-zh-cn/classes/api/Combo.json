@@ -1,0 +1,48 @@
+{
+	"member": [
+		{
+			"kind": "member",
+			"type": "eui.BitmapLabel",
+			"name": "comboLabel",
+			"memberof": "Combo",
+			"scope": "instance"
+		}
+	],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Combo",
+			"memberof": "Combo",
+			"scope": "instance"
+		},
+		{
+			"kind": "function",
+			"name": "setCombo",
+			"memberof": "Combo",
+			"scope": "instance",
+			"params": [
+				{
+					"name": "combo",
+					"type": "number",
+					"description": ""
+				}
+			]
+		},
+		{
+			"kind": "function",
+			"name": "show",
+			"memberof": "Combo",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Combo",
+		"memberof": "",
+		"filename": "F:\\Test\\palmtop\\h5games\\2048\\code\\client\\client\\src\\module\\component\\Combo.ts",
+		"augments": [],
+		"implements": []
+	}
+}
