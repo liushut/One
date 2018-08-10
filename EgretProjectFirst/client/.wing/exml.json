@@ -1,0 +1,15 @@
+{
+  "global": {
+    "globalAutoLayerMarkEnable": false,
+    "globalRulerEnable": true
+  },
+  "160b645fa6f": {
+    "backgroundX": 0,
+    "backgroundY": 0,
+    "backgroundWidth": -1,
+    "backgroundHeight": -1,
+    "useBgImage": true,
+    "useBgColor": true,
+    "backgroundAlpha": 100
+  }
+}

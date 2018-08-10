@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="77" height="77" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" class="LevelIconSkin">
+
+	<e:Image id="gs_select_dis" width="77" height="77" x="0" y="0" source="gs_select_dis_png" fillMode="scale"/>
+	<e:Image id="gs_select_1" width="77" height="77" x="0" y="0" source="gs_select_1_png"/>
+	<e:Label id="lb_level" text="1" x="14" y="19" anchorOffsetX="0" width="45" verticalAlign="middle" textAlign="center"/>
+</e:Skin>

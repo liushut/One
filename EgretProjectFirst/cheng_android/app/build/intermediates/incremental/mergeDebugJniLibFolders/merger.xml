@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="F:\Egret Project\cheng_android\app\libs"><file name="armeabi-v7a/libegret.so" path="F:\Egret Project\cheng_android\app\libs\armeabi-v7a\libegret.so"/><file name="egret.aar" path="F:\Egret Project\cheng_android\app\libs\egret.aar"/></source></dataSet><dataSet config="debug"><source path="F:\Egret Project\cheng_android\app\src\debug\jniLibs"/></dataSet></merger>

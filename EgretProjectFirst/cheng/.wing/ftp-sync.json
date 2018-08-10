@@ -1,0 +1,65 @@
+[
+    {
+        "name": "ftp-007",
+        "host": "host",
+        "user": "lst",
+        "password": "007",
+        "port": 21,
+        "protocol": "ftp",
+        "remotePath": "cheng/",
+        "passive": false,
+        "debug": false,
+        "privateKeyPath": null,
+        "ignoreDir": [
+            ".out/",
+            ".git/"
+        ],
+        "ignoreFileSuffix": [
+            "diff"
+        ],
+        "diffFile": "ftpdiff-1531883867330.diff",
+        "usediffFile": true
+    },
+    {
+        "name": "ftp-180718111835",
+        "host": "host",
+        "user": "username",
+        "password": "password",
+        "port": 7788,
+        "protocol": "ftp",
+        "remotePath": "cheng/",
+        "passive": false,
+        "debug": false,
+        "privateKeyPath": null,
+        "ignoreDir": [
+            ".out/",
+            ".git/"
+        ],
+        "ignoreFileSuffix": [
+            "diff"
+        ],
+        "diffFile": "ftpdiff-1531883924273.diff",
+        "usediffFile": true
+    },
+    {
+        "name": "ftp-180718112651",
+        "host": "host",
+        "user": "username",
+        "password": "password",
+        "port": 6666,
+        "protocol": "ftp",
+        "remotePath": "cheng/",
+        "passive": false,
+        "debug": false,
+        "privateKeyPath": null,
+        "ignoreDir": [
+            ".out/",
+            ".git/"
+        ],
+        "ignoreFileSuffix": [
+            "diff"
+        ],
+        "diffFile": "ftpdiff-1531884417921.diff",
+        "usediffFile": true
+    }
+]

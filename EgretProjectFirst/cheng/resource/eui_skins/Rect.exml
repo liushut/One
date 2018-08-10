@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="skins.VSliderSkin" minWidth="25" minHeight="30" xmlns:e="http://ns.egret.com/eui" width="40" height="40">
+	<e:Rect ellipseWidth="0" fillColor="0xFFFFFF" strokeColor="0x0276D0" strokeWeight="2" ellipseHeight="0" anchorOffsetX="0" anchorOffsetY="0" width="40" x="0" height="40" y="0"/>
+</e:Skin>

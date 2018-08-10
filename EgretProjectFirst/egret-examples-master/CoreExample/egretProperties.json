@@ -1,0 +1,38 @@
+{
+	"native": {
+		"path_ignore": []
+	},
+	"template": {},
+	"modules": [
+		{
+			"name": "egret",
+			"path": "${EGRET_DEFAULT}"
+		},
+		{
+			"name": "game",
+			"path": "${EGRET_DEFAULT}"
+		},
+		{
+			"name": "tween",
+			"path": "${EGRET_DEFAULT}"
+		},
+		{
+			"name": "res",
+			"path": "${EGRET_DEFAULT}"
+		},
+		{
+			"name": "dragonBones",
+			"path": "${EGRET_DEFAULT}"
+		},
+		{
+			"name": "socket",
+			"path": "${EGRET_DEFAULT}"
+		},
+		{
+			"name": "eui",
+			"path": "${EGRET_DEFAULT}"
+		}
+	],
+	"engineVersion": "5.2.3",
+	"compilerVersion": "5.2.3"
+}

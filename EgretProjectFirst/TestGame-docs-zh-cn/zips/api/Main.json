@@ -1,0 +1,21 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Main",
+			"memberof": "Main",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Main",
+		"memberof": "",
+		"filename": "F:\\Egret Project\\TestGame\\src\\Main.ts",
+		"description": "//////////////////////////////////////////////////////////////////////////////////////",
+		"augments": []
+	}
+}

@@ -1,0 +1,586 @@
+{
+	"groups": [
+		{
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,timefont_json,loadingprogress_png,toast-bg_png,arrow_png,avatar_png,bBlodBar_png,bBlodBarBg_png,bg_list_png,blodBarMask_png,bomb_png,btnfight_json,btn_addRobot_png,btn_back_png,btn_backToHome_png,btn_close_png,btn_createRoom_png,btn_joinRandomRoom_png,btn_joinRoom_png,btn_joinRoom2_png,btn_kickPlayer_png,btn_leaveRoom_png,btn_modify_png,btn_relive_png,btn_startGame_png,combo_png,complete_png,egret_icon2_png,fight1Bg_png,footer_text_white_png,gameOver_png,go_json,go_swf_json,gold_png,goldBg_png,help_btn_png,help_object-2_png,honglang_json,honglang_swf_json,icon_lose_png,icon_win_png,inputBg_png,lanlang_json,lanlang_swf_json,loading_bg_jpg,loading_logo_png,load_bg_png,logo_png,mask_png,mask_white_png,music_btn_png,sourceNum_json,streakNum_json,optionBgImage_png,option_05_png,option_06_png,option_07_png,option_bg_png,option_btn_b_png,overBg_png,profileBg_png,promptPop_json,promptPop_swf_json,rBlodBar_png,rBlodBarBg_png,roomBg_jpg,roomBg_png,shan_png,sorceMc_png,OneTwoThree_mp3,sound_behit_mp3,sound_bg_mp3,sound_gameover_mp3,sound_go_mp3,sound_hit_mp3,sound_miss_mp3,sound_win_mp3,start_btn_png,toast-bg2_png,wall1_1_png,wall1_2_png,xiaohongmao_json,xiaohongmao_swf_json,xiaolanmao_json,xiaolanmao_swf_json,over_png,ui_json,bg_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/CheckBox/checkbox_select_disabled.png",
+			"type": "image",
+			"name": "checkbox_select_disabled_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_down.png",
+			"type": "image",
+			"name": "checkbox_select_down_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_select_up.png",
+			"type": "image",
+			"name": "checkbox_select_up_png"
+		},
+		{
+			"url": "assets/CheckBox/checkbox_unselect.png",
+			"type": "image",
+			"name": "checkbox_unselect_png"
+		},
+		{
+			"url": "assets/ItemRenderer/selected.png",
+			"type": "image",
+			"name": "selected_png"
+		},
+		{
+			"url": "assets/Panel/border.png",
+			"type": "image",
+			"name": "border_png"
+		},
+		{
+			"url": "assets/Panel/header.png",
+			"type": "image",
+			"name": "header_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_disabled.png",
+			"type": "image",
+			"name": "radiobutton_select_disabled_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_down.png",
+			"type": "image",
+			"name": "radiobutton_select_down_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_select_up.png",
+			"type": "image",
+			"name": "radiobutton_select_up_png"
+		},
+		{
+			"url": "assets/RadioButton/radiobutton_unselect.png",
+			"type": "image",
+			"name": "radiobutton_unselect_png"
+		},
+		{
+			"url": "assets/ScrollBar/roundthumb.png",
+			"type": "image",
+			"name": "roundthumb_png"
+		},
+		{
+			"url": "assets/Slider/thumb.png",
+			"type": "image",
+			"name": "thumb_png"
+		},
+		{
+			"url": "assets/Slider/track.png",
+			"type": "image",
+			"name": "track_png"
+		},
+		{
+			"url": "assets/Slider/tracklight.png",
+			"type": "image",
+			"name": "tracklight_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/handle.png",
+			"type": "image",
+			"name": "handle_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/off.png",
+			"type": "image",
+			"name": "off_png"
+		},
+		{
+			"url": "assets/ToggleSwitch/on.png",
+			"type": "image",
+			"name": "on_png"
+		},
+		{
+			"url": "assets/Button/button_down.png",
+			"type": "image",
+			"name": "button_down_png"
+		},
+		{
+			"url": "assets/Button/button_up.png",
+			"type": "image",
+			"name": "button_up_png"
+		},
+		{
+			"url": "assets/ProgressBar/thumb_pb.png",
+			"type": "image",
+			"name": "thumb_pb_png"
+		},
+		{
+			"url": "assets/ProgressBar/track_pb.png",
+			"type": "image",
+			"name": "track_pb_png"
+		},
+		{
+			"url": "assets/ScrollBar/track_sb.png",
+			"type": "image",
+			"name": "track_sb_png"
+		},
+		{
+			"url": "assets/bg.jpg",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"url": "assets/egret_icon.png",
+			"type": "image",
+			"name": "egret_icon_png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "timefont_json",
+			"type": "sheet",
+			"url": "font/timefont.json",
+			"subkeys": "0,1,2,3,4,5,6,7,8,9,-,：,+,x,倍,开,人,始"
+		},
+		{
+			"name": "loadingprogress_png",
+			"type": "image",
+			"url": "loading/loadingprogress.png"
+		},
+		{
+			"name": "toast-bg_png",
+			"type": "image",
+			"url": "loading/toast-bg.png"
+		},
+		{
+			"name": "arrow_png",
+			"type": "image",
+			"url": "ranger/arrow.png"
+		},
+		{
+			"name": "avatar_png",
+			"type": "image",
+			"url": "ranger/avatar.png"
+		},
+		{
+			"name": "bBlodBar_png",
+			"type": "image",
+			"url": "ranger/bBlodBar.png"
+		},
+		{
+			"name": "bBlodBarBg_png",
+			"type": "image",
+			"url": "ranger/bBlodBarBg.png"
+		},
+		{
+			"name": "bg_list_png",
+			"type": "image",
+			"url": "ranger/bg_list.png"
+		},
+		{
+			"name": "blodBarMask_png",
+			"type": "image",
+			"url": "ranger/blodBarMask.png"
+		},
+		{
+			"name": "bomb_png",
+			"type": "image",
+			"url": "ranger/bomb.png"
+		},
+		{
+			"name": "btnfight_json",
+			"type": "sheet",
+			"url": "ranger/btnfight/btnfight.json",
+			"subkeys": "btnfight1,btnfight2,btnfight3"
+		},
+		{
+			"name": "btn_addRobot_png",
+			"type": "image",
+			"url": "ranger/btn_addRobot.png"
+		},
+		{
+			"name": "btn_back_png",
+			"type": "image",
+			"url": "ranger/btn_back.png"
+		},
+		{
+			"name": "btn_backToHome_png",
+			"type": "image",
+			"url": "ranger/btn_backToHome.png"
+		},
+		{
+			"name": "btn_close_png",
+			"type": "image",
+			"url": "ranger/btn_close.png"
+		},
+		{
+			"name": "btn_createRoom_png",
+			"type": "image",
+			"url": "ranger/btn_createRoom.png"
+		},
+		{
+			"name": "btn_joinRandomRoom_png",
+			"type": "image",
+			"url": "ranger/btn_joinRandomRoom.png"
+		},
+		{
+			"name": "btn_joinRoom_png",
+			"type": "image",
+			"url": "ranger/btn_joinRoom.png"
+		},
+		{
+			"name": "btn_joinRoom2_png",
+			"type": "image",
+			"url": "ranger/btn_joinRoom2.png"
+		},
+		{
+			"name": "btn_kickPlayer_png",
+			"type": "image",
+			"url": "ranger/btn_kickPlayer.png"
+		},
+		{
+			"name": "btn_leaveRoom_png",
+			"type": "image",
+			"url": "ranger/btn_leaveRoom.png"
+		},
+		{
+			"name": "btn_modify_png",
+			"type": "image",
+			"url": "ranger/btn_modify.png"
+		},
+		{
+			"name": "btn_relive_png",
+			"type": "image",
+			"url": "ranger/btn_relive.png"
+		},
+		{
+			"name": "btn_startGame_png",
+			"type": "image",
+			"url": "ranger/btn_startGame.png"
+		},
+		{
+			"name": "combo_png",
+			"type": "image",
+			"url": "ranger/combo.png"
+		},
+		{
+			"name": "complete_png",
+			"type": "image",
+			"url": "ranger/complete.png"
+		},
+		{
+			"name": "egret_icon2_png",
+			"type": "image",
+			"url": "ranger/egret_icon.png"
+		},
+		{
+			"name": "fight1Bg_png",
+			"type": "image",
+			"url": "ranger/fight1Bg.png"
+		},
+		{
+			"name": "footer_text_white_png",
+			"type": "image",
+			"url": "ranger/footer_text_white.png"
+		},
+		{
+			"name": "gameOver_png",
+			"type": "image",
+			"url": "ranger/gameOver.png"
+		},
+		{
+			"name": "go_json",
+			"type": "sheet",
+			"url": "ranger/go/go.json",
+			"subkeys": "img_GO!-sc/003,img_GO!-sc/004,img_GO!-sc/001,img_GO!-sc/002"
+		},
+		{
+			"name": "go_swf_json",
+			"type": "json",
+			"url": "ranger/go/go_swf.json"
+		},
+		{
+			"name": "gold_png",
+			"type": "image",
+			"url": "ranger/gold.png"
+		},
+		{
+			"name": "goldBg_png",
+			"type": "image",
+			"url": "ranger/goldBg.png"
+		},
+		{
+			"name": "help_btn_png",
+			"type": "image",
+			"url": "ranger/help_btn.png"
+		},
+		{
+			"name": "help_object-2_png",
+			"type": "image",
+			"url": "ranger/help_object-2.png"
+		},
+		{
+			"name": "honglang_json",
+			"type": "sheet",
+			"url": "ranger/honglang/honglang.json",
+			"subkeys": "img_honglang-sc/honglangzou002,img_honglang-sc/honglangzou004,img_honglang-sc/honglangzou005,img_honglang-sc/honglangzou003,img_honglang-sc/honglangzou001"
+		},
+		{
+			"name": "honglang_swf_json",
+			"type": "json",
+			"url": "ranger/honglang/honglang_swf.json"
+		},
+		{
+			"name": "icon_lose_png",
+			"type": "image",
+			"url": "ranger/icon_lose.png"
+		},
+		{
+			"name": "icon_win_png",
+			"type": "image",
+			"url": "ranger/icon_win.png"
+		},
+		{
+			"name": "inputBg_png",
+			"type": "image",
+			"url": "ranger/inputBg.png"
+		},
+		{
+			"name": "lanlang_json",
+			"type": "sheet",
+			"url": "ranger/lanlang/lanlang.json",
+			"subkeys": "img_lanlang-sc/lanlangzou002,img_lanlang-sc/lanlangzou004,img_lanlang-sc/lanlangzou005,img_lanlang-sc/lanlangzou003,img_lanlang-sc/lanlangzou001"
+		},
+		{
+			"name": "lanlang_swf_json",
+			"type": "json",
+			"url": "ranger/lanlang/lanlang_swf.json"
+		},
+		{
+			"name": "loading_bg_jpg",
+			"type": "image",
+			"url": "ranger/loading_bg.jpg"
+		},
+		{
+			"name": "loading_logo_png",
+			"type": "image",
+			"url": "ranger/loading_logo.png"
+		},
+		{
+			"name": "load_bg_png",
+			"type": "image",
+			"url": "ranger/load_bg.png"
+		},
+		{
+			"name": "logo_png",
+			"type": "image",
+			"url": "ranger/logo.png"
+		},
+		{
+			"name": "mask_png",
+			"type": "image",
+			"url": "ranger/mask.png"
+		},
+		{
+			"name": "mask_white_png",
+			"type": "image",
+			"url": "ranger/mask_white.png"
+		},
+		{
+			"name": "music_btn_png",
+			"type": "image",
+			"url": "ranger/music_btn.png"
+		},
+		{
+			"name": "sourceNum_json",
+			"type": "sheet",
+			"url": "ranger/number/sourceNum.json",
+			"subkeys": "number-0,number-1,number-2,number-3,number-4,number-5,number-6,number-7,number-8,number-9"
+		},
+		{
+			"name": "streakNum_json",
+			"type": "sheet",
+			"url": "ranger/number/streakNum.json",
+			"subkeys": "number-09,number-00,number-01,number-02,number-03,number-04,number-05,number-06,number-07,number-08"
+		},
+		{
+			"name": "optionBgImage_png",
+			"type": "image",
+			"url": "ranger/optionBgImage.png"
+		},
+		{
+			"name": "option_05_png",
+			"type": "image",
+			"url": "ranger/option_05.png"
+		},
+		{
+			"name": "option_06_png",
+			"type": "image",
+			"url": "ranger/option_06.png"
+		},
+		{
+			"name": "option_07_png",
+			"type": "image",
+			"url": "ranger/option_07.png"
+		},
+		{
+			"name": "option_bg_png",
+			"type": "image",
+			"url": "ranger/option_bg.png"
+		},
+		{
+			"name": "option_btn_b_png",
+			"type": "image",
+			"url": "ranger/option_btn_b.png"
+		},
+		{
+			"name": "overBg_png",
+			"type": "image",
+			"url": "ranger/overBg.png"
+		},
+		{
+			"name": "profileBg_png",
+			"type": "image",
+			"url": "ranger/profileBg.png"
+		},
+		{
+			"name": "promptPop_json",
+			"type": "sheet",
+			"url": "ranger/promptPop/promptPop.json",
+			"subkeys": "img_pre_1,img_good_1,img_miss_1"
+		},
+		{
+			"name": "promptPop_swf_json",
+			"type": "json",
+			"url": "ranger/promptPop/promptPop_swf.json"
+		},
+		{
+			"name": "rBlodBar_png",
+			"type": "image",
+			"url": "ranger/rBlodBar.png"
+		},
+		{
+			"name": "rBlodBarBg_png",
+			"type": "image",
+			"url": "ranger/rBlodBarBg.png"
+		},
+		{
+			"name": "roomBg_jpg",
+			"type": "image",
+			"url": "ranger/roomBg.jpg"
+		},
+		{
+			"name": "roomBg_png",
+			"type": "image",
+			"url": "ranger/roomBg.png"
+		},
+		{
+			"name": "shan_png",
+			"type": "image",
+			"url": "ranger/shan.png"
+		},
+		{
+			"name": "sorceMc_png",
+			"type": "image",
+			"url": "ranger/sorceMc.png"
+		},
+		{
+			"name": "OneTwoThree_mp3",
+			"type": "sound",
+			"url": "ranger/sound/OneTwoThree.mp3"
+		},
+		{
+			"name": "sound_behit_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_behit.mp3"
+		},
+		{
+			"name": "sound_bg_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_bg.mp3"
+		},
+		{
+			"name": "sound_gameover_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_gameover.mp3"
+		},
+		{
+			"name": "sound_go_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_go.mp3"
+		},
+		{
+			"name": "sound_hit_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_hit.mp3"
+		},
+		{
+			"name": "sound_miss_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_miss.mp3"
+		},
+		{
+			"name": "sound_win_mp3",
+			"type": "sound",
+			"url": "ranger/sound/sound_win.mp3"
+		},
+		{
+			"name": "start_btn_png",
+			"type": "image",
+			"url": "ranger/start_btn.png"
+		},
+		{
+			"name": "toast-bg2_png",
+			"type": "image",
+			"url": "ranger/toast-bg.png"
+		},
+		{
+			"name": "wall1_1_png",
+			"type": "image",
+			"url": "ranger/wall1_1.png"
+		},
+		{
+			"name": "wall1_2_png",
+			"type": "image",
+			"url": "ranger/wall1_2.png"
+		},
+		{
+			"name": "xiaohongmao_json",
+			"type": "sheet",
+			"url": "ranger/xiaohongmao/xiaohongmao.json",
+			"subkeys": "img_xiaohongmao-sc/xiaohongmao003,img_xiaohongmao-sc/xiaohongmaozhuanshen3,img_xiaohongmao-sc/xiaohongmaowin,img_xiaohongmao-sc/xiaohongmao002,img_xiaohongmao-sc/xiaohongmaozhuanshen2,img_xiaohongmao-sc/xiaohongmao004,img_xiaohongmao-sc/xiaohongmaozhuanshen4,img_xiaohongmao-sc/xiaohongmao001,img_xiaohongmao-sc/xiaohongmaozhuanshen1"
+		},
+		{
+			"name": "xiaohongmao_swf_json",
+			"type": "json",
+			"url": "ranger/xiaohongmao/xiaohongmao_swf.json"
+		},
+		{
+			"name": "xiaolanmao_json",
+			"type": "sheet",
+			"url": "ranger/xiaolanmao/xiaolanmao.json",
+			"subkeys": "img_xiaolanmao-sc/xiaolanmao003,img_xiaolanmao-sc/xiaolanmaozhuanshen3,img_xiaolanmao-sc/xiaolanmaowin,img_xiaolanmao-sc/xiaolanmao002,img_xiaolanmao-sc/xiaolanmaozhuanshen2,img_xiaolanmao-sc/xiaolanmao004,img_xiaolanmao-sc/xiaolanmaozhuanshen4,img_xiaolanmao-sc/xiaolanmao001,img_xiaolanmao-sc/xiaolanmaozhuanshen1"
+		},
+		{
+			"name": "xiaolanmao_swf_json",
+			"type": "json",
+			"url": "ranger/xiaolanmao/xiaolanmao_swf.json"
+		},
+		{
+			"name": "over_png",
+			"type": "image",
+			"url": "assets/over.png"
+		},
+		{
+			"name": "ui_json",
+			"type": "sheet",
+			"url": "assets/ui.json",
+			"subkeys": "description,fruit_1,fruit_2,fruit_3,fruit_4,fruit_5,fruit_6,fruit_7,fruit_8,fruit_9,fruits,life,most_top,retry,share,start,time,title,vegetable_1,vegetable_2,vegetable_3,vegetable_4,vegetable_5,vegetable_6,vegetable_7,vegetable_8,vegetable_9,vegetables"
+		},
+		{
+			"name": "bg_png",
+			"type": "image",
+			"url": "assets/bg.png"
+		}
+	]
+}

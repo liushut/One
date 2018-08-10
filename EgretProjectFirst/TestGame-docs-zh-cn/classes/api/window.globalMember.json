@@ -1,0 +1,12 @@
+{
+	"globalMember": [
+		{
+			"filename": "F:\\Egret Project\\TestGame\\src\\Platform.ts",
+			"kind": "globalMember",
+			"type": "Platform",
+			"name": "platform",
+			"memberof": "window",
+			"scope": "instance"
+		}
+	]
+}

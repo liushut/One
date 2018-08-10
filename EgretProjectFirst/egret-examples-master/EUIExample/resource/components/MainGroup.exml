@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<e:Group class="components.MainGroup" touchThrough="true" xmlns:e="http://ns.egret.com/eui" xmlns:c="components.*"
+    verticalCenter="0" horizontalCenter="0" width="100%" height="320" maxWidth="800" minWidth="450">
+    <e:Image source="resource/assets/whiteBg.png"   left="0" right="0" top="0" bottom="0"/>
+    <c:TabBar dataProvider="{viewStack}"/>
+    <e:ViewStack id="viewStack" verticalCenter="0" left="150" top="0" right="0" bottom="0">
+        <e:Group name="Button" height = "300" verticalCenter="0" horizontalCenter="0">
+            <e:layout>
+                <e:VerticalLayout gap="15" horizontalAlign="left" verticalAlign ="middle"/>
+            </e:layout>
+            <e:Group>
+                <e:Button label="确定"/>
+                <e:Button x="150" label="禁用" enabled="false"/>
+            </e:Group>
+            <e:Group>
+                <e:Button label="取消" height="50" width="100" skinName="skins.red.ButtonSkin"/>
+                <c:CloseButton width="30" x="150" height="30" top="10" />
+            </e:Group>
+             <e:Group>
+                 <e:ToggleSwitch label="ToggleSwitch"/>
+                <e:Label size="20" fontFamily="Tahoma" x="90" text="Toggle Switch" textColor="0x727070"/>
+             </e:Group>
+             <e:Group>
+                  <e:CheckBox label="CheckBox"/>
+                  <e:CheckBox label="Disabled" x="150" enabled="false"/>
+             </e:Group>
+            <e:Group>
+                <e:RadioButton label="Option 1"/>
+                <e:RadioButton x="150" label="Option 1"/>
+             </e:Group>
+        </e:Group>
+        <e:Group name="Slider"  verticalCenter="0" horizontalCenter="0">
+        	<e:Label text="Value:" verticalCenter="0" left="18" fontFamily="Tahoma" size="20" textColor="0x000000"/>
+        	<e:Label left="78" verticalCenter="0" fontFamily="Tahoma" text="{vSlider.value}" size="20" textColor="0x000000"/>
+        	<e:VSlider id="vSlider" x="105" verticalCenter="0" height="150" maximum="100"/>
+        	<e:HSlider id="hSlider" verticalCenter="0.5" maximum="100" left="143" width="150"/>
+        	<e:Label text="Value:" verticalCenter="30" fontFamily="Tahoma" size="20" left="184" width="57" textColor="0x000000"/>
+        	<e:Label verticalCenter="30" fontFamily="Tahoma" size="20" text="{hSlider.value}" left="247" width="53" textColor="0x000000"/>
+        </e:Group>
+
+        <e:Group name="Progress"  left="0" right="0" top="0" bottom="0">
+            <e:ProgressBar width="200" maximum="100" value="20" verticalCenter="0" horizontalCenter="0"/>
+        </e:Group>
+        <e:Group name="Panel"  left="0" right="0" top="0" bottom="0">
+            <e:Panel title="Panel Title" verticalCenter="0.5" height="174" horizontalCenter="0" width="90%" maxWidth="350">
+            </e:Panel>
+        </e:Group>
+        <e:Group name="List" left="0" right="0" top="0" bottom="0">
+            <c:ListGroup width="200" height="98%" verticalCenter="0" horizontalCenter="0"/>
+        </e:Group>
+        <e:Group name="Label" left="20" top="20" right="20" bottom="20">
+           	<e:Label top="0"
+           					 size="20" fontFamily="'Microsoft Yahei'" left = "0" text="左对齐文本"
+           					 textColor="0x727070" textAlign="left"  right="0" bottom="0"/>
+            <e:Label top="0"
+                             textColor="0x727070" textAlign="center"  left="0" right="0" bottom="0"/>
+            <e:Label top="0"
+                             size="20" fontFamily="'Microsoft Yahei'" text="右对齐文本"
+                             textColor="0x727070" textAlign="right" left="0" right="0" bottom="0"/>
+            <e:Label
+                             size="20" fontFamily="'Microsoft Yahei'" text="垂直居中文本"
+                             textColor="0x727070" verticalAlign="middle" textAlign="center" left="0" right="0" top="0" bottom="0"/>
+            <e:Label bottom="0"
+                             size="20" fontFamily="'Microsoft Yahei'" text="底对齐文本"
+                             textColor="0x727070" verticalAlign="bottom"  textAlign="center" left="0" right="0" top="0"/>
+             <e:Label
+                             size="20" fontFamily="'Microsoft Yahei'" text="粗体" bold="true"
+                             textColor="0x727070" verticalAlign="bottom" textAlign="left" left="0" right="0" top="0" bottom="0"/>
+            <e:Label bottom="0"  italic="true"
+                             size="20" fontFamily="'Microsoft Yahei'" text="斜体"
+                             textColor="0x727070" verticalAlign="bottom"  textAlign="right" left="0" right="0" top="0"/>
+        </e:Group>
+         <e:Group name="Editable Text" left="50" top="30" right="50">
+         	<e:layout>
+         		<e:VerticalLayout gap="5" verticalAlign="middle"/>
+         	</e:layout>
+              <e:Label size="18" fontFamily="'Microsoft Yahei'" text="请输入您的账号"
+                      textColor="0x727070"  textAlign="left"/>
+              <e:Group width="100%">
+                      <e:Image source="resource/assets/checkbox_unselect.png" width="100%" height="24" scale9Grid="2,2,19,19"/>
+                      <e:EditableText  width="100%" x="2" y="2"
+                                  size="20" fontFamily="Tahoma"
+                                  textColor="0x727070"   textAlign="left"/>
+              </e:Group>
+              <e:Label size="18" fontFamily="'Microsoft Yahei'" text="请输入您的密码"
+                      textColor="0x727070"  textAlign="left"/>
+              <e:Group width="100%">
+                     <e:Image source="resource/assets/checkbox_unselect.png" width="100%" height="24" scale9Grid="2,2,19,19"/>
+                     <e:EditableText  width="100%" x="2" y="2"
+                                 size="20" fontFamily="Tahoma" text="" displayAsPassword = "true"
+                                 textColor="0x727070"/>
+              </e:Group>
+              <e:Label size="18" fontFamily="'Microsoft Yahei'" text="请输入您的评论"
+                      textColor="0x727070"  textAlign="left"/>
+              <e:Group width="100%">
+                     <e:Image source="resource/assets/checkbox_unselect.png" width="100%" height="80" scale9Grid="2,2,19,19"/>
+                     <e:EditableText  width="100%" height="80" x="2" y="2"
+                                 size="20" fontFamily="Tahoma" text="" wordWrap="true"
+                                 textColor="0x727070"/>
+              </e:Group>
+                <e:Button label="确定" height="40"/>
+         </e:Group>
+    </e:ViewStack>
+</e:Group>

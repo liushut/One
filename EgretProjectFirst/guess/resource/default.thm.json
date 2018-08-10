@@ -1,0 +1,15 @@
+{
+	"skins": {
+		//类型名  eui.button    资源路径  "xxx/xxx.exml"
+		"SceneBegin": "resource/eui_skins/SceneBeginSkin.exml",
+		"SceneLevels":"resource/eui_skins/SceneLevelsSkin.exml",
+		"LevelIcon":"resource/eui_skins/LevelIconSkin.exml"
+	},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/eui_skins/SceneBeginSkin.exml",
+		"resource/eui_skins/SceneLevelsSkin.exml",
+		"resource/eui_skins/LevelIconSkin.exml"
+	],
+	"path": "resource/default.thm.json"
+}

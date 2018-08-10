@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="400" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group left="0" right="0" top="0" bottom="0">
+		<e:Image id="MoneyBG" width="400" height="255" x="0" y="22.5" source="MoneyBG_png" scale9Grid="87,22,116,30" anchorOffsetY="0"/>
+		<e:Button id="btnmusic" label="" y="94" horizontalCenter="-89.5">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_music_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btnagree" label="" y="204" horizontalCenter="0.5">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="YesBtn_jpg" source.down="YesBtn1_jpg"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="btnSound" label="" y="94" horizontalCenter="91">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_sound_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Image id="imgsounddisable" width="64" height="65" x="259" y="97.5" source="btn_disable_png" alpha="0.8"/>
+		<e:Image id="imgmusicdisable" width="64" height="65" x="79" y="97.5" source="btn_disable_png" alpha="0.8"/>
+	</e:Group>
+</e:Skin>

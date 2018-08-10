@@ -1,0 +1,130 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,1bj_png,2bj_png,3qiu-1_png,3qiu_png,4zhong_png,5R1_png,5R2_png,5R3_png,弹了个球_png,弹了个球1_png,0_png,1_png,2_png,3_png,4_png,5_png,6_png,7_png,8_png,9_png,透视示意图_jpg",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "1bj_png",
+			"type": "image",
+			"url": "assets/golf/1bj.png"
+		},
+		{
+			"name": "2bj_png",
+			"type": "image",
+			"url": "assets/golf/2bj.png"
+		},
+		{
+			"name": "3qiu-1_png",
+			"type": "image",
+			"url": "assets/golf/3qiu-1.png"
+		},
+		{
+			"name": "3qiu_png",
+			"type": "image",
+			"url": "assets/golf/3qiu.png"
+		},
+		{
+			"name": "4zhong_png",
+			"type": "image",
+			"url": "assets/golf/4zhong.png"
+		},
+		{
+			"name": "5R1_png",
+			"type": "image",
+			"url": "assets/golf/5R1.png"
+		},
+		{
+			"name": "5R2_png",
+			"type": "image",
+			"url": "assets/golf/5R2.png"
+		},
+		{
+			"name": "5R3_png",
+			"type": "image",
+			"url": "assets/golf/5R3.png"
+		},
+		{
+			"name": "弹了个球_png",
+			"type": "image",
+			"url": "assets/golf/弹了个球.png"
+		},
+		{
+			"name": "弹了个球1_png",
+			"type": "image",
+			"url": "assets/golf/弹了个球1.png"
+		},
+		{
+			"name": "0_png",
+			"type": "image",
+			"url": "assets/golf/数字/0.png"
+		},
+		{
+			"name": "1_png",
+			"type": "image",
+			"url": "assets/golf/数字/1.png"
+		},
+		{
+			"name": "2_png",
+			"type": "image",
+			"url": "assets/golf/数字/2.png"
+		},
+		{
+			"name": "3_png",
+			"type": "image",
+			"url": "assets/golf/数字/3.png"
+		},
+		{
+			"name": "4_png",
+			"type": "image",
+			"url": "assets/golf/数字/4.png"
+		},
+		{
+			"name": "5_png",
+			"type": "image",
+			"url": "assets/golf/数字/5.png"
+		},
+		{
+			"name": "6_png",
+			"type": "image",
+			"url": "assets/golf/数字/6.png"
+		},
+		{
+			"name": "7_png",
+			"type": "image",
+			"url": "assets/golf/数字/7.png"
+		},
+		{
+			"name": "8_png",
+			"type": "image",
+			"url": "assets/golf/数字/8.png"
+		},
+		{
+			"name": "9_png",
+			"type": "image",
+			"url": "assets/golf/数字/9.png"
+		},
+		{
+			"name": "透视示意图_jpg",
+			"type": "image",
+			"url": "assets/golf/透视示意图.jpg"
+		}
+	]
+}

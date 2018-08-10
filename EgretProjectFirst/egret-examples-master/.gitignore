@@ -1,0 +1,5 @@
+bin-debug/
+.idea/
+temp/
+libs/
+egret.d.ts

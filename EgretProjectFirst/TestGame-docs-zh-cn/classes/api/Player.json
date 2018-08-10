@@ -1,0 +1,20 @@
+{
+	"member": [],
+	"function": [
+		{
+			"kind": "function",
+			"name": "Player",
+			"memberof": "Player",
+			"scope": "instance"
+		}
+	],
+	"globalMember": [],
+	"globalFunction": [],
+	"class": {
+		"kind": "class",
+		"name": "Player",
+		"memberof": "",
+		"filename": "F:\\Egret Project\\TestGame\\src\\Player.ts",
+		"augments": []
+	}
+}

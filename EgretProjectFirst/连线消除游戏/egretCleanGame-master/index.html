@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TidysGame</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="true"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <style>
+        html, body {
+            -ms-touch-action: none;
+            background: #000000;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+
+
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.0.0.js"></script>
+
+    <!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件。删除 modules_files 标签后，库文件加载列表将不会变化，请谨慎操作！-->
+    <!--modules_files_start-->
+	<script egret="lib" src="libs/modules/egret/egret.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.web.js"></script>
+	<script egret="lib" src="libs/modules/eui/eui.js"></script>
+	<script egret="lib" src="libs/modules/game/game.js"></script>
+	<script egret="lib" src="libs/modules/tween/tween.js"></script>
+	<script egret="lib" src="libs/modules/res/res.js"></script>
+	<script egret="lib" src="libs/modules/dragonBones/dragonBones.js"></script>
+	<script egret="lib" src="libTMX/bin/tiled/tiled.js"></script>
+	<script egret="lib" src="libPhysics/bin/physics/physics.js"></script>
+	<script egret="lib" src="libTest/bin/test/test.js"></script>
+	<script egret="lib" src="libPomelo/bin/Pomelo/Pomelo.js"></script>
+	<script egret="lib" src="libLeanCloud/bin/AV/AV.js"></script>
+	<script egret="lib" src="libDCAgent/bin/dcagent/dcagent.js"></script>
+	<script egret="lib" src="egret_4399_h5api/bin/egret_4399_h5api/egret_4399_h5api.js"></script>
+	<!--modules_files_end-->
+
+    <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
+    
+
+    <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
+    <!--game_files_start-->
+	<script egret="lib" src="bin-debug/game2/GridMgr.js"></script>
+	<script egret="lib" src="bin-debug/libParticle/src/GravityParticle.js"></script>
+	<script egret="lib" src="bin-debug/libParticle/src/Particle.js"></script>
+	<script egret="lib" src="bin-debug/libParticle/src/ParticleSystem.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/TMXTilemap.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/animation/TMXAnimation.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/animation/TMXAnimationFrame.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/const/TMXConstants.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/events/TMXImageLoadEvent.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/layer/ILayer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/layer/TMXColorLayer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/layer/TMXImageLayer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/layer/TMXLayer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/layer/TMXLayerBase.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/object/TMXImage.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/object/TMXObject.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/object/TMXObjectGroup.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/property/TMXProperty.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/render/TMXHexagonalRenderer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/render/TMXIsometricRenderer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/render/TMXOrthogonalRenderer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/render/TMXRenderer.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/shape/Ellipse.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/shape/Polygon.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/shape/PolyLine.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/tile/TMXTile.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/tileset/TMXTileset.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/tileset/TMXTilesetGroup.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/utils/Base64.js"></script>
+	<script egret="lib" src="bin-debug/libTMX/src/utils/TMXUtils.js"></script>
+	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
+	<script egret="lib" src="bin-debug/LoadingUI.js"></script>
+	<script egret="lib" src="bin-debug/Main.js"></script>
+	<script egret="lib" src="bin-debug/ThemeAdapter.js"></script>
+	<script egret="lib" src="bin-debug/data/AVMgr.js"></script>
+	<script egret="lib" src="bin-debug/data/CfgFileMgr.js"></script>
+	<script egret="lib" src="bin-debug/data/DCAgentMgr.js"></script>
+	<script egret="lib" src="bin-debug/data/PlayerData.js"></script>
+	<script egret="lib" src="bin-debug/data/SceneMgr.js"></script>
+	<script egret="lib" src="bin-debug/data/SoundsMgr.js"></script>
+	<script egret="lib" src="bin-debug/game2/GameAddOneCfg.js"></script>
+	<script egret="lib" src="bin-debug/game2/GameAddOneEvent.js"></script>
+	<script egret="lib" src="bin-debug/game2/GameAddOneScene.js"></script>
+	<script egret="lib" src="bin-debug/game2/Grid.js"></script>
+	<script egret="lib" src="bin-debug/libParticle/src/GravityParticleSystem.js"></script>
+	<script egret="lib" src="bin-debug/module/chat/ChatItem.js"></script>
+	<script egret="lib" src="bin-debug/module/chat/ChatScene.js"></script>
+	<script egret="lib" src="bin-debug/module/game/Cell.js"></script>
+	<script egret="lib" src="bin-debug/module/game/CellMgr.js"></script>
+	<script egret="lib" src="bin-debug/module/game/CleanWithLineGameScene.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameCfg.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameData.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameEvent.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameMissionProgress.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameProgress.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameScene.js"></script>
+	<script egret="lib" src="bin-debug/module/game/GameUI.js"></script>
+	<script egret="lib" src="bin-debug/module/index/GameEnterDlg.js"></script>
+	<script egret="lib" src="bin-debug/module/index/IndexButton.js"></script>
+	<script egret="lib" src="bin-debug/module/index/IndexGroup.js"></script>
+	<script egret="lib" src="bin-debug/module/index/IndexScene.js"></script>
+	<script egret="lib" src="bin-debug/module/index/IndexUI.js"></script>
+	<script egret="lib" src="bin-debug/module/loading/ResLoading.js"></script>
+	<script egret="lib" src="bin-debug/module/logoin/Logoin.js"></script>
+	<script egret="lib" src="bin-debug/module/lose/LoseLayer.js"></script>
+	<script egret="lib" src="bin-debug/module/pause/PauseLayer.js"></script>
+	<script egret="lib" src="bin-debug/module/test/ClickButton.js"></script>
+	<script egret="lib" src="bin-debug/module/test/DragonBonesTestLayer.js"></script>
+	<script egret="lib" src="bin-debug/module/test/LeanCloudTest.js"></script>
+	<script egret="lib" src="bin-debug/module/winUI/WinUI.js"></script>
+	<script egret="lib" src="bin-debug/net/Net.js"></script>
+	<script egret="lib" src="bin-debug/net/NetError.js"></script>
+	<script egret="lib" src="bin-debug/net/NetMsg.js"></script>
+	<script egret="lib" src="bin-debug/net/NetWait.js"></script>
+	<script egret="lib" src="bin-debug/test/Test.js"></script>
+	<script egret="lib" src="bin-debug/tiledGame/Cannon.js"></script>
+	<script egret="lib" src="bin-debug/tiledGame/Fish.js"></script>
+	<script egret="lib" src="bin-debug/tiledGame/FishScene.js"></script>
+	<script egret="lib" src="bin-debug/tiledGame/ShapData.js"></script>
+	<script egret="lib" src="bin-debug/tiledGame/TiledScene.js"></script>
+	<script egret="lib" src="bin-debug/util/Animation.js"></script>
+	<script egret="lib" src="bin-debug/util/CallBackFunc.js"></script>
+	<script egret="lib" src="bin-debug/util/Director.js"></script>
+	<script egret="lib" src="bin-debug/util/Display.js"></script>
+	<script egret="lib" src="bin-debug/util/GuidLayerUtil.js"></script>
+	<script egret="lib" src="bin-debug/util/NetLayerUtil.js"></script>
+	<script egret="lib" src="bin-debug/util/Tips.js"></script>
+	<script egret="lib" src="bin-debug/util/Util.js"></script>
+	<!--game_files_end-->
+
+</head>
+<body>
+<script src="http://stat.api.4399.com/h5api/h5api.php"></script>
+
+<div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
+     data-entry-class="Main"
+     data-orientation="auto"
+     data-scale-mode="showAll"
+     data-frame-rate="30"
+     data-content-width="640"
+     data-content-height="960"
+     data-show-paint-rect="false"
+     data-multi-fingered="2"
+     data-show-fps="false" data-show-log="false"
+     data-log-filter="" data-show-fps-style="x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.9">
+</div>
+<script>
+    egret.runEgret();
+</script>
+<script src="http://api.mix.guohead.com/GH.js"></script>
+<script>
+	GH.config({
+		spid: "d9173201f484a290"
+	});
+	GH.showAd();
+</script>
+</body>
+</html>
