@@ -113,6 +113,7 @@ ES6和TypeScript针对这点做了改进，使用箭头函数可以把创建函�
 8.https://blog.csdn.net/cut001/article/details/53693900
 //下面的网站比较好
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises
+https://www.jianshu.com/p/063f7e490e9a  //这个更好  简书上面的，下面有ES6教程url
 function test(resolved,rejected)//参数都是函数,内置的函数
 {
 	if(){resolved()}
