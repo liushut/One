@@ -5,7 +5,9 @@ egretProperties.json   配置第三方库文件  AssetsManager 可以代替Res�
 default.res.json       资源文件配置文件
 manifest.json          项目所需的js文件在此文件中配置。
 tsconfig.json          项目的配置文件，根据其中的属性来设置TS项目的编译参数
-
+ 
+ 
+ egret.localStorage.xxx     本地存储
 
 
 编译顺序:
