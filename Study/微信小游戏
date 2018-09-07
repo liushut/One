@@ -1,3 +1,9 @@
+
+egret 和 wx 通过 platform 文件来实现api调用。  所以逻辑有egret写。调用wx的api可以在直接egret也可以在wx开发中写。
+开放域在opendata中index.js中写。
+
+
+
 微信小游戏：
 什么是 DOM？
 DOM 是 W3C（万维网联盟）的标准。
