@@ -43,11 +43,10 @@ RES.ResourceEvent.GROUP_LOAD_ERROR   RES的事件类型。干什么事情都有�
 
 当动画完成后，如果是在call()方法中得到y,则是最终结果。如果在外面则是最初的。因为这是同一帧。
 to方法会同一时间压栈，call()是运行到那里了在得到对应的值。
-我估计应该是先执行动画以外的，最后在执行动画，
+
   egret.Tween.get(a).to({y:500},5000).call(
   ()=>{egret.Tween.removeTweens(a),
-  console.log("sss"+a.y)// 后输出a.y = 500，最终y。如果想得到此时Y,应该用一个变量
-  来记录
+  console.log("sss"+a.y)// 后输出a.y = 500
   });
 动画的实时函数中x,y等值的操作会被后续的to操作覆盖掉。实时变化函数是每帧更新的。
 做逻辑处理时，一定要记得处理动画，比如remove动画。不然动画还会在继续执行，出现BUG。
